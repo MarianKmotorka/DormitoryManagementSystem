@@ -10,7 +10,7 @@ namespace Persistence
     {
         public static IServiceCollection AddPersistance(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DormitoryContext>(options =>
+            services.AddDbContext<DormitoryDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DormitoryDb")));
 
             services.AddDefaultIdentity<AppUser>(o =>
@@ -21,7 +21,7 @@ namespace Persistence
                 o.Password.RequireNonAlphanumeric = false;
                 o.User.RequireUniqueEmail = true;
             })
-                .AddEntityFrameworkStores<DormitoryContext>()
+                .AddEntityFrameworkStores<DormitoryDbContext>()
                 .AddDefaultTokenProviders();
 
             return services;
