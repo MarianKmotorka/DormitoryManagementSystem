@@ -26,6 +26,8 @@ namespace WebApi
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseRouting();
+
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
             else app.UseHsts();
 
@@ -41,7 +43,10 @@ namespace WebApi
             app.UseSwagger(opt => opt.RouteTemplate = swaggerOptions.JsonRoute);
             app.UseSwaggerUI(opt => opt.SwaggerEndpoint(swaggerOptions.UiEndpoint, swaggerOptions.Description));
 
-            app.UseMvc();
+            app.UseEndpoints(endpoint =>
+            {
+                endpoint.MapControllers();
+            });
         }
     }
 }

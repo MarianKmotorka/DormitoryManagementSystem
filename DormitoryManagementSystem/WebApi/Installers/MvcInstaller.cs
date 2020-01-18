@@ -7,11 +7,10 @@ namespace WebApi.Installers
     {
         public IServiceCollection Install(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddMvc(o =>
-            {
-                o.EnableEndpointRouting = false;
-            })
+            services.AddMvc()
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+
+            services.AddHttpContextAccessor();
 
             return services;
         }
