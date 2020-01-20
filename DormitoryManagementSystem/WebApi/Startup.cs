@@ -1,9 +1,11 @@
+using Application;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Persistence;
+using WebApi.Common;
 using WebApi.Installers;
 using WebApi.Options;
 
@@ -22,6 +24,7 @@ namespace WebApi
         {
             services.InstallServicesInAssembly(Configuration);
             services.AddPersistance(Configuration);
+            services.AddApplication();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -36,6 +39,8 @@ namespace WebApi
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseCustomExceptionHandler();
 
             var swaggerOptions = new SwaggerOptions();
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);

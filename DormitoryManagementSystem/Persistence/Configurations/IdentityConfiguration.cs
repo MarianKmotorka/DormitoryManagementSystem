@@ -12,6 +12,7 @@ namespace Persistence.Configurations
             public void Configure(EntityTypeBuilder<AppUser> builder)
             {
                 builder.ToTable("User");
+                builder.OwnsOne(x => x.Address);
             }
         }
 

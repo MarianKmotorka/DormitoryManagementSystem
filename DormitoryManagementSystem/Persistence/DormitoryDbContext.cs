@@ -8,6 +8,8 @@ namespace Persistence
     {
         public DormitoryDbContext(DbContextOptions<DormitoryDbContext> options) : base(options) { }
 
+        public DbSet<Guest> Guests { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
