@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application.Exceptions
+namespace Application.Common.Exceptions
 {
     public class DeleteFailureException : Exception
     {
