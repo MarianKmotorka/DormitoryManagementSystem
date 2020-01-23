@@ -2,6 +2,9 @@
 {
     public class Guest
     {
+        private AppUser _appUser;
+
+
         public string Id { get; set; }
 
         public string IdCardNumber { get; set; }
@@ -9,7 +12,6 @@
         public string DormitoryCardNumber { get; set; }
 
         public string RoomNumber { get; set; }
-
 
         /// <summary>
         /// Distance in kilometers from home
@@ -26,6 +28,5 @@
             }
         }
 
-        private AppUser _appUser;
     }
 }

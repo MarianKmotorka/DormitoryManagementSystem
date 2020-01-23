@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,9 @@ namespace Persistence
             services.AddDbContext<DormitoryDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DormitoryDb")));
 
-            services.AddDefaultIdentity<AppUser>(o =>
+            services.AddTransient<IDormitoryDbContext, DormitoryDbContext>();
+
+            services.AddIdentity<AppUser, IdentityRole>(o =>
             {
                 o.Password.RequiredLength = 6;
                 o.Password.RequireDigit = true;
@@ -21,6 +24,7 @@ namespace Persistence
                 o.Password.RequireNonAlphanumeric = false;
                 o.User.RequireUniqueEmail = true;
             })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DormitoryDbContext>()
                 .AddDefaultTokenProviders();
 

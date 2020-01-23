@@ -1,4 +1,5 @@
 using Application;
+using Infrastracture;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,7 @@ namespace WebApi
         {
             services.InstallServicesInAssembly(Configuration);
             services.AddPersistance(Configuration);
+            services.AddInfrastracture();
             services.AddApplication();
         }
 

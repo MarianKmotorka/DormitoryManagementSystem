@@ -41,13 +41,11 @@ namespace WebApi.Common
                     code = HttpStatusCode.BadRequest;
                     result = JsonConvert.SerializeObject(validationException.Failures);
                     break;
-                case BadRequestException badRequestException:
+                case BadRequestException _:
                     code = HttpStatusCode.BadRequest;
-                    result = badRequestException.Message;
                     break;
-                case DeleteFailureException deleteFailureException:
+                case DeleteFailureException _:
                     code = HttpStatusCode.BadRequest;
-                    result = deleteFailureException.Message;
                     break;
                 case NotFoundException _:
                     code = HttpStatusCode.NotFound;

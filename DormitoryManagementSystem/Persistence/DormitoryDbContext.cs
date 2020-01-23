@@ -1,10 +1,11 @@
-﻿using Domain.Entities;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class DormitoryDbContext : IdentityDbContext<AppUser>
+    public class DormitoryDbContext : IdentityDbContext<AppUser>, IDormitoryDbContext
     {
         public DormitoryDbContext(DbContextOptions<DormitoryDbContext> options) : base(options) { }
 

@@ -1,4 +1,4 @@
-﻿using Application.Common.Models;
+﻿using Application.Common.Interfaces;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +12,7 @@ namespace WebApi.Installers
         {
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-                .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Result>());
+                .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<IDormitoryDbContext>());
 
             services.AddHttpContextAccessor();
 
