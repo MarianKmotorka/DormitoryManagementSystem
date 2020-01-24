@@ -11,7 +11,7 @@ namespace Persistence.Configurations
         {
             public void Configure(EntityTypeBuilder<AppUser> builder)
             {
-                builder.ToTable("Users");
+                builder.ToTable("AppUsers");
                 builder.OwnsOne(x => x.Address);
             }
         }
@@ -20,7 +20,7 @@ namespace Persistence.Configurations
         {
             public void Configure(EntityTypeBuilder<IdentityRole> builder)
             {
-                builder.ToTable("Roles");
+                builder.ToTable("AppRoles");
             }
         }
 
@@ -28,7 +28,7 @@ namespace Persistence.Configurations
         {
             public void Configure(EntityTypeBuilder<IdentityUserRole<string>> builder)
             {
-                builder.ToTable("User_Roles");
+                builder.ToTable("AppUserAppRoles");
             }
         }
     }

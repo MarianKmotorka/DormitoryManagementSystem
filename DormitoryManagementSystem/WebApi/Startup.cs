@@ -25,7 +25,7 @@ namespace WebApi
         {
             services.InstallServicesInAssembly(Configuration);
             services.AddPersistance(Configuration);
-            services.AddInfrastracture();
+            services.AddInfrastracture(Configuration);
             services.AddApplication();
         }
 

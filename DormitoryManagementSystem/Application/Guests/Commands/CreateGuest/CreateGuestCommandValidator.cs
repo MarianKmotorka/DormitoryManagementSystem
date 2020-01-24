@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace Application.Guests.Commands.CreateGuest
 {
-    public class CommandValidator : AbstractValidator<CreateGuestCommand>
+    public class CreateGuestCommandValidator : AbstractValidator<CreateGuestCommand>
     {
-        public CommandValidator()
+        public CreateGuestCommandValidator()
         {
             CascadeMode = CascadeMode.StopOnFirstFailure;
 

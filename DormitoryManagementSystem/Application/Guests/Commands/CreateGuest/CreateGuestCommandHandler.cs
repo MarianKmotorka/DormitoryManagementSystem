@@ -1,4 +1,5 @@
-﻿using Application.Common.Enums;
+﻿using Application.AppUsers.Commands.SendConfirmationEmail;
+using Application.Common.Enums;
 using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Domain.Entities;
@@ -11,15 +12,17 @@ using System.Threading.Tasks;
 
 namespace Application.Guests.Commands.CreateGuest
 {
-    public class CreateGuestHandler : IRequestHandler<CreateGuestCommand>
+    public class CreateGuestCommandHandler : IRequestHandler<CreateGuestCommand>
     {
         private readonly IDormitoryDbContext _db;
         private readonly IIdentityService _identitySerivice;
+        private readonly IMediator _mediator;
 
-        public CreateGuestHandler(IDormitoryDbContext db, IIdentityService identitySerivice)
+        public CreateGuestCommandHandler(IDormitoryDbContext db, IIdentityService identitySerivice, IMediator mediator)
         {
             _db = db;
             _identitySerivice = identitySerivice;
+            _mediator = mediator;
         }
 
         public async Task<Unit> Handle(CreateGuestCommand request, CancellationToken cancellationToken)
@@ -57,6 +60,7 @@ namespace Application.Guests.Commands.CreateGuest
             _db.Guests.Add(guest);
 
             await _db.SaveChangesAsync(cancellationToken);
+            await _mediator.Send(new SendConfirmationEmailCommand { Email = request.Email });
 
             return Unit.Value;
         }

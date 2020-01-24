@@ -10,8 +10,6 @@ using System.Threading.Tasks;
 
 namespace Application.System
 {
-    public class MigrateAndSeedDbCommand : IRequest { }
-
     public class MigrateAndSeedDbHandler : IRequestHandler<MigrateAndSeedDbCommand>
     {
         private IDormitoryDbContext _db;

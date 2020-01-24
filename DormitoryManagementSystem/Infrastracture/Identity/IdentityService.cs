@@ -18,6 +18,23 @@ namespace Infrastracture.Identity
             _userManager = userManager;
         }
 
+        public async Task<bool> ConfirmEmailAsync(string email, string token)
+        {
+            var appUser = await _userManager.FindByEmailAsync(email);
+
+            if (appUser is null) return false;
+
+            var result = await _userManager.ConfirmEmailAsync(appUser, token);
+
+            return result.Succeeded;
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(string email)
+        {
+            var appUser = await _userManager.FindByEmailAsync(email);
+            return await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
+        }
+
         public async Task<(Result, string createdUserId)> RegisterUserAsync(string email, string password, AppRoleNames role)
         {
             var existingUser = await _userManager.FindByEmailAsync(email);
