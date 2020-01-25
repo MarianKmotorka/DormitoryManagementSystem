@@ -1,5 +1,8 @@
 ﻿using Application.AppUsers.Commands.ConfirmEmail;
 using Application.AppUsers.Commands.Login;
+using Application.AppUsers.Commands.RefreshToken;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -19,6 +22,20 @@ namespace WebApi.Controllers
         {
             var response = await Mediator.Send(request);
             return response;
+        }
+
+        [HttpPost("refresh")]
+        public async Task<ActionResult<RefreshTokenResponse>> Refresh([FromBody]RefreshTokenCommand request)
+        {
+            var response = await Mediator.Send(request);
+            return response;
+        }
+
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public string Get()
+        {
+            return "IN";
         }
     }
 }

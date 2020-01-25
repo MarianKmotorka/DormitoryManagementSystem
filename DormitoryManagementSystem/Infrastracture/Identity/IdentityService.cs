@@ -5,6 +5,7 @@ using Domain.Entities;
 using Domain.ValueObjects;
 using Infrastracture.Options;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -93,6 +94,64 @@ namespace Infrastracture.Identity
             return (identityResult.ToApplicationResult(), newUser.Id);
         }
 
+        public async Task<(Result, string jwt, string refreshToken)> RefreshAsync(string expiredJwt, string refreshToken)
+        {
+            var validatedJwt = GetPrincipalFromJwt(expiredJwt);
+
+            if (validatedJwt == null) return (Result.Failure(ErrorMessages.Invalid), null, null);
+
+            var expiryDateUnix =
+                long.Parse(validatedJwt.Claims.Single(x => x.Type == JwtRegisteredClaimNames.Exp).Value);
+
+            var expiryDateUtc =
+                new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(expiryDateUnix);
+
+            if (expiryDateUtc > DateTime.UtcNow) return (Result.Failure(ErrorMessages.JwtIsNotExpired), null, null);
+
+            var jwtId = validatedJwt.Claims.Single(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
+
+            var storedRefreshToken = await _db.RefreshTokens.SingleOrDefaultAsync(x => x.Token == refreshToken);
+
+            if (storedRefreshToken == null) return (Result.Failure(ErrorMessages.RefreshTokenDoesNotExist), null, null);
+
+            if (storedRefreshToken.ExpiryDate < DateTime.UtcNow) return (Result.Failure(ErrorMessages.RefreshTokenExpired), null, null);
+
+            if (storedRefreshToken.Used) return (Result.Failure(ErrorMessages.RefreshTokenAlreadyUsed), null, null);
+
+            if (storedRefreshToken.JwtId != jwtId) return (Result.Failure(ErrorMessages.RefreshTokenDoesNotMatchJwt), null, null);
+
+            storedRefreshToken.Used = true;
+            await _db.SaveChangesAsync(CancellationToken.None);
+
+            var appUserId = validatedJwt.Claims.Single(c => c.Type == "appUserId").Value;
+            var appUser = await _db.Users.SingleAsync(x => x.Id == appUserId);
+
+            return await GenerateJwtAndRefreshToken(appUser);
+        }
+
+        private ClaimsPrincipal GetPrincipalFromJwt(string jwt)
+        {
+            var jwtHandler = new JwtSecurityTokenHandler();
+            var tokenValidationParameters = _tokenValidationParameters.Clone();
+            tokenValidationParameters.ValidateLifetime = false;
+
+            try
+            {
+                var principal = jwtHandler.ValidateToken(jwt, tokenValidationParameters, out var validatedJwt);
+
+                var hasJwtValidSecurityAlgorithm =
+                    (validatedJwt is JwtSecurityToken jwtSecurityToken) && jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase);
+
+                if (!hasJwtValidSecurityAlgorithm) return null;
+
+                return principal;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         private async Task<(Result, string jwt, string refreshToken)> GenerateJwtAndRefreshToken(AppUser appUser)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -157,5 +216,6 @@ namespace Infrastracture.Identity
 
             return claims;
         }
+
     }
 }
