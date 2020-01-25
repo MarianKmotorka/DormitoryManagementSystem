@@ -10,6 +10,7 @@ namespace Persistence
         public DormitoryDbContext(DbContextOptions<DormitoryDbContext> options) : base(options) { }
 
         public DbSet<Guest> Guests { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -17,5 +18,4 @@ namespace Persistence
             builder.ApplyConfigurationsFromAssembly(typeof(DormitoryDbContext).Assembly);
         }
     }
-
 }

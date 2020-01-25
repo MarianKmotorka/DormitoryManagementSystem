@@ -11,6 +11,7 @@ namespace Application.Common.Interfaces
     {
         DbSet<Guest> Guests { get; set; }
         DbSet<AppUser> Users { get; set; }
+        DbSet<RefreshToken> RefreshTokens { get; set; }
 
         DatabaseFacade Database { get; }
 

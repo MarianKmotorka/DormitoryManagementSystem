@@ -24,5 +24,10 @@ namespace Application.Common.Models
         {
             return new Result(false, errors);
         }
+
+        public static Result Failure(string error)
+        {
+            return new Result(false, new[] { error });
+        }
     }
 }

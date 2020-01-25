@@ -1,4 +1,5 @@
 ﻿using Application.AppUsers.Commands.ConfirmEmail;
+using Application.AppUsers.Commands.Login;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -11,6 +12,13 @@ namespace WebApi.Controllers
         {
             await Mediator.Send(new ConfirmEmailCommand { Email = email, Token = token });
             return "Email was successfully confirmed";
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<LoginResponse>> Login([FromBody]LoginCommand request)
+        {
+            var response = await Mediator.Send(request);
+            return response;
         }
     }
 }

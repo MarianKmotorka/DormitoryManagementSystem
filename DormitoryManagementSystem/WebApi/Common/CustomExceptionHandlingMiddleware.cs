@@ -1,6 +1,7 @@
 ﻿using Application.Common.Exceptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Net;
@@ -11,10 +12,12 @@ namespace WebApi.Common
     public class CustomExceptionHandlerMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger<CustomExceptionHandlerMiddleware> _logger;
 
-        public CustomExceptionHandlerMiddleware(RequestDelegate next)
+        public CustomExceptionHandlerMiddleware(RequestDelegate next, ILogger<CustomExceptionHandlerMiddleware> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task Invoke(HttpContext context)
@@ -55,10 +58,11 @@ namespace WebApi.Common
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
 
+            if (code == HttpStatusCode.InternalServerError)
+                _logger.LogError(exception, string.Empty);
+
             if (result == string.Empty)
-            {
                 result = JsonConvert.SerializeObject(new { error = exception.Message });
-            }
 
             return context.Response.WriteAsync(result);
         }

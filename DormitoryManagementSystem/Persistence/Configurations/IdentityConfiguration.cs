@@ -31,5 +31,22 @@ namespace Persistence.Configurations
                 builder.ToTable("AppUserAppRoles");
             }
         }
+
+        public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
+        {
+            public void Configure(EntityTypeBuilder<RefreshToken> builder)
+            {
+                builder.HasKey(x => x.Token);
+
+                builder
+                    .HasOne(x => x.AppUser)
+                    .WithMany()
+                    .HasForeignKey(x => x.AppUserId)
+                    .IsRequired()
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                builder.Property(x => x.JwtId).IsRequired();
+            }
+        }
     }
 }

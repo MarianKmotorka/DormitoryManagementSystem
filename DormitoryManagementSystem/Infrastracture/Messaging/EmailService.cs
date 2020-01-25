@@ -1,7 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Infrastracture.Options;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System;
 using System.Net;
 using System.Net.Mail;
@@ -14,9 +13,9 @@ namespace Infrastracture.Messaging
         private readonly EmailServiceOptions _emailServiceOptions;
         private readonly ILogger<EmailService> _logger;
 
-        public EmailService(IOptions<EmailServiceOptions> emailServiceOptions, ILogger<EmailService> logger)
+        public EmailService(EmailServiceOptions emailServiceOptions, ILogger<EmailService> logger)
         {
-            _emailServiceOptions = emailServiceOptions.Value;
+            _emailServiceOptions = emailServiceOptions;
             _logger = logger;
         }
 
