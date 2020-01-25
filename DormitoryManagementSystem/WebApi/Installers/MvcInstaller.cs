@@ -10,8 +10,7 @@ namespace WebApi.Installers
     {
         public IServiceCollection Install(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            services.AddControllers()
                 .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<IDormitoryDbContext>());
 
             services.AddHttpContextAccessor();

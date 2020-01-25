@@ -1,6 +1,7 @@
 ﻿using Application.AppUsers.Commands.ConfirmEmail;
 using Application.AppUsers.Commands.Login;
 using Application.AppUsers.Commands.RefreshToken;
+using Application.AppUsers.Commands.SendConfirmationEmail;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,13 @@ namespace WebApi.Controllers
 {
     public class AppUsersController : BaseController
     {
+        [HttpPost("send-confirmation-email")]
+        public async Task<ActionResult> SendConfirmationEmail([FromBody]SendConfirmationEmailCommand request)
+        {
+            await Mediator.Send(request);
+            return NoContent();
+        }
+
         [HttpGet("confirm")]
         public async Task<ActionResult<string>> ConfirmEmail([FromQuery]string email = "", [FromQuery]string token = "")
         {
