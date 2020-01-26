@@ -9,6 +9,7 @@ namespace Application.Common.Interfaces
 {
     public interface IDormitoryDbContext : IDisposable
     {
+        DbSet<Officer> Officers { get; set; }
         DbSet<Guest> Guests { get; set; }
         DbSet<AppUser> Users { get; set; }
         DbSet<RefreshToken> RefreshTokens { get; set; }

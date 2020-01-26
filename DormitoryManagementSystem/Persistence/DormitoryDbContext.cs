@@ -11,6 +11,7 @@ namespace Persistence
 
         public DbSet<Guest> Guests { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Officer> Officers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

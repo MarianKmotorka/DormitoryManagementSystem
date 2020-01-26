@@ -62,7 +62,7 @@ namespace Infrastracture.Identity
                 return (Result.Failure(ErrorMessages.InvalidEmailOrPassword), null, null);
 
             if (!await _userManager.CheckPasswordAsync(appUser, password))
-                return (Result.Failure(ErrorMessages.InvalidEmailOrPassword), null, null);
+                return (Result.Failure(ErrorMessages.InvalidEmailOrPassword), null, null); 
 
             if (!await _userManager.IsEmailConfirmedAsync(appUser))
                 return (Result.Failure(ErrorMessages.EmailNotConfirmed), null, null);
@@ -217,5 +217,11 @@ namespace Infrastracture.Identity
             return claims;
         }
 
+        public async Task<string> GenerateChangePasswordTokenAsync(string email)
+        {
+            var appUser = await _userManager.FindByEmailAsync(email);
+
+            return await _userManager.GeneratePasswordResetTokenAsync(appUser);
+        }
     }
 }

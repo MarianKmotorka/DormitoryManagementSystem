@@ -9,8 +9,8 @@ namespace Persistence.Configurations
         public void Configure(EntityTypeBuilder<Guest> builder)
         {
             builder.HasOne(x => x.AppUser)
-                .WithOne()
-                .HasForeignKey<Guest>("AppUserId")
+                .WithMany()
+                .HasForeignKey("AppUserId")
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 

@@ -12,6 +12,8 @@ namespace Application.Guests.Commands.CreateGuest
             RuleFor(x => x.DistanceFromHome)
                 .NotEmpty().WithMessage(ErrorMessages.Invalid)
                 .Must(x => x >= 0).WithMessage(ErrorMessages.Invalid);
+
+            //TODO IMPLEMENT VALIDTOR
         }
     }
 }

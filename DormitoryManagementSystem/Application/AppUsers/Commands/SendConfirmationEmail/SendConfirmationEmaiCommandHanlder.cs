@@ -27,8 +27,7 @@ namespace Application.AppUsers.Commands.SendConfirmationEmail
             var confirmationEndpoint = $"{_httpContextAccessor.HttpContext.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}/{request.ConfirmationRoute}";
             var confirmationLink = $"{confirmationEndpoint}?email={request.Email}&token={HttpUtility.UrlEncode(token)}";
 
-            var message = $@"<a href=""{confirmationLink}""><h2>Confirm email</h2></a>
-                             <a href=""{HttpUtility.UrlEncode(confirmationLink)}"">Confirm email</a>";
+            var message = $@"<a href=""{confirmationLink}""><h2>Confirm email</h2></a>";
 
             await _emailService.SendAsync(message, request.Email, "Email confirmation");
 
