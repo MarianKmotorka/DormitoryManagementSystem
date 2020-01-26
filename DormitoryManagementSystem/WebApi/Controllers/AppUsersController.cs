@@ -2,8 +2,6 @@
 using Application.AppUsers.Commands.Login;
 using Application.AppUsers.Commands.RefreshToken;
 using Application.AppUsers.Commands.SendConfirmationEmail;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -37,13 +35,6 @@ namespace WebApi.Controllers
         {
             var response = await Mediator.Send(request);
             return response;
-        }
-
-        [HttpGet]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public string Get()
-        {
-            return "IN";
         }
     }
 }

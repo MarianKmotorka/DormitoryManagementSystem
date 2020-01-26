@@ -1,5 +1,5 @@
 using Application;
-using Infrastracture;
+using Infrastracture.DependecyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

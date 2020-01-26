@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
 
-namespace Infrastracture
+namespace Infrastracture.DependecyInjection
 {
     public static class DependencyInjection
     {
@@ -50,6 +50,8 @@ namespace Infrastracture
                     x.SaveToken = true;
                     x.TokenValidationParameters = tokenValidationParams;
                 });
+
+            services.AddPolicies();
 
             return services;
         }
