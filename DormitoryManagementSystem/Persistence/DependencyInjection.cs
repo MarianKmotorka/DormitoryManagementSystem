@@ -19,7 +19,7 @@ namespace Persistence
             services.AddIdentity<AppUser, IdentityRole>(o =>
             {
                 o.Password.RequiredLength = 6;
-                o.Password.RequireDigit = true;
+                o.Password.RequireDigit = false;
                 o.Password.RequireUppercase = false;
                 o.Password.RequireNonAlphanumeric = false;
                 o.User.RequireUniqueEmail = true;

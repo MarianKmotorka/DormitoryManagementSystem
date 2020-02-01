@@ -17,7 +17,7 @@ namespace Application.AppUsers.Commands.RefreshToken
 
         public async Task<RefreshTokenResponse> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
         {
-            var (result, jwt, refreshToken) = await _identityService.RefreshAsync(request.ExpiredJwt, request.RefreshToken);
+            var (result, jwt, refreshToken) = await _identityService.RefreshJwtAsync(request.ExpiredJwt, request.RefreshToken);
 
             if (!result.Succeeded) throw new BadRequestException(result.Errors);
 

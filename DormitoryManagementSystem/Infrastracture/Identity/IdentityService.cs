@@ -20,7 +20,7 @@ namespace Infrastracture.Identity
 {
     public class IdentityService : IIdentityService
     {
-        private UserManager<AppUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly TokenValidationParameters _tokenValidationParameters;
         private readonly IDormitoryDbContext _db;
@@ -62,7 +62,7 @@ namespace Infrastracture.Identity
                 return (Result.Failure(ErrorMessages.InvalidEmailOrPassword), null, null);
 
             if (!await _userManager.CheckPasswordAsync(appUser, password))
-                return (Result.Failure(ErrorMessages.InvalidEmailOrPassword), null, null); 
+                return (Result.Failure(ErrorMessages.InvalidEmailOrPassword), null, null);
 
             if (!await _userManager.IsEmailConfirmedAsync(appUser))
                 return (Result.Failure(ErrorMessages.EmailNotConfirmed), null, null);
@@ -94,7 +94,7 @@ namespace Infrastracture.Identity
             return (identityResult.ToApplicationResult(), newUser.Id);
         }
 
-        public async Task<(Result, string jwt, string refreshToken)> RefreshAsync(string expiredJwt, string refreshToken)
+        public async Task<(Result, string jwt, string refreshToken)> RefreshJwtAsync(string expiredJwt, string refreshToken)
         {
             var validatedJwt = GetPrincipalFromJwt(expiredJwt);
 
@@ -217,11 +217,30 @@ namespace Infrastracture.Identity
             return claims;
         }
 
-        public async Task<string> GenerateChangePasswordTokenAsync(string email)
+        public async Task<string> GenerateChangeForgottenPasswordTokenAsync(string email)
+        {
+            var appUser = await _userManager.FindByEmailAsync(email);
+            return await _userManager.GeneratePasswordResetTokenAsync(appUser);
+        }
+
+        public async Task<Result> ChangePassword(string email, string currentPassword, string newPassword)
         {
             var appUser = await _userManager.FindByEmailAsync(email);
 
-            return await _userManager.GeneratePasswordResetTokenAsync(appUser);
+            if (appUser == null)
+                return Result.Failure(ErrorMessages.EmailNotFound);
+
+            return (await _userManager.ChangePasswordAsync(appUser, currentPassword, newPassword)).ToApplicationResult();
+        }
+
+        public async Task<Result> ChangeForgottenPasswordAsync(string email, string resetToken, string newPassword)
+        {
+            var appUser = await _userManager.FindByEmailAsync(email);
+
+            if (appUser == null)
+                return Result.Failure(ErrorMessages.EmailNotFound);
+
+            return (await _userManager.ResetPasswordAsync(appUser, resetToken, newPassword)).ToApplicationResult();
         }
     }
 }

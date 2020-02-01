@@ -1,5 +1,4 @@
-﻿using Application.AppUsers.Commands.SendChangePasswordEmail;
-using Application.AppUsers.Commands.SendConfirmationEmail;
+﻿using Application.AppUsers.Commands.SendConfirmationEmail;
 using Application.Common.Enums;
 using Application.Common.Exceptions;
 using Application.Common.Interfaces;
@@ -19,17 +18,20 @@ namespace Application.Officers.Commands.CreateOfficer
         private readonly IDormitoryDbContext _db;
         private readonly IIdentityService _identitySerivice;
         private readonly IMediator _mediator;
+        private readonly IEmailService _emailService;
 
-        public CreateOfficerCommandHanlder(IDormitoryDbContext db, IIdentityService identitySerivice, IMediator mediator)
+        public CreateOfficerCommandHanlder(IDormitoryDbContext db, IIdentityService identitySerivice, IMediator mediator,
+            IEmailService emailService)
         {
             _db = db;
             _identitySerivice = identitySerivice;
             _mediator = mediator;
+            _emailService = emailService;
         }
 
         public async Task<Unit> Handle(CreateOfficerCommand request, CancellationToken cancellationToken)
         {
-            var password = Guid.NewGuid().ToString();
+            var password = Guid.NewGuid().ToString().Substring(0, 6) + "x2*";
 
             var (result, userId) = await _identitySerivice.RegisterUserAsync(request.Email, password, AppRoleNames.Officer);
 
@@ -64,12 +66,16 @@ namespace Application.Officers.Commands.CreateOfficer
             _db.Officers.Add(officer);
 
             await _db.SaveChangesAsync(cancellationToken);
+
             await _mediator.Send(new SendConfirmationEmailCommand { Email = request.Email });
-            await _mediator.Send(new SendChangePasswordEmailCommand
-            {
-                Email = request.Email,
-                AdditionalMessage = $"Now you can log in using email: { request.Email} and password: {password}. Please change your password ASAP."
-            });
+
+            await _emailService.SendAsync(
+                $"Now you can log in using email: { request.Email} and password: {password}. Please change your password ASAP.",
+                request.Email,
+                "Credentials",
+                isMessageHtml: false
+                );
+
 
             return Unit.Value;
         }

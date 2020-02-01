@@ -27,4 +27,3 @@ namespace Application.Officers.Commands.CreateOfficer
         public string IdCardNumber { get; set; }
     }
 }
-//TODO send email to officer to change their password

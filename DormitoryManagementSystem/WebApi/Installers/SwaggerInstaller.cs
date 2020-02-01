@@ -15,7 +15,7 @@ namespace WebApi.Installers
 
                 x.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = "JWT Authorization header using the bearer scheme",
+                    Description = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbkBhZG1pbi5jb20iLCJqdGkiOiIyOTY4MTgyMS0yYTA1LTQyNjQtOWQ5Ni1lN2QyODNkYWI3YTIiLCJlbWFpbCI6IkFkbWluQGFkbWluLmNvbSIsImFwcFVzZXJJZCI6IjRkNWY4NjhhLWI4ZDAtNDY5Yy05ZjU4LTgyYmRhMzAwYTc2NiIsInJvbGUiOiJTeXNBZG1pbiIsIm5iZiI6MTU4MDA0MTc2MCwiZXhwIjoyNDQ0MDQxNzYwLCJpYXQiOjE1ODAwNDE3NjB9.OsXjFu6xkzmdV4vQ2kSGi1N6etr8fQljMjl-nHFCv5U",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
