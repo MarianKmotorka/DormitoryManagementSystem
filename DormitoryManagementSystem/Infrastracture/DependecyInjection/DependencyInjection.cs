@@ -1,7 +1,9 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Pagination;
 using Infrastracture.Identity;
 using Infrastracture.Messaging;
 using Infrastracture.Options;
+using Infrastracture.Pagination;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,6 +54,8 @@ namespace Infrastracture.DependecyInjection
                 });
 
             services.AddPolicies();
+
+            services.AddScoped<IPaginationService, PaginationService>();
 
             return services;
         }
