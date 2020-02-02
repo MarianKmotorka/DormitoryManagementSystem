@@ -46,9 +46,11 @@ namespace WebApi.Common
                     break;
                 case BadRequestException _:
                     code = HttpStatusCode.BadRequest;
+                    result = JsonConvert.SerializeObject(new { error = exception.Message });
                     break;
                 case DeleteFailureException _:
                     code = HttpStatusCode.BadRequest;
+                    result = JsonConvert.SerializeObject(new { error = exception.Message });
                     break;
                 case NotFoundException _:
                     code = HttpStatusCode.NotFound;
@@ -60,9 +62,6 @@ namespace WebApi.Common
 
             if (code == HttpStatusCode.InternalServerError)
                 _logger.LogError(exception, string.Empty);
-
-            if (result == string.Empty)
-                result = JsonConvert.SerializeObject(new { error = exception.Message });
 
             return context.Response.WriteAsync(result);
         }

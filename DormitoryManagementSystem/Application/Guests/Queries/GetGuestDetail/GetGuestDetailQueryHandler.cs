@@ -1,10 +1,10 @@
-﻿using Application.Common.Exceptions;
+﻿using Application.Common;
 using Application.Common.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,12 +24,9 @@ namespace Application.Guests.Queries.GetGuestDetail
         public async Task<GuestDetail> Handle(GetGuestDetailQuery request, CancellationToken cancellationToken)
         {
             var guest = await _db.Guests.AsNoTracking()
-                .Include(x => x.AppUser)
+                .Where(x => x.AppUser.EmailConfirmed)
                 .ProjectTo<GuestDetail>(_mapper.ConfigurationProvider)
-                .SingleOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
-
-            if (guest == null)
-                throw new NotFoundException(nameof(Guest), request.Id);
+                .SingleOrNotFoundAsync(x => x.Id == request.Id, cancellationToken);
 
             return guest;
         }

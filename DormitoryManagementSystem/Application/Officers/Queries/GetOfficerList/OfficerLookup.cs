@@ -4,19 +4,19 @@ using AutoMapper;
 using Domain.Entities;
 using Sieve.Services;
 
-namespace Application.Guests.Queries.GetGuestList
+namespace Application.Officers.Queries.GetOfficerList
 {
-    public class GuestLookup : IMapFrom<Guest>, IFilteringMapperProfile
+    public class OfficerLookup : IMapFrom<Officer>, IFilteringMapperProfile
     {
         public string Id { get; set; }
 
         public string DisplayName { get; set; }
 
-        public string RoomNumber { get; set; }
+        public string OfficeNumber { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Guest, GuestLookup>()
+            profile.CreateMap<Officer, OfficerLookup>()
                 .ForMember(dest => dest.DisplayName, cfg =>
                 {
                     cfg.MapFrom(src => src.AppUser.LastName + " " + src.AppUser.FirstName);
@@ -25,11 +25,11 @@ namespace Application.Guests.Queries.GetGuestList
 
         public void MapProperties(SievePropertyMapper mapper)
         {
-            mapper.Property<GuestLookup>(x => x.DisplayName)
+            mapper.Property<OfficerLookup>(x => x.OfficeNumber)
                 .CanFilter().CanSort();
 
-            mapper.Property<GuestLookup>(x => x.RoomNumber)
-                .CanSort().CanFilter();
+            mapper.Property<OfficerLookup>(x => x.DisplayName)
+                .CanFilter().CanSort();
         }
     }
 }
