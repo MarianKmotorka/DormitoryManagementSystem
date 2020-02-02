@@ -1,5 +1,11 @@
-﻿using Application.Guests.Commands.CreateGuest;
+﻿using Application.Common.Pagination;
+using Application.Guests.Commands.CreateGuest;
+using Application.Guests.Queries.GetGuestDetail;
+using Application.Guests.Queries.GetGuestList;
+using Infrastracture.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Sieve.Models;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers
@@ -11,6 +17,30 @@ namespace WebApi.Controllers
         {
             await Mediator.Send(request);
             return NoContent();
+        }
+
+        [HttpGet]
+        [Authorize(Policy = PolicyNames.Officer)]
+        public async Task<ActionResult<PagedResponse<GuestLookup>>> GetGuestList([FromQuery]SieveModel paginationModel)
+        {
+            var response = await Mediator.Send(new GetGuestListQuery { PaginationModel = paginationModel });
+            return response;
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Policy = PolicyNames.Officer)]
+        public async Task<ActionResult<GuestDetail>> GetGuestDetail([FromRoute]string id)
+        {
+            var response = await Mediator.Send(new GetGuestDetailQuery { Id = id });
+            return response;
+        }
+
+        [HttpGet("me")]
+        [Authorize(Policy = PolicyNames.Guest)]
+        public async Task<ActionResult<GuestDetail>> GetCurrentGuestUserDetail()
+        {
+            var response = await Mediator.Send(new GetGuestDetailQuery { Id = CurrentUserService.UserId });
+            return response;
         }
     }
 }

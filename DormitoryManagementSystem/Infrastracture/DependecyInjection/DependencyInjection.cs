@@ -56,6 +56,7 @@ namespace Infrastracture.DependecyInjection
             services.AddPolicies();
 
             services.AddScoped<IPaginationService, PaginationService>();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             return services;
         }
