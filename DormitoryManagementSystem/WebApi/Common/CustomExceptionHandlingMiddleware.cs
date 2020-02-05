@@ -56,6 +56,10 @@ namespace WebApi.Common
                     code = HttpStatusCode.NotFound;
                     result = JsonConvert.SerializeObject(new { error = exception.Message });
                     break;
+                case ArgumentNullException argumentNullException when argumentNullException.Source == "MediatR":
+                    code = HttpStatusCode.BadRequest;
+                    result = JsonConvert.SerializeObject(new { error = "Request is in bad format" });
+                    break;
             }
 
             context.Response.ContentType = "application/json";

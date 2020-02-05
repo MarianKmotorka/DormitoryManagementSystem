@@ -20,14 +20,14 @@ namespace Application.AccomodationRequests.Commands.CreateAccomodationRequest
 
         public async Task<Unit> Handle(CreateAccomodationRequestCommand request, CancellationToken cancellationToken)
         {
-            var requestor = await _db.Guests.SingleOrNotFoundAsync(x => x.Id == request.RequestorId, cancellationToken);
+            var requester = await _db.Guests.SingleOrNotFoundAsync(x => x.Id == request.RequesterId, cancellationToken);
 
             var accomodationRequest = new AccomodationRequest
             {
                 AccomodationStartDateUtc = request.AccomodationStartDateUtc,
                 AccomodationEndDateUtc = request.AccomodationEndDateUtc,
-                Requester = requestor,
-                RequesterMessage = request.RequestorMessage,
+                Requester = requester,
+                RequesterMessage = request.RequesterMessage,
                 RequestPlacedUtc = DateTime.UtcNow,
                 State = AccomodationRequestState.Active
             };

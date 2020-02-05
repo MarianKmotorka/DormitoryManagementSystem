@@ -16,7 +16,7 @@ namespace WebApi.Controllers
         [Authorize(Policy = PolicyNames.Guest)]
         public async Task<ActionResult> CreateAccomodationRequest([FromBody]CreateAccomodationRequestCommand request)
         {
-            request.RequestorId = CurrentUserService.UserId;
+            if (request != null) request.RequesterId = CurrentUserService.UserId;
             await Mediator.Send(request);
             return NoContent();
         }

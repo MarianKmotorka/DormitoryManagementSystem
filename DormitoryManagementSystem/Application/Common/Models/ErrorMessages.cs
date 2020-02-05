@@ -3,6 +3,7 @@
     public static class ErrorMessages
     {
         public const string Invalid = nameof(Invalid);
+        public const string Required = nameof(Required);
 
         public const string JwtIsNotExpired = nameof(JwtIsNotExpired);
         public const string RefreshTokenDoesNotExist = nameof(RefreshTokenDoesNotExist);
@@ -18,5 +19,8 @@
 
         public const string StartDateMustOccurBeforeEndDate = nameof(StartDateMustOccurBeforeEndDate);
         public const string StartDateMustBeInTheFuture = nameof(StartDateMustBeInTheFuture);
+        public const string DateRangeOverlapsWithExisingRequest = nameof(DateRangeOverlapsWithExisingRequest);
+
+        public static string MinLength(int min) => nameof(MinLength) + min;
     }
 }

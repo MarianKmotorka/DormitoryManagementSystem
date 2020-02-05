@@ -1,9 +1,9 @@
-﻿using Application.Common.Exceptions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using Application.Common.Models;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.AppUsers.Commands.ConfirmEmail
 {
@@ -25,4 +25,3 @@ namespace Application.AppUsers.Commands.ConfirmEmail
         }
     }
 }
-//TODO zmen stringy v exceptins na ErrorMEssages.blablabla

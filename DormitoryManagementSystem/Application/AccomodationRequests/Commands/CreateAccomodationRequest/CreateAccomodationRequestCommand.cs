@@ -7,12 +7,12 @@ namespace Application.AccomodationRequests.Commands.CreateAccomodationRequest
     public class CreateAccomodationRequestCommand : IRequest
     {
         [JsonIgnore]
-        public string RequestorId { get; set; }
+        public string RequesterId { get; set; }
 
         public DateTime AccomodationStartDateUtc { get; set; }
 
         public DateTime AccomodationEndDateUtc { get; set; }
 
-        public string RequestorMessage { get; set; }
+        public string RequesterMessage { get; set; }
     }
 }

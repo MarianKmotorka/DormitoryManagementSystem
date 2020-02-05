@@ -67,23 +67,32 @@ namespace Application.System
         {
             var john = new AppUser
             {
+                Id = "ee552a4a-a6a3-4de1-b981-7ece2d0a8350",
                 Email = "john@guest.com",
                 UserName = "john@guest.com",
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                FirstName = "John",
+                LastName = "Cena"
             };
 
             var bob = new AppUser
             {
+                Id = "4f61d7f5-24f1-4d1d-8c79-80d442807f95",
                 Email = "bob@guest.com",
                 UserName = "bob@guest.com",
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                FirstName = "Bob",
+                LastName = "Ross"
             };
 
             var jerry = new AppUser
             {
+                Id = "b42f5d99-b313-45d0-88f3-38427f98c100",
                 Email = "jerry@guest.com",
                 UserName = "jerry@guest.com",
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                FirstName = "Jerry",
+                LastName = "Rig"
             };
 
             var appUsers = new[] { john, bob, jerry };
@@ -126,23 +135,32 @@ namespace Application.System
         {
             var john = new AppUser
             {
+                Id = "eb523e86-fec9-4745-885a-4bd1f4508bb5",
                 Email = "john@officer.com",
                 UserName = "john@officer.com",
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                FirstName = "John",
+                LastName = "Travolta"
             };
 
             var bob = new AppUser
             {
+                Id = "6d22ff48-1098-4ef2-bd5e-da4dad83afab",
                 Email = "bob@officer.com",
                 UserName = "bob@officer.com",
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                FirstName = "Bob",
+                LastName = "Johnes"
             };
 
             var jerry = new AppUser
             {
+                Id = "918ddc96-fa66-45c0-92c7-60c82298cb33",
                 Email = "jerry@officer.com",
                 UserName = "jerry@officer.com",
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                FirstName = "Jerry",
+                LastName = "Everything"
             };
 
             var appUsers = new[] { john, bob, jerry };
