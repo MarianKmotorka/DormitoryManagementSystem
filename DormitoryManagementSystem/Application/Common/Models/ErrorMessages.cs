@@ -15,5 +15,8 @@
         public const string EmailNotUnique = nameof(EmailNotUnique);
         public const string InvalidEmailOrPassword = nameof(InvalidEmailOrPassword);
         public const string EmailNotConfirmed = nameof(EmailNotConfirmed);
+
+        public const string StartDateMustOccurBeforeEndDate = nameof(StartDateMustOccurBeforeEndDate);
+        public const string StartDateMustBeInTheFuture = nameof(StartDateMustBeInTheFuture);
     }
 }

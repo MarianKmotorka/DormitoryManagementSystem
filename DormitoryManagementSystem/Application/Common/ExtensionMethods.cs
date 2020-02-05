@@ -1,10 +1,10 @@
-﻿using Application.Common.Exceptions;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Common.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Common
 {
@@ -15,7 +15,7 @@ namespace Application.Common
             var entity = await query.SingleOrDefaultAsync(predicate, cancellationToken);
 
             if (entity == null)
-                throw new NotFoundException();
+                throw new NotFoundException($"{typeof(TEntity).Name} was not found.");
 
             return entity;
         }

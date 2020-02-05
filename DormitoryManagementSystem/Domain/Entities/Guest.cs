@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace Domain.Entities
 {
     public class Guest
     {
@@ -17,6 +19,8 @@
         /// Distance in kilometers from home
         /// </summary>
         public int DistanceFromHome { get; set; }
+
+        public ICollection<AccomodationRequest> AccomodationRequests { get; set; }
 
         public AppUser AppUser
         {

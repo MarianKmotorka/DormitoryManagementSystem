@@ -10,8 +10,12 @@ namespace Persistence
         public DormitoryDbContext(DbContextOptions<DormitoryDbContext> options) : base(options) { }
 
         public DbSet<Guest> Guests { get; set; }
+
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+
         public DbSet<Officer> Officers { get; set; }
+
+        public DbSet<AccomodationRequest> AccomodationRequest { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

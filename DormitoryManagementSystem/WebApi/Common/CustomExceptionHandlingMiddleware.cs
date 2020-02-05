@@ -1,11 +1,11 @@
-﻿using Application.Common.Exceptions;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
+using Application.Common.Exceptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace WebApi.Common
 {
@@ -54,6 +54,7 @@ namespace WebApi.Common
                     break;
                 case NotFoundException _:
                     code = HttpStatusCode.NotFound;
+                    result = JsonConvert.SerializeObject(new { error = exception.Message });
                     break;
             }
 

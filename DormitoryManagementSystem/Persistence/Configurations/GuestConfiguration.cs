@@ -14,6 +14,11 @@ namespace Persistence.Configurations
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.HasMany(x => x.AccomodationRequests)
+                .WithOne(x => x.Requestor)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.Property(x => x.IdCardNumber).IsRequired();
             builder.Property(x => x.DistanceFromHome).IsRequired();
         }
