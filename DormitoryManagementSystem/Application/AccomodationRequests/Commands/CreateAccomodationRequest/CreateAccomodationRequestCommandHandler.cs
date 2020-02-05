@@ -26,13 +26,13 @@ namespace Application.AccomodationRequests.Commands.CreateAccomodationRequest
             {
                 AccomodationStartDateUtc = request.AccomodationStartDateUtc,
                 AccomodationEndDateUtc = request.AccomodationEndDateUtc,
-                Requestor = requestor,
-                RequestorMessage = request.RequestorMessage,
+                Requester = requestor,
+                RequesterMessage = request.RequestorMessage,
                 RequestPlacedUtc = DateTime.UtcNow,
                 State = AccomodationRequestState.Active
             };
 
-            _db.AccomodationRequest.Add(accomodationRequest);
+            _db.AccomodationRequests.Add(accomodationRequest);
             await _db.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;

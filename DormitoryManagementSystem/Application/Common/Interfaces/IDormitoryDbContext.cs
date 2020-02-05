@@ -17,7 +17,7 @@ namespace Application.Common.Interfaces
 
         DbSet<RefreshToken> RefreshTokens { get; set; }
 
-        DbSet<AccomodationRequest> AccomodationRequest { get; set; }
+        DbSet<AccomodationRequest> AccomodationRequests { get; set; }
 
         DatabaseFacade Database { get; }
 

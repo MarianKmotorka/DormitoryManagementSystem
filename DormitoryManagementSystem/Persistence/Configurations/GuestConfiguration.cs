@@ -15,7 +15,7 @@ namespace Persistence.Configurations
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(x => x.AccomodationRequests)
-                .WithOne(x => x.Requestor)
+                .WithOne(x => x.Requester)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 

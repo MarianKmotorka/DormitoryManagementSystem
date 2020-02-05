@@ -15,7 +15,7 @@ namespace Persistence
 
         public DbSet<Officer> Officers { get; set; }
 
-        public DbSet<AccomodationRequest> AccomodationRequest { get; set; }
+        public DbSet<AccomodationRequest> AccomodationRequests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

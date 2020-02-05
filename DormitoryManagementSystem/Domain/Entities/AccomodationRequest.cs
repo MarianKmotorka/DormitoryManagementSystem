@@ -9,7 +9,7 @@ namespace Domain.Entities
 
         public DateTime RequestPlacedUtc { get; set; }
 
-        public Guest Requestor { get; set; }
+        public Guest Requester { get; set; }
 
         public DateTime AccomodationStartDateUtc { get; set; }
 
@@ -17,6 +17,6 @@ namespace Domain.Entities
 
         public AccomodationRequestState State { get; set; }
 
-        public string RequestorMessage { get; set; }
+        public string RequesterMessage { get; set; }
     }
 }
