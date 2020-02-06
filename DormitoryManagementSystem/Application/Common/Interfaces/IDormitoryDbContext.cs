@@ -21,6 +21,8 @@ namespace Application.Common.Interfaces
 
         DbSet<AccomodationRequest> AccomodationRequests { get; set; }
 
+        DbSet<Room> Rooms { get; set; }
+
         DatabaseFacade Database { get; }
 
         EntityEntry<TEntity> Attach<TEntity>([NotNull] TEntity entity) where TEntity : class;

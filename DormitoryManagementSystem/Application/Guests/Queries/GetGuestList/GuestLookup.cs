@@ -20,6 +20,10 @@ namespace Application.Guests.Queries.GetGuestList
                 .ForMember(dest => dest.DisplayName, cfg =>
                 {
                     cfg.MapFrom(src => src.AppUser.LastName + " " + src.AppUser.FirstName);
+                })
+                .ForMember(dest => dest.RoomNumber, cfg =>
+                {
+                    cfg.MapFrom(src => src.Room.Number);
                 });
         }
 

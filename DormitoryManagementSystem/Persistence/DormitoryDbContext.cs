@@ -17,6 +17,8 @@ namespace Persistence
 
         public DbSet<AccomodationRequest> AccomodationRequests { get; set; }
 
+        public DbSet<Room> Rooms { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

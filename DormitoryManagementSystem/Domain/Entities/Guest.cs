@@ -13,11 +13,8 @@ namespace Domain.Entities
 
         public string DormitoryCardNumber { get; set; }
 
-        public string RoomNumber { get; set; }
+        public Room Room { get; set; }
 
-        /// <summary>
-        /// Distance in kilometers from home
-        /// </summary>
         public int DistanceFromHome { get; set; }
 
         public ICollection<AccomodationRequest> AccomodationRequests { get; set; }

@@ -36,6 +36,7 @@ namespace Application.System
             await SeedAdmin();
             await SeedGuests();
             await SeedOfficers();
+            //TODO SEED ROOMS
 
             return Unit.Value;
         }

@@ -1,8 +1,10 @@
-﻿using Application.Common.Behaviours;
+﻿using System.Reflection;
+using Application.Common.Behaviours;
+using Application.Common.Pagination.CustomFilteringAndSorting;
 using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+using Sieve.Services;
 
 namespace Application
 {
@@ -13,6 +15,9 @@ namespace Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
+            services.AddScoped<ISieveCustomSortMethods, SortMethods>();
+            services.AddScoped<ISieveCustomFilterMethods, FilterMethods>();
 
             return services;
         }

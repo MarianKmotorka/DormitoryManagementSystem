@@ -1,14 +1,17 @@
-﻿using Application.Common.Pagination;
+﻿using System;
+using System.Linq;
+using Application.Common.Pagination;
 using Sieve.Models;
 using Sieve.Services;
-using System;
-using System.Linq;
 
 namespace Infrastracture.Pagination
 {
     public class PaginationService : SieveProcessor, IPaginationService
     {
-        public PaginationService() : base(Microsoft.Extensions.Options.Options.Create(new SieveOptions()))
+        public PaginationService(ISieveCustomSortMethods sortMethods, ISieveCustomFilterMethods filterMethods)
+            : base(Microsoft.Extensions.Options.Options.Create(new SieveOptions()),
+                  sortMethods,
+                  filterMethods)
         {
         }
 
