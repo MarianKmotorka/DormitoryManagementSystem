@@ -21,6 +21,7 @@ namespace Application.Rooms.Queries.GetRoomDetail
         public class GuestDto
         {
             public string Id { get; set; }
+
             public string DisplayName { get; set; }
         }
 

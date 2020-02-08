@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Newtonsoft.Json;
 
-namespace Application.Officers.Commands.RespondToAccomodationRequest
+namespace Application.AccomodationRequests.Commands.RespondToAccomodationRequest
 {
     public class RespondToAccomodationRequestCommand : IRequest
     {

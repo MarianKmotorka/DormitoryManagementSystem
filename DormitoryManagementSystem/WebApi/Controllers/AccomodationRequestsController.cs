@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Application.AccomodationRequests.Commands.CreateAccomodationRequest;
+using Application.AccomodationRequests.Commands.RespondToAccomodationRequest;
 using Application.AccomodationRequests.Queries.GetAccomodationRequestDetail;
 using Application.AccomodationRequests.Queries.GetAccomodationRequestList;
 using Application.Common.Pagination;
-using Application.Officers.Commands.RespondToAccomodationRequest;
 using Infrastracture.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

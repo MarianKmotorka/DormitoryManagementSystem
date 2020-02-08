@@ -6,7 +6,7 @@ using Application.Common.Models;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Officers.Commands.RespondToAccomodationRequest
+namespace Application.AccomodationRequests.Commands.RespondToAccomodationRequest
 {
     public class RespondToAccomodationRequestCommandValidator : AbstractValidator<RespondToAccomodationRequestCommand>
     {

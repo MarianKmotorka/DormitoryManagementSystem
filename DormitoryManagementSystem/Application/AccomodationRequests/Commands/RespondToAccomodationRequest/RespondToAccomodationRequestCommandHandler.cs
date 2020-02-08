@@ -6,7 +6,7 @@ using Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Officers.Commands.RespondToAccomodationRequest
+namespace Application.AccomodationRequests.Commands.RespondToAccomodationRequest
 {
     public class RespondToAccomodationRequestCommandHandler : IRequestHandler<RespondToAccomodationRequestCommand>
     {
