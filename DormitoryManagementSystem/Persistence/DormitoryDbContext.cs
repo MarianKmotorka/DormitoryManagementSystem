@@ -19,6 +19,10 @@ namespace Persistence
 
         public DbSet<Room> Rooms { get; set; }
 
+        public DbSet<RoomItemType> RoomItemTypes { get; set; }
+
+        public DbSet<InventoryItemType> InventoryItemTypes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

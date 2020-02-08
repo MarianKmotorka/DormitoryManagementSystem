@@ -4,9 +4,6 @@ namespace Domain.Entities
 {
     public class Guest
     {
-        private AppUser _appUser;
-
-
         public string Id { get; set; }
 
         public string IdCardNumber { get; set; }
@@ -29,5 +26,6 @@ namespace Domain.Entities
             }
         }
 
+        private AppUser _appUser;
     }
 }

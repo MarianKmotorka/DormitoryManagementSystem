@@ -11,5 +11,7 @@ namespace Domain.Entities
         public int Capacity { get; set; }
 
         public ICollection<Guest> Guests { get; set; }
+
+        public ICollection<RoomItemType> Items { get; set; }
     }
 }

@@ -2,9 +2,6 @@
 {
     public class Officer
     {
-        private AppUser _appUser;
-
-
         public string Id { get; set; }
 
         public string IdCardNumber { get; set; }
@@ -21,5 +18,6 @@
             }
         }
 
+        private AppUser _appUser;
     }
 }

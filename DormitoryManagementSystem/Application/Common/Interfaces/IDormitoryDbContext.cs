@@ -23,9 +23,15 @@ namespace Application.Common.Interfaces
 
         DbSet<Room> Rooms { get; set; }
 
+        DbSet<RoomItemType> RoomItemTypes { get; set; }
+
+        DbSet<InventoryItemType> InventoryItemTypes { get; set; }
+
         DatabaseFacade Database { get; }
 
         EntityEntry<TEntity> Attach<TEntity>([NotNull] TEntity entity) where TEntity : class;
+
+        void AddRange(params object[] entities);
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

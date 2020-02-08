@@ -17,6 +17,5 @@ namespace Domain.Entities
         public string AppUserId { get; set; }
 
         public AppUser AppUser { get; set; }
-
     }
 }

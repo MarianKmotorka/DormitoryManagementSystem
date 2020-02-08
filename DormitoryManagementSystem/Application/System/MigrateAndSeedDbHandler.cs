@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Enums;
 using Application.Common.Interfaces;
@@ -16,6 +17,7 @@ namespace Application.System
         private readonly IDormitoryDbContext _db;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
+        private readonly int NumberOfRooms = 200;
 
         public MigrateAndSeedDbHandler(IDormitoryDbContext db, RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
         {
@@ -36,14 +38,134 @@ namespace Application.System
             await SeedAdmin();
             await SeedGuests();
             await SeedOfficers();
-            await SeedRooms();
+            await SeedRooms(); // Note: Must be called before SeedRoomItemTypes()
+            await SeedInventoryItemTypes(); // Note: Must be called before SeedRoomItemTypes()
+            await SeedRoomItemTypes();
 
             return Unit.Value;
         }
 
+        private async Task SeedRoomItemTypes()
+        {
+            var inventoryItemTypes = await _db.InventoryItemTypes.ToListAsync();
+            var rooms = await _db.Rooms.ToListAsync();
+
+            var chair = inventoryItemTypes.Single(x => x.Name == "Chair");
+            var table = inventoryItemTypes.Single(x => x.Name == "Table");
+            var lamp = inventoryItemTypes.Single(x => x.Name == "Lamp");
+            var ceilingLight = inventoryItemTypes.Single(x => x.Name == "Ceiling light");
+            var bed = inventoryItemTypes.Single(x => x.Name == "Bed");
+            var cupboard = inventoryItemTypes.Single(x => x.Name == "Cupboard");
+            var wardrobe = inventoryItemTypes.Single(x => x.Name == "Wardrobe");
+
+            foreach (var room in rooms)
+                room.Items = new[]
+                {
+                    new RoomItemType
+                    {
+                        InventoryItemType = chair,
+                        Quantity = room.Capacity,
+                    },
+                    new RoomItemType
+                    {
+                        InventoryItemType = table,
+                        Quantity = room.Capacity,
+                    },
+                    new RoomItemType
+                    {
+                        InventoryItemType = lamp,
+                        Quantity = room.Capacity,
+                    },
+                    new RoomItemType
+                    {
+                        InventoryItemType = ceilingLight,
+                        Quantity = 1,
+                    },
+                    new RoomItemType
+                    {
+                        InventoryItemType = bed,
+                        Quantity = room.Capacity,
+                    },
+                    new RoomItemType
+                    {
+                        InventoryItemType = cupboard,
+                        Quantity = room.Capacity,
+                    },
+                    new RoomItemType
+                    {
+                        InventoryItemType = wardrobe,
+                        Quantity = room.Capacity,
+                    }
+                };
+
+            await _db.SaveChangesAsync(CancellationToken.None);
+        }
+
+        private async Task SeedInventoryItemTypes()
+        {
+            var chairType = new InventoryItemType
+            {
+                Name = "Chair",
+                InventoryNumber = "IIT001",
+                PricePerPiece = 30,
+                TotalQuantity = NumberOfRooms * 3
+            };
+
+            var tableType = new InventoryItemType
+            {
+                Name = "Table",
+                InventoryNumber = "IIT002",
+                PricePerPiece = 100,
+                TotalQuantity = NumberOfRooms * 3
+            };
+
+            var lampType = new InventoryItemType
+            {
+                Name = "Lamp",
+                InventoryNumber = "IIT003",
+                PricePerPiece = 20,
+                TotalQuantity = NumberOfRooms * 3
+            };
+
+            var ceilingLightType = new InventoryItemType
+            {
+                Name = "Ceiling light",
+                InventoryNumber = "IIT004",
+                PricePerPiece = 40,
+                TotalQuantity = NumberOfRooms + 20
+            };
+
+            var bedType = new InventoryItemType
+            {
+                Name = "Bed",
+                InventoryNumber = "IIT005",
+                PricePerPiece = 200,
+                TotalQuantity = NumberOfRooms * 3
+            };
+
+            var cupboardType = new InventoryItemType
+            {
+                Name = "Cupboard",
+                InventoryNumber = "IIT006",
+                PricePerPiece = 20,
+                TotalQuantity = NumberOfRooms * 3
+            };
+
+            var wardrobeType = new InventoryItemType
+            {
+                Name = "Wardrobe",
+                InventoryNumber = "IIT007",
+                PricePerPiece = 200,
+                TotalQuantity = NumberOfRooms * 3
+            };
+
+            _db.AddRange(chairType, tableType, lampType, ceilingLightType, bedType, cupboardType, wardrobeType);
+            await _db.SaveChangesAsync(CancellationToken.None);
+        }
+
         private async Task SeedRooms()
         {
-            for (int i = 1; i < 200; i++)
+            for (int i = 1; i <= NumberOfRooms; i++)
             {
                 var room = new Room
                 {
