@@ -7,7 +7,7 @@ using Sieve.Services;
 
 namespace Application.Rooms.Queries.GetRoomList
 {
-    public class RoomLookup : IMapFrom<Room>, IFilteringMapperProfile
+    public class RoomLookup : IMapFrom<Room>, IFilteringSortingProfile
     {
         public int Id { get; set; }
 

@@ -17,5 +17,7 @@ namespace WebApi.Controllers
             var response = await Mediator.Send(new GetRoomListQuery { PaginationModel = paginationModle });
             return response;
         }
+
+        //TODO create room detail, and also guests/me/room 
     }
 }

@@ -36,9 +36,25 @@ namespace Application.System
             await SeedAdmin();
             await SeedGuests();
             await SeedOfficers();
-            //TODO SEED ROOMS
+            await SeedRooms();
 
             return Unit.Value;
+        }
+
+        private async Task SeedRooms()
+        {
+            for (int i = 1; i < 200; i++)
+            {
+                var room = new Room
+                {
+                    Capacity = i % 2 == 0 ? 2 : 3,
+                    Number = $"SI{i:D3}"
+                };
+
+                _db.Rooms.Add(room);
+            }
+
+            await _db.SaveChangesAsync(CancellationToken.None);
         }
 
         private async Task SeedRoles()

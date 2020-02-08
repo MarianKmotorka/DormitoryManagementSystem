@@ -6,7 +6,7 @@ using Sieve.Services;
 
 namespace Application.Guests.Queries.GetGuestList
 {
-    public class GuestLookup : IMapFrom<Guest>, IFilteringMapperProfile
+    public class GuestLookup : IMapFrom<Guest>, IFilteringSortingProfile
     {
         public string Id { get; set; }
 

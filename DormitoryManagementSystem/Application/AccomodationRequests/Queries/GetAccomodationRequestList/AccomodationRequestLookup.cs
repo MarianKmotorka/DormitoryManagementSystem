@@ -8,7 +8,7 @@ using Sieve.Services;
 
 namespace Application.AccomodationRequests.Queries.GetAccomodationRequestList
 {
-    public class AccomodationRequestLookup : IMapFrom<AccomodationRequest>, IFilteringMapperProfile
+    public class AccomodationRequestLookup : IMapFrom<AccomodationRequest>, IFilteringSortingProfile
     {
         public int Id { get; set; }
 
@@ -43,7 +43,6 @@ namespace Application.AccomodationRequests.Queries.GetAccomodationRequestList
 
             mapper.Property<AccomodationRequestLookup>(x => x.AccomodationEndDateUtc)
                 .CanFilter().CanSort();
-
 
             mapper.Property<AccomodationRequestLookup>(x => x.RequesterDistanceFromHome)
                 .CanFilter().CanSort();

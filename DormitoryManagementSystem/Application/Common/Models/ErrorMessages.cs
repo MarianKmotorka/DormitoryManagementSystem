@@ -21,6 +21,8 @@
         public const string StartDateMustBeInTheFuture = nameof(StartDateMustBeInTheFuture);
         public const string DateRangeOverlapsWithExisingRequest = nameof(DateRangeOverlapsWithExisingRequest);
 
+        public const string RoomMustBeFree = nameof(RoomMustBeFree);
+
         public static string MinLength(int min) => nameof(MinLength) + min;
     }
 }

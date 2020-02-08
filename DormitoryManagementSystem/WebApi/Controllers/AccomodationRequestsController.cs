@@ -3,6 +3,7 @@ using Application.AccomodationRequests.Commands.CreateAccomodationRequest;
 using Application.AccomodationRequests.Queries.GetAccomodationRequestDetail;
 using Application.AccomodationRequests.Queries.GetAccomodationRequestList;
 using Application.Common.Pagination;
+using Application.Officers.Commands.RespondToAccomodationRequest;
 using Infrastracture.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,15 @@ namespace WebApi.Controllers
         {
             var response = await Mediator.Send(new GetAccomodationRequestDetailQuery { Id = id });
             return response;
+        }
+
+        [HttpPost("{id}/repsonse")]
+        [Authorize(Policy = PolicyNames.Officer)]
+        public async Task<ActionResult> RespondToAccomodationRequest([FromRoute]int id, [FromBody]RespondToAccomodationRequestCommand request)
+        {
+            request.AccomodationRequestId = id;
+            await Mediator.Send(request);
+            return NoContent();
         }
     }
 }

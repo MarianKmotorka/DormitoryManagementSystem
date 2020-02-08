@@ -45,7 +45,7 @@ namespace WebApi.Controllers
             return response;
         }
 
-        [HttpGet("accomodation-requests")]
+        [HttpGet("me/accomodation-requests")]
         [Authorize(Policy = PolicyNames.Guest)]
         public async Task<ActionResult<PagedResponse<AccomodationRequestLookup>>> GetMyAccomodationRequestList([FromQuery]SieveModel paginationModel)
         {

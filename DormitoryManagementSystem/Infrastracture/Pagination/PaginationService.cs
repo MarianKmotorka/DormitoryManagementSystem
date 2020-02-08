@@ -25,13 +25,13 @@ namespace Infrastracture.Pagination
         private void AddSievePropertyMapperProfilesFromAssembly(SievePropertyMapper mapper)
         {
             var types = typeof(IPaginationService).Assembly.GetExportedTypes()
-                    .Where(t => typeof(IFilteringMapperProfile).IsAssignableFrom(t) && !t.IsAbstract && !t.IsInterface)
+                    .Where(t => typeof(IFilteringSortingProfile).IsAssignableFrom(t) && !t.IsAbstract && !t.IsInterface)
                     .ToList();
 
             foreach (var type in types)
             {
                 var instance = Activator.CreateInstance(type);
-                var mappingMethod = type.GetMethod(nameof(IFilteringMapperProfile.MapProperties));
+                var mappingMethod = type.GetMethod(nameof(IFilteringSortingProfile.MapProperties));
                 mappingMethod?.Invoke(instance, new[] { mapper });
             }
         }

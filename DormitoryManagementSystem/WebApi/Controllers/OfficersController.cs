@@ -1,4 +1,5 @@
-﻿using Application.Common.Pagination;
+﻿using System.Threading.Tasks;
+using Application.Common.Pagination;
 using Application.Officers.Commands.CreateOfficer;
 using Application.Officers.Queries.GetOfficerDetail;
 using Application.Officers.Queries.GetOfficerList;
@@ -6,7 +7,6 @@ using Infrastracture.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sieve.Models;
-using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {

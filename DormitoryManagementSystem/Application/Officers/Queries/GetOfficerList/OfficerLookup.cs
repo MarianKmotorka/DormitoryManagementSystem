@@ -6,7 +6,7 @@ using Sieve.Services;
 
 namespace Application.Officers.Queries.GetOfficerList
 {
-    public class OfficerLookup : IMapFrom<Officer>, IFilteringMapperProfile
+    public class OfficerLookup : IMapFrom<Officer>, IFilteringSortingProfile
     {
         public string Id { get; set; }
 

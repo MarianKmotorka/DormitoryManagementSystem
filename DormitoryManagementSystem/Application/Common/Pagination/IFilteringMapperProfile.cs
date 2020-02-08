@@ -2,7 +2,7 @@
 
 namespace Application.Common.Pagination
 {
-    public interface IFilteringMapperProfile
+    public interface IFilteringSortingProfile
     {
         void MapProperties(SievePropertyMapper mapper);
     }
