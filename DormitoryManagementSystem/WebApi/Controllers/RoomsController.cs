@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Application.Common.Pagination;
+using Application.Rooms.Queries.GetRoomDetail;
 using Application.Rooms.Queries.GetRoomList;
 using Infrastracture.Identity;
 using Microsoft.AspNetCore.Authorization;
@@ -18,6 +19,12 @@ namespace WebApi.Controllers
             return response;
         }
 
-        //TODO create room detail, and also guests/me/room 
+        [HttpGet("{id}")]
+        [Authorize(Policy = PolicyNames.Officer)]
+        public async Task<ActionResult<RoomDetail>> GetRoomDetail([FromRoute]int id)
+        {
+            var response = await Mediator.Send(new GetRoomDetailQuery { Id = id });
+            return response;
+        }
     }
 }
