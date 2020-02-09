@@ -1,7 +1,6 @@
 ﻿using System;
 using Application.Common.Mappings;
 using Application.Common.Pagination;
-using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
 using Sieve.Services;
@@ -19,8 +18,6 @@ namespace Application.RepairRequests.Queries.GetRepairRequestList
         public DateTime? FixedOn { get; set; }
 
         public RepairRequestState State { get; set; }
-
-        public void Mapping(Profile profile) => profile.CreateMap<RepairRequest, RepairRequestLookup>();
 
         public void MapProperties(SievePropertyMapper mapper)
         {
