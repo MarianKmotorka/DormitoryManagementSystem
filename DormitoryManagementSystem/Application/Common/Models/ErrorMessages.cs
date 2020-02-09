@@ -23,6 +23,8 @@
 
         public const string RoomMustBeFree = nameof(RoomMustBeFree);
 
+        public const string RepairAlreadyRequested = nameof(RepairAlreadyRequested);
+
         public static string MinLength(int min) => nameof(MinLength) + min;
     }
 }

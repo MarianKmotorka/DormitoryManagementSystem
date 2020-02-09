@@ -13,7 +13,7 @@ namespace Persistence.Configurations
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(x => x.Room)
+            builder.HasOne(x => x.RoomItemType)
                 .WithMany()
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);

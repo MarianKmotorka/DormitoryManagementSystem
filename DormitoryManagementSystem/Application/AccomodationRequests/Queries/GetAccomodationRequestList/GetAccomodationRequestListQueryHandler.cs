@@ -9,13 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.AccomodationRequests.Queries.GetAccomodationRequestList
 {
-    public class GetAccomodationRequestQueryHandler : IRequestHandler<GetAccomodationRequestListQuery, PagedResponse<AccomodationRequestLookup>>
+    public class GetAccomodationRequestListQueryHandler : IRequestHandler<GetAccomodationRequestListQuery, PagedResponse<AccomodationRequestLookup>>
     {
         private readonly IDormitoryDbContext _db;
         private readonly IPaginationService _paginationService;
         private readonly IMapper _mapper;
 
-        public GetAccomodationRequestQueryHandler(IDormitoryDbContext db, IPaginationService paginationService, IMapper mapper)
+        public GetAccomodationRequestListQueryHandler(IDormitoryDbContext db, IPaginationService paginationService, IMapper mapper)
         {
             _db = db;
             _paginationService = paginationService;

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DormitoryDbContext))]
-    partial class DormitoryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200209142529_RoomItemTypeInsteadOfRoom")]
+    partial class RoomItemTypeInsteadOfRoom
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,14 +250,8 @@ namespace Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("FixedById")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("FixedOn")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("GuestId")
                         .IsRequired()

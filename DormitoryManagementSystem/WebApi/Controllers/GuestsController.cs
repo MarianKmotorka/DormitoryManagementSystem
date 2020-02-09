@@ -5,6 +5,7 @@ using Application.Guests.Commands.CreateGuest;
 using Application.Guests.Queries.GetGuestDetail;
 using Application.Guests.Queries.GetGuestList;
 using Application.Guests.Queries.GetMyAccomodationRequestList;
+using Application.RepairRequests.Queries.GetRepairRequestList;
 using Application.Rooms.Queries.GetRoomDetail;
 using Infrastracture.Identity;
 using Microsoft.AspNetCore.Authorization;
@@ -59,6 +60,14 @@ namespace WebApi.Controllers
         public async Task<ActionResult<RoomDetail>> GetMyRoomDetail()
         {
             var response = await Mediator.Send(new GetRoomDetailQuery { GuestId = CurrentUserService.UserId });
+            return response;
+        }
+
+        [HttpGet("me/repair-requests")]
+        [Authorize(Policy = PolicyNames.Guest)]
+        public async Task<ActionResult<PagedResponse<RepairRequestLookup>>> GetMyRepairRequestList([FromQuery]SieveModel paginationModel)
+        {
+            var response = await Mediator.Send(new GetRepairRequestListQuery { GuestId = CurrentUserService.UserId, PaginationModel = paginationModel });
             return response;
         }
     }

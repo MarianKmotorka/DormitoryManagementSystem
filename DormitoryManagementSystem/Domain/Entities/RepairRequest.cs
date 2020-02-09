@@ -7,7 +7,7 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
 
-        public Room Room { get; set; }
+        public RoomItemType RoomItemType { get; set; }
 
         public Guest Guest { get; set; }
 
@@ -16,6 +16,10 @@ namespace Domain.Entities
         public RepairRequestState State { get; set; }
 
         public DateTime? WillBeFixedOn { get; set; }
+
+        public DateTime? FixedOn { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public string ProblemDesciption { get; set; }
 
