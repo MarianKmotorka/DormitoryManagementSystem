@@ -1,10 +1,12 @@
-﻿namespace Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace Domain.Entities
 {
     public class Repairer
     {
         public string Id { get; set; }
 
-        //TODO add history of repairs
+        public ICollection<RepairRequest> RepairRequests { get; set; }
 
         public AppUser AppUser
         {

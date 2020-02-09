@@ -1,6 +1,8 @@
-﻿using Application.Common.Mappings;
+﻿using System.Linq;
+using Application.Common.Mappings;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Enums;
 
 namespace Application.Repairers.Queries.GetRepairerDetail
 {
@@ -26,7 +28,7 @@ namespace Application.Repairers.Queries.GetRepairerDetail
 
         public string PostCode { get; set; }
 
-        //TODO add history of repairs
+        public int NumberOfFixes { get; set; }
 
         public void Mapping(Profile profile)
         {
@@ -66,6 +68,10 @@ namespace Application.Repairers.Queries.GetRepairerDetail
                 .ForMember(dest => dest.PostCode, cfg =>
                 {
                     cfg.MapFrom(src => src.AppUser.Address.PostCode);
+                })
+                .ForMember(dest => dest.NumberOfFixes, cfg =>
+                {
+                    cfg.MapFrom(src => src.RepairRequests.Count(x => x.State == RepairRequestState.Fixed));
                 });
         }
     }

@@ -29,6 +29,8 @@ namespace Application.Common.Interfaces
 
         DbSet<Repairer> Repairers { get; set; }
 
+        DbSet<RepairRequest> RepairRequests { get; set; }
+
         DatabaseFacade Database { get; }
 
         EntityEntry<TEntity> Attach<TEntity>([NotNull] TEntity entity) where TEntity : class;
