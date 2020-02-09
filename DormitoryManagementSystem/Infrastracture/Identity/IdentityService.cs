@@ -70,7 +70,7 @@ namespace Infrastracture.Identity
             return await GenerateJwtAndRefreshToken(appUser);
         }
 
-        public async Task<(Result, string createdUserId)> RegisterUserAsync(string email, string password, AppRoleNames role)
+        public async Task<(Result, string createdUserId)> RegisterUserAsync(string firstName, string lastName, string email, string password, AppRoleNames role)
         {
             var existingUser = await _userManager.FindByEmailAsync(email);
 
@@ -81,7 +81,9 @@ namespace Infrastracture.Identity
             {
                 Email = email,
                 UserName = email,
-                Address = Address.Empty
+                Address = Address.Empty,
+                FirstName = firstName,
+                LastName = lastName
             };
 
             var identityResult = await _userManager.CreateAsync(newUser, password);

@@ -27,6 +27,8 @@ namespace Application.Common.Interfaces
 
         DbSet<InventoryItemType> InventoryItemTypes { get; set; }
 
+        DbSet<Repairer> Repairers { get; set; }
+
         DatabaseFacade Database { get; }
 
         EntityEntry<TEntity> Attach<TEntity>([NotNull] TEntity entity) where TEntity : class;

@@ -18,11 +18,24 @@ namespace Application.Rooms.Queries.GetRoomDetail
 
         public IEnumerable<GuestDto> Guests { get; set; }
 
+        public IEnumerable<RoomItemTypeDto> Items { get; set; }
+
         public class GuestDto
         {
             public string Id { get; set; }
 
             public string DisplayName { get; set; }
+        }
+
+        public class RoomItemTypeDto
+        {
+            public int Id { get; set; }
+
+            public string InventoryNumber { get; set; }
+
+            public string Name { get; set; }
+
+            public int Quantity { get; set; }
         }
 
         public void Mapping(Profile profile)
@@ -38,10 +51,20 @@ namespace Application.Rooms.Queries.GetRoomDetail
                 });
 
             profile.CreateMap<Guest, GuestDto>()
-            .ForMember(dest => dest.DisplayName, cfg =>
-            {
-                cfg.MapFrom(src => src.AppUser.LastName + " " + src.AppUser.FirstName);
-            });
+                .ForMember(dest => dest.DisplayName, cfg =>
+                {
+                    cfg.MapFrom(src => src.AppUser.LastName + " " + src.AppUser.FirstName);
+                });
+
+            profile.CreateMap<RoomItemType, RoomItemTypeDto>()
+                .ForMember(dest => dest.InventoryNumber, cfg =>
+                {
+                    cfg.MapFrom(src => src.InventoryItemType.InventoryNumber);
+                })
+                .ForMember(dest => dest.Name, cfg =>
+                {
+                    cfg.MapFrom(src => src.InventoryItemType.Name);
+                });
         }
     }
 }

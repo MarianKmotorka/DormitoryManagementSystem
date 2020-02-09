@@ -13,6 +13,8 @@ namespace Persistence.Configurations
             {
                 builder.ToTable("AppUsers");
                 builder.OwnsOne(x => x.Address);
+                builder.Property(x => x.FirstName).IsRequired();
+                builder.Property(x => x.LastName).IsRequired();
             }
         }
 

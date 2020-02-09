@@ -194,7 +194,9 @@ namespace Application.System
                 Id = "d51f39ec-8882-4917-899d-cad4a24f113d",
                 Email = "admin@admin.com",
                 UserName = "admin",
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                FirstName = "Admin",
+                LastName = "Admin"
             };
 
             await _userManager.CreateAsync(admin, "admin123");

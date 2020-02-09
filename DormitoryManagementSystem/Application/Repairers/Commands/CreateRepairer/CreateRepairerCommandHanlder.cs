@@ -10,17 +10,16 @@ using Domain.ValueObjects;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Officers.Commands.CreateOfficer
+namespace Application.Repairers.Commands.CreateRepairer
 {
-    public class CreateOfficerCommandHanlder : IRequestHandler<CreateOfficerCommand>
+    public class CreateRepairerCommandHanlder : IRequestHandler<CreateRepairerCommand>
     {
         private readonly IDormitoryDbContext _db;
         private readonly IIdentityService _identityService;
         private readonly IMediator _mediator;
         private readonly IEmailService _emailService;
 
-        public CreateOfficerCommandHanlder(IDormitoryDbContext db, IIdentityService identityService, IMediator mediator,
-            IEmailService emailService)
+        public CreateRepairerCommandHanlder(IDormitoryDbContext db, IIdentityService identityService, IMediator mediator, IEmailService emailService)
         {
             _db = db;
             _identityService = identityService;
@@ -28,18 +27,18 @@ namespace Application.Officers.Commands.CreateOfficer
             _emailService = emailService;
         }
 
-        public async Task<Unit> Handle(CreateOfficerCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateRepairerCommand request, CancellationToken cancellationToken)
         {
-            var password = Guid.NewGuid().ToString().Substring(0, 6) + "x+2";
+            var password = Guid.NewGuid().ToString().Substring(0, 6) + "x2*";
 
-            var (result, userId) = await _identityService.RegisterUserAsync(request.FirstName, request.LastName, request.Email, password, AppRoleNames.Officer);
+            var (result, userId) = await _identityService.RegisterUserAsync(request.FirstName, request.LastName, request.Email, password, AppRoleNames.Repairer);
 
             if (!result.Succeeded)
                 throw new BadRequestException(result.Errors);
 
             var appUser = await _db.Users.SingleAsync(x => x.Id == userId, cancellationToken);
 
-            var officerAddress = new Address
+            var repairerAddress = new Address
             {
                 City = request.City,
                 Country = request.Country,
@@ -49,25 +48,23 @@ namespace Application.Officers.Commands.CreateOfficer
             };
 
             appUser.PhoneNumber = request.PhoneNumber;
-            appUser.Address = officerAddress;
+            appUser.Address = repairerAddress;
 
             await _db.SaveChangesAsync(cancellationToken);
 
-            var officer = new Officer
+            var repairer = new Repairer
             {
-                AppUser = appUser,
-                IdCardNumber = request.IdCardNumber,
-                OfficeNumber = request.OfficeNumber
+                AppUser = appUser
             };
 
-            _db.Officers.Add(officer);
+            _db.Repairers.Add(repairer);
 
             await _db.SaveChangesAsync(cancellationToken);
 
             await _mediator.Send(new SendConfirmationEmailCommand { Email = request.Email });
 
             await _emailService.SendAsync(
-                $"Now you can log in using email: {request.Email} and password: {password}  . Please change your password ASAP.",
+                $"Now you can log in using email: {request.Email} and password: {password}   . Please change your password ASAP.",
                 request.Email,
                 "Credentials",
                 isMessageHtml: false

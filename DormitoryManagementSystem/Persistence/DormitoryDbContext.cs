@@ -23,6 +23,8 @@ namespace Persistence
 
         public DbSet<InventoryItemType> InventoryItemTypes { get; set; }
 
+        public DbSet<Repairer> Repairers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
