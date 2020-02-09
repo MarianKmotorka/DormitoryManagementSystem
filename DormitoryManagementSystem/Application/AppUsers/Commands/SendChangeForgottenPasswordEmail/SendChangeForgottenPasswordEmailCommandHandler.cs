@@ -1,8 +1,8 @@
-﻿using Application.Common.Interfaces;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Application.Common.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.AppUsers.Commands.SendChangeForgottenPasswordEmail
 {
@@ -41,7 +41,7 @@ namespace Application.AppUsers.Commands.SendChangeForgottenPasswordEmail
                                      cursor: pointer;
                                      border-radius: 4px;
                                     }}
-                                 .pass {{
+                                 .password {{
                                      width: 75%;
                                      padding: 12px 20px;
                                      margin: 8px 0;
@@ -58,10 +58,10 @@ namespace Application.AppUsers.Commands.SendChangeForgottenPasswordEmail
 
                              <form method=""post"" action=""{endpoint}"">
 
-                                 <input type=""text"" name=""newPassword"" class=""pass"" />
+                                 <input type=""text"" name=""newPassword"" class=""password"" />
                                  <input type=""hidden"" name=""email"" value=""{request.Email}"" />
                                  <button type=""submit"" name=""resetToken"" value=""{token}"" class=""button"">
-                                 Confirm
+                                    Change Password
                                  </button>
 
                              </form>
