@@ -41,6 +41,8 @@ namespace WebApi.Installers
                 });
             });
 
+            services.ConfigureSwaggerGen(x => x.CustomSchemaIds(xx => xx.FullName));
+
             return services;
         }
     }

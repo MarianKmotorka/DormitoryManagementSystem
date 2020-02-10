@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Application.Common.Pagination;
 using Application.RepairRequests.Commands.CreateRepairRequest;
+using Application.RepairRequests.Queries.GetRepairRequestDetail;
 using Application.RepairRequests.Queries.GetRepairRequestList;
 using Infrastracture.Identity;
 using Microsoft.AspNetCore.Authorization;
@@ -25,6 +26,14 @@ namespace WebApi.Controllers
         public async Task<ActionResult<PagedResponse<RepairRequestLookup>>> GetRepairRequestList([FromQuery]SieveModel paginationModel)
         {
             var response = await Mediator.Send(new GetRepairRequestListQuery { PaginationModel = paginationModel });
+            return response;
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Policy = PolicyNames.Repairer)]
+        public async Task<ActionResult<RepairRequestDetail>> GetRepairRequestDetail([FromRoute]int id)
+        {
+            var response = await Mediator.Send(new GetRepairRequestDetailQuery { Id = id });
             return response;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Common.Models;
@@ -33,9 +34,14 @@ namespace Application.RepairRequests.Commands.CreateRepairRequest
             return !await _db.RepairRequests.AsNoTracking().AnyAsync(x => x.RoomItemType.Id == roomItemTypeId && x.State != Domain.Enums.RepairRequestState.Fixed);
         }
 
-        private async Task<bool> BeValidRoomItemType(int roomItemTypeId, CancellationToken cancellationToken)
+        private async Task<bool> BeValidRoomItemType(CreateRepairRequestCommand command, int roomItemTypeId, CancellationToken cancellationToken)
         {
-            return await _db.RoomItemTypes.AsNoTracking().AnyAsync(x => x.Id == roomItemTypeId, cancellationToken);
+            var roomItemType = await _db.RoomItemTypes.Include(x => x.Room.Guests).SingleOrDefaultAsync(x => x.Id == roomItemTypeId);
+
+            if (roomItemType == null)
+                return false;
+
+            return roomItemType.Room.Guests.Any(x => x.Id == command.GuestId);
         }
     }
 }
