@@ -21,7 +21,7 @@ namespace WebApi.Controllers
 
         [HttpGet("{id}")]
         [Authorize(Policy = PolicyNames.Officer)]
-        public async Task<ActionResult<RoomDetail>> GetRoomDetail([FromRoute]int id)
+        public async Task<ActionResult<RoomDetail>> GetRoomDetail(int id)
         {
             var response = await Mediator.Send(new GetRoomDetailQuery { Id = id });
             return response;

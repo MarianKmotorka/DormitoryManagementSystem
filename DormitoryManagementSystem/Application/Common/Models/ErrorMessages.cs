@@ -18,12 +18,13 @@
         public const string EmailNotConfirmed = nameof(EmailNotConfirmed);
 
         public const string StartDateMustOccurBeforeEndDate = nameof(StartDateMustOccurBeforeEndDate);
-        public const string StartDateMustBeInTheFuture = nameof(StartDateMustBeInTheFuture);
+        public const string MustBeInTheFuture = nameof(MustBeInTheFuture);
         public const string DateRangeOverlapsWithExisingRequest = nameof(DateRangeOverlapsWithExisingRequest);
 
         public const string RoomMustBeFree = nameof(RoomMustBeFree);
 
         public const string RepairAlreadyRequested = nameof(RepairAlreadyRequested);
+        public const string CannotModifyFixed = nameof(CannotModifyFixed);
 
         public static string MinLength(int min) => nameof(MinLength) + min;
     }

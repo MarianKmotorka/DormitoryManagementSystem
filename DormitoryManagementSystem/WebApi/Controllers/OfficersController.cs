@@ -22,7 +22,7 @@ namespace WebApi.Controllers
 
         [HttpGet("{id}")]
         [Authorize(Policy = PolicyNames.Admin)]
-        public async Task<ActionResult<OfficerDetail>> GetOfficerDetail([FromRoute]string id)
+        public async Task<ActionResult<OfficerDetail>> GetOfficerDetail(string id)
         {
             var response = await Mediator.Send(new GetOfficerDetailQuery { Id = id });
             return response;

@@ -32,17 +32,17 @@ namespace WebApi.Controllers
 
         [HttpGet("{id}")]
         [Authorize(Policy = PolicyNames.Officer)]
-        public async Task<ActionResult<AccomodationRequestDetail>> GetAccomodationRequestDetail([FromRoute]int id)
+        public async Task<ActionResult<AccomodationRequestDetail>> GetAccomodationRequestDetail(int id)
         {
             var response = await Mediator.Send(new GetAccomodationRequestDetailQuery { Id = id });
             return response;
         }
 
-        [HttpPost("{id}/repsonse")]
+        [HttpPatch("{id}")]
         [Authorize(Policy = PolicyNames.Officer)]
-        public async Task<ActionResult> RespondToAccomodationRequest([FromRoute]int id, [FromBody]RespondToAccomodationRequestCommand request)
+        public async Task<ActionResult> RespondToAccomodationRequest(int id, [FromBody]RespondToAccomodationRequestCommand request)
         {
-            request.AccomodationRequestId = id;
+            if (request != null) request.AccomodationRequestId = id;
             await Mediator.Send(request);
             return NoContent();
         }

@@ -34,7 +34,7 @@ namespace WebApi.Controllers
 
         [HttpGet("{id}")]
         [Authorize(Policy = PolicyNames.Officer)]
-        public async Task<ActionResult<GuestDetail>> GetGuestDetail([FromRoute]string id)
+        public async Task<ActionResult<GuestDetail>> GetGuestDetail(string id)
         {
             var response = await Mediator.Send(new GetGuestDetailQuery { Id = id });
             return response;
@@ -74,7 +74,7 @@ namespace WebApi.Controllers
 
         [HttpGet("me/repair-requests/{id}")]
         [Authorize(Policy = PolicyNames.Guest)]
-        public async Task<ActionResult<RepairRequestDetail>> GetMyRepairRequestDetail([FromRoute]int id)
+        public async Task<ActionResult<RepairRequestDetail>> GetMyRepairRequestDetail(int id)
         {
             var response = await Mediator.Send(new GetRepairRequestDetailQuery { GuestId = CurrentUserService.UserId, Id = id });
             return response;

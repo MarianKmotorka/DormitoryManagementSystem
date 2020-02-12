@@ -30,7 +30,7 @@ namespace WebApi.Controllers
 
         [HttpGet("{id}")]
         [Authorize(Policy = PolicyNames.Officer)]
-        public async Task<ActionResult<RepairerDetail>> GetRepairerDetail([FromRoute]string id)
+        public async Task<ActionResult<RepairerDetail>> GetRepairerDetail(string id)
         {
             var response = await Mediator.Send(new GetRepairerDetailQuery { Id = id });
             return response;

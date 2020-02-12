@@ -26,7 +26,7 @@ namespace Application.AccomodationRequests.Commands.CreateAccomodationRequest
                 .Must((command, start) => start < command.AccomodationEndDateUtc)
                 .WithMessage(ErrorMessages.StartDateMustOccurBeforeEndDate)
                 .Must(x => x > DateTime.UtcNow)
-                .WithMessage(ErrorMessages.StartDateMustBeInTheFuture)
+                .WithMessage(ErrorMessages.MustBeInTheFuture)
                 .MustAsync(NotOverlap).WithMessage(ErrorMessages.DateRangeOverlapsWithExisingRequest);
 
         }
