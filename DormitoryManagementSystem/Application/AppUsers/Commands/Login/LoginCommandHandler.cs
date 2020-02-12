@@ -1,8 +1,8 @@
-﻿using Application.Common.Exceptions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.AppUsers.Commands.Login
 {
@@ -22,10 +22,13 @@ namespace Application.AppUsers.Commands.Login
             if (!result.Succeeded)
                 throw new BadRequestException(result.Errors);
 
+            var (_, role) = await _identityService.GetRole(request.Email);
+
             return new LoginResponse
             {
                 Jwt = jwt,
-                RefreshToken = refreshToken
+                RefreshToken = refreshToken,
+                Role = role
             };
         }
     }

@@ -9,6 +9,7 @@ namespace Application.Common.Interfaces
         Task<(Result, string createdUserId)> RegisterUserAsync(string firstName, string lastName, string email, string password, AppRoleNames role);
         Task<(Result, string jwt, string refreshToken)> LoginUserAsync(string email, string password);
         Task<(Result, string jwt, string refreshToken)> RefreshJwtAsync(string expiredJwt, string refreshToken);
+        Task<(Result, string)> GetRole(string email);
 
         Task<string> GenerateEmailConfirmationTokenAsync(string email);
         Task<string> GenerateChangeForgottenPasswordTokenAsync(string email);

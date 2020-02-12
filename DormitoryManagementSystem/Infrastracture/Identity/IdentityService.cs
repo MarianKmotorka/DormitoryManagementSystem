@@ -244,5 +244,17 @@ namespace Infrastracture.Identity
 
             return (await _userManager.ResetPasswordAsync(appUser, resetToken, newPassword)).ToApplicationResult();
         }
+
+        public async Task<(Result, string)> GetRole(string email)
+        {
+            var appUser = await _userManager.FindByEmailAsync(email);
+
+            if (appUser == null)
+                return (Result.Failure(ErrorMessages.EmailNotFound), null);
+
+            var role = (await _userManager.GetRolesAsync(appUser)).Single();
+
+            return (Result.Success(), role);
+        }
     }
 }
