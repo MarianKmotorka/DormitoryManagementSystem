@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Application.Common.Pagination;
 using Application.Repairers.Commands.CreateRepairer;
+using Application.Repairers.Commands.DeleteRepairer;
 using Application.Repairers.Queries.GetRepairerDetail;
 using Application.Repairers.Queries.GetRepairerList;
 using Infrastracture.Identity;
@@ -13,7 +14,7 @@ namespace WebApi.Controllers
     public class RepairersController : BaseController
     {
         [HttpPost]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult> CreateRepairer([FromBody]CreateRepairerCommand request)
         {
             await Mediator.Send(request);
@@ -21,7 +22,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult<PagedResponse<RepairerLookup>>> GetRepairerList([FromQuery]SieveModel paginationModel)
         {
             var response = await Mediator.Send(new GetRepairerListQuery { PaginationModel = paginationModel });
@@ -29,7 +30,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult<RepairerDetail>> GetRepairerDetail(string id)
         {
             var response = await Mediator.Send(new GetRepairerDetailQuery { Id = id });
@@ -37,11 +38,19 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("me")]
-        [Authorize(Policy = PolicyNames.Repairer)]
+        [Authorize(PolicyNames.Repairer)]
         public async Task<ActionResult<RepairerDetail>> GetMyRepairerDetail()
         {
             var response = await Mediator.Send(new GetRepairerDetailQuery { Id = CurrentUserService.UserId });
             return response;
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(PolicyNames.Officer)]
+        public async Task<ActionResult> DeleteRepairer(string id)
+        {
+            await Mediator.Send(new DeleteRepairerCommand { Id = id });
+            return NoContent();
         }
     }
 }

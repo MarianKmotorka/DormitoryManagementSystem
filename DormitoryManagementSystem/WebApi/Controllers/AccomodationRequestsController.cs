@@ -14,7 +14,7 @@ namespace WebApi.Controllers
     public class AccomodationRequestsController : BaseController
     {
         [HttpPost]
-        [Authorize(Policy = PolicyNames.Guest)]
+        [Authorize(PolicyNames.Guest)]
         public async Task<ActionResult> CreateAccomodationRequest([FromBody]CreateAccomodationRequestCommand request)
         {
             if (request != null) request.RequesterId = CurrentUserService.UserId;
@@ -23,7 +23,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult<PagedResponse<AccomodationRequestLookup>>> GetAccomodationRequestList([FromQuery]SieveModel paginationModel)
         {
             var response = await Mediator.Send(new GetAccomodationRequestListQuery { PaginationModel = paginationModel });
@@ -31,7 +31,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult<AccomodationRequestDetail>> GetAccomodationRequestDetail(int id)
         {
             var response = await Mediator.Send(new GetAccomodationRequestDetailQuery { Id = id });
@@ -39,7 +39,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPatch("{id}")]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult> RespondToAccomodationRequest(int id, [FromBody]RespondToAccomodationRequestCommand request)
         {
             if (request != null) request.AccomodationRequestId = id;

@@ -2,6 +2,7 @@
 using Application.AccomodationRequests.Queries.GetAccomodationRequestList;
 using Application.Common.Pagination;
 using Application.Guests.Commands.CreateGuest;
+using Application.Guests.Commands.DeleteGuest;
 using Application.Guests.Queries.GetGuestDetail;
 using Application.Guests.Queries.GetGuestList;
 using Application.Guests.Queries.GetMyAccomodationRequestList;
@@ -25,7 +26,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult<PagedResponse<GuestLookup>>> GetGuestList([FromQuery]SieveModel paginationModel)
         {
             var response = await Mediator.Send(new GetGuestListQuery { PaginationModel = paginationModel });
@@ -33,7 +34,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult<GuestDetail>> GetGuestDetail(string id)
         {
             var response = await Mediator.Send(new GetGuestDetailQuery { Id = id });
@@ -41,7 +42,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("me")]
-        [Authorize(Policy = PolicyNames.Guest)]
+        [Authorize(PolicyNames.Guest)]
         public async Task<ActionResult<GuestDetail>> GetCurrentGuestUserDetail()
         {
             var response = await Mediator.Send(new GetGuestDetailQuery { Id = CurrentUserService.UserId });
@@ -49,7 +50,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("me/accomodation-requests")]
-        [Authorize(Policy = PolicyNames.Guest)]
+        [Authorize(PolicyNames.Guest)]
         public async Task<ActionResult<PagedResponse<AccomodationRequestLookup>>> GetMyAccomodationRequestList([FromQuery]SieveModel paginationModel)
         {
             var response = await Mediator.Send(new GetMyAccomodationRequestListQuery { PaginationModel = paginationModel, GuestId = CurrentUserService.UserId });
@@ -57,7 +58,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("me/room")]
-        [Authorize(Policy = PolicyNames.Guest)]
+        [Authorize(PolicyNames.Guest)]
         public async Task<ActionResult<RoomDetail>> GetMyRoomDetail()
         {
             var response = await Mediator.Send(new GetRoomDetailQuery { GuestId = CurrentUserService.UserId });
@@ -65,7 +66,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("me/repair-requests")]
-        [Authorize(Policy = PolicyNames.Guest)]
+        [Authorize(PolicyNames.Guest)]
         public async Task<ActionResult<PagedResponse<RepairRequestLookup>>> GetMyRepairRequestList([FromQuery]SieveModel paginationModel)
         {
             var response = await Mediator.Send(new GetRepairRequestListQuery { GuestId = CurrentUserService.UserId, PaginationModel = paginationModel });
@@ -73,11 +74,19 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("me/repair-requests/{id}")]
-        [Authorize(Policy = PolicyNames.Guest)]
+        [Authorize(PolicyNames.Guest)]
         public async Task<ActionResult<RepairRequestDetail>> GetMyRepairRequestDetail(int id)
         {
             var response = await Mediator.Send(new GetRepairRequestDetailQuery { GuestId = CurrentUserService.UserId, Id = id });
             return response;
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(PolicyNames.Officer)]
+        public async Task<ActionResult> DeleteGuest(string id)
+        {
+            await Mediator.Send(new DeleteGuestCommand { Id = id });
+            return NoContent();
         }
     }
 }

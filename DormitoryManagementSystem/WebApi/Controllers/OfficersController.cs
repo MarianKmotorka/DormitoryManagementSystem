@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Application.Common.Pagination;
 using Application.Officers.Commands.CreateOfficer;
+using Application.Officers.Commands.DeleteOfficer;
 using Application.Officers.Queries.GetOfficerDetail;
 using Application.Officers.Queries.GetOfficerList;
 using Infrastracture.Identity;
@@ -13,7 +14,7 @@ namespace WebApi.Controllers
     public class OfficersController : BaseController
     {
         [HttpPost]
-        [Authorize(Policy = PolicyNames.Admin)]
+        [Authorize(PolicyNames.Admin)]
         public async Task<ActionResult> CreateOfficer([FromBody]CreateOfficerCommand request)
         {
             await Mediator.Send(request);
@@ -21,7 +22,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Policy = PolicyNames.Admin)]
+        [Authorize(PolicyNames.Admin)]
         public async Task<ActionResult<OfficerDetail>> GetOfficerDetail(string id)
         {
             var response = await Mediator.Send(new GetOfficerDetailQuery { Id = id });
@@ -29,7 +30,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("me")]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult<OfficerDetail>> GetCurrentOfficerUserDetail()
         {
             var response = await Mediator.Send(new GetOfficerDetailQuery { Id = CurrentUserService.UserId });
@@ -37,11 +38,19 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = PolicyNames.Admin)]
+        [Authorize(PolicyNames.Admin)]
         public async Task<ActionResult<PagedResponse<OfficerLookup>>> GetOfficerList([FromQuery]SieveModel paginationModel)
         {
             var response = await Mediator.Send(new GetOfficerListQuery { PaginationModel = paginationModel });
             return response;
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(PolicyNames.Admin)]
+        public async Task<ActionResult> DeleteOfficer(string id)
+        {
+            await Mediator.Send(new DeleteOfficerCommand { Id = id });
+            return NoContent();
         }
     }
 }

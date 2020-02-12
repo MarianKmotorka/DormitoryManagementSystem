@@ -14,7 +14,7 @@ namespace WebApi.Controllers
     public class RepairRequestsController : BaseController
     {
         [HttpPost]
-        [Authorize(Policy = PolicyNames.Guest)]
+        [Authorize(PolicyNames.Guest)]
         public async Task<ActionResult> CreateRepairRequest([FromBody]CreateRepairRequestCommand request)
         {
             if (request != null) request.GuestId = CurrentUserService.UserId;
@@ -23,7 +23,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = PolicyNames.Repairer)]
+        [Authorize(PolicyNames.Repairer)]
         public async Task<ActionResult<PagedResponse<RepairRequestLookup>>> GetRepairRequestList([FromQuery]SieveModel paginationModel)
         {
             var response = await Mediator.Send(new GetRepairRequestListQuery { PaginationModel = paginationModel });
@@ -31,7 +31,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Policy = PolicyNames.Repairer)]
+        [Authorize(PolicyNames.Repairer)]
         public async Task<ActionResult<RepairRequestDetail>> GetRepairRequestDetail(int id)
         {
             var response = await Mediator.Send(new GetRepairRequestDetailQuery { Id = id });
@@ -39,7 +39,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPatch("{id}")]
-        [Authorize(Policy = PolicyNames.Repairer)]
+        [Authorize(PolicyNames.Repairer)]
         public async Task<ActionResult> RespondToRepairRequest(int id, [FromBody]RespondToRepairRequestCommand request)
         {
             if (request != null)

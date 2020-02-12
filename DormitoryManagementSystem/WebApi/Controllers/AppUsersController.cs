@@ -1,4 +1,5 @@
-﻿using Application.AppUsers.Commands.ChangeForgottenPassword;
+﻿using System.Threading.Tasks;
+using Application.AppUsers.Commands.ChangeForgottenPassword;
 using Application.AppUsers.Commands.ChangePassword;
 using Application.AppUsers.Commands.ConfirmEmail;
 using Application.AppUsers.Commands.Login;
@@ -6,7 +7,6 @@ using Application.AppUsers.Commands.RefreshToken;
 using Application.AppUsers.Commands.SendChangeForgottenPasswordEmail;
 using Application.AppUsers.Commands.SendConfirmationEmail;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {

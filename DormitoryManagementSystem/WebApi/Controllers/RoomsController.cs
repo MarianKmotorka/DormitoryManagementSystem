@@ -12,7 +12,7 @@ namespace WebApi.Controllers
     public class RoomsController : BaseController
     {
         [HttpGet]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult<PagedResponse<RoomLookup>>> GetRoomList([FromQuery]SieveModel paginationModle)
         {
             var response = await Mediator.Send(new GetRoomListQuery { PaginationModel = paginationModle });
@@ -20,7 +20,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Policy = PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult<RoomDetail>> GetRoomDetail(int id)
         {
             var response = await Mediator.Send(new GetRoomDetailQuery { Id = id });
