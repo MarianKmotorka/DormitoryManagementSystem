@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--Labels-->
+    <system:String x:Key="LogOut">Odhlásiť sa</system:String>
+    <system:String x:Key="Account">Môj účet</system:String>
+    <system:String x:Key="Language">Jazyk</system:String>
+    <system:String x:Key="DormitoryManagementSystem">Systém správy študentského domova</system:String>
+    <system:String x:Key="RepairRequests">Žiadosti o opravu</system:String>
+    <system:String x:Key="AccomodationRequests">Žiadosti o ubytovanie</system:String>
+
+    <system:String x:Key="Officers">Uradnici</system:String>
+    <system:String x:Key="Guests">Hostia</system:String>
+    <system:String x:Key="Repairers">Udrzbari</system:String>
+
+    <!--Error messages-->
+    <system:String x:Key="Required">Pozadovane</system:String>
+    <system:String x:Key="Invalid">Neplatne</system:String>
+
+    <system:String x:Key="EmailNotFound">Používateľ s uvedeným emailom neexistuje</system:String>
+    <system:String x:Key="EmailNotUnique">Uvedený email je už používaný iným používateľom</system:String>
+    <system:String x:Key="InvalidEmailOrPassword">Neplatný email alebo heslo</system:String>
+    <system:String x:Key="EmailNotConfirmed">Email nie je overený</system:String>
+
+    <system:String x:Key="StartDateMustOccurBeforeEndDate">Začiatok musí byť pred koncom</system:String>
+    <system:String x:Key="MustBeInTheFuture">Musí byť v budúcnosti</system:String>
+    <system:String x:Key="DateRangeOverlapsWithExisingRequest">Už existuje žiadost s prekrývajúcim sa dátumom</system:String>
+    <system:String x:Key="RoomMustBeFree">Izba musí byť voľná</system:String>
+    <system:String x:Key="RepairAlreadyRequested">Žiadosť o opravu už bola podaná</system:String>
+    <system:String x:Key="CannotModifyFixed">Opravená vec už nesmie byť upravovaná</system:String>
+
+</ResourceDictionary>

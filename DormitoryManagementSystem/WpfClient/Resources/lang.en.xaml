@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--Labels-->
+    <system:String x:Key="LogOut">Log Out</system:String>
+    <system:String x:Key="Account">Account</system:String>
+    <system:String x:Key="Language">Language</system:String>
+    <system:String x:Key="DormitoryManagementSystem">Dormitory management system</system:String>
+    <system:String x:Key="RepairRequests">Repair requests</system:String>
+    <system:String x:Key="AccomodationRequests">Accomodation requests</system:String>
+
+    <system:String x:Key="Officers">Officers</system:String>
+    <system:String x:Key="Guests">Guests</system:String>
+    <system:String x:Key="Repairers">Repairers</system:String>
+
+    <!--Error messages-->
+    <system:String x:Key="Required">Required</system:String>
+    <system:String x:Key="Invalid">Invalid</system:String>
+
+    <system:String x:Key="EmailNotFound">User with entered email does not exist</system:String>
+    <system:String x:Key="EmailNotUnique">Entered email is already used</system:String>
+    <system:String x:Key="InvalidEmailOrPassword">Invalid</system:String>
+    <system:String x:Key="EmailNotConfirmed">Email is not confirmed</system:String>
+
+    <system:String x:Key="StartDateMustOccurBeforeEndDate">Start date must occur before end date</system:String>
+    <system:String x:Key="MustBeInTheFuture">Must be in the future</system:String>
+    <system:String x:Key="DateRangeOverlapsWithExisingRequest">There is already an existing request overlapping entered date range</system:String>
+    <system:String x:Key="RoomMustBeFree">Room must be free</system:String>
+    <system:String x:Key="RepairAlreadyRequested">Repair was already requested</system:String>
+    <system:String x:Key="CannotModifyFixed">You cannot modified already fixed item</system:String>
+
+</ResourceDictionary>
