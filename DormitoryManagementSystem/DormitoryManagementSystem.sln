@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastracture", "Infrastracture\Infrastracture.csproj", "{8CBC193E-C8AD-4C0A-A27F-E0C79C4918B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{EF58B824-1A99-4118-A31C-21A256D4D644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{EF58B824-1A99-4118-A31C-21A256D4D644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfClient", "WpfClient\WpfClient.csproj", "{96625C78-9FE4-49B5-9B4F-EA68A5ED838D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{EF58B824-1A99-4118-A31C-21A256D4D644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF58B824-1A99-4118-A31C-21A256D4D644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF58B824-1A99-4118-A31C-21A256D4D644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96625C78-9FE4-49B5-9B4F-EA68A5ED838D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96625C78-9FE4-49B5-9B4F-EA68A5ED838D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96625C78-9FE4-49B5-9B4F-EA68A5ED838D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96625C78-9FE4-49B5-9B4F-EA68A5ED838D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{684C09A9-309E-4B9B-9861-E40D2C53DA5C} = {5B2EFE2A-4632-423F-8B78-6DA77E75D76E}
 		{8CBC193E-C8AD-4C0A-A27F-E0C79C4918B1} = {77509D4C-C180-4259-86AC-2E990FB16BD3}
 		{EF58B824-1A99-4118-A31C-21A256D4D644} = {77509D4C-C180-4259-86AC-2E990FB16BD3}
+		{96625C78-9FE4-49B5-9B4F-EA68A5ED838D} = {585C88C7-62C5-41A0-A432-5435C6811B81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49D1F0D5-1921-40FA-8E06-C87089ECE412}
