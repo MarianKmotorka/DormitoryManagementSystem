@@ -2,26 +2,39 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <!--Labels-->
+    <!--Menu-->
     <system:String x:Key="LogOut">Log Out</system:String>
+    <system:String x:Key="LogIn">Log In</system:String>
     <system:String x:Key="Account">Account</system:String>
     <system:String x:Key="Language">Language</system:String>
     <system:String x:Key="DormitoryManagementSystem">Dormitory management system</system:String>
-    <system:String x:Key="RepairRequests">Repair requests</system:String>
-    <system:String x:Key="AccomodationRequests">Accomodation requests</system:String>
 
+    <!--LogIn-->
+    <system:String x:Key="Email">Email address</system:String>
+    <system:String x:Key="Password">Password</system:String>
+    <system:String x:Key="ConfirmEmail">Confirm email</system:String>
+    <system:String x:Key="Loading">Loading...</system:String>
+
+    <!--Tabs-->
     <system:String x:Key="Officers">Officers</system:String>
     <system:String x:Key="Guests">Guests</system:String>
     <system:String x:Key="Repairers">Repairers</system:String>
+    <system:String x:Key="RepairRequests">Repair requests</system:String>
+    <system:String x:Key="AccomodationRequests">Accomodation requests</system:String>
+
 
     <!--Error messages-->
     <system:String x:Key="Required">Required</system:String>
     <system:String x:Key="Invalid">Invalid</system:String>
+    <system:String x:Key="MinLength">Min length:</system:String>
+    <system:String x:Key="MaxLength">Max length:</system:String>
 
     <system:String x:Key="EmailNotFound">User with entered email does not exist</system:String>
+    <system:String x:Key="AlreadyConfirmed">Email has been already confirmed</system:String>
+    <system:String x:Key="InvalidEmail">Invalid email</system:String>
     <system:String x:Key="EmailNotUnique">Entered email is already used</system:String>
-    <system:String x:Key="InvalidEmailOrPassword">Invalid</system:String>
-    <system:String x:Key="EmailNotConfirmed">Email is not confirmed</system:String>
+    <system:String x:Key="InvalidEmailOrPassword">Invalid email or password</system:String>
+    <system:String x:Key="EmailNotConfirmed">Email is not confirmed. Press the 'Confirm email' button and visit your email.</system:String>
 
     <system:String x:Key="StartDateMustOccurBeforeEndDate">Start date must occur before end date</system:String>
     <system:String x:Key="MustBeInTheFuture">Must be in the future</system:String>

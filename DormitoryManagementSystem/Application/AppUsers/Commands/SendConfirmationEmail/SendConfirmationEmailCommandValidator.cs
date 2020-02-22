@@ -1,9 +1,9 @@
-﻿using Application.Common.Interfaces;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Application.Common.Interfaces;
 using Application.Common.Models;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.AppUsers.Commands.SendConfirmationEmail
 {
@@ -16,7 +16,7 @@ namespace Application.AppUsers.Commands.SendConfirmationEmail
             _db = db;
 
             RuleFor(x => x.Email).Cascade(CascadeMode.StopOnFirstFailure)
-                .EmailAddress().WithMessage(ErrorMessages.Invalid)
+                .EmailAddress().WithMessage(ErrorMessages.InvalidEmail)
                 .MustAsync(Exist).WithMessage(ErrorMessages.EmailNotFound)
                 .MustAsync(NotBeConfirmed).WithMessage(ErrorMessages.AlreadyConfirmed);
         }

@@ -23,15 +23,23 @@
     </Window.Resources>
 
     <DockPanel>
+        <!--MENU-->
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="{DynamicResource Account}">
-                <MenuItem x:Name="LogOut">
+                <MenuItem x:Name="LogOut" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{DynamicResource LogOut}" Margin="0 0 10 0"  VerticalAlignment="Center"/>
                             <materialDesign:PackIcon Kind="ArrowRightBox" Height="24" Width="24" />
                         </StackPanel>
-
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem x:Name="LogIn" Visibility="{Binding IsLoggedIn, Converter={StaticResource InverseBoolToVisConverter}}">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{DynamicResource LogIn}" Margin="0 0 10 0"  VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="ArrowLeftBox" Height="24" Width="24" />
+                        </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
             </MenuItem>
@@ -44,7 +52,9 @@
             </MenuItem>
         </Menu>
 
-        <StackPanel DockPanel.Dock="Left" Margin="0 20 0 0">
+        <!--TABS-->
+        <StackPanel DockPanel.Dock="Left" Margin="0 20 0 0" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+
             <Button Content="{DynamicResource Repairers}" cal:Message.Attach="[Event Click] = [OpenTab('Repairers')]" />
 
             <Button Content="{DynamicResource Officers}" cal:Message.Attach="[Event Click] = [OpenTab('Officers')]" />
@@ -54,8 +64,10 @@
             <Button Content="{DynamicResource RepairRequests}" cal:Message.Attach="[Event Click] = [OpenTab('RepairRequests')]" />
 
             <Button Content="{DynamicResource AccomodationRequests}" cal:Message.Attach="[Event Click] = [OpenTab('AccomodationRequests')]"/>
+
         </StackPanel>
 
+        <!--CONTENT-->
         <ContentControl x:Name="ActiveItem"/>
     </DockPanel>
 </Window>

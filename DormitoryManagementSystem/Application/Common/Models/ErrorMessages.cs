@@ -3,6 +3,7 @@
     public static class ErrorMessages
     {
         public const string Invalid = nameof(Invalid);
+        public const string InvalidEmail = nameof(InvalidEmail);
         public const string Required = nameof(Required);
 
         public const string JwtIsNotExpired = nameof(JwtIsNotExpired);

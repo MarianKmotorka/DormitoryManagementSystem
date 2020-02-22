@@ -42,7 +42,7 @@ namespace WebApi.Common
             {
                 case ValidationException validationException:
                     code = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(validationException.Failures);
+                    result = JsonConvert.SerializeObject(new { errors = validationException.Failures });
                     break;
                 case BadRequestException _:
                     code = HttpStatusCode.BadRequest;

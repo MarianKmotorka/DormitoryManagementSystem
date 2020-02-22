@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using Caliburn.Micro;
+using Library.Api;
+using Library.Api.Interfaces;
+using Library.Models;
+using WpfClient.Helpers;
 using WpfClient.ViewModels;
 
 namespace WpfClient
@@ -15,6 +20,11 @@ namespace WpfClient
         {
             Initialize();
             LoadLanguage();
+
+            ConventionManager.AddElementConvention<PasswordBox>(
+            PasswordBoxHelper.BoundPasswordProperty,
+            "Password",
+            "PasswordChanged");
         }
 
         protected override void Configure()
@@ -22,8 +32,13 @@ namespace WpfClient
             _container.Instance(_container);
 
             _container
+                .Singleton<CurrentUser>()
+                .Singleton<IApiHelper, ApiHelper>()
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<IWindowManager, WindowManager>();
+
+            _container
+                .RegisterPerRequest(typeof(IAppUsersEndpoint), null, typeof(AppUsersEndpoint));
 
             GetType().Assembly.GetTypes()
                 .Where(t => t.IsClass)

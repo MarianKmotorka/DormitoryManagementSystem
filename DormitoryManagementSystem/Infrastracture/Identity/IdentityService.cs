@@ -56,7 +56,7 @@ namespace Infrastracture.Identity
 
         public async Task<(Result, string jwt, string refreshToken)> LoginUserAsync(string email, string password)
         {
-            var appUser = await _userManager.FindByEmailAsync(email);
+            var appUser = await _userManager.FindByEmailAsync(email ?? "");
 
             if (appUser == null)
                 return (Result.Failure(ErrorMessages.InvalidEmailOrPassword), null, null);
