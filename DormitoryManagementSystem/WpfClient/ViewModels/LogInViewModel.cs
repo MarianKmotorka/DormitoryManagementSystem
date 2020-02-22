@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
+using WpfClient.Events;
 
 namespace WpfClient.ViewModels
 {
@@ -14,6 +15,7 @@ namespace WpfClient.ViewModels
         private string _password = "string";
         private string _error;
         private bool _loading;
+        private bool _success;
         private bool _needConfirmEmail;
 
         public string Email
@@ -46,6 +48,13 @@ namespace WpfClient.ViewModels
             set { _needConfirmEmail = value; NotifyOfPropertyChange(nameof(NeedConfirmEmail)); }
         }
 
+        public bool Success
+        {
+            get => _success;
+            set { _success = value; NotifyOfPropertyChange(nameof(Success)); }
+        }
+
+
         public LogInViewModel(IEventAggregator eventAggregator, IAppUsersEndpoint apiHelper)
         {
             _eventAggregator = eventAggregator;
@@ -54,9 +63,7 @@ namespace WpfClient.ViewModels
 
         public async Task LogIn()
         {
-            Error = "";
-            Loading = true;
-            NeedConfirmEmail = false;
+            ResetBeforeRequest();
 
             var result = await _appUsersEndpoint.Authenticate(Email, Password);
 
@@ -69,13 +76,12 @@ namespace WpfClient.ViewModels
                     NeedConfirmEmail = true;
             }
 
-            //TODO ACtiate other item
+            _eventAggregator.PublishOnUIThread(new LoggedInEvent());
         }
 
         public async Task SendConfirmEmail()
         {
-            Error = "";
-            Loading = true;
+            ResetBeforeRequest();
 
             var result = await _appUsersEndpoint.ConfirmEmail(Email);
 
@@ -88,6 +94,38 @@ namespace WpfClient.ViewModels
                 return;
             }
 
+            Success = true;
+            NeedConfirmEmail = false;
+        }
+
+        public async Task SendResetPasswordEmail()
+        {
+            ResetBeforeRequest();
+
+            var result = await _appUsersEndpoint.ResetPassword(Email);
+
+            Loading = false;
+
+            if (result.Fail)
+            {
+                var error = result.Errors["Email"].First();
+                Error = IoC.Get<ResourceDictionary>("language")[error].ToString();
+                return;
+            }
+
+            Success = true;
+        }
+
+        public void Register()
+        {
+            _eventAggregator.PublishOnUIThread(new OpenRegisterFormEvent());
+        }
+
+        private void ResetBeforeRequest()
+        {
+            Error = "";
+            Success = false;
+            Loading = true;
             NeedConfirmEmail = false;
         }
     }

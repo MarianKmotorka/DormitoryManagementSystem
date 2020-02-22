@@ -14,6 +14,10 @@
     <system:String x:Key="Password">Heslo</system:String>
     <system:String x:Key="ConfirmEmail">Over email</system:String>
     <system:String x:Key="Loading">Načitávanie...</system:String>
+    <system:String x:Key="Register">Registrácia</system:String>
+    <system:String x:Key="SendResetPasswordEmail">Resetuj heslo pomocou emailu</system:String>
+    <system:String x:Key="ForgottenPassword">Zabudol si heslo ?</system:String>
+    <system:String x:Key="Success">Všetko prebehlo vporiadku</system:String>
 
     <!--Tabs-->
     <system:String x:Key="Officers">Uradnici</system:String>

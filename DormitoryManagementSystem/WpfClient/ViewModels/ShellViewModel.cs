@@ -6,9 +6,7 @@ namespace WpfClient.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
-        private readonly IEventAggregator _eventAggregator;
         private readonly SimpleContainer _simpleContainer;
-        private readonly ResourceDictionary _language;
         private bool _isEnglish = true;
         private bool _isSlovak = false;
         private bool _isLoggedIn = false;
@@ -33,9 +31,9 @@ namespace WpfClient.ViewModels
 
         public ShellViewModel(IEventAggregator eventAggregator, SimpleContainer simpleContainer)
         {
-            _eventAggregator = eventAggregator;
             _simpleContainer = simpleContainer;
-            _language = IoC.Get<ResourceDictionary>("language");
+
+            eventAggregator.Subscribe(this);
         }
 
         protected override void OnViewLoaded(object view)
@@ -47,7 +45,7 @@ namespace WpfClient.ViewModels
         public void ChangeLanguage(string language)
         {
             _simpleContainer.UnregisterHandler<ResourceDictionary>("language");
-            Application.Current.Resources.MergedDictionaries.Remove(_language);
+            Application.Current.Resources.MergedDictionaries.Remove(IoC.Get<ResourceDictionary>("language"));
 
             var dictionary = new ResourceDictionary
             {

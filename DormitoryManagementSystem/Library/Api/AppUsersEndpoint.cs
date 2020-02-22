@@ -46,5 +46,15 @@ namespace Library.Api
 
             return PropertiesResultModel.Succesful;
         }
+
+        public async Task<PropertiesResultModel> ResetPassword(string email)
+        {
+            var response = await _apiHelper.Client.GetAsync($"appUsers/forgotten-password?email={email}");
+
+            if (!response.IsSuccessStatusCode)
+                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+
+            return PropertiesResultModel.Succesful;
+        }
     }
 }

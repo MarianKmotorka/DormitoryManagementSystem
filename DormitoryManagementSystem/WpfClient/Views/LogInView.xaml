@@ -34,17 +34,37 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="{DynamicResource LogIn}" FontSize="40" Margin="10 0 0 20" Foreground="Orange" />
+
                 <StackPanel Grid.Row="1">
                     <TextBox x:Name="Email" materialDesign:HintAssist.Hint="{DynamicResource Email}" Margin="10"/>
                     <PasswordBox x:Name="Password" materialDesign:HintAssist.Hint="{DynamicResource Password}" Margin="10"/>
                     <Button x:Name="LogIn" Content="{DynamicResource LogIn}" />
                     <Button x:Name="SendConfirmEmail" Content="{DynamicResource ConfirmEmail}" Visibility="{Binding NeedConfirmEmail, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 </StackPanel>
+
                 <TextBlock Text="{Binding Error}" Foreground="Red" FontSize="15" Grid.Row="2" Margin="10" Visibility="{Binding Loading, Converter={StaticResource InverseBoolToVisConverter}}"/>
+                <TextBlock Text="{DynamicResource Success}" Foreground="Green" FontSize="15" Grid.Row="2" Margin="10" Visibility="{Binding Success, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
                 <StackPanel Grid.Row="2" Margin="10" Orientation="Horizontal" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Height="25" Width="25" VerticalAlignment="Center"/>
                     <TextBlock Text="{DynamicResource Loading}" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
                 </StackPanel>
+
+                <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Margin="20 0 0 110">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="{DynamicResource ForgottenPassword}" Margin="10 0 10 5" FontSize="18"/>
+                        <Button x:Name="SendResetPasswordEmail" Content="{DynamicResource SendResetPasswordEmail}" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Margin="10 0 10 0"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="{DynamicResource Register}" Margin="10 0 10 5" FontSize="18"/>
+                        <Button x:Name="Register" Content="{DynamicResource Register}" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Margin="10 0"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </materialDesign:Card>
     </Grid>

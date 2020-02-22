@@ -83,6 +83,8 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="ControlsHelpers\PasswordBoxHelper.cs" />
+    <Compile Include="Events\LoggedInEvent.cs" />
+    <Compile Include="Events\OpenRegisterFormEvent.cs" />
     <Compile Include="Validation\LengthValidationRule.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="Validation\NotifyDataErrorInfoBase.cs" />
@@ -123,9 +125,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="Resources\lang.en.xaml">
       <SubType>Designer</SubType>

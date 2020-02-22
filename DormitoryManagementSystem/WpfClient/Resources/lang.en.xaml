@@ -14,6 +14,10 @@
     <system:String x:Key="Password">Password</system:String>
     <system:String x:Key="ConfirmEmail">Confirm email</system:String>
     <system:String x:Key="Loading">Loading...</system:String>
+    <system:String x:Key="Register">Register</system:String>
+    <system:String x:Key="SendResetPasswordEmail">Send reset password email</system:String>
+    <system:String x:Key="ForgottenPassword">Forgot your password ?</system:String>
+    <system:String x:Key="Success">Success</system:String>
 
     <!--Tabs-->
     <system:String x:Key="Officers">Officers</system:String>
