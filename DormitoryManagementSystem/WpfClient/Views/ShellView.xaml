@@ -6,19 +6,22 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         xmlns:cal="http://www.caliburnproject.org"
-        Title="{DynamicResource DormitoryManagementSystem}" Height="450" Width="800" WindowState="Maximized" WindowStyle="SingleBorderWindow">
+        Icon="..\Resources\icon.ico"
+        Title="{DynamicResource DormitoryManagementSystem}" 
+        Height="450" Width="800" WindowState="Maximized" WindowStyle="SingleBorderWindow">
 
     <Window.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
-            <Setter Property="Padding" Value="20 0 0 0"/>
+            <Setter Property="Padding" Value="10 0 10 0"/>
             <Setter Property="Margin" Value="10 2"/>
-            <Setter Property="MinWidth" Value="200"/>
+            <Setter Property="MinWidth" Value="215"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="Height" Value="50"/>
         </Style>
 
         <Style TargetType="Menu" BasedOn="{StaticResource MaterialDesignMenu}">
-            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Background" Value="#3f51b5"/>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
     </Window.Resources>
 
@@ -27,7 +30,7 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="{DynamicResource Account}">
                 <MenuItem.Icon>
-                    <materialDesign:PackIcon Kind="AccountCircleOutline" />
+                    <materialDesign:PackIcon Kind="AccountCircleOutline" Height="18" Width="18"/>
                 </MenuItem.Icon>
                 <MenuItem x:Name="LogOut" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <MenuItem.Header>
@@ -49,7 +52,7 @@
 
             <MenuItem Header="{DynamicResource Language}">
                 <MenuItem.Icon>
-                    <materialDesign:PackIcon Kind="LanguageBox" />
+                    <materialDesign:PackIcon Kind="LanguageBox" Height="18" Width="18" />
                 </MenuItem.Icon>
                 <MenuItem IsCheckable="True" Header="SK" IsChecked="{Binding IsSlovak}" cal:Message.Attach="[Event Click] = [ChangeLanguage('sk')]"
                           IsEnabled="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource InverseBoolConverter}}"/>
@@ -61,15 +64,40 @@
         <!--TABS-->
         <StackPanel DockPanel.Dock="Left" Margin="0 20 0 0" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
 
-            <Button Content="{DynamicResource Repairers}" cal:Message.Attach="[Event Click] = [OpenTab('Repairers')]" />
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('Repairers')]">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ProgressWrench" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource Repairers}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
 
-            <Button Content="{DynamicResource Officers}" cal:Message.Attach="[Event Click] = [OpenTab('Officers')]" />
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('Officers')]" >
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Briefcase" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource Officers}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
 
-            <Button Content="{DynamicResource Guests}" cal:Message.Attach="[Event Click] = [OpenTab('Guests')]"/>
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('Guests')]">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="PersonGroupOutline" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource Guests}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
 
-            <Button Content="{DynamicResource RepairRequests}" cal:Message.Attach="[Event Click] = [OpenTab('RepairRequests')]" />
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('RepairRequests')]">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="TrophyBroken" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource RepairRequests}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
 
-            <Button Content="{DynamicResource AccomodationRequests}" cal:Message.Attach="[Event Click] = [OpenTab('AccomodationRequests')]"/>
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('AccomodationRequests')]">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="HouseCityOutline" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource AccomodationRequests}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
 
         </StackPanel>
 

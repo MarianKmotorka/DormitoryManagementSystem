@@ -5,22 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             xmlns:cal="http://www.caliburnproject.org" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="0 10 10 15"/>
-            <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="Green"/>
-            <Setter Property="materialDesign:HintAssist.Foreground" Value="Green"/>
+            <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="Orange"/>
+            <Setter Property="materialDesign:HintAssist.Foreground" Value="Orange"/>
             <Setter Property="materialDesign:TextFieldAssist.HasClearButton" Value="True"/>
         </Style>
     </UserControl.Resources>
 
-    <materialDesign:Card Margin="13">
+    <materialDesign:Card Margin="30">
         <DockPanel Margin="60">
-            <TextBlock Text="{DynamicResource Register}" FontSize="40" DockPanel.Dock="Top" Foreground="Green"/>
+            <TextBlock Text="{DynamicResource Register}" FontSize="40" DockPanel.Dock="Top" Foreground="#3f51b5"/>
             <Grid Margin="0 10 0 0" DockPanel.Dock="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -30,7 +29,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="5*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -64,11 +63,10 @@
                     <TextBox materialDesign:HintAssist.Hint="{DynamicResource PostCode}" Text="{Binding Model.PostCode, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
-                <Button x:Name="Register" Content="{DynamicResource Register}" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" Background="Green" HorizontalContentAlignment="Center"
-                        IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolConverter}}" Padding="0 0 5 0"/>
+                <Button x:Name="Register" Content="{DynamicResource Register}" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" HorizontalContentAlignment="Center" IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolConverter}}" Padding="0 0 5 0"/>
 
                 <StackPanel Grid.Row="1" Grid.Column="3" Margin="10" Orientation="Horizontal" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Height="25" Width="25" VerticalAlignment="Center"/>
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Foreground="#3f51b5" Value="0" IsIndeterminate="True" Height="25" Width="25" VerticalAlignment="Center"/>
                     <TextBlock Text="{DynamicResource Loading}" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
                 </StackPanel>
 
