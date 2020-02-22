@@ -3,11 +3,12 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!--Menu-->
-    <system:String x:Key="LogOut">Log Out</system:String>
-    <system:String x:Key="LogIn">Log In</system:String>
+    <system:String x:Key="LogOut">Logout</system:String>
+    <system:String x:Key="LogIn">Sign in</system:String>
     <system:String x:Key="Account">Account</system:String>
     <system:String x:Key="Language">Language</system:String>
     <system:String x:Key="DormitoryManagementSystem">Dormitory management system</system:String>
+
 
     <!--LogIn-->
     <system:String x:Key="Email">Email address</system:String>
@@ -18,6 +19,20 @@
     <system:String x:Key="SendResetPasswordEmail">Send reset password email</system:String>
     <system:String x:Key="ForgottenPassword">Forgot your password ?</system:String>
     <system:String x:Key="Success">Success</system:String>
+
+
+    <!--Registration-->
+    <system:String x:Key="FirstName">First name</system:String>
+    <system:String x:Key="LastName">Last name</system:String>
+    <system:String x:Key="IdCardNumber">ID card number</system:String>
+    <system:String x:Key="DistanceFromHome">Distance from home</system:String>
+    <system:String x:Key="PhoneNumber">Phone number</system:String>
+    <system:String x:Key="Country">Country</system:String>
+    <system:String x:Key="City">City</system:String>
+    <system:String x:Key="Street">Street</system:String>
+    <system:String x:Key="HouseNumber">House Number</system:String>
+    <system:String x:Key="PostCode">Post Code</system:String>
+
 
     <!--Tabs-->
     <system:String x:Key="Officers">Officers</system:String>
@@ -30,7 +45,7 @@
     <!--Error messages-->
     <system:String x:Key="Required">Required</system:String>
     <system:String x:Key="Invalid">Invalid</system:String>
-    <system:String x:Key="MinLength">Min length:</system:String>
+    <system:String x:Key="MinLength6">Min length: 6</system:String>
     <system:String x:Key="MaxLength">Max length:</system:String>
 
     <system:String x:Key="EmailNotFound">User with entered email does not exist</system:String>

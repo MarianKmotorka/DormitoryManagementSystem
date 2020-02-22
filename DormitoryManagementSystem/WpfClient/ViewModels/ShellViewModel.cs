@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Windows;
 using Caliburn.Micro;
+using Library.Api.Interfaces;
+using WpfClient.Events;
 
 namespace WpfClient.ViewModels
 {
-    public class ShellViewModel : Conductor<object>
+    public class ShellViewModel : Conductor<object>, IHandle<OpenRegisterGuestFormEvent>, IHandle<LoggedInEvent>,
+        IHandle<GuestRegisteredEvent>
     {
         private readonly SimpleContainer _simpleContainer;
+        private readonly IApiHelper _apiHelper;
         private bool _isEnglish = true;
         private bool _isSlovak = false;
         private bool _isLoggedIn = false;
@@ -29,10 +33,11 @@ namespace WpfClient.ViewModels
             set { _isLoggedIn = value; NotifyOfPropertyChange(nameof(IsLoggedIn)); }
         }
 
-        public ShellViewModel(IEventAggregator eventAggregator, SimpleContainer simpleContainer)
+        public ShellViewModel(IEventAggregator eventAggregator, SimpleContainer simpleContainer,
+            IApiHelper apiHelper)
         {
             _simpleContainer = simpleContainer;
-
+            _apiHelper = apiHelper;
             eventAggregator.Subscribe(this);
         }
 
@@ -64,6 +69,33 @@ namespace WpfClient.ViewModels
         public void OpenTab(string name)
         {
 
+        }
+
+        public void LogIn()
+        {
+            ActivateItem(IoC.Get<LogInViewModel>());
+        }
+
+        public void LogOut()
+        {
+            _apiHelper.LogOut();
+            IsLoggedIn = false;
+            ActivateItem(IoC.Get<LogInViewModel>());
+        }
+
+        public void Handle(OpenRegisterGuestFormEvent message)
+        {
+            ActivateItem(IoC.Get<GuestRegistrationViewModel>());
+        }
+
+        public void Handle(LoggedInEvent message)
+        {
+            IsLoggedIn = true;
+        }
+
+        public void Handle(GuestRegisteredEvent message)
+        {
+            ActivateItem(IoC.Get<LogInViewModel>());
         }
     }
 }

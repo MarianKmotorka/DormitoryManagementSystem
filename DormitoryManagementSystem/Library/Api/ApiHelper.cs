@@ -24,5 +24,10 @@ namespace Library.Api
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
+
+        public void LogOut()
+        {
+            Client.DefaultRequestHeaders.Remove("Authorization");
+        }
     }
 }

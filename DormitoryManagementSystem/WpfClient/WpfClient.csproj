@@ -81,16 +81,23 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Converters\EmptyStringToZeroConverter.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="ControlsHelpers\PasswordBoxHelper.cs" />
+    <Compile Include="Events\GuestRegisteredEvent.cs" />
     <Compile Include="Events\LoggedInEvent.cs" />
-    <Compile Include="Events\OpenRegisterFormEvent.cs" />
+    <Compile Include="Events\OpenRegisterGuestFormEvent.cs" />
+    <Compile Include="Models\GuestRegistrationModelWrapper.cs" />
     <Compile Include="Validation\LengthValidationRule.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="Validation\NotifyDataErrorInfoBase.cs" />
     <Compile Include="Validation\ValidationWrapper.cs" />
+    <Compile Include="ViewModels\GuestRegistrationViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\GuestRegistrationView.xaml.cs">
+      <DependentUpon>GuestRegistrationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LogInView.xaml.cs">
       <DependentUpon>LogInView.xaml</DependentUpon>
     </Compile>
@@ -132,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\lang.sk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GuestRegistrationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

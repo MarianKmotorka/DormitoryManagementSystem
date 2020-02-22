@@ -10,35 +10,13 @@
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="Bootstrapper"/>
                     <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                    <converters:EmptyStringToZeroConverter x:Key="EmptyStringToZeroConverter"/>
                 </ResourceDictionary>
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.LightBlue.xaml" />
-
-                <!--<ResourceDictionary>
-                    <Style TargetType="TextBox">
-                        <Style.Triggers>
-                            <Trigger Property="Validation.HasError" Value="true">
-                                <Setter Property="Background" Value="Red"/>
-                                <Setter Property="ToolTip" 
-                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
-                                <Setter Property="Validation.ErrorTemplate">
-                                    <Setter.Value>
-                                        <ControlTemplate>
-                                            <StackPanel>
-                                                <AdornedElementPlaceholder x:Name="placeHolder"/>
-                                                <TextBlock Text="{Binding ElementName=placeHolder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
-                                               FontSize="15" Foreground="Red" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
-                                            </StackPanel>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ResourceDictionary>-->
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

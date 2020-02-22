@@ -26,6 +26,9 @@
         <!--MENU-->
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="{DynamicResource Account}">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="AccountCircleOutline" />
+                </MenuItem.Icon>
                 <MenuItem x:Name="LogOut" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -45,6 +48,9 @@
             </MenuItem>
 
             <MenuItem Header="{DynamicResource Language}">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="LanguageBox" />
+                </MenuItem.Icon>
                 <MenuItem IsCheckable="True" Header="SK" IsChecked="{Binding IsSlovak}" cal:Message.Attach="[Event Click] = [ChangeLanguage('sk')]"
                           IsEnabled="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource InverseBoolConverter}}"/>
                 <MenuItem IsCheckable="True" Header="EN" IsChecked="{Binding IsEnglish}" cal:Message.Attach="[Event Click] = [ChangeLanguage('en')]"

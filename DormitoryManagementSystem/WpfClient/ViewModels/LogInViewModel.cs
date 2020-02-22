@@ -74,6 +74,7 @@ namespace WpfClient.ViewModels
 
                 if (result.Error == "EmailNotConfirmed")
                     NeedConfirmEmail = true;
+                return;
             }
 
             _eventAggregator.PublishOnUIThread(new LoggedInEvent());
@@ -118,7 +119,7 @@ namespace WpfClient.ViewModels
 
         public void Register()
         {
-            _eventAggregator.PublishOnUIThread(new OpenRegisterFormEvent());
+            _eventAggregator.PublishOnUIThread(new OpenRegisterGuestFormEvent());
         }
 
         private void ResetBeforeRequest()

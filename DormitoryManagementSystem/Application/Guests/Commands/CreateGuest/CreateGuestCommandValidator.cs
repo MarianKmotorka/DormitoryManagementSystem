@@ -19,7 +19,9 @@ namespace Application.Guests.Commands.CreateGuest
 
             RuleFor(x => x.PhoneNumber).NotEmpty().WithMessage(ErrorMessages.Required);
 
-            RuleFor(x => x.Password).MinimumLength(6).WithMessage(ErrorMessages.MinLength(6));
+            RuleFor(x => x.Password)
+                .NotEmpty().WithMessage(ErrorMessages.Required)
+                .MinimumLength(6).WithMessage(ErrorMessages.MinLength(6));
 
             RuleFor(x => x.Street).NotEmpty().WithMessage(ErrorMessages.Required);
 

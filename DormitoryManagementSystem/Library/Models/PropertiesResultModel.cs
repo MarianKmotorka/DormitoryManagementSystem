@@ -8,7 +8,7 @@ namespace Library.Models
 
         public bool Fail => !Success;
 
-        public IDictionary<string, string[]> Errors { get; set; }
+        public Dictionary<string, List<string>> Errors { get; set; }
 
         public static PropertiesResultModel Succesful => new PropertiesResultModel { Success = true };
     }

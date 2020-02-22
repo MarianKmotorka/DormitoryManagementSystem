@@ -37,8 +37,8 @@ namespace WpfClient
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<IWindowManager, WindowManager>();
 
-            _container
-                .RegisterPerRequest(typeof(IAppUsersEndpoint), null, typeof(AppUsersEndpoint));
+            _container.RegisterPerRequest(typeof(IAppUsersEndpoint), null, typeof(AppUsersEndpoint));
+            _container.RegisterPerRequest(typeof(IGuestsEndpoint), null, typeof(GuestsEndpoint));
 
             GetType().Assembly.GetTypes()
                 .Where(t => t.IsClass)

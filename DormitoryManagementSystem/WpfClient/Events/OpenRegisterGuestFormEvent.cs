@@ -1,6 +1,6 @@
 ﻿namespace WpfClient.Events
 {
-    public class OpenRegisterFormEvent
+    public class OpenRegisterGuestFormEvent
     {
     }
 }
