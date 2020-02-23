@@ -4,7 +4,7 @@ using Library.Api.Interfaces;
 using WpfClient.Events;
 using WpfClient.Models;
 
-namespace WpfClient.ViewModels
+namespace WpfClient.ViewModels.Guests
 {
     public class GuestRegistrationViewModel : Screen
     {
@@ -18,7 +18,7 @@ namespace WpfClient.ViewModels
             set { _loading = value; NotifyOfPropertyChange(nameof(Loading)); }
         }
 
-        public GuestRegistrationModelWrapper Model { get; set; } = new GuestRegistrationModelWrapper();
+        public GuestModelWrapper Model { get; set; } = new GuestModelWrapper();
 
         public GuestRegistrationViewModel(IEventAggregator eventAggregator, IGuestsEndpoint guestsEndpoint)
         {
@@ -28,6 +28,9 @@ namespace WpfClient.ViewModels
 
         public async Task Register()
         {
+            if (!Model.ValidateModel())
+                return;
+
             Loading = true;
 
             var result = await _guestsEndpoint.RegisterGuest(Model.Model);

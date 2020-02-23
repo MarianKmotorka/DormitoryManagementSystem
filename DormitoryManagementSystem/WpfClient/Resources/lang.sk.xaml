@@ -34,6 +34,15 @@
     <system:String x:Key="PostCode">PSČ</system:String>
 
 
+    <!--Guest-->
+    <system:String x:Key="DormitoryCardNumber">Číslo internátneeho preukazu</system:String>
+    <system:String x:Key="GuestInfo">Informácie o hosťovi</system:String>
+    <system:String x:Key="RoomNumber">Číslo izby</system:String>
+
+    <!--GENERAL-->
+    <system:String x:Key="Submit">Odoslať</system:String>
+    <system:String x:Key="Edit">Edituj</system:String>
+
     <!--Tabs-->
     <system:String x:Key="Officers">Uradnici</system:String>
     <system:String x:Key="Guests">Hostia</system:String>

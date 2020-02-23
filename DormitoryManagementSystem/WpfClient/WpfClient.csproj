@@ -46,6 +46,9 @@
     <Reference Include="Caliburn.Micro.Platform.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
     </Reference>
+    <Reference Include="FluentWPF, Version=0.8.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentWPF.0.8.0\lib\net45\FluentWPF.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.2.2.920, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.2.2\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -87,15 +90,19 @@
     <Compile Include="Events\GuestRegisteredEvent.cs" />
     <Compile Include="Events\LoggedInEvent.cs" />
     <Compile Include="Events\OpenRegisterGuestFormEvent.cs" />
-    <Compile Include="Models\GuestRegistrationModelWrapper.cs" />
+    <Compile Include="Models\GuestModelWrapper.cs" />
     <Compile Include="Validation\LengthValidationRule.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="Validation\NotifyDataErrorInfoBase.cs" />
     <Compile Include="Validation\ValidationWrapper.cs" />
-    <Compile Include="ViewModels\GuestRegistrationViewModel.cs" />
+    <Compile Include="ViewModels\Guests\GuestDetailViewModel.cs" />
+    <Compile Include="ViewModels\Guests\GuestRegistrationViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\GuestRegistrationView.xaml.cs">
+    <Compile Include="Views\Guests\GuestDetailView.xaml.cs">
+      <DependentUpon>GuestDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Guests\GuestRegistrationView.xaml.cs">
       <DependentUpon>GuestRegistrationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LogInView.xaml.cs">
@@ -133,9 +140,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Resources\lang.en.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,7 +148,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GuestRegistrationView.xaml">
+    <Page Include="Views\Guests\GuestDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Guests\GuestRegistrationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,6 +170,9 @@
       <Project>{E62D4707-390D-405B-809C-DE0DB92B590A}</Project>
       <Name>Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bluehouse.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.0.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.0.1\build\MaterialDesignThemes.targets')" />

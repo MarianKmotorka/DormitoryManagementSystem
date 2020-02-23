@@ -1,11 +1,11 @@
-﻿using Library.Models;
+﻿using Library.Models.Guests;
 using WpfClient.Validation;
 
 namespace WpfClient.Models
 {
-    public class GuestRegistrationModelWrapper : ValidationWrapper<GuestRegistrationModel>
+    public class GuestModelWrapper : ValidationWrapper<GuestModel>
     {
-        public GuestRegistrationModelWrapper() : base(new GuestRegistrationModel())
+        public GuestModelWrapper() : base(new GuestModel())
         {
         }
 
@@ -79,6 +79,18 @@ namespace WpfClient.Models
         public int DistanceFromHome
         {
             get => GetValue<int>();
+            set => SetValue(value);
+        }
+
+        public string DormitoryCardNumber
+        {
+            get => GetValue<string>();
+            set => SetValue(value);
+        }
+
+        public string RoomNumber
+        {
+            get => GetValue<string>();
             set => SetValue(value);
         }
     }

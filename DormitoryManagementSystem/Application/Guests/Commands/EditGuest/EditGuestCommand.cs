@@ -1,17 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MediatR;
+using Newtonsoft.Json;
 
-namespace Library.Models
+namespace Application.Guests.Commands.EditGuest
 {
-    public class GuestRegistrationModel
+    public class EditGuestCommand : IRequest
     {
-        [Required(ErrorMessage = "Required")]
+        [JsonIgnore]
+        public string Id { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public string Email { get; set; }
-
-        public string Password { get; set; }
 
         public string PhoneNumber { get; set; }
 
@@ -25,7 +24,9 @@ namespace Library.Models
 
         public string PostCode { get; set; }
 
-        public string IdCardNumber { get; set; }
+        public string RoomNumber { get; set; }
+
+        public string DormitoryCardNumber { get; set; }
 
         public int DistanceFromHome { get; set; }
     }

@@ -3,6 +3,7 @@ using Application.AccomodationRequests.Queries.GetAccomodationRequestList;
 using Application.Common.Pagination;
 using Application.Guests.Commands.CreateGuest;
 using Application.Guests.Commands.DeleteGuest;
+using Application.Guests.Commands.EditGuest;
 using Application.Guests.Queries.GetGuestDetail;
 using Application.Guests.Queries.GetGuestList;
 using Application.Guests.Queries.GetMyAccomodationRequestList;
@@ -86,6 +87,15 @@ namespace WebApi.Controllers
         public async Task<ActionResult> DeleteGuest(string id)
         {
             await Mediator.Send(new DeleteGuestCommand { Id = id });
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        //[Authorize(PolicyNames.Officer)]
+        public async Task<ActionResult> EditGuest(string id, [FromBody]EditGuestCommand request)
+        {
+            request.Id = id;
+            await Mediator.Send(request);
             return NoContent();
         }
     }

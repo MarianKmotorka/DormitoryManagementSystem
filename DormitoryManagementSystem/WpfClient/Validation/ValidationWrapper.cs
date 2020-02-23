@@ -14,6 +14,23 @@ namespace WpfClient.Validation
 
         public T Model { get; set; }
 
+        public bool ValidateModel()
+        {
+            typeof(T).GetProperties()
+                .Select(x => new { x.Name, Value = x.GetValue(Model) })
+                .ToList()
+                .ForEach(x => ValidatePropertyInternal(x.Name, x.Value));
+
+            return !HasErrors;
+
+        }
+        protected void ValidatePropertyInternal(string propertyName, object currentValue)
+        {
+            ClearErrors(propertyName);
+            ValidateCustomErrors(propertyName);
+            ValidateDataAnnotations(propertyName, currentValue);
+        }
+
         protected virtual TValue GetValue<TValue>([CallerMemberName]string propertyName = null)
         {
             return (TValue)typeof(T).GetProperty(propertyName).GetValue(Model);
@@ -29,13 +46,6 @@ namespace WpfClient.Validation
         protected virtual IEnumerable<string> ValidateProperty(string propertyName)
         {
             return null;
-        }
-
-        private void ValidatePropertyInternal(string propertyName, object currentValue)
-        {
-            ClearErrors(propertyName);
-            ValidateCustomErrors(propertyName);
-            ValidateDataAnnotations(propertyName, currentValue);
         }
 
         private void ValidateDataAnnotations(string propertyName, object currentValue)

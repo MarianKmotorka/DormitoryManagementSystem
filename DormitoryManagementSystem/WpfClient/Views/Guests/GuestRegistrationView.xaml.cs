@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace WpfClient.Views
+namespace WpfClient.Views.Guests
 {
     /// <summary>
     /// Interaction logic for GuestRegistrationView.xaml

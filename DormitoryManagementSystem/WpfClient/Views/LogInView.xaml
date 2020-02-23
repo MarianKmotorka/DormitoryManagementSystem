@@ -43,7 +43,7 @@
                             IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolConverter}}"/>
                 </StackPanel>
 
-                <!--INFO-->
+                <!--LOADING, ERROR, SUCCESS-->
                 <TextBlock Text="{Binding Error}" Foreground="Red" FontSize="15" Grid.Row="2" Margin="10" Visibility="{Binding Loading, Converter={StaticResource InverseBoolToVisConverter}}"/>
                 <TextBlock Text="{DynamicResource Success}" Foreground="Green" FontSize="15" Grid.Row="2" Margin="10" Visibility="{Binding Success, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 

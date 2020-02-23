@@ -3,6 +3,7 @@ using System.Windows;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
 using WpfClient.Events;
+using WpfClient.ViewModels.Guests;
 
 namespace WpfClient.ViewModels
 {
@@ -91,6 +92,7 @@ namespace WpfClient.ViewModels
         public void Handle(LoggedInEvent message)
         {
             IsLoggedIn = true;
+            ActivateItem(IoC.Get<GuestDetailViewModel>());
         }
 
         public void Handle(GuestRegisteredEvent message)
