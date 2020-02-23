@@ -2,6 +2,7 @@
 using System.Windows;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
+using Library.Models;
 using WpfClient.Events;
 using WpfClient.ViewModels.Guests;
 
@@ -12,9 +13,32 @@ namespace WpfClient.ViewModels
     {
         private readonly SimpleContainer _simpleContainer;
         private readonly IApiHelper _apiHelper;
+        private readonly CurrentUser _currentUser;
         private bool _isEnglish = true;
         private bool _isSlovak = false;
         private bool _isLoggedIn = false;
+
+        #region Tabs Visibility Properties
+
+        public bool OfficersVisible => _currentUser.Role == RoleNames.SysAdmin;
+
+        public bool RegisterOfficerVisible => _currentUser.Role == RoleNames.SysAdmin;
+
+        public bool RepairersVisible => _currentUser.Role == RoleNames.SysAdmin || _currentUser.Role == RoleNames.Officer;
+
+        public bool GuestsVisible => _currentUser.Role == RoleNames.SysAdmin || _currentUser.Role == RoleNames.Officer;
+
+        public bool AccomodationRequestsVisible => _currentUser.Role != RoleNames.Repairer;
+
+        public bool RegisterRepairerVisible => _currentUser.Role == RoleNames.SysAdmin || _currentUser.Role == RoleNames.Officer;
+
+        public bool RoomsVisible => _currentUser.Role == RoleNames.SysAdmin || _currentUser.Role == RoleNames.Officer;
+
+        public bool MyRoomVisible => _currentUser.Role == RoleNames.Guest;
+
+        public bool RepairRequestsVisible => _currentUser.Role == RoleNames.Guest || _currentUser.Role == RoleNames.Repairer;
+
+        #endregion
 
         public bool IsEnglish
         {
@@ -35,10 +59,12 @@ namespace WpfClient.ViewModels
         }
 
         public ShellViewModel(IEventAggregator eventAggregator, SimpleContainer simpleContainer,
-            IApiHelper apiHelper)
+            IApiHelper apiHelper, CurrentUser currentUser)
         {
             _simpleContainer = simpleContainer;
             _apiHelper = apiHelper;
+            _currentUser = currentUser;
+
             eventAggregator.Subscribe(this);
         }
 
@@ -92,7 +118,31 @@ namespace WpfClient.ViewModels
         public void Handle(LoggedInEvent message)
         {
             IsLoggedIn = true;
-            ActivateItem(IoC.Get<GuestDetailViewModel>());
+
+            switch (_currentUser.Role)
+            {
+                case RoleNames.Guest:
+                    ActivateItem(IoC.Get<GuestDetailViewModel>());
+                    break;
+                case RoleNames.Officer:
+                    break;
+                case RoleNames.SysAdmin:
+                    break;
+                case RoleNames.Repairer:
+                    break;
+                default:
+                    throw new NotSupportedException("Not supported role");
+            }
+
+            NotifyOfPropertyChange(nameof(OfficersVisible));
+            NotifyOfPropertyChange(nameof(RegisterOfficerVisible));
+            NotifyOfPropertyChange(nameof(RepairersVisible));
+            NotifyOfPropertyChange(nameof(GuestsVisible));
+            NotifyOfPropertyChange(nameof(AccomodationRequestsVisible));
+            NotifyOfPropertyChange(nameof(RegisterRepairerVisible));
+            NotifyOfPropertyChange(nameof(RoomsVisible));
+            NotifyOfPropertyChange(nameof(MyRoomVisible));
+            NotifyOfPropertyChange(nameof(RepairRequestsVisible));
         }
 
         public void Handle(GuestRegisteredEvent message)

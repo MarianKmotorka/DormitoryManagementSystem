@@ -14,12 +14,19 @@ namespace WpfClient.Validation
 
         public T Model { get; set; }
 
-        public bool ValidateModel()
+        public bool ValidateModel(params string[] omitProperties)
         {
-            typeof(T).GetProperties()
-                .Select(x => new { x.Name, Value = x.GetValue(Model) })
-                .ToList()
-                .ForEach(x => ValidatePropertyInternal(x.Name, x.Value));
+            var properties = typeof(T).GetProperties()
+                .Select(x => new { x.Name, Value = x.GetValue(Model) });
+
+            foreach (var property in properties)
+            {
+                if (omitProperties.Contains(property.Name))
+                    continue;
+
+                ValidatePropertyInternal(property.Name, property.Value);
+            }
+
 
             return !HasErrors;
 

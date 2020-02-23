@@ -12,7 +12,7 @@
         fw:AcrylicWindow.Enabled="True"
         Icon="..\Resources\bluehouse.png"
         Title="{DynamicResource DormitoryManagementSystem}" 
-        Height="450" Width="800" WindowState="Maximized" >
+        MinHeight="750" MinWidth="1100" WindowState="Maximized" >
 
     <Window.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
@@ -67,41 +67,83 @@
 
         <!--TABS-->
         <StackPanel DockPanel.Dock="Left" Margin="0 20 0 0" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('MyInfo')]" >
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="InfoCircle" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource MyInfo}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
 
-            <Button cal:Message.Attach="[Event Click] = [OpenTab('Repairers')]">
+            <!--ONLY ADMIN-->
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('Officers')]" Visibility="{Binding OfficersVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="AccountTieOutline" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource Officers}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
+
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('RegisterOfficer')]" Visibility="{Binding RegisterOfficerVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="PersonAddOutline" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource RegisterOfficer}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
+
+            <!--OFFICER TABS-->
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('Repairers')]" Visibility="{Binding RepairersVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ProgressWrench" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
                     <TextBlock Text="{DynamicResource Repairers}" VerticalAlignment="Center" FontSize="17"/>
                 </StackPanel>
             </Button>
 
-            <Button cal:Message.Attach="[Event Click] = [OpenTab('Officers')]" >
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Briefcase" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
-                    <TextBlock Text="{DynamicResource Officers}" VerticalAlignment="Center" FontSize="17"/>
-                </StackPanel>
-            </Button>
-
-            <Button cal:Message.Attach="[Event Click] = [OpenTab('Guests')]">
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('Guests')]" Visibility="{Binding GuestsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="PersonGroupOutline" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
                     <TextBlock Text="{DynamicResource Guests}" VerticalAlignment="Center" FontSize="17"/>
                 </StackPanel>
             </Button>
 
-            <Button cal:Message.Attach="[Event Click] = [OpenTab('RepairRequests')]">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="TrophyBroken" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
-                    <TextBlock Text="{DynamicResource RepairRequests}" VerticalAlignment="Center" FontSize="17"/>
-                </StackPanel>
-            </Button>
-
-            <Button cal:Message.Attach="[Event Click] = [OpenTab('AccomodationRequests')]">
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('AccomodationRequests')]" Visibility="{Binding AccomodationRequestsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="HouseCityOutline" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
                     <TextBlock Text="{DynamicResource AccomodationRequests}" VerticalAlignment="Center" FontSize="17"/>
                 </StackPanel>
             </Button>
+
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('RegisterRepairer')]" Visibility="{Binding RegisterRepairerVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="PersonAddOutline" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource RegisterRepairer}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
+
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('Rooms')]" Visibility="{Binding RoomsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Bed" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource Rooms}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
+
+
+            <!--GUEST TABS-->
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('RepairRequests')]" Visibility="{Binding RepairRequestsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ProgressWrench" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource RepairRequests}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
+
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('MyRoom')]" Visibility="{Binding MyRoomVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Bed" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource MyRoom}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
+
+
+
+
 
         </StackPanel>
 

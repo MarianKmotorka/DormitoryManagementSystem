@@ -91,6 +91,7 @@
     <Compile Include="Events\LoggedInEvent.cs" />
     <Compile Include="Events\OpenRegisterGuestFormEvent.cs" />
     <Compile Include="Models\GuestModelWrapper.cs" />
+    <Compile Include="RoleNames.cs" />
     <Compile Include="Validation\LengthValidationRule.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="Validation\NotifyDataErrorInfoBase.cs" />

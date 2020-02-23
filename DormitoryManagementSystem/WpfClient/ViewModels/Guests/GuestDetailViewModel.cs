@@ -50,8 +50,7 @@ namespace WpfClient.ViewModels.Guests
         {
             EditedSuccessfully = false;
 
-            //TODO this will fail on edit because of password being required on model..... add parameter to VAlidateModel to omit properties
-            if (!Model.ValidateModel())
+            if (!Model.ValidateModel(nameof(Model.Password)))
                 return;
 
             Loading = true;

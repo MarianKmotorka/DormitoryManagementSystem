@@ -48,6 +48,11 @@
     <system:String x:Key="Repairers">Repairers</system:String>
     <system:String x:Key="RepairRequests">Repair requests</system:String>
     <system:String x:Key="AccomodationRequests">Accomodation requests</system:String>
+    <system:String x:Key="RegisterRepairer">Register repairer</system:String>
+    <system:String x:Key="RegisterOfficer">Register officer</system:String>
+    <system:String x:Key="Rooms">Rooms</system:String>
+    <system:String x:Key="MyInfo">My info</system:String>
+    <system:String x:Key="MyRoom">My room</system:String>
 
 
     <!--Error messages-->
