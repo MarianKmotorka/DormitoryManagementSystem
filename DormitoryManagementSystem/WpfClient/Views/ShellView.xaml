@@ -31,7 +31,12 @@
 
     <DockPanel>
         <!--MENU-->
-        <Menu DockPanel.Dock="Top">
+        <Menu DockPanel.Dock="Top" >
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
             <MenuItem Header="{DynamicResource Account}">
                 <MenuItem.Icon>
                     <materialDesign:PackIcon Kind="AccountCircleOutline" Height="18" Width="18"/>
@@ -62,6 +67,13 @@
                           IsEnabled="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource InverseBoolConverter}}"/>
                 <MenuItem IsCheckable="True" Header="EN" IsChecked="{Binding IsEnglish}" cal:Message.Attach="[Event Click] = [ChangeLanguage('en')]"
                           IsEnabled="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource InverseBoolConverter}}"/>
+            </MenuItem>
+
+            <MenuItem HorizontalAlignment="Right" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}" IsHitTestVisible="False">
+                <MenuItem.Header>
+                    <materialDesign:Chip Content="{Binding UserName}" Icon="{Binding UserName[0]}" />
+                </MenuItem.Header>
+                <MenuItem Header="BLABLBLAB"/>
             </MenuItem>
         </Menu>
 

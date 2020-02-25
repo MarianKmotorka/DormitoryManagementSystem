@@ -3,16 +3,19 @@ using System.Threading.Tasks;
 using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.AppUsers.Commands.Login
 {
     public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
     {
         private readonly IIdentityService _identityService;
+        private readonly IDormitoryDbContext _db;
 
-        public LoginCommandHandler(IIdentityService identityService)
+        public LoginCommandHandler(IIdentityService identityService, IDormitoryDbContext db)
         {
             _identityService = identityService;
+            _db = db;
         }
 
         public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -24,11 +27,14 @@ namespace Application.AppUsers.Commands.Login
 
             var (_, role) = await _identityService.GetRole(request.Email);
 
+            var user = await _db.Users.SingleAsync(x => x.Email == request.Email, cancellationToken);
+
             return new LoginResponse
             {
                 Jwt = jwt,
                 RefreshToken = refreshToken,
-                Role = role
+                Role = role,
+                UserName = $"{user.FirstName} {user.LastName}"
             };
         }
     }

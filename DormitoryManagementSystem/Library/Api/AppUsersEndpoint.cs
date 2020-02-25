@@ -30,7 +30,7 @@ namespace Library.Api
             _currentUser.Jwt = currentUser.Jwt;
             _currentUser.Role = currentUser.Role;
             _currentUser.RefreshToken = currentUser.RefreshToken;
-            _currentUser.Name = currentUser.Name;
+            _currentUser.UserName = currentUser.UserName;
 
             _apiHelper.Client.DefaultRequestHeaders.Add("Authorization", $"bearer {currentUser.Jwt}");
 

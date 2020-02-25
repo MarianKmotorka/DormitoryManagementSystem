@@ -58,6 +58,8 @@ namespace WpfClient.ViewModels
             set { _isLoggedIn = value; NotifyOfPropertyChange(nameof(IsLoggedIn)); }
         }
 
+        public string UserName { get; set; }
+
         public ShellViewModel(IEventAggregator eventAggregator, SimpleContainer simpleContainer,
             IApiHelper apiHelper, CurrentUser currentUser)
         {
@@ -134,6 +136,8 @@ namespace WpfClient.ViewModels
                     throw new NotSupportedException("Not supported role");
             }
 
+            UserName = _currentUser.UserName;
+
             NotifyOfPropertyChange(nameof(OfficersVisible));
             NotifyOfPropertyChange(nameof(RegisterOfficerVisible));
             NotifyOfPropertyChange(nameof(RepairersVisible));
@@ -143,6 +147,7 @@ namespace WpfClient.ViewModels
             NotifyOfPropertyChange(nameof(RoomsVisible));
             NotifyOfPropertyChange(nameof(MyRoomVisible));
             NotifyOfPropertyChange(nameof(RepairRequestsVisible));
+            NotifyOfPropertyChange(nameof(UserName));
         }
 
         public void Handle(GuestRegisteredEvent message)
@@ -151,3 +156,5 @@ namespace WpfClient.ViewModels
         }
     }
 }
+//TODO Add detail for officer, admin, repairer
+//TODO Add Guest table => paging, filteringm sorting
