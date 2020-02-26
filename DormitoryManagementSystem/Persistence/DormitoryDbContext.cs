@@ -27,6 +27,8 @@ namespace Persistence
 
         public DbSet<RepairRequest> RepairRequests { get; set; }
 
+        public DbSet<Office> Offices { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

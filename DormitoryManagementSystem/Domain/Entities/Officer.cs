@@ -6,7 +6,7 @@
 
         public string IdCardNumber { get; set; }
 
-        public string OfficeNumber { get; set; }
+        public Office Office { get; set; }
 
         public AppUser AppUser
         {

@@ -6,16 +6,19 @@ using Application.Common.Models;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Officers.Commands.CreateOfficer
+namespace Application.Officers.Commands.EditOfficer
 {
-    public class CreateOfficerValidator : AbstractValidator<CreateOfficerCommand>
+    public class EditOfficerCommandValidator : AbstractValidator<EditOfficerCommand>
     {
         private readonly IDormitoryDbContext _db;
 
-        public CreateOfficerValidator(IDormitoryDbContext db)
+        public EditOfficerCommandValidator(IDormitoryDbContext db) : this()
         {
             _db = db;
+        }
 
+        public EditOfficerCommandValidator()
+        {
             RuleFor(x => x.FirstName).NotEmpty().WithMessage(ErrorMessages.Required);
 
             RuleFor(x => x.LastName).NotEmpty().WithMessage(ErrorMessages.Required);
@@ -36,15 +39,7 @@ namespace Application.Officers.Commands.CreateOfficer
             RuleFor(x => x.Country).NotEmpty().WithMessage(ErrorMessages.Required);
 
             RuleFor(x => x.PostCode).NotEmpty().WithMessage(ErrorMessages.Required);
-
-            RuleFor(x => x.Email).Cascade(CascadeMode.StopOnFirstFailure)
-                .NotEmpty().WithMessage(ErrorMessages.Required)
-                .EmailAddress().WithMessage(ErrorMessages.Invalid)
-                .MustAsync(async (email, token) => !await db.Users.AnyAsync(x => x.Email.ToLower() == email.ToLower(), token)).WithMessage(ErrorMessages.EmailNotUnique);
-
-            RuleFor(x => x.IdCardNumber).NotEmpty().WithMessage(ErrorMessages.Required);
         }
-
         private async Task<bool> BeAvailable(string officeNumber, CancellationToken cancellationToken)
         {
             var office = await _db.Offices.SingleOrNotFoundAsync(x => x.Number == officeNumber, cancellationToken);
@@ -58,3 +53,4 @@ namespace Application.Officers.Commands.CreateOfficer
         }
     }
 }
+

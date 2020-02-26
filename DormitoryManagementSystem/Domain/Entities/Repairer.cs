@@ -19,5 +19,10 @@ namespace Domain.Entities
         }
 
         private AppUser _appUser;
+
+        public Repairer()
+        {
+            RepairRequests = new List<RepairRequest>();
+        }
     }
 }

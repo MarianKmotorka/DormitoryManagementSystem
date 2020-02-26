@@ -2,6 +2,7 @@
 using Application.Common.Pagination;
 using Application.Officers.Commands.CreateOfficer;
 using Application.Officers.Commands.DeleteOfficer;
+using Application.Officers.Commands.EditOfficer;
 using Application.Officers.Queries.GetOfficerDetail;
 using Application.Officers.Queries.GetOfficerList;
 using Infrastracture.Identity;
@@ -50,6 +51,15 @@ namespace WebApi.Controllers
         public async Task<ActionResult> DeleteOfficer(string id)
         {
             await Mediator.Send(new DeleteOfficerCommand { Id = id });
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        [Authorize(PolicyNames.Admin)]
+        public async Task<ActionResult> EditOfficer(string id, [FromBody]EditOfficerCommand request)
+        {
+            if (request != null) request.Id = id;
+            await Mediator.Send(request);
             return NoContent();
         }
     }

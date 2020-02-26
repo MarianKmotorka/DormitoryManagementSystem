@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Application.Common.Mappings;
+﻿using Application.Common.Mappings;
 using Application.Common.Pagination;
 using AutoMapper;
 using Domain.Entities;
@@ -26,7 +25,7 @@ namespace Application.Rooms.Queries.GetRoomList
                 })
                 .ForMember(dest => dest.FreeBeds, cfg =>
                 {
-                    cfg.MapFrom(src => src.Capacity - src.Guests.Count());
+                    cfg.MapFrom(src => src.Capacity - src.Guests.Count);
                 });
         }
 

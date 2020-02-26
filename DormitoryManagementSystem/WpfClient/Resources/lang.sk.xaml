@@ -78,7 +78,8 @@
     <system:String x:Key="StartDateMustOccurBeforeEndDate">Začiatok musí byť pred koncom</system:String>
     <system:String x:Key="MustBeInTheFuture">Musí byť v budúcnosti</system:String>
     <system:String x:Key="DateRangeOverlapsWithExisingRequest">Už existuje žiadost s prekrývajúcim sa dátumom</system:String>
-    <system:String x:Key="RoomMustBeFree">Izba musí byť voľná</system:String>
+    <system:String x:Key="RoomMustBeAvailable">Izba musí byť voľná</system:String>
+    <system:String x:Key="OfficeMustBeAvailable">Kancelária musí byť voľná</system:String>
     <system:String x:Key="RepairAlreadyRequested">Žiadosť o opravu už bola podaná</system:String>
     <system:String x:Key="CannotModifyFixed">Opravená vec už nesmie byť upravovaná</system:String>
 

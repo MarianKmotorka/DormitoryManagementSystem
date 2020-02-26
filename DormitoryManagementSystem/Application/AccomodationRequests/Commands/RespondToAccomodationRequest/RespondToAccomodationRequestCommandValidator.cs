@@ -21,10 +21,10 @@ namespace Application.AccomodationRequests.Commands.RespondToAccomodationRequest
         {
             RuleFor(x => x.RoomId).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ErrorMessages.Required).When(x => x.IsAccomodationRequestApproved)
-                .MustAsync(BeFree).WithMessage(ErrorMessages.RoomMustBeFree).When(x => x.IsAccomodationRequestApproved);
+                .MustAsync(BeAvailable).WithMessage(ErrorMessages.RoomMustBeAvailable).When(x => x.IsAccomodationRequestApproved);
         }
 
-        private async Task<bool> BeFree(int roomId, CancellationToken cancellationToken)
+        private async Task<bool> BeAvailable(int roomId, CancellationToken cancellationToken)
         {
             var room = await _db.Rooms.AsNoTracking().Include(x => x.Guests).SingleOrNotFoundAsync(x => x.Id == roomId, cancellationToken);
             return room.Capacity - room.Guests.Count > 0;

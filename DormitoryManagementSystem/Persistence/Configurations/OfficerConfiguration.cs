@@ -14,7 +14,11 @@ namespace Persistence.Configurations
                .IsRequired()
                .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property(x => x.OfficeNumber).IsRequired();
+            builder.HasOne(x => x.Office)
+                .WithMany(x => x.Officers)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.Property(x => x.IdCardNumber).IsRequired();
         }
     }

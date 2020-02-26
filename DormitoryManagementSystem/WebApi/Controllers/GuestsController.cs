@@ -91,10 +91,10 @@ namespace WebApi.Controllers
         }
 
         [HttpPatch("{id}")]
-        //[Authorize(PolicyNames.Officer)]
+        [Authorize(PolicyNames.Officer)]
         public async Task<ActionResult> EditGuest(string id, [FromBody]EditGuestCommand request)
         {
-            request.Id = id;
+            if (request != null) request.Id = id;
             await Mediator.Send(request);
             return NoContent();
         }

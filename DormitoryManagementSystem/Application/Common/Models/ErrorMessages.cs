@@ -22,7 +22,8 @@
         public const string MustBeInTheFuture = nameof(MustBeInTheFuture);
         public const string DateRangeOverlapsWithExisingRequest = nameof(DateRangeOverlapsWithExisingRequest);
 
-        public const string RoomMustBeFree = nameof(RoomMustBeFree);
+        public const string RoomMustBeAvailable = nameof(RoomMustBeAvailable);
+        public const string OfficeMustBeAvailable = nameof(OfficeMustBeAvailable);
 
         public const string RepairAlreadyRequested = nameof(RepairAlreadyRequested);
         public const string CannotModifyFixed = nameof(CannotModifyFixed);

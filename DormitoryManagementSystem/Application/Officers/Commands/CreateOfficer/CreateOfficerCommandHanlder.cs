@@ -53,11 +53,13 @@ namespace Application.Officers.Commands.CreateOfficer
 
             await _db.SaveChangesAsync(cancellationToken);
 
+            var office = await _db.Offices.SingleAsync(x => x.Number == request.OfficeNumber);
+
             var officer = new Officer
             {
                 AppUser = appUser,
                 IdCardNumber = request.IdCardNumber,
-                OfficeNumber = request.OfficeNumber
+                Office = office
             };
 
             _db.Officers.Add(officer);

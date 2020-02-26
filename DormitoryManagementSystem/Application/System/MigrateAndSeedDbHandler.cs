@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Application.Common.Enums;
 using Application.Common.Interfaces;
 using Domain.Entities;
+using Domain.ValueObjects;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -37,12 +38,26 @@ namespace Application.System
             await SeedRoles();
             await SeedAdmin();
             await SeedGuests();
+            await SeedOffices(); // Note: Must be called before SeedOfficers()
             await SeedOfficers();
             await SeedRooms(); // Note: Must be called before SeedRoomItemTypes()
             await SeedInventoryItemTypes(); // Note: Must be called before SeedRoomItemTypes()
             await SeedRoomItemTypes();
 
             return Unit.Value;
+        }
+
+        private async Task SeedOffices()
+        {
+            Enumerable.Range(1, 10)
+                .ToList()
+                .ForEach(x => _db.Offices.Add(new Office
+                {
+                    Number = $"K{x:D3}",
+                    Capacity = 4
+                }));
+
+            await _db.SaveChangesAsync(default);
         }
 
         private async Task SeedRoomItemTypes()
@@ -213,7 +228,15 @@ namespace Application.System
                 UserName = "john@guest.com",
                 EmailConfirmed = true,
                 FirstName = "John",
-                LastName = "Cena"
+                LastName = "Cena",
+                Address = new Address
+                {
+                    City = "Washington",
+                    Country = "USA",
+                    HouseNumber = "X55/9",
+                    PostCode = "088 99",
+                    Street = "Main road"
+                }
             };
 
             var bob = new AppUser
@@ -223,7 +246,15 @@ namespace Application.System
                 UserName = "bob@guest.com",
                 EmailConfirmed = true,
                 FirstName = "Bob",
-                LastName = "Ross"
+                LastName = "Ross",
+                Address = new Address
+                {
+                    City = "Topolcany",
+                    Country = "Slovensko",
+                    HouseNumber = "95/7",
+                    PostCode = "950 19",
+                    Street = "Bernolakova"
+                }
             };
 
             var jerry = new AppUser
@@ -233,7 +264,15 @@ namespace Application.System
                 UserName = "jerry@guest.com",
                 EmailConfirmed = true,
                 FirstName = "Jerry",
-                LastName = "Rig"
+                LastName = "Rig",
+                Address = new Address
+                {
+                    City = "Wien",
+                    Country = "Austria",
+                    HouseNumber = "44445",
+                    PostCode = "J45",
+                    Street = "Blume Strasse"
+                }
             };
 
             var appUsers = new[] { john, bob, jerry };
@@ -281,7 +320,15 @@ namespace Application.System
                 UserName = "john@officer.com",
                 EmailConfirmed = true,
                 FirstName = "John",
-                LastName = "Travolta"
+                LastName = "Travolta",
+                Address = new Address
+                {
+                    City = "Bratislava",
+                    Country = "Slovakia",
+                    HouseNumber = "X55/9",
+                    PostCode = "088 99",
+                    Street = "Main road"
+                }
             };
 
             var bob = new AppUser
@@ -291,7 +338,15 @@ namespace Application.System
                 UserName = "bob@officer.com",
                 EmailConfirmed = true,
                 FirstName = "Bob",
-                LastName = "Johnes"
+                LastName = "Johnes",
+                Address = new Address
+                {
+                    City = "Gdansk",
+                    Country = "Poland",
+                    HouseNumber = "X55/9",
+                    PostCode = "088 99",
+                    Street = "Main road"
+                }
             };
 
             var jerry = new AppUser
@@ -301,7 +356,15 @@ namespace Application.System
                 UserName = "jerry@officer.com",
                 EmailConfirmed = true,
                 FirstName = "Jerry",
-                LastName = "Everything"
+                LastName = "Everything",
+                Address = new Address
+                {
+                    City = "Poprad",
+                    Country = "SLovakia",
+                    HouseNumber = "X55/9",
+                    PostCode = "088 99",
+                    Street = "Main road"
+                }
             };
 
             var appUsers = new[] { john, bob, jerry };
@@ -312,25 +375,27 @@ namespace Application.System
                 await _userManager.AddToRoleAsync(appUser, AppRoleNames.Officer.ToString());
             }
 
+            var offices = await _db.Offices.Take(3).ToListAsync();
+
             var officers = new[]
             {
                 new Officer
                 {
                     AppUser = _db.Attach(john).Entity,
                     IdCardNumber="ER78455",
-                    OfficeNumber="O456"
+                    Office = offices[0]
                 },
                 new Officer
                 {
                     AppUser=_db.Attach(bob).Entity,
                     IdCardNumber="re5646",
-                    OfficeNumber="O789"
+                    Office = offices[1]
                 },
                 new Officer
                 {
                     AppUser = _db.Attach(jerry).Entity,
                     IdCardNumber="YY243511",
-                    OfficeNumber="O357"
+                    Office = offices[2]
                 }
             };
 

@@ -31,6 +31,8 @@ namespace Application.Common.Interfaces
 
         DbSet<RepairRequest> RepairRequests { get; set; }
 
+        DbSet<Office> Offices { get; set; }
+
         DatabaseFacade Database { get; }
 
         EntityEntry<TEntity> Attach<TEntity>([NotNull] TEntity entity) where TEntity : class;

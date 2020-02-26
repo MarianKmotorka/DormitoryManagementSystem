@@ -20,7 +20,7 @@ namespace Application.Guests.Commands.EditGuest
         {
             RuleFor(x => x.RoomNumber).Cascade(CascadeMode.StopOnFirstFailure)
                 .MustAsync(BeNullOrExist).WithMessage(ErrorMessages.Invalid)
-                .MustAsync(BeFree).WithMessage(ErrorMessages.RoomMustBeFree);
+                .MustAsync(BeFree).WithMessage(ErrorMessages.RoomMustBeAvailable);
 
             RuleFor(x => x.DistanceFromHome).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ErrorMessages.Invalid)

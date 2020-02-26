@@ -27,5 +27,10 @@ namespace Domain.Entities
         }
 
         private AppUser _appUser;
+
+        public Guest()
+        {
+            AccomodationRequests = new List<AccomodationRequest>();
+        }
     }
 }

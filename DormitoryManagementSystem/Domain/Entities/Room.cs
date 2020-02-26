@@ -13,5 +13,11 @@ namespace Domain.Entities
         public ICollection<Guest> Guests { get; set; }
 
         public ICollection<RoomItemType> Items { get; set; }
+
+        public Room()
+        {
+            Guests = new List<Guest>();
+            Items = new List<RoomItemType>();
+        }
     }
 }

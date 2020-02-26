@@ -75,7 +75,8 @@
     <system:String x:Key="StartDateMustOccurBeforeEndDate">Start date must occur before end date</system:String>
     <system:String x:Key="MustBeInTheFuture">Must be in the future</system:String>
     <system:String x:Key="DateRangeOverlapsWithExisingRequest">There is already an existing request overlapping entered date range</system:String>
-    <system:String x:Key="RoomMustBeFree">Room must be free</system:String>
+    <system:String x:Key="RoomMustBeAvailable">Room must be available</system:String>
+    <system:String x:Key="OfficeMustBeAvailable">Office must be available</system:String>
     <system:String x:Key="RepairAlreadyRequested">Repair was already requested</system:String>
     <system:String x:Key="CannotModifyFixed">You cannot modified already fixed item</system:String>
 
