@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfClient.Views.Guests.GuestDetailView"
+﻿<UserControl x:Class="WpfClient.Views.Officers.OfficerDetailView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -22,7 +22,7 @@
 
     <materialDesign:Card Margin="30">
         <DockPanel Margin="60">
-            <TextBlock Text="{DynamicResource GuestInfo}" FontSize="40" DockPanel.Dock="Top" Foreground="#3f51b5"/>
+            <TextBlock Text="{DynamicResource OfficerInfo}" FontSize="40" DockPanel.Dock="Top" Foreground="#3f51b5"/>
             <Grid Margin="0 10 0 0" DockPanel.Dock="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -48,18 +48,12 @@
 
                     <TextBox materialDesign:HintAssist.Hint="{DynamicResource IdCardNumber}" Text="{Binding Model.IdCardNumber, UpdateSourceTrigger=PropertyChanged}" IsHitTestVisible="False" IsEnabled="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource DormitoryCardNumber}" Text="{Binding Model.DormitoryCardNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource OfficeNumber}" Text="{Binding Model.OfficeNumber, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource RoomNumber}" Text="{Binding Model.RoomNumber, UpdateSourceTrigger=PropertyChanged, TargetNullValue=' '}"/>
-
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource DistanceFromHome}" Text="{Binding Model.DistanceFromHome, UpdateSourceTrigger=PropertyChanged,
-                        Converter={StaticResource EmptyStringToZeroConverter}}" materialDesign:TextFieldAssist.SuffixText="km" PreviewTextInput="NumberValidationTextBox" />
-
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource PhoneNumber}" Text="{Binding Model.PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="3">
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource PhoneNumber}" Text="{Binding Model.PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
-
                     <TextBox materialDesign:HintAssist.Hint="{DynamicResource Country}" Text="{Binding Model.Country, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <TextBox materialDesign:HintAssist.Hint="{DynamicResource City}" Text="{Binding Model.City, UpdateSourceTrigger=PropertyChanged}"/>

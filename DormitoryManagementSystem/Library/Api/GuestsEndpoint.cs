@@ -16,7 +16,7 @@ namespace Library.Api
             _apiHelper = apiHelper;
         }
 
-        public async Task<PropertiesResultModel> RegisterGuest(GuestModel model)
+        public async Task<PropertiesResultModel> Register(GuestModel model)
         {
             var response = await _apiHelper.Client.PostAsJsonAsync("guests", model);
 
@@ -26,14 +26,14 @@ namespace Library.Api
             return PropertiesResultModel.Succesful;
         }
 
-        public async Task<GuestModel> GetGuestDetail(string id = null)
+        public async Task<GuestModel> GetDetail(string id = null)
         {
             var response = await _apiHelper.Client.GetAsync($"guests/{id ?? "me"}");
 
             return await response.Content.ReadAsAsync<GuestModel>();
         }
 
-        public async Task<PropertiesResultModel> EditGuest(string id, GuestModel model)
+        public async Task<PropertiesResultModel> Edit(string id, GuestModel model)
         {
             if (string.IsNullOrEmpty(id))
                 throw new ArgumentException("Id cannot be null");

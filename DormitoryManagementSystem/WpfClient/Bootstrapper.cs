@@ -39,6 +39,7 @@ namespace WpfClient
 
             _container.RegisterPerRequest(typeof(IAppUsersEndpoint), null, typeof(AppUsersEndpoint));
             _container.RegisterPerRequest(typeof(IGuestsEndpoint), null, typeof(GuestsEndpoint));
+            _container.RegisterPerRequest(typeof(IOfficersEndpoint), null, typeof(OfficersEndpoint));
 
             GetType().Assembly.GetTypes()
                 .Where(t => t.IsClass)

@@ -56,8 +56,11 @@
     <Compile Include="Api\Interfaces\IGuestsEndpoint.cs" />
     <Compile Include="Api\Interfaces\IApiHelper.cs" />
     <Compile Include="Api\Interfaces\IAppUsersEndpoint.cs" />
+    <Compile Include="Api\Interfaces\IOfficersEndpoint.cs" />
+    <Compile Include="Api\OfficersEndpoint.cs" />
     <Compile Include="Models\CurrentUser.cs" />
     <Compile Include="Models\Guests\GuestModel.cs" />
+    <Compile Include="Models\Officers\OfficerModel.cs" />
     <Compile Include="Models\PropertiesResultModel.cs" />
     <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

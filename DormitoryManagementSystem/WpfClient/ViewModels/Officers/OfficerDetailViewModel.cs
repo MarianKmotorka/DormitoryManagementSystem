@@ -3,20 +3,20 @@ using Caliburn.Micro;
 using Library.Api.Interfaces;
 using WpfClient.ModelWrappers;
 
-namespace WpfClient.ViewModels.Guests
+namespace WpfClient.ViewModels.Officers
 {
-    public class GuestDetailViewModel : Screen
+    public class OfficerDetailViewModel : Screen
     {
-        private bool _isEditing;
+        private bool _isEditing = true;
         private bool _loading;
         private bool _editedSuccessfully;
-        private readonly IGuestsEndpoint _guestsEndpoint;
+        private readonly IOfficersEndpoint _officersEndpoint;
 
-        public GuestModelWrapper Model { get; set; } = new GuestModelWrapper();
+        public OfficerModelWrapper Model { get; set; } = new OfficerModelWrapper();
 
-        public string GuestId { get; set; } = null;
+        public string OfficerId { get; set; } = null;
 
-        public bool IsEditButtonVisible => !IsEditing && GuestId != null;
+        public bool IsEditButtonVisible => !IsEditing && OfficerId != null;
 
         public bool IsEditing
         {
@@ -36,9 +36,9 @@ namespace WpfClient.ViewModels.Guests
             set { _editedSuccessfully = value; NotifyOfPropertyChange(nameof(EditedSuccessfully)); }
         }
 
-        public GuestDetailViewModel(IGuestsEndpoint guestsEndpoint)
+        public OfficerDetailViewModel(IOfficersEndpoint officersEndpoint)
         {
-            _guestsEndpoint = guestsEndpoint;
+            _officersEndpoint = officersEndpoint;
         }
 
         public void Edit()
@@ -50,12 +50,12 @@ namespace WpfClient.ViewModels.Guests
         {
             EditedSuccessfully = false;
 
-            if (!Model.ValidateModel(nameof(Model.Password)))
+            if (!Model.ValidateModel())
                 return;
 
             Loading = true;
 
-            var result = await _guestsEndpoint.Edit(GuestId, Model.Model);
+            var result = await _officersEndpoint.Edit(OfficerId, Model.Model);
 
             Loading = false;
 
@@ -77,7 +77,7 @@ namespace WpfClient.ViewModels.Guests
 
             Loading = true;
 
-            Model.Model = await _guestsEndpoint.GetDetail(GuestId);
+            Model.Model = await _officersEndpoint.GetDetail(OfficerId);
             NotifyOfPropertyChange(nameof(Model));
 
             Loading = false;

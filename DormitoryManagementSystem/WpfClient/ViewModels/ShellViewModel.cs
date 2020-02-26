@@ -5,6 +5,7 @@ using Library.Api.Interfaces;
 using Library.Models;
 using WpfClient.Events;
 using WpfClient.ViewModels.Guests;
+using WpfClient.ViewModels.Officers;
 
 namespace WpfClient.ViewModels
 {
@@ -127,6 +128,7 @@ namespace WpfClient.ViewModels
                     ActivateItem(IoC.Get<GuestDetailViewModel>());
                     break;
                 case RoleNames.Officer:
+                    ActivateItem(IoC.Get<OfficerDetailViewModel>());
                     break;
                 case RoleNames.SysAdmin:
                     break;
@@ -156,5 +158,5 @@ namespace WpfClient.ViewModels
         }
     }
 }
-//TODO Add detail for officer, admin, repairer
+//TODO Add detail for admin, repairer
 //TODO Add Guest table => paging, filteringm sorting

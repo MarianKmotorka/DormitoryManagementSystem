@@ -6,10 +6,10 @@ namespace Library.Api.Interfaces
 {
     public interface IGuestsEndpoint
     {
-        Task<PropertiesResultModel> RegisterGuest(GuestModel model);
+        Task<PropertiesResultModel> Register(GuestModel model);
 
-        Task<GuestModel> GetGuestDetail(string id = null);
+        Task<GuestModel> GetDetail(string id = null);
 
-        Task<PropertiesResultModel> EditGuest(string id, GuestModel model);
+        Task<PropertiesResultModel> Edit(string id, GuestModel model);
     }
 }

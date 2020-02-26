@@ -1,7 +1,7 @@
 ﻿using Library.Models.Guests;
 using WpfClient.Validation;
 
-namespace WpfClient.Models
+namespace WpfClient.ModelWrappers
 {
     public class GuestModelWrapper : ValidationWrapper<GuestModel>
     {

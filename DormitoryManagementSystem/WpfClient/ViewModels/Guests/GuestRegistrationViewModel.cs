@@ -2,7 +2,7 @@
 using Caliburn.Micro;
 using Library.Api.Interfaces;
 using WpfClient.Events;
-using WpfClient.Models;
+using WpfClient.ModelWrappers;
 
 namespace WpfClient.ViewModels.Guests
 {
@@ -33,7 +33,7 @@ namespace WpfClient.ViewModels.Guests
 
             Loading = true;
 
-            var result = await _guestsEndpoint.RegisterGuest(Model.Model);
+            var result = await _guestsEndpoint.Register(Model.Model);
 
             Loading = false;
 

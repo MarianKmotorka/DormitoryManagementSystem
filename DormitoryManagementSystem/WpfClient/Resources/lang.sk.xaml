@@ -39,6 +39,12 @@
     <system:String x:Key="GuestInfo">Informácie o hosťovi</system:String>
     <system:String x:Key="RoomNumber">Číslo izby</system:String>
 
+
+    <!--Officer-->
+    <system:String x:Key="OfficerInfo">Informácie o úradníkovi</system:String>
+    <system:String x:Key="OfficeNumber">Číslo kancelárie</system:String>
+
+
     <!--GENERAL-->
     <system:String x:Key="Submit">Odoslať</system:String>
     <system:String x:Key="Edit">Edituj</system:String>

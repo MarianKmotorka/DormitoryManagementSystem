@@ -38,6 +38,10 @@
     <system:String x:Key="RoomNumber">Room number</system:String>
     <system:String x:Key="DormitoryCardNumber">Dormitory card number</system:String>
 
+    <!--Officer-->
+    <system:String x:Key="OfficerInfo">Officer information</system:String>
+    <system:String x:Key="OfficeNumber">Office number</system:String>
+
     <!--GENERAL-->
     <system:String x:Key="Submit">Submit</system:String>
     <system:String x:Key="Edit">Edit</system:String>
