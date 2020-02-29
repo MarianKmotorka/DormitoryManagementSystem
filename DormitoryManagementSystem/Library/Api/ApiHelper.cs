@@ -23,7 +23,7 @@ namespace Library.Api
         {
             var api = ConfigurationManager.AppSettings["api"];
 
-            Client = HttpClientFactory.Create(new RefreshTokenDelegatingHandler(_currentUser));
+            Client = HttpClientFactory.Create(new AuthenticationHandler(_currentUser));
             Client.BaseAddress = new Uri(api);
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

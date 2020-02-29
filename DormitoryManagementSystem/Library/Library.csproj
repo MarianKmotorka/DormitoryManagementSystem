@@ -59,7 +59,7 @@
     <Compile Include="Api\Interfaces\IAppUsersEndpoint.cs" />
     <Compile Include="Api\Interfaces\IOfficersEndpoint.cs" />
     <Compile Include="Api\Endpoints\OfficersEndpoint.cs" />
-    <Compile Include="Api\RefreshTokenDelegatingHandler.cs" />
+    <Compile Include="Api\AuthenticationHandler.cs" />
     <Compile Include="Api\Utils\UrlBuilder.cs" />
     <Compile Include="Models\CurrentUser.cs" />
     <Compile Include="Models\Guests\GuestLookup.cs" />

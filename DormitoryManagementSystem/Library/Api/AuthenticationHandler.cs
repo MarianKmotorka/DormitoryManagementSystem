@@ -8,11 +8,11 @@ using Newtonsoft.Json.Linq;
 
 namespace Library.Api
 {
-    public class RefreshTokenDelegatingHandler : DelegatingHandler
+    public class AuthenticationHandler : DelegatingHandler
     {
         private readonly CurrentUser _currentUser;
 
-        public RefreshTokenDelegatingHandler(CurrentUser currentUser)
+        public AuthenticationHandler(CurrentUser currentUser)
         {
             _currentUser = currentUser;
         }
