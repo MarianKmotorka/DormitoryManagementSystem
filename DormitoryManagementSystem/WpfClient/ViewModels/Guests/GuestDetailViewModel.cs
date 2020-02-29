@@ -52,6 +52,7 @@ namespace WpfClient.ViewModels.Guests
         public void Edit()
         {
             IsEditing = true;
+            EditedSuccessfully = false;
         }
 
         public async Task SubmitEdit()
@@ -77,6 +78,7 @@ namespace WpfClient.ViewModels.Guests
             }
 
             EditedSuccessfully = true;
+            IsEditing = false;
         }
 
         public void BackToGuests()

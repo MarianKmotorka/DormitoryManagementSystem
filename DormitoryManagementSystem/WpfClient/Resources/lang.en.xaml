@@ -51,6 +51,8 @@
     <system:String x:Key="Name">Name</system:String>
     <system:String x:Key="Page">Page</system:String>
     <system:String x:Key="PageSize">Page size:</system:String>
+    <system:String x:Key="Filters">Filters</system:String>
+    <system:String x:Key="Sorts">Sorts</system:String>
 
     <!--Tabs-->
     <system:String x:Key="Officers">Officers</system:String>

@@ -3,15 +3,22 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
-using Library.Models;
 using Library.Models.Guests;
 using WpfClient.Events;
+using WpfClient.Helpers;
 
 namespace WpfClient.ViewModels.Guests
 {
     public class GuestListViewModel : Screen
     {
         private bool _loading;
+        private bool _ascending = true;
+        private bool _firstNameSort = true;
+        private bool _lastNameSort;
+        private bool _roomNumberSort;
+        private string _firstNameFilter;
+        private string _lastNameFilter;
+        private string _roomNumberFilter;
         private int _pages;
         private int _pageNumber = 1;
         private int _selectedPageSize = 10;
@@ -21,16 +28,54 @@ namespace WpfClient.ViewModels.Guests
 
         public IEnumerable<int> PageSizeOptions => new[] { 2, 5, 10, 20, 50 };
 
+        #region FILTERS & SORTS
+
+        public bool Ascending
+        {
+            get => _ascending;
+            set { _ascending = value; NotifyOfPropertyChange(nameof(Ascending)); }
+        }
+
+        public bool FirstNameSort
+        {
+            get => _firstNameSort;
+            set { _firstNameSort = value; NotifyOfPropertyChange(nameof(FirstNameSort)); }
+        }
+
+        public bool LastNameSort
+        {
+            get => _lastNameSort;
+            set { _lastNameSort = value; NotifyOfPropertyChange(nameof(LastNameSort)); }
+        }
+
+        public bool RoomNumberSort
+        {
+            get => _roomNumberSort;
+            set { _roomNumberSort = value; NotifyOfPropertyChange(nameof(RoomNumberSort)); }
+        }
+
+        public string FirstNameFilter
+        {
+            get => _firstNameFilter;
+            set { _firstNameFilter = value; NotifyOfPropertyChange(nameof(FirstNameFilter)); }
+        }
+
+        public string LastNameFilter
+        {
+            get => _lastNameFilter;
+            set { _lastNameFilter = value; NotifyOfPropertyChange(nameof(LastNameFilter)); }
+        }
+
+        public string RoomNumberFilter
+        {
+            get => _roomNumberFilter;
+            set { _roomNumberFilter = value; NotifyOfPropertyChange(nameof(RoomNumberFilter)); }
+        }
+
         public int PageSize
         {
             get => _selectedPageSize;
             set { _selectedPageSize = value; NotifyOfPropertyChange(nameof(PageSize)); }
-        }
-
-        public bool Loading
-        {
-            get => _loading;
-            set { _loading = value; NotifyOfPropertyChange(nameof(Loading)); }
         }
 
         public int Pages
@@ -43,6 +88,14 @@ namespace WpfClient.ViewModels.Guests
         {
             get => _pageNumber;
             set { _pageNumber = value; NotifyOfPropertyChange(nameof(PageNumber)); }
+        }
+
+        #endregion
+
+        public bool Loading
+        {
+            get => _loading;
+            set { _loading = value; NotifyOfPropertyChange(nameof(Loading)); }
         }
 
         public GuestLookup SelectedGuest
@@ -82,13 +135,7 @@ namespace WpfClient.ViewModels.Guests
             Loading = true;
             Guests.Clear();
 
-            var pagedRequestModel = new PagedRequestModel
-            {
-                PageSize = PageSize,
-                PageNumber = PageNumber
-            };
-
-            var result = await _guestsEndpoint.GetAll(pagedRequestModel);
+            var result = await _guestsEndpoint.GetAll(Utils.GetPageRequestModel(GetType(), this));
 
             Loading = false;
 

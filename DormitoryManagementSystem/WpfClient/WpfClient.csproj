@@ -86,12 +86,13 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Converters\EmptyStringToZeroConverter.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
-    <Compile Include="ControlsHelpers\PasswordBoxHelper.cs" />
+    <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Events\GoBackToEvent.cs" />
     <Compile Include="Events\GuestRegisteredEvent.cs" />
     <Compile Include="Events\LoggedInEvent.cs" />
     <Compile Include="Events\OpenGuestDetailEvent.cs" />
     <Compile Include="Events\OpenRegisterGuestFormEvent.cs" />
+    <Compile Include="Helpers\Utils.cs" />
     <Compile Include="ModelWrappers\GuestModelWrapper.cs" />
     <Compile Include="ModelWrappers\OfficerModelWrapper.cs" />
     <Compile Include="RoleNames.cs" />

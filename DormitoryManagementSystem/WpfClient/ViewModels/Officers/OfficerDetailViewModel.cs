@@ -71,6 +71,7 @@ namespace WpfClient.ViewModels.Officers
             }
 
             EditedSuccessfully = true;
+            IsEditing = false;
         }
 
         protected async override void OnViewLoaded(object view)

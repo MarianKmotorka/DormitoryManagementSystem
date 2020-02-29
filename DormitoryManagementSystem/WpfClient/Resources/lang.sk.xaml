@@ -53,6 +53,8 @@
     <!--GRIDS-->
     <system:String x:Key="Page">Stránka</system:String>
     <system:String x:Key="PageSize">Veľkosť stránky:</system:String>
+    <system:String x:Key="Filters">Filtrovanie</system:String>
+    <system:String x:Key="Sorts">Zoradovanie</system:String>
 
     <!--Tabs-->
     <system:String x:Key="Officers">Úradnici</system:String>

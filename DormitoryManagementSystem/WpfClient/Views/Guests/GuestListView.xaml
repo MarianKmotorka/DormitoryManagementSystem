@@ -8,6 +8,17 @@
              mc:Ignorable="d" 
              FontSize="15"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+            <Setter Property="materialDesign:TextFieldAssist.HasClearButton" Value="True"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignTabRadioButton}">
+            <Setter Property="Margin" Value="2 6"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
+    </UserControl.Resources>
+
     <materialDesign:Card Margin="10">
         <Grid Margin="30">
             <Grid.ColumnDefinitions>
@@ -73,6 +84,58 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+
+            <!--FILTERS & SORTS-->
+            <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Margin="30 0 0 10">
+                <GroupBox Background="{StaticResource MaterialDesignBackground}" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" 
+                          materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0">
+                    <GroupBox.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{DynamicResource Filters}" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="FilterMenuOutline" Grid.Column="2" MinHeight="20" MinWidth="20" Margin="5"/>
+                        </Grid>
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <TextBox x:Name="FirstNameFilter" materialDesign:HintAssist.Hint="{DynamicResource FirstName}" cal:Message.Attach="[Event TextChanged] = [Load()]"/>
+                        <TextBox x:Name="LastNameFilter" materialDesign:HintAssist.Hint="{DynamicResource LastName}" cal:Message.Attach="[Event TextChanged] = [Load()]"/>
+                        <TextBox x:Name="RoomNumberFilter" materialDesign:HintAssist.Hint="{DynamicResource RoomNumber}" cal:Message.Attach="[Event TextChanged] = [Load()]"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Background="{StaticResource MaterialDesignBackground}" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" 
+                          materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0">
+                    <GroupBox.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{DynamicResource Sorts}" VerticalAlignment="Center"/>
+                            <ToggleButton Grid.Column="2" Style="{StaticResource MaterialDesignActionToggleButton}" IsChecked="{Binding Ascending}" VerticalAlignment="Center"
+                                           cal:Message.Attach="[Event Click] = [Load()]">
+                                <ToggleButton.Content>
+                                    <materialDesign:PackIcon Kind="ArrowUpDropCircleOutline" Margin="0"/>
+                                </ToggleButton.Content>
+                                <materialDesign:ToggleButtonAssist.OnContent>
+                                    <materialDesign:PackIcon Kind="ArrowDownDropCircleOutline" Margin="0"/>
+                                </materialDesign:ToggleButtonAssist.OnContent>
+                            </ToggleButton>
+                        </Grid>
+                    </GroupBox.Header>
+                    <StackPanel Margin="2">
+                        <RadioButton Content="{DynamicResource FirstName}" IsChecked="{Binding FirstNameSort}" cal:Message.Attach="[Event Click] = [Load()]"/>
+                        <RadioButton Content="{DynamicResource LastName}" IsChecked="{Binding LastNameSort}" cal:Message.Attach="[Event Click] = [Load()]"/>
+                        <RadioButton Content="{DynamicResource RoomNumber}" IsChecked="{Binding RoomNumberSort}" cal:Message.Attach="[Event Click] = [Load()]"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+
         </Grid>
     </materialDesign:Card>
 </UserControl>
