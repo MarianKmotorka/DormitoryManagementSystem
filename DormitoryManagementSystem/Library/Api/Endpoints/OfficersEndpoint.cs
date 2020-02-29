@@ -2,10 +2,11 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Library.Api.Interfaces;
+using Library.Api.Utils;
 using Library.Models;
 using Library.Models.Officers;
 
-namespace Library.Api
+namespace Library.Api.Endpoints
 {
     public class OfficersEndpoint : IOfficersEndpoint
     {
@@ -21,7 +22,7 @@ namespace Library.Api
             if (string.IsNullOrEmpty(id))
                 throw new ArgumentException("Id cannot be null");
 
-            var response = await _apiHelper.Client.PatchAsJsonAsync($"officers/{id}", model); //TODO implement endpoint
+            var response = await _apiHelper.Client.PatchAsJsonAsync($"officers/{id}", model);
 
             if (!response.IsSuccessStatusCode)
                 return await response.Content.ReadAsAsync<PropertiesResultModel>();

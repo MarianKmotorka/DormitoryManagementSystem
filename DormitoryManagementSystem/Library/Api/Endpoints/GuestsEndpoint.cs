@@ -2,10 +2,11 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Library.Api.Interfaces;
+using Library.Api.Utils;
 using Library.Models;
 using Library.Models.Guests;
 
-namespace Library.Api
+namespace Library.Api.Endpoints
 {
     public class GuestsEndpoint : IGuestsEndpoint
     {
@@ -31,6 +32,15 @@ namespace Library.Api
             var response = await _apiHelper.Client.GetAsync($"guests/{id ?? "me"}");
 
             return await response.Content.ReadAsAsync<GuestModel>();
+        }
+
+        public async Task<PagedResultModel<GuestLookup>> GetAll(PagedRequestModel model)
+        {
+            var url = UrlBuilder.Build("guests", model);
+
+            var response = await _apiHelper.Client.GetAsync(url);
+
+            return await response.Content.ReadAsAsync<PagedResultModel<GuestLookup>>();
         }
 
         public async Task<PropertiesResultModel> Edit(string id, GuestModel model)

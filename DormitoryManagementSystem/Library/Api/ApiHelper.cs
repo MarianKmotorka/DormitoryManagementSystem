@@ -3,15 +3,19 @@ using System.Configuration;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Library.Api.Interfaces;
+using Library.Models;
 
 namespace Library.Api
 {
     public class ApiHelper : IApiHelper
     {
+        private readonly CurrentUser _currentUser;
+
         public HttpClient Client { get; set; }
 
-        public ApiHelper()
+        public ApiHelper(CurrentUser currentUser)
         {
+            _currentUser = currentUser;
             InitializeClient();
         }
 
@@ -19,7 +23,7 @@ namespace Library.Api
         {
             var api = ConfigurationManager.AppSettings["api"];
 
-            Client = new HttpClient();
+            Client = HttpClientFactory.Create(new RefreshTokenDelegatingHandler(_currentUser));
             Client.BaseAddress = new Uri(api);
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -27,7 +31,8 @@ namespace Library.Api
 
         public void LogOut()
         {
-            Client.DefaultRequestHeaders.Remove("Authorization");
+            _currentUser.Jwt = "";
+            _currentUser.RefreshToken = "";
         }
     }
 }

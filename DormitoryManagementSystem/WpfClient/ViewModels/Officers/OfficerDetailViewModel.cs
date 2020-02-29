@@ -7,7 +7,7 @@ namespace WpfClient.ViewModels.Officers
 {
     public class OfficerDetailViewModel : Screen
     {
-        private bool _isEditing = true;
+        private bool _isEditing;
         private bool _loading;
         private bool _editedSuccessfully;
         private readonly IOfficersEndpoint _officersEndpoint;
@@ -15,6 +15,8 @@ namespace WpfClient.ViewModels.Officers
         public OfficerModelWrapper Model { get; set; } = new OfficerModelWrapper();
 
         public string OfficerId { get; set; } = null;
+
+        public bool IsMyInfoPage => OfficerId == null;
 
         public bool IsEditButtonVisible => !IsEditing && OfficerId != null;
 

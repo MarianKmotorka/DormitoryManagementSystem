@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
+using WpfClient.Events;
 using WpfClient.ModelWrappers;
 
 namespace WpfClient.ViewModels.Guests
@@ -11,12 +13,17 @@ namespace WpfClient.ViewModels.Guests
         private bool _loading;
         private bool _editedSuccessfully;
         private readonly IGuestsEndpoint _guestsEndpoint;
+        private readonly IEventAggregator _eventAggregator;
 
         public GuestModelWrapper Model { get; set; } = new GuestModelWrapper();
 
+        public GuestListViewModel GoBackViewModel { get; set; }
+
         public string GuestId { get; set; } = null;
 
-        public bool IsEditButtonVisible => !IsEditing && GuestId != null;
+        public bool IsMyInfoPage => GuestId == null;
+
+        public bool IsEditButtonVisible => !IsEditing && !IsMyInfoPage;
 
         public bool IsEditing
         {
@@ -36,9 +43,10 @@ namespace WpfClient.ViewModels.Guests
             set { _editedSuccessfully = value; NotifyOfPropertyChange(nameof(EditedSuccessfully)); }
         }
 
-        public GuestDetailViewModel(IGuestsEndpoint guestsEndpoint)
+        public GuestDetailViewModel(IGuestsEndpoint guestsEndpoint, IEventAggregator eventAggregator)
         {
             _guestsEndpoint = guestsEndpoint;
+            _eventAggregator = eventAggregator;
         }
 
         public void Edit()
@@ -69,6 +77,13 @@ namespace WpfClient.ViewModels.Guests
             }
 
             EditedSuccessfully = true;
+        }
+
+        public void BackToGuests()
+        {
+            _ = GoBackViewModel ?? throw new ArgumentNullException(nameof(GoBackViewModel));
+
+            _eventAggregator.PublishOnUIThread(new GoBackToEvent(GoBackViewModel));
         }
 
         protected async override void OnViewLoaded(object view)

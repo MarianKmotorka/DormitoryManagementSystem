@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Caliburn.Micro;
 using Library.Api;
+using Library.Api.Endpoints;
 using Library.Api.Interfaces;
 using Library.Models;
 using WpfClient.Helpers;
@@ -32,10 +33,10 @@ namespace WpfClient
             _container.Instance(_container);
 
             _container
-                .Singleton<CurrentUser>()
-                .Singleton<IApiHelper, ApiHelper>()
-                .Singleton<IEventAggregator, EventAggregator>()
-                .Singleton<IWindowManager, WindowManager>();
+            .Singleton<CurrentUser>()
+            .Singleton<IApiHelper, ApiHelper>()
+            .Singleton<IEventAggregator, EventAggregator>()
+            .Singleton<IWindowManager, WindowManager>();
 
             _container.RegisterPerRequest(typeof(IAppUsersEndpoint), null, typeof(AppUsersEndpoint));
             _container.RegisterPerRequest(typeof(IGuestsEndpoint), null, typeof(GuestsEndpoint));

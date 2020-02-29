@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Sieve.Models;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Sieve.Models;
 
 namespace Application.Common.Pagination
 {
@@ -35,6 +35,12 @@ namespace Application.Common.Pagination
 
             if (pageSize > _maxPageSize)
                 pageSize = _maxPageSize;
+
+            if (pageSize < 1)
+                pageSize = 1;
+
+            if (page < 1)
+                page = 1;
 
             if (paginationModel != null)
                 query = paginationService.Apply(paginationModel, query, applyPagination: false);

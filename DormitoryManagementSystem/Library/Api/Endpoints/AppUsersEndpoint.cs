@@ -1,9 +1,13 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Configuration;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Library.Api.Interfaces;
 using Library.Models;
+using Newtonsoft.Json;
 
-namespace Library.Api
+namespace Library.Api.Endpoints
 {
     public class AppUsersEndpoint : IAppUsersEndpoint
     {
@@ -32,8 +36,6 @@ namespace Library.Api
             _currentUser.RefreshToken = currentUser.RefreshToken;
             _currentUser.UserName = currentUser.UserName;
 
-            _apiHelper.Client.DefaultRequestHeaders.Add("Authorization", $"bearer {currentUser.Jwt}");
-
             return ResultModel.Successful;
         }
 
@@ -55,6 +57,26 @@ namespace Library.Api
                 return await response.Content.ReadAsAsync<PropertiesResultModel>();
 
             return PropertiesResultModel.Succesful;
+        }
+
+        public static HttpRequestMessage GetRefreshTokenHttpRequestMessage(CurrentUser currentUser)
+        {
+            var body = new
+            {
+                ExpiredJwt = currentUser.Jwt,
+                currentUser.RefreshToken
+            };
+
+            var url = $"{ConfigurationManager.AppSettings["api"]}appUsers/refresh";
+
+            var httpRequestMessage = new HttpRequestMessage
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json"),
+                Method = new HttpMethod("POST"),
+                RequestUri = new Uri(url)
+            };
+
+            return httpRequestMessage;
         }
     }
 }

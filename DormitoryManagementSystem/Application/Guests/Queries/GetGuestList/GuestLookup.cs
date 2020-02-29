@@ -10,16 +10,22 @@ namespace Application.Guests.Queries.GetGuestList
     {
         public string Id { get; set; }
 
-        public string DisplayName { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string RoomNumber { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Guest, GuestLookup>()
-                .ForMember(dest => dest.DisplayName, cfg =>
+                .ForMember(dest => dest.FirstName, cfg =>
                 {
-                    cfg.MapFrom(src => src.AppUser.LastName + " " + src.AppUser.FirstName);
+                    cfg.MapFrom(src => src.AppUser.FirstName);
+                })
+                .ForMember(dest => dest.LastName, cfg =>
+                {
+                    cfg.MapFrom(src => src.AppUser.LastName);
                 })
                 .ForMember(dest => dest.RoomNumber, cfg =>
                 {
@@ -29,7 +35,10 @@ namespace Application.Guests.Queries.GetGuestList
 
         public void MapProperties(SievePropertyMapper mapper)
         {
-            mapper.Property<GuestLookup>(x => x.DisplayName)
+            mapper.Property<GuestLookup>(x => x.FirstName)
+                .CanFilter().CanSort();
+
+            mapper.Property<GuestLookup>(x => x.LastName)
                 .CanFilter().CanSort();
 
             mapper.Property<GuestLookup>(x => x.RoomNumber)

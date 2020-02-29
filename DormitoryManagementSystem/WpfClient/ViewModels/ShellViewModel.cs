@@ -10,7 +10,7 @@ using WpfClient.ViewModels.Officers;
 namespace WpfClient.ViewModels
 {
     public class ShellViewModel : Conductor<object>, IHandle<OpenRegisterGuestFormEvent>, IHandle<LoggedInEvent>,
-        IHandle<GuestRegisteredEvent>
+        IHandle<GuestRegisteredEvent>, IHandle<OpenGuestDetailEvent>, IHandle<GoBackToEvent>
     {
         private readonly SimpleContainer _simpleContainer;
         private readonly IApiHelper _apiHelper;
@@ -34,6 +34,8 @@ namespace WpfClient.ViewModels
         public bool RegisterRepairerVisible => _currentUser.Role == RoleNames.SysAdmin || _currentUser.Role == RoleNames.Officer;
 
         public bool RoomsVisible => _currentUser.Role == RoleNames.SysAdmin || _currentUser.Role == RoleNames.Officer;
+
+        public bool OfficesVisible => _currentUser.Role == RoleNames.SysAdmin || _currentUser.Role == RoleNames.Officer;
 
         public bool MyRoomVisible => _currentUser.Role == RoleNames.Guest;
 
@@ -98,7 +100,29 @@ namespace WpfClient.ViewModels
 
         public void OpenTab(string name)
         {
-
+            switch (name)
+            {
+                case "MyInfo":
+                    switch (_currentUser.Role)
+                    {
+                        case RoleNames.Guest:
+                            ActivateItem(IoC.Get<GuestDetailViewModel>());
+                            break;
+                        case RoleNames.Officer:
+                            ActivateItem(IoC.Get<OfficerDetailViewModel>());
+                            break;
+                        case RoleNames.SysAdmin:
+                            ActivateItem(null);
+                            break;
+                        case RoleNames.Repairer:
+                            ActivateItem(null);
+                            break;
+                    }
+                    break;
+                case "Guests":
+                    ActivateItem(IoC.Get<GuestListViewModel>());
+                    break;
+            }
         }
 
         public void LogIn()
@@ -122,21 +146,7 @@ namespace WpfClient.ViewModels
         {
             IsLoggedIn = true;
 
-            switch (_currentUser.Role)
-            {
-                case RoleNames.Guest:
-                    ActivateItem(IoC.Get<GuestDetailViewModel>());
-                    break;
-                case RoleNames.Officer:
-                    ActivateItem(IoC.Get<OfficerDetailViewModel>());
-                    break;
-                case RoleNames.SysAdmin:
-                    break;
-                case RoleNames.Repairer:
-                    break;
-                default:
-                    throw new NotSupportedException("Not supported role");
-            }
+            OpenTab("MyInfo");
 
             UserName = _currentUser.UserName;
 
@@ -149,12 +159,26 @@ namespace WpfClient.ViewModels
             NotifyOfPropertyChange(nameof(RoomsVisible));
             NotifyOfPropertyChange(nameof(MyRoomVisible));
             NotifyOfPropertyChange(nameof(RepairRequestsVisible));
+            NotifyOfPropertyChange(nameof(OfficesVisible));
             NotifyOfPropertyChange(nameof(UserName));
         }
 
         public void Handle(GuestRegisteredEvent message)
         {
             ActivateItem(IoC.Get<LogInViewModel>());
+        }
+
+        public void Handle(OpenGuestDetailEvent message)
+        {
+            var vm = IoC.Get<GuestDetailViewModel>();
+            vm.GuestId = message.GuestId;
+            vm.GoBackViewModel = message.Sender as GuestListViewModel;
+            ActivateItem(vm);
+        }
+
+        public void Handle(GoBackToEvent message)
+        {
+            ActivateItem(message.ViewModel);
         }
     }
 }

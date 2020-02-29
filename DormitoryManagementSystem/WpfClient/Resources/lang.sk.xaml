@@ -38,6 +38,7 @@
     <system:String x:Key="DormitoryCardNumber">Číslo internátneeho preukazu</system:String>
     <system:String x:Key="GuestInfo">Informácie o hosťovi</system:String>
     <system:String x:Key="RoomNumber">Číslo izby</system:String>
+    <system:String x:Key="BackToGuests">Choď späť na zoznam hostí</system:String>
 
 
     <!--Officer-->
@@ -48,6 +49,10 @@
     <!--GENERAL-->
     <system:String x:Key="Submit">Odoslať</system:String>
     <system:String x:Key="Edit">Edituj</system:String>
+
+    <!--GRIDS-->
+    <system:String x:Key="Page">Stránka</system:String>
+    <system:String x:Key="PageSize">Veľkosť stránky:</system:String>
 
     <!--Tabs-->
     <system:String x:Key="Officers">Úradnici</system:String>
@@ -60,6 +65,7 @@
     <system:String x:Key="Rooms">Izby</system:String>
     <system:String x:Key="MyInfo">Moje informácie</system:String>
     <system:String x:Key="MyRoom">Moja izba</system:String>
+    <system:String x:Key="Offices">Kancelárie</system:String>
 
 
     <!--Error messages-->

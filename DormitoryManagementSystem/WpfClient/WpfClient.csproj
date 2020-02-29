@@ -87,8 +87,10 @@
     <Compile Include="Converters\EmptyStringToZeroConverter.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="ControlsHelpers\PasswordBoxHelper.cs" />
+    <Compile Include="Events\GoBackToEvent.cs" />
     <Compile Include="Events\GuestRegisteredEvent.cs" />
     <Compile Include="Events\LoggedInEvent.cs" />
+    <Compile Include="Events\OpenGuestDetailEvent.cs" />
     <Compile Include="Events\OpenRegisterGuestFormEvent.cs" />
     <Compile Include="ModelWrappers\GuestModelWrapper.cs" />
     <Compile Include="ModelWrappers\OfficerModelWrapper.cs" />
@@ -98,12 +100,16 @@
     <Compile Include="Validation\NotifyDataErrorInfoBase.cs" />
     <Compile Include="Validation\ValidationWrapper.cs" />
     <Compile Include="ViewModels\Guests\GuestDetailViewModel.cs" />
+    <Compile Include="ViewModels\Guests\GuestListViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestRegistrationViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\Officers\OfficerDetailViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\Guests\GuestDetailView.xaml.cs">
       <DependentUpon>GuestDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Guests\GuestListView.xaml.cs">
+      <DependentUpon>GuestListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Guests\GuestRegistrationView.xaml.cs">
       <DependentUpon>GuestRegistrationView.xaml</DependentUpon>
@@ -155,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Guests\GuestDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Guests\GuestListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

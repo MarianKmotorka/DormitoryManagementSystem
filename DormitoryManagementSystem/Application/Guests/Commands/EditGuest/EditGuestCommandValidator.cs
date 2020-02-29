@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Common.Models;
@@ -26,7 +27,9 @@ namespace Application.Guests.Commands.EditGuest
                 .NotEmpty().WithMessage(ErrorMessages.Invalid)
                 .GreaterThanOrEqualTo(0).WithMessage(ErrorMessages.Invalid);
 
-            RuleFor(x => x.DormitoryCardNumber).NotEmpty().WithMessage(ErrorMessages.Required);
+            RuleFor(x => x.DormitoryCardNumber)
+                .NotEmpty().WithMessage(ErrorMessages.Required)
+                .When(x => !string.IsNullOrEmpty(x.RoomNumber));
 
             RuleFor(x => x.FirstName).NotEmpty().WithMessage(ErrorMessages.Required);
 
@@ -45,12 +48,16 @@ namespace Application.Guests.Commands.EditGuest
             RuleFor(x => x.PostCode).NotEmpty().WithMessage(ErrorMessages.Required);
         }
 
-        private async Task<bool> BeFree(string roomNumber, CancellationToken cancellationToken)
+        private async Task<bool> BeFree(EditGuestCommand command, string roomNumber, CancellationToken cancellationToken)
         {
             if (string.IsNullOrWhiteSpace(roomNumber))
                 return true;
 
             var room = await _db.Rooms.Include(x => x.Guests).SingleAsync(x => x.Number == roomNumber, cancellationToken);
+
+            if (room.Guests.Any(x => x.Id == command.Id))
+                return true;
+
             var isRoomFree = room.Capacity - room.Guests.Count > 0;
             return isRoomFree;
         }

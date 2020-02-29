@@ -17,7 +17,7 @@
     <Window.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
             <Setter Property="Padding" Value="10 0 10 0"/>
-            <Setter Property="Margin" Value="10 2"/>
+            <Setter Property="Margin" Value="5 2 0 2"/>
             <Setter Property="MinWidth" Value="215"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="Height" Value="50"/>
@@ -134,6 +134,13 @@
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Bed" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
                     <TextBlock Text="{DynamicResource Rooms}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
+
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('Offices')]" Visibility="{Binding OfficesVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Table" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource Offices}" VerticalAlignment="Center" FontSize="17"/>
                 </StackPanel>
             </Button>
 

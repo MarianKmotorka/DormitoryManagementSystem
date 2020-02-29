@@ -20,9 +20,12 @@
         </Style>
     </UserControl.Resources>
 
-    <materialDesign:Card Margin="30">
+    <materialDesign:Card Margin="10">
         <DockPanel Margin="60">
-            <TextBlock Text="{DynamicResource OfficerInfo}" FontSize="40" DockPanel.Dock="Top" Foreground="#3f51b5"/>
+
+            <TextBlock Text="{DynamicResource OfficerInfo}" FontSize="40" DockPanel.Dock="Top" Foreground="#3f51b5" Visibility="{Binding IsMyInfoPage, Converter={StaticResource InverseBoolToVisConverter}}"/>
+            <TextBlock Text="{DynamicResource MyInfo}" FontSize="40" DockPanel.Dock="Top" Foreground="#3f51b5" Visibility="{Binding IsMyInfoPage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
             <Grid Margin="0 10 0 0" DockPanel.Dock="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -66,9 +69,14 @@
                 </StackPanel>
 
                 <!--EDIT BUTTONS-->
-                <Button x:Name="Edit" Content="{DynamicResource Edit}" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
+                <Button x:Name="Edit" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                         IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolConverter}}" Padding="0 0 5 0"
-                        Visibility="{Binding IsEditButtonVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        Visibility="{Binding IsEditButtonVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="WrenchOutline"/>
+                        <TextBlock Text="{DynamicResource Edit}"/>
+                    </StackPanel>
+                </Button>
 
                 <Button x:Name="SubmitEdit" Content="{DynamicResource Submit}" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                         IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolConverter}}" Padding="0 0 5 0" Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"/>

@@ -10,6 +10,8 @@ namespace Library.Api.Interfaces
 
         Task<GuestModel> GetDetail(string id = null);
 
+        Task<PagedResultModel<GuestLookup>> GetAll(PagedRequestModel model);
+
         Task<PropertiesResultModel> Edit(string id, GuestModel model);
     }
 }

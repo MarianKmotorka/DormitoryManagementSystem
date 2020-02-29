@@ -10,6 +10,7 @@
     <RootNamespace>Library</RootNamespace>
     <AssemblyName>Library</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>8.0</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -50,17 +51,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ApiHelper.cs" />
-    <Compile Include="Api\AppUsersEndpoint.cs" />
-    <Compile Include="Api\GuestsEndpoint.cs" />
+    <Compile Include="Api\Endpoints\AppUsersEndpoint.cs" />
+    <Compile Include="Api\Endpoints\GuestsEndpoint.cs" />
     <Compile Include="Api\HttpClientExtensions.cs" />
     <Compile Include="Api\Interfaces\IGuestsEndpoint.cs" />
     <Compile Include="Api\Interfaces\IApiHelper.cs" />
     <Compile Include="Api\Interfaces\IAppUsersEndpoint.cs" />
     <Compile Include="Api\Interfaces\IOfficersEndpoint.cs" />
-    <Compile Include="Api\OfficersEndpoint.cs" />
+    <Compile Include="Api\Endpoints\OfficersEndpoint.cs" />
+    <Compile Include="Api\RefreshTokenDelegatingHandler.cs" />
+    <Compile Include="Api\Utils\UrlBuilder.cs" />
     <Compile Include="Models\CurrentUser.cs" />
+    <Compile Include="Models\Guests\GuestLookup.cs" />
     <Compile Include="Models\Guests\GuestModel.cs" />
     <Compile Include="Models\Officers\OfficerModel.cs" />
+    <Compile Include="Models\PagedRequestModel.cs" />
+    <Compile Include="Models\PagedResultModel.cs" />
     <Compile Include="Models\PropertiesResultModel.cs" />
     <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

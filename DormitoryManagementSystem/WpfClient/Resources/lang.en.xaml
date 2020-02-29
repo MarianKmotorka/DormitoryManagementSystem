@@ -37,6 +37,7 @@
     <system:String x:Key="GuestInfo">Guest information</system:String>
     <system:String x:Key="RoomNumber">Room number</system:String>
     <system:String x:Key="DormitoryCardNumber">Dormitory card number</system:String>
+    <system:String x:Key="BackToGuests">Go back to guests</system:String>
 
     <!--Officer-->
     <system:String x:Key="OfficerInfo">Officer information</system:String>
@@ -45,6 +46,11 @@
     <!--GENERAL-->
     <system:String x:Key="Submit">Submit</system:String>
     <system:String x:Key="Edit">Edit</system:String>
+
+    <!--GRIDS-->
+    <system:String x:Key="Name">Name</system:String>
+    <system:String x:Key="Page">Page</system:String>
+    <system:String x:Key="PageSize">Page size:</system:String>
 
     <!--Tabs-->
     <system:String x:Key="Officers">Officers</system:String>
@@ -57,6 +63,7 @@
     <system:String x:Key="Rooms">Rooms</system:String>
     <system:String x:Key="MyInfo">My info</system:String>
     <system:String x:Key="MyRoom">My room</system:String>
+    <system:String x:Key="Offices">Offices</system:String>
 
 
     <!--Error messages-->
