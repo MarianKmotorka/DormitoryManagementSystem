@@ -4,13 +4,14 @@ using Caliburn.Micro;
 using Library.Api.Interfaces;
 using Library.Models;
 using WpfClient.Events;
+using WpfClient.ViewModels.AccomodationRequests;
 using WpfClient.ViewModels.Guests;
 using WpfClient.ViewModels.Officers;
 
 namespace WpfClient.ViewModels
 {
     public class ShellViewModel : Conductor<object>, IHandle<OpenRegisterGuestFormEvent>, IHandle<LoggedInEvent>,
-        IHandle<GuestRegisteredEvent>, IHandle<OpenGuestDetailEvent>, IHandle<GoBackToEvent>
+        IHandle<GuestRegisteredEvent>, IHandle<OpenGuestDetailEvent>, IHandle<GoBackEvent>
     {
         private readonly SimpleContainer _simpleContainer;
         private readonly IApiHelper _apiHelper;
@@ -122,6 +123,12 @@ namespace WpfClient.ViewModels
                 case "Guests":
                     ActivateItem(IoC.Get<GuestListViewModel>());
                     break;
+                case "AccomodationRequests":
+                    var vm = IoC.Get<AccomodationRequestListViewModel>();
+                    if (_currentUser.Role == RoleNames.Guest)
+                        vm.IsMyAccomodationRequests = true;
+                    ActivateItem(vm);
+                    break;
             }
         }
 
@@ -176,11 +183,10 @@ namespace WpfClient.ViewModels
             ActivateItem(vm);
         }
 
-        public void Handle(GoBackToEvent message)
+        public void Handle(GoBackEvent message)
         {
             ActivateItem(message.ViewModel);
         }
     }
 }
 //TODO Add detail for admin, repairer
-//TODO Add Guest table => paging, filteringm sorting

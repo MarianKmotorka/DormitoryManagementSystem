@@ -8,9 +8,9 @@ namespace Library.Models
 
         public int PageNumber { get; set; } = 1;
 
-        public IEnumerable<string> Filters { get; set; }
+        public List<string> Filters { get; set; }
 
-        public IEnumerable<string> Sorts { get; set; }
+        public List<string> Sorts { get; set; }
 
         public PagedRequestModel()
         {

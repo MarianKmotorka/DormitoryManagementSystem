@@ -85,7 +85,7 @@ namespace WpfClient.ViewModels.Guests
         {
             _ = GoBackViewModel ?? throw new ArgumentNullException(nameof(GoBackViewModel));
 
-            _eventAggregator.PublishOnUIThread(new GoBackToEvent(GoBackViewModel));
+            _eventAggregator.PublishOnUIThread(new GoBackEvent(GoBackViewModel));
         }
 
         protected async override void OnViewLoaded(object view)

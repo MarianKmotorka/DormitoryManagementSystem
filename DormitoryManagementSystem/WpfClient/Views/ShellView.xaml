@@ -16,7 +16,7 @@
 
     <Window.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
-            <Setter Property="Padding" Value="10 0 10 0"/>
+            <Setter Property="Padding" Value="10"/>
             <Setter Property="Margin" Value="5 2 0 2"/>
             <Setter Property="MinWidth" Value="215"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>

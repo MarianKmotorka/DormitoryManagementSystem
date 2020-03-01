@@ -46,15 +46,25 @@
     <system:String x:Key="OfficeNumber">Číslo kancelárie</system:String>
 
 
+    <!--ACCOMODATION REQUESTS-->
+    <system:String x:Key="MyAccomodationRequests">Moje žiadosti o ubytovanie</system:String>
+    <system:String x:Key="StartDateUtc">Od (UTC)</system:String>
+    <system:String x:Key="EndDateUtc">Do (UTC)</system:String>
+    <system:String x:Key="RequestState">Stav žiadosti</system:String>
+
+
     <!--GENERAL-->
     <system:String x:Key="Submit">Odoslať</system:String>
     <system:String x:Key="Edit">Edituj</system:String>
+    <system:String x:Key="PickDate">Vyber dátum</system:String>
+
 
     <!--GRIDS-->
     <system:String x:Key="Page">Stránka</system:String>
     <system:String x:Key="PageSize">Veľkosť stránky:</system:String>
     <system:String x:Key="Filters">Filtrovanie</system:String>
     <system:String x:Key="Sorts">Zoradovanie</system:String>
+
 
     <!--Tabs-->
     <system:String x:Key="Officers">Úradnici</system:String>

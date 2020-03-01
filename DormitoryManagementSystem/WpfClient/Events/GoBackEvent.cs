@@ -1,10 +1,10 @@
 ﻿namespace WpfClient.Events
 {
-    public class GoBackToEvent
+    public class GoBackEvent
     {
         public object ViewModel { get; }
 
-        public GoBackToEvent(object viewModel)
+        public GoBackEvent(object viewModel)
         {
             ViewModel = viewModel;
         }

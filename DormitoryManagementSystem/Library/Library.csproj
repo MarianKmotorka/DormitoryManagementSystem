@@ -51,9 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ApiHelper.cs" />
+    <Compile Include="Api\Endpoints\AccomodationRequestsEndpoint.cs" />
     <Compile Include="Api\Endpoints\AppUsersEndpoint.cs" />
     <Compile Include="Api\Endpoints\GuestsEndpoint.cs" />
     <Compile Include="Api\HttpClientExtensions.cs" />
+    <Compile Include="Api\Interfaces\IAccomodationRequestsEndpoint.cs" />
     <Compile Include="Api\Interfaces\IGuestsEndpoint.cs" />
     <Compile Include="Api\Interfaces\IApiHelper.cs" />
     <Compile Include="Api\Interfaces\IAppUsersEndpoint.cs" />
@@ -61,6 +63,8 @@
     <Compile Include="Api\Endpoints\OfficersEndpoint.cs" />
     <Compile Include="Api\AuthenticationHandler.cs" />
     <Compile Include="Api\Utils\UrlBuilder.cs" />
+    <Compile Include="Models\AccomodationRequests\AccomodationRequestLookup.cs" />
+    <Compile Include="Models\AccomodationRequests\AccomodationRequestState.cs" />
     <Compile Include="Models\CurrentUser.cs" />
     <Compile Include="Models\Guests\GuestLookup.cs" />
     <Compile Include="Models\Guests\GuestModel.cs" />

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Library.Models;
+using Library.Models.AccomodationRequests;
 using Library.Models.Guests;
 
 namespace Library.Api.Interfaces
@@ -13,5 +14,7 @@ namespace Library.Api.Interfaces
         Task<PagedResultModel<GuestLookup>> GetAll(PagedRequestModel model);
 
         Task<PropertiesResultModel> Edit(string id, GuestModel model);
+
+        Task<PagedResultModel<AccomodationRequestLookup>> GetMyAccomodationRequests(PagedRequestModel model);
     }
 }

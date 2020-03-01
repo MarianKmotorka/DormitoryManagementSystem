@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Library.Api.Interfaces;
 using Library.Api.Utils;
 using Library.Models;
+using Library.Models.AccomodationRequests;
 using Library.Models.Guests;
 
 namespace Library.Api.Endpoints
@@ -54,6 +55,15 @@ namespace Library.Api.Endpoints
                 return await response.Content.ReadAsAsync<PropertiesResultModel>();
 
             return PropertiesResultModel.Succesful;
+        }
+
+        public async Task<PagedResultModel<AccomodationRequestLookup>> GetMyAccomodationRequests(PagedRequestModel model)
+        {
+            var url = UrlBuilder.Build("guests/me/accomodation-requests", model);
+
+            var response = await _apiHelper.Client.GetAsync(url);
+
+            return await response.Content.ReadAsAsync<PagedResultModel<AccomodationRequestLookup>>();
         }
     }
 }

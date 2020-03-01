@@ -11,6 +11,7 @@
                     <local:Bootstrapper x:Key="Bootstrapper"/>
                     <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
                     <converters:EmptyStringToZeroConverter x:Key="EmptyStringToZeroConverter"/>
+                    <converters:ToShortDateConverter x:Key="ToShortDateConverter"/>
                 </ResourceDictionary>
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

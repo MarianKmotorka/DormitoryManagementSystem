@@ -21,7 +21,7 @@ namespace WpfClient.ViewModels.Guests
         private string _roomNumberFilter;
         private int _pages;
         private int _pageNumber = 1;
-        private int _selectedPageSize = 10;
+        private int _pageSize = 10;
         private GuestLookup _selectedGuest;
         private readonly IGuestsEndpoint _guestsEndpoint;
         private readonly IEventAggregator _eventAggregator;
@@ -74,8 +74,8 @@ namespace WpfClient.ViewModels.Guests
 
         public int PageSize
         {
-            get => _selectedPageSize;
-            set { _selectedPageSize = value; NotifyOfPropertyChange(nameof(PageSize)); }
+            get => _pageSize;
+            set { _pageSize = value; NotifyOfPropertyChange(nameof(PageSize)); }
         }
 
         public int Pages
@@ -135,7 +135,7 @@ namespace WpfClient.ViewModels.Guests
             Loading = true;
             Guests.Clear();
 
-            var result = await _guestsEndpoint.GetAll(Utils.GetPageRequestModel(GetType(), this));
+            var result = await _guestsEndpoint.GetAll(Utils.GetPagedRequestModel(GetType(), this));
 
             Loading = false;
 

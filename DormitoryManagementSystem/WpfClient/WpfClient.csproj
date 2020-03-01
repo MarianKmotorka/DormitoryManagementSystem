@@ -9,6 +9,7 @@
     <RootNamespace>WpfClient</RootNamespace>
     <AssemblyName>WpfClient</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>8.0</LangVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -86,8 +87,10 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Converters\EmptyStringToZeroConverter.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
+    <Compile Include="Converters\ToShortDateConverter.cs" />
+    <Compile Include="Events\OpenAccomodationRequestDetailEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
-    <Compile Include="Events\GoBackToEvent.cs" />
+    <Compile Include="Events\GoBackEvent.cs" />
     <Compile Include="Events\GuestRegisteredEvent.cs" />
     <Compile Include="Events\LoggedInEvent.cs" />
     <Compile Include="Events\OpenGuestDetailEvent.cs" />
@@ -100,12 +103,16 @@
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="Validation\NotifyDataErrorInfoBase.cs" />
     <Compile Include="Validation\ValidationWrapper.cs" />
+    <Compile Include="ViewModels\AccomodationRequests\AccomodationRequestListViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestDetailViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestListViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestRegistrationViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\Officers\OfficerDetailViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\AccomodationRequests\AccomodationRequestListView.xaml.cs">
+      <DependentUpon>AccomodationRequestListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Guests\GuestDetailView.xaml.cs">
       <DependentUpon>GuestDetailView.xaml</DependentUpon>
     </Compile>
@@ -161,6 +168,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AccomodationRequests\AccomodationRequestListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Guests\GuestDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,6 +206,7 @@
   <ItemGroup>
     <Resource Include="Resources\bluehouse.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.0.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.0.1\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
