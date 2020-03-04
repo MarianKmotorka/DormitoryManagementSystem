@@ -24,5 +24,12 @@ namespace Library.Api.Endpoints
 
             return await response.Content.ReadAsAsync<PagedResultModel<AccomodationRequestLookup>>();
         }
+
+        public async Task<AccomodationRequestDetail> GetDetail(int id)
+        {
+            var response = await _apiHelper.Client.GetAsync($"accomodationRequests/{id}");
+
+            return await response.Content.ReadAsAsync<AccomodationRequestDetail>();
+        }
     }
 }

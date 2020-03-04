@@ -15,8 +15,8 @@
             <Setter Property="materialDesign:HintAssist.Foreground" Value="Orange"/>
             <Setter Property="materialDesign:TextFieldAssist.HasClearButton" 
                     Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext.IsEditing}"/>
-            <Setter Property="IsHitTestVisible"
-                    Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext.IsEditing}"/>
+            <Setter Property="IsReadOnly"
+                    Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext.IsEditing, Converter={StaticResource InverseBoolConverter}}"/>
         </Style>
     </UserControl.Resources>
 

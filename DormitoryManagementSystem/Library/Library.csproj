@@ -63,6 +63,7 @@
     <Compile Include="Api\Endpoints\OfficersEndpoint.cs" />
     <Compile Include="Api\AuthenticationHandler.cs" />
     <Compile Include="Api\Utils\UrlBuilder.cs" />
+    <Compile Include="Models\AccomodationRequests\AccomodationRequestDetail.cs" />
     <Compile Include="Models\AccomodationRequests\AccomodationRequestLookup.cs" />
     <Compile Include="Models\AccomodationRequests\AccomodationRequestState.cs" />
     <Compile Include="Models\CurrentUser.cs" />

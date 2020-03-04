@@ -51,6 +51,10 @@
     <system:String x:Key="StartDateUtc">Od (UTC)</system:String>
     <system:String x:Key="EndDateUtc">Do (UTC)</system:String>
     <system:String x:Key="RequestState">Stav žiadosti</system:String>
+    <system:String x:Key="BackToAccomodationRequests">Späť na žiadosti o ubytovanie</system:String>
+    <system:String x:Key="AccomodationRequestDetail">Detail žiadosti o ubytovanie</system:String>
+    <system:String x:Key="Respond">Odpovedaj</system:String>
+    <system:String x:Key="RequesterMessage">Správa od žiadateľa</system:String>
 
 
     <!--GENERAL-->

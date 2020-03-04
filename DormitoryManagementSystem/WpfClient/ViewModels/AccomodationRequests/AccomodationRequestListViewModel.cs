@@ -39,6 +39,8 @@ namespace WpfClient.ViewModels.AccomodationRequests
         public ObservableCollection<AccomodationRequestLookup> AccomodationRequests { get; set; }
             = new ObservableCollection<AccomodationRequestLookup>();
 
+        public AccomodationRequestLookup SelectedAccomodationRequest { get; set; }
+
         public bool Loading
         {
             get => _loading;
@@ -156,13 +158,11 @@ namespace WpfClient.ViewModels.AccomodationRequests
 
         public void OpenDetail()
         {
-            _eventAggregator.PublishOnUIThread(new OpenAccomodationRequestDetailEvent());
+            _eventAggregator.PublishOnUIThread(new OpenAccomodationRequestDetailEvent(this, SelectedAccomodationRequest.Id));
         }
 
         public async Task Load()
         {
-            AccomodationRequests.Clear();
-
             var pagedRequestModel = Utils.GetPagedRequestModel(GetType(), this, omitProperties: nameof(AccomodationRequestLookup.RequestState));
 
             if (!string.IsNullOrWhiteSpace(RequestStateFilter))
@@ -186,6 +186,7 @@ namespace WpfClient.ViewModels.AccomodationRequests
             PageNumber = result.PageNumber;
             Pages = result.Pages;
 
+            AccomodationRequests.Clear();
             foreach (var item in result.Data)
             {
                 AccomodationRequests.Add(item);

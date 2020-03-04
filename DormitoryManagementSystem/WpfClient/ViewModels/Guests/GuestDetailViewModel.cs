@@ -90,8 +90,6 @@ namespace WpfClient.ViewModels.Guests
 
         protected async override void OnViewLoaded(object view)
         {
-            base.OnViewLoaded(view);
-
             Loading = true;
 
             Model.Model = await _guestsEndpoint.GetDetail(GuestId);

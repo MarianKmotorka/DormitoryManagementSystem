@@ -76,8 +76,6 @@ namespace WpfClient.ViewModels.Officers
 
         protected async override void OnViewLoaded(object view)
         {
-            base.OnViewLoaded(view);
-
             Loading = true;
 
             Model.Model = await _officersEndpoint.GetDetail(OfficerId);

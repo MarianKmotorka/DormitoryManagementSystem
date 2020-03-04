@@ -51,6 +51,10 @@
     <system:String x:Key="StartDateUtc">Start date UTC</system:String>
     <system:String x:Key="EndDateUtc">End date UTC</system:String>
     <system:String x:Key="RequestState">Request state</system:String>
+    <system:String x:Key="BackToAccomodationRequests">Back to accomodation requests</system:String>
+    <system:String x:Key="AccomodationRequestDetail">Accomodation request detail</system:String>
+    <system:String x:Key="Respond">Respond</system:String>
+    <system:String x:Key="RequesterMessage">Requester message</system:String>
 
 
     <!--GENERAL-->

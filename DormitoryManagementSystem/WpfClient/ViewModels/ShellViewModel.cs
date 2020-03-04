@@ -10,8 +10,7 @@ using WpfClient.ViewModels.Officers;
 
 namespace WpfClient.ViewModels
 {
-    public class ShellViewModel : Conductor<object>, IHandle<OpenRegisterGuestFormEvent>, IHandle<LoggedInEvent>,
-        IHandle<GuestRegisteredEvent>, IHandle<OpenGuestDetailEvent>, IHandle<GoBackEvent>
+    public class ShellViewModel : Conductor<object>, IHandleShellEvents
     {
         private readonly SimpleContainer _simpleContainer;
         private readonly IApiHelper _apiHelper;
@@ -187,6 +186,18 @@ namespace WpfClient.ViewModels
         {
             ActivateItem(message.ViewModel);
         }
+
+        public void Handle(OpenAccomodationRequestDetailEvent message)
+        {
+            var vm = IoC.Get<AccomodationRequestDetailViewModel>();
+            vm.Model.Id = message.Id;
+            vm.GoBackViewModel = message.Sender as AccomodationRequestListViewModel;
+            ActivateItem(vm);
+        }
+
+        public void Handle(OpenRespondToAccomodationRequestViewEvent message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
-//TODO Add detail for admin, repairer

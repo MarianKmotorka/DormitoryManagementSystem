@@ -131,13 +131,13 @@
                         <TextBlock Text="{DynamicResource StartDateUtc}" VerticalAlignment="Center"/>
                         <ComboBox ItemsSource="{Binding FilterOperators}" SelectedItem="{Binding AccomodationStartDateUtcFilterOperator}" Margin="15 0"
                                       cal:Message.Attach="[Event SelectionChanged] = [Load()]" Grid.Column="1"/>
-                        <DatePicker Width="100" materialDesign:HintAssist.Hint="{DynamicResource PickDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding AccomodationStartDateUtcFilter}" SelectedDateFormat="Short" cal:Message.Attach="[Event SelectedDateChanged] = [Load()]"
+                        <DatePicker Width="100" materialDesign:HintAssist.Hint="{DynamicResource PickDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding AccomodationStartDateUtcFilter, UpdateSourceTrigger=PropertyChanged}" SelectedDateFormat="Short" cal:Message.Attach="[Event SelectedDateChanged] = [Load()]"
                                         Grid.Column="2"/>
 
                         <TextBlock Text="{DynamicResource EndDateUtc}" VerticalAlignment="Center" Grid.Row="1"/>
                         <ComboBox ItemsSource="{Binding FilterOperators}" SelectedItem="{Binding AccomodationEndDateUtcFilterOperator}" Margin="15 0" 
                                       Grid.Column="1" Grid.Row="1" cal:Message.Attach="[Event SelectionChanged] = [Load()]"/>
-                        <DatePicker Width="100" materialDesign:HintAssist.Hint="{DynamicResource PickDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding AccomodationEndDateUtcFilter}" SelectedDateFormat="Short" cal:Message.Attach="[Event SelectedDateChanged] = [Load()]"
+                        <DatePicker Width="100" materialDesign:HintAssist.Hint="{DynamicResource PickDate}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding AccomodationEndDateUtcFilter, UpdateSourceTrigger=PropertyChanged}" SelectedDateFormat="Short" cal:Message.Attach="[Event SelectedDateChanged] = [Load()]"
                                         Grid.Column="2" Grid.Row="1"/>
 
                         <TextBlock Text="{DynamicResource DistanceFromHome}" VerticalAlignment="Center" Grid.Row="2"/>

@@ -89,6 +89,7 @@
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="Converters\ToShortDateConverter.cs" />
     <Compile Include="Events\OpenAccomodationRequestDetailEvent.cs" />
+    <Compile Include="Events\OpenRespondToAccomodationRequestViewEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Events\GoBackEvent.cs" />
     <Compile Include="Events\GuestRegisteredEvent.cs" />
@@ -103,13 +104,18 @@
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="Validation\NotifyDataErrorInfoBase.cs" />
     <Compile Include="Validation\ValidationWrapper.cs" />
+    <Compile Include="ViewModels\AccomodationRequests\AccomodationRequestDetailViewModel.cs" />
     <Compile Include="ViewModels\AccomodationRequests\AccomodationRequestListViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestDetailViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestListViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestRegistrationViewModel.cs" />
+    <Compile Include="ViewModels\IHandleShellEvents.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\Officers\OfficerDetailViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\AccomodationRequests\AccomodationRequestDetailView.xaml.cs">
+      <DependentUpon>AccomodationRequestDetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AccomodationRequests\AccomodationRequestListView.xaml.cs">
       <DependentUpon>AccomodationRequestListView.xaml</DependentUpon>
     </Compile>
@@ -165,6 +171,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\lang.sk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccomodationRequests\AccomodationRequestDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

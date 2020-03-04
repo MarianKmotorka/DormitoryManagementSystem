@@ -7,5 +7,7 @@ namespace Library.Api.Interfaces
     public interface IAccomodationRequestsEndpoint
     {
         Task<PagedResultModel<AccomodationRequestLookup>> GetAll(PagedRequestModel model);
+
+        Task<AccomodationRequestDetail> GetDetail(int id);
     }
 }
