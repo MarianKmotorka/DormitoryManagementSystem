@@ -64,5 +64,15 @@ namespace Library.Api.Endpoints
 
             return PropertiesResultModel.Succesful;
         }
+
+        public async Task<PropertiesResultModel> Create(NewAccomodationRequestModel model)
+        {
+            var response = await _apiHelper.Client.PostAsJsonAsync("accomodationRequests", model);
+
+            if (response.IsSuccessStatusCode)
+                return PropertiesResultModel.Succesful;
+
+            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+        }
     }
 }

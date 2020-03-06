@@ -25,7 +25,7 @@
                       Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" IsTextSearchEnabled="False" >
                 </ComboBox>
 
-                <TextBox Text="{Binding Message}" materialDesign:HintAssist.Hint="{DynamicResource Message}" TextWrapping="Wrap" Margin="0 30"/>
+                <TextBox Text="{Binding Message}" materialDesign:HintAssist.Hint="{DynamicResource Message}" TextWrapping="Wrap" Margin="0 30" materialDesign:TextFieldAssist.HasClearButton="True"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 

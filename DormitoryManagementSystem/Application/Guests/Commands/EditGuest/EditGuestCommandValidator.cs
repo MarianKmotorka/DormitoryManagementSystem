@@ -27,10 +27,6 @@ namespace Application.Guests.Commands.EditGuest
                 .NotEmpty().WithMessage(ErrorMessages.Invalid)
                 .GreaterThanOrEqualTo(0).WithMessage(ErrorMessages.Invalid);
 
-            RuleFor(x => x.DormitoryCardNumber)
-                .NotEmpty().WithMessage(ErrorMessages.Required)
-                .When(x => !string.IsNullOrEmpty(x.RoomNumber));
-
             RuleFor(x => x.FirstName).NotEmpty().WithMessage(ErrorMessages.Required);
 
             RuleFor(x => x.LastName).NotEmpty().WithMessage(ErrorMessages.Required);

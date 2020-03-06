@@ -29,8 +29,8 @@ namespace WpfClient.Validation
 
 
             return !HasErrors;
-
         }
+
         protected void ValidatePropertyInternal(string propertyName, object currentValue)
         {
             ClearErrors(propertyName);

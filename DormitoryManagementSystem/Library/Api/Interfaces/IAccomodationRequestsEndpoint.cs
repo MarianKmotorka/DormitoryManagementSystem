@@ -13,5 +13,7 @@ namespace Library.Api.Interfaces
         Task<PropertiesResultModel> RejectAccomodationRequest(int requestId, string additionalMessage);
 
         Task<PropertiesResultModel> ApproveAccomodationRequest(int requestId, int roomId, string additionalMessage);
+
+        Task<PropertiesResultModel> Create(NewAccomodationRequestModel model);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Application.Common;
 using Application.Common.Interfaces;
@@ -30,7 +31,10 @@ namespace Application.AccomodationRequests.Commands.RespondToAccomodationRequest
             accomodationRequest.State = request.IsAccomodationRequestApproved ? AccomodationRequestState.Approved : AccomodationRequestState.Refused;
 
             if (request.IsAccomodationRequestApproved)
+            {
                 accomodationRequest.Requester.Room = await _db.Rooms.SingleOrNotFoundAsync(x => x.Id == request.RoomId, cancellationToken);
+                accomodationRequest.Requester.DormitoryCardNumber = Guid.NewGuid().ToString();
+            }
             else
                 accomodationRequest.Requester.Room = null;
 

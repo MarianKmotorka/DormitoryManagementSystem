@@ -44,6 +44,13 @@ namespace WpfClient.Validation
             }
         }
 
+        public void ClearAllErrors()
+        {
+            var propNames = ErrorsByProperty.Select(x => x.Key).ToList();
+            ErrorsByProperty.Clear();
+            propNames.ForEach(x => RaiseErrorChangedEvent(x));
+        }
+
         protected void RaiseErrorChangedEvent(string propName)
         {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propName));

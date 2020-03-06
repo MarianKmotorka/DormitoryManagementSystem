@@ -161,6 +161,11 @@ namespace WpfClient.ViewModels.AccomodationRequests
             _eventAggregator.PublishOnUIThread(new OpenAccomodationRequestDetailEvent(this, SelectedAccomodationRequest.Id));
         }
 
+        public void NewAccomodationRequest()
+        {
+            _eventAggregator.PublishOnUIThread(new OpenNewAccomodationRequestViewEvent(this));
+        }
+
         public async Task Load()
         {
             var pagedRequestModel = Utils.GetPagedRequestModel(GetType(), this, omitProperties: nameof(AccomodationRequestLookup.RequestState));

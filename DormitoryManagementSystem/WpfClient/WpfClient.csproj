@@ -89,6 +89,7 @@
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="Converters\ToShortDateConverter.cs" />
     <Compile Include="Events\OpenAccomodationRequestDetailEvent.cs" />
+    <Compile Include="Events\OpenNewAccomodationRequestViewEvent.cs" />
     <Compile Include="Events\OpenRespondToAccomodationRequestViewEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Events\GoBackEvent.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Events\OpenRegisterGuestFormEvent.cs" />
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="ModelWrappers\GuestModelWrapper.cs" />
+    <Compile Include="ModelWrappers\NewAccomodationRequestModelWrapper.cs" />
     <Compile Include="ModelWrappers\OfficerModelWrapper.cs" />
     <Compile Include="RoleNames.cs" />
     <Compile Include="Validation\LengthValidationRule.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Validation\ValidationWrapper.cs" />
     <Compile Include="ViewModels\AccomodationRequests\AccomodationRequestDetailViewModel.cs" />
     <Compile Include="ViewModels\AccomodationRequests\AccomodationRequestListViewModel.cs" />
+    <Compile Include="ViewModels\AccomodationRequests\NewAccomodationRequestViewModel.cs" />
     <Compile Include="ViewModels\AccomodationRequests\RespondToAccomodationRequestViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestDetailViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestListViewModel.cs" />
@@ -119,6 +122,9 @@
     </Compile>
     <Compile Include="Views\AccomodationRequests\AccomodationRequestListView.xaml.cs">
       <DependentUpon>AccomodationRequestListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccomodationRequests\NewAccomodationRequestView.xaml.cs">
+      <DependentUpon>NewAccomodationRequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AccomodationRequests\RespondToAccomodationRequestView.xaml.cs">
       <DependentUpon>RespondToAccomodationRequestView.xaml</DependentUpon>
@@ -183,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AccomodationRequests\AccomodationRequestListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccomodationRequests\NewAccomodationRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

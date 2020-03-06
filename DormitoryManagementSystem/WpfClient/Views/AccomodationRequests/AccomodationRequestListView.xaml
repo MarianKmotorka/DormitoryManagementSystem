@@ -100,8 +100,9 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <!--FILTERS-->
             <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Margin="30 0 0 10">
+
+                <!--FILTERS-->
                 <GroupBox Background="{StaticResource MaterialDesignBackground}" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" 
                           materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0">
                     <GroupBox.Header>
@@ -184,6 +185,16 @@
                         <RadioButton Content="{DynamicResource EndDateUtc}" IsChecked="{Binding AccomodationEndDateUtcSort}" cal:Message.Attach="[Event Click] = [Load()]"/>
                     </StackPanel>
                 </GroupBox>
+
+                <!--CREATE NEW-->
+                <Button x:Name="NewAccomodationRequest" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Margin="50 10" materialDesign:ButtonAssist.CornerRadius="15"
+                     Visibility="{Binding IsMyAccomodationRequests, Converter={StaticResource BooleanToVisibilityConverter}}" >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="PencilPlusOutline" VerticalAlignment="Center"/>
+                        <TextBlock Text="{DynamicResource NewAccomodationRequest}" Foreground="White" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
             </StackPanel>
         </Grid>
     </materialDesign:Card>

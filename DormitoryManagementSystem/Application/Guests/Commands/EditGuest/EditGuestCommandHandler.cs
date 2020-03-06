@@ -30,7 +30,6 @@ namespace Application.Guests.Commands.EditGuest
             guest.AppUser.LastName = request.LastName;
             guest.AppUser.PhoneNumber = request.PhoneNumber;
             guest.DistanceFromHome = request.DistanceFromHome;
-            guest.DormitoryCardNumber = request.DormitoryCardNumber;
             guest.Room = room;
             guest.AppUser.Address.Country = request.Country;
             guest.AppUser.Address.City = request.City;

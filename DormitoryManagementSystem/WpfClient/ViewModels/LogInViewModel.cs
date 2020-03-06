@@ -11,7 +11,7 @@ namespace WpfClient.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly IAppUsersEndpoint _appUsersEndpoint;
-        private string _email = "john@officer.com";
+        private string _email = "john@guest.com";
         private string _password = "string";
         private string _error;
         private bool _loading;

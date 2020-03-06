@@ -57,6 +57,7 @@
     <system:String x:Key="RequesterMessage">Requester message</system:String>
     <system:String x:Key="Approve">Approve</system:String>
     <system:String x:Key="Reject">Reject</system:String>
+    <system:String x:Key="NewAccomodationRequest">New accomodation request</system:String>
 
 
     <!--GENERAL-->

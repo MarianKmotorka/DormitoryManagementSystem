@@ -26,8 +26,6 @@ namespace Application.Guests.Commands.EditGuest
 
         public string RoomNumber { get; set; }
 
-        public string DormitoryCardNumber { get; set; }
-
         public int DistanceFromHome { get; set; }
     }
 }

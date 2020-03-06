@@ -50,7 +50,7 @@
 
                     <StackPanel Grid.Column="1" Grid.RowSpan="2">
                         <TextBox materialDesign:HintAssist.Hint="{DynamicResource Email}" Text="{Binding Model.Email, UpdateSourceTrigger=PropertyChanged}" 
-                             IsHitTestVisible="False" IsEnabled="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"/>
+                             IsEnabled="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"/>
 
                         <TextBox materialDesign:HintAssist.Hint="{DynamicResource FirstName}" 
                              Text="{Binding Model.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
@@ -60,7 +60,8 @@
 
                         <TextBox materialDesign:HintAssist.Hint="{DynamicResource IdCardNumber}" Text="{Binding Model.IdCardNumber, UpdateSourceTrigger=PropertyChanged}" IsHitTestVisible="False" IsEnabled="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"/>
 
-                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource DormitoryCardNumber}" Text="{Binding Model.DormitoryCardNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource DormitoryCardNumber}" Text="{Binding Model.DormitoryCardNumber, UpdateSourceTrigger=PropertyChanged}"
+                                 IsEnabled="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"/>
 
                         <TextBox materialDesign:HintAssist.Hint="{DynamicResource RoomNumber}" Text="{Binding Model.RoomNumber, UpdateSourceTrigger=PropertyChanged, TargetNullValue=' '}"/>
 

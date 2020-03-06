@@ -35,7 +35,7 @@
 
 
     <!--Guest-->
-    <system:String x:Key="DormitoryCardNumber">Číslo internátneeho preukazu</system:String>
+    <system:String x:Key="DormitoryCardNumber">Číslo internátneho preukazu</system:String>
     <system:String x:Key="GuestInfo">Informácie o hosťovi</system:String>
     <system:String x:Key="RoomNumber">Číslo izby</system:String>
     <system:String x:Key="BackToGuests">Choď späť na zoznam hostí</system:String>
@@ -57,6 +57,7 @@
     <system:String x:Key="RequesterMessage">Správa od žiadateľa</system:String>
     <system:String x:Key="Approve">Schváliť</system:String>
     <system:String x:Key="Reject">Odmietnuť</system:String>
+    <system:String x:Key="NewAccomodationRequest">Podaj žiadosť o ubytovanie</system:String>
 
 
     <!--GENERAL-->
@@ -90,8 +91,8 @@
 
 
     <!--Error messages-->
-    <system:String x:Key="Required">Pozadovane</system:String>
-    <system:String x:Key="Invalid">Neplatne</system:String>
+    <system:String x:Key="Required">Požadované</system:String>
+    <system:String x:Key="Invalid">Neplatné</system:String>
     <system:String x:Key="MinLength6">Minimalna dĺžka: 6</system:String>
     <system:String x:Key="MaxLength">Maximálna dlžka:</system:String>
 

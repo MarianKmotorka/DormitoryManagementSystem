@@ -202,5 +202,12 @@ namespace WpfClient.ViewModels
             vm.GoBackViewModel = message.Sender;
             ActivateItem(vm);
         }
+
+        public void Handle(OpenNewAccomodationRequestViewEvent message)
+        {
+            var vm = IoC.Get<NewAccomodationRequestViewModel>();
+            vm.GoBackViewModel = message.Sender;
+            ActivateItem(vm);
+        }
     }
 }
