@@ -16,6 +16,23 @@ namespace Library.Api.Endpoints
             _apiHelper = apiHelper;
         }
 
+        public async Task<PropertiesResultModel> ApproveAccomodationRequest(int requestId, int roomId, string additionalMessage)
+        {
+            var data = new
+            {
+                roomId,
+                additionalMessage,
+                isAccomodationRequestApproved = true
+            };
+
+            var response = await _apiHelper.Client.PatchAsJsonAsync($"accomodationRequests/{requestId}", data);
+
+            if (!response.IsSuccessStatusCode)
+                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+
+            return PropertiesResultModel.Succesful;
+        }
+
         public async Task<PagedResultModel<AccomodationRequestLookup>> GetAll(PagedRequestModel model)
         {
             var url = UrlBuilder.Build("accomodationRequests", model);
@@ -30,6 +47,22 @@ namespace Library.Api.Endpoints
             var response = await _apiHelper.Client.GetAsync($"accomodationRequests/{id}");
 
             return await response.Content.ReadAsAsync<AccomodationRequestDetail>();
+        }
+
+        public async Task<PropertiesResultModel> RejectAccomodationRequest(int requestId, string additionalMessage)
+        {
+            var data = new
+            {
+                additionalMessage,
+                isAccomodationRequestApproved = false
+            };
+
+            var response = await _apiHelper.Client.PatchAsJsonAsync($"accomodationRequests/{requestId}", data);
+
+            if (!response.IsSuccessStatusCode)
+                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+
+            return PropertiesResultModel.Succesful;
         }
     }
 }

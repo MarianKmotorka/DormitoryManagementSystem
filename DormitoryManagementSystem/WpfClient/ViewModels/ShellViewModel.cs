@@ -197,7 +197,10 @@ namespace WpfClient.ViewModels
 
         public void Handle(OpenRespondToAccomodationRequestViewEvent message)
         {
-            throw new NotImplementedException();
+            var vm = IoC.Get<RespondToAccomodationRequestViewModel>();
+            vm.RequestId = message.RequestId;
+            vm.GoBackViewModel = message.Sender;
+            ActivateItem(vm);
         }
     }
 }

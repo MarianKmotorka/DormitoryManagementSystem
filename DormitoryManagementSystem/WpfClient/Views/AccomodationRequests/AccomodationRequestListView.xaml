@@ -65,7 +65,8 @@
                         </Button>
 
                         <TextBlock Text="{DynamicResource PageSize}" VerticalAlignment="Center" Margin="50 0 20 0"/>
-                        <ComboBox  SelectedItem="{Binding PageSize, Mode=TwoWay}" ItemsSource="{Binding PageSizeOptions}" Margin="0 0 10 0" cal:Message.Attach="[Event SelectionChanged] = [Load()]"/>
+                        <ComboBox  SelectedItem="{Binding PageSize, Mode=TwoWay}" ItemsSource="{Binding PageSizeOptions}" Margin="0 0 10 0" 
+                                   cal:Message.Attach="[Event SelectionChanged] = [Load()]"/>
                     </StackPanel>
                 </Grid>
             </materialDesign:ColorZone>

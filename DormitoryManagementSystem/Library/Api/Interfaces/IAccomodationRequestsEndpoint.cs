@@ -9,5 +9,9 @@ namespace Library.Api.Interfaces
         Task<PagedResultModel<AccomodationRequestLookup>> GetAll(PagedRequestModel model);
 
         Task<AccomodationRequestDetail> GetDetail(int id);
+
+        Task<PropertiesResultModel> RejectAccomodationRequest(int requestId, string additionalMessage);
+
+        Task<PropertiesResultModel> ApproveAccomodationRequest(int requestId, int roomId, string additionalMessage);
     }
 }

@@ -55,12 +55,17 @@
     <system:String x:Key="AccomodationRequestDetail">Detail žiadosti o ubytovanie</system:String>
     <system:String x:Key="Respond">Odpovedaj</system:String>
     <system:String x:Key="RequesterMessage">Správa od žiadateľa</system:String>
+    <system:String x:Key="Approve">Schváliť</system:String>
+    <system:String x:Key="Reject">Odmietnuť</system:String>
 
 
     <!--GENERAL-->
     <system:String x:Key="Submit">Odoslať</system:String>
     <system:String x:Key="Edit">Edituj</system:String>
     <system:String x:Key="PickDate">Vyber dátum</system:String>
+    <system:String x:Key="Search">Hľadaj</system:String>
+    <system:String x:Key="Back">Späť</system:String>
+    <system:String x:Key="Message">Správa</system:String>
 
 
     <!--GRIDS-->

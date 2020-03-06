@@ -55,12 +55,17 @@
     <system:String x:Key="AccomodationRequestDetail">Accomodation request detail</system:String>
     <system:String x:Key="Respond">Respond</system:String>
     <system:String x:Key="RequesterMessage">Requester message</system:String>
+    <system:String x:Key="Approve">Approve</system:String>
+    <system:String x:Key="Reject">Reject</system:String>
 
 
     <!--GENERAL-->
     <system:String x:Key="Submit">Submit</system:String>
     <system:String x:Key="Edit">Edit</system:String>
     <system:String x:Key="PickDate">Pick date</system:String>
+    <system:String x:Key="Search">Search</system:String>
+    <system:String x:Key="Back">Back</system:String>
+    <system:String x:Key="Message">Message</system:String>
 
 
     <!--GRIDS-->

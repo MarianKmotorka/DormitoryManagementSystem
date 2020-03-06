@@ -38,7 +38,7 @@ namespace WpfClient.ViewModels.AccomodationRequests
 
         public void Respond()
         {
-            _eventAggregator.PublishOnUIThread(new OpenRespondToAccomodationRequestViewEvent());
+            _eventAggregator.PublishOnUIThread(new OpenRespondToAccomodationRequestViewEvent(this, Model.Id));
         }
 
         protected async override void OnViewLoaded(object view)
