@@ -98,6 +98,10 @@
     <system:String x:Key="WelcomeToAdminMode">Welcome to admin mode !</system:String>
 
 
+    <!--REPAIRERS-->
+    <system:String x:Key="RepairerInfo">Repairer info</system:String>
+
+
     <!--Error messages-->
     <system:String x:Key="Required">Required</system:String>
     <system:String x:Key="Invalid">Invalid</system:String>

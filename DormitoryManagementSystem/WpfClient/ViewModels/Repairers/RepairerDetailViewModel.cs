@@ -5,25 +5,25 @@ using Library.Api.Interfaces;
 using WpfClient.Events;
 using WpfClient.ModelWrappers;
 
-namespace WpfClient.ViewModels.Officers
+namespace WpfClient.ViewModels.Repairers
 {
-    public class OfficerDetailViewModel : Screen
+    public class RepairerDetailViewModel : Screen
     {
         private bool _isEditing;
         private bool _loading;
         private bool _editedSuccessfully;
-        private readonly IOfficersEndpoint _officersEndpoint;
+        private readonly IRepairersEndpoint _repairersEndpoint;
         private readonly IEventAggregator _eventAggregator;
 
-        public OfficerModelWrapper Model { get; set; } = new OfficerModelWrapper();
+        public RepairerModelWrapper Model { get; set; } = new RepairerModelWrapper();
 
         public object GoBackViewModel { get; set; }
 
-        public string OfficerId { get; set; } = null;
+        public string RepairerId { get; set; } = null;
 
-        public bool IsMyInfoPage => OfficerId == null;
+        public bool IsMyInfoPage => RepairerId == null;
 
-        public bool IsEditButtonVisible => !IsEditing && OfficerId != null;
+        public bool IsEditButtonVisible => !IsEditing && RepairerId != null;
 
         public bool IsEditing
         {
@@ -43,9 +43,9 @@ namespace WpfClient.ViewModels.Officers
             set { _editedSuccessfully = value; NotifyOfPropertyChange(nameof(EditedSuccessfully)); }
         }
 
-        public OfficerDetailViewModel(IOfficersEndpoint officersEndpoint, IEventAggregator eventAggregator)
+        public RepairerDetailViewModel(IRepairersEndpoint repairersEndpoint, IEventAggregator eventAggregator)
         {
-            _officersEndpoint = officersEndpoint;
+            _repairersEndpoint = repairersEndpoint;
             _eventAggregator = eventAggregator;
         }
 
@@ -71,7 +71,7 @@ namespace WpfClient.ViewModels.Officers
 
             Loading = true;
 
-            var result = await _officersEndpoint.Edit(OfficerId, Model.Model);
+            var result = await _repairersEndpoint.Edit(RepairerId, Model.Model);
 
             Loading = false;
 
@@ -92,7 +92,7 @@ namespace WpfClient.ViewModels.Officers
         {
             Loading = true;
 
-            Model.Model = await _officersEndpoint.GetDetail(OfficerId);
+            Model.Model = await _repairersEndpoint.GetDetail(RepairerId);
             NotifyOfPropertyChange(nameof(Model));
 
             Loading = false;

@@ -117,7 +117,7 @@ namespace WpfClient.ViewModels
                             ActivateItem(IoC.Get<AdminInfoViewModel>());
                             break;
                         case RoleNames.Repairer:
-                            ActivateItem(null);
+                            ActivateItem(IoC.Get<RepairerDetailViewModel>());
                             break;
                     }
                     break;
@@ -239,6 +239,14 @@ namespace WpfClient.ViewModels
         {
             var vm = IoC.Get<OfficerDetailViewModel>();
             vm.OfficerId = message.Id;
+            vm.GoBackViewModel = message.Sender;
+            ActivateItem(vm);
+        }
+
+        public void Handle(OpenRepairerDetailEvent message)
+        {
+            var vm = IoC.Get<RepairerDetailViewModel>();
+            vm.RepairerId = message.Id;
             vm.GoBackViewModel = message.Sender;
             ActivateItem(vm);
         }

@@ -83,6 +83,9 @@
     <system:String x:Key="WelcomeToAdminMode">Vitaj v admin móde !</system:String>
 
 
+    <!--REPAIRERS-->
+    <system:String x:Key="RepairerInfo">Informácie o údržbárovi</system:String>
+
 
     <!--Tabs-->
     <system:String x:Key="Officers">Úradnici</system:String>

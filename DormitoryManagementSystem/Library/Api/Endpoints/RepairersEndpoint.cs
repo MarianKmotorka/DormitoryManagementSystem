@@ -16,6 +16,16 @@ namespace Library.Api.Endpoints
             _apiHelper = apiHelper;
         }
 
+        public async Task<PropertiesResultModel> Edit(string id, RepairerModel model)
+        {
+            var response = await _apiHelper.Client.PatchAsJsonAsync($"repairers/{id}", model);
+
+            if (response.IsSuccessStatusCode)
+                return PropertiesResultModel.Succesful;
+
+            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+        }
+
         public async Task<PagedResultModel<RepairerLookup>> GetAll(PagedRequestModel model)
         {
             var url = UrlBuilder.Build("repairers", model);
@@ -23,6 +33,13 @@ namespace Library.Api.Endpoints
             var response = await _apiHelper.Client.GetAsync(url);
 
             return await response.Content.ReadAsAsync<PagedResultModel<RepairerLookup>>();
+        }
+
+        public async Task<RepairerModel> GetDetail(string id = null)
+        {
+            var response = await _apiHelper.Client.GetAsync($"repairers/{id ?? "me"}");
+
+            return await response.Content.ReadAsAsync<RepairerModel>();
         }
 
         public async Task<PropertiesResultModel> Register(RepairerModel model)

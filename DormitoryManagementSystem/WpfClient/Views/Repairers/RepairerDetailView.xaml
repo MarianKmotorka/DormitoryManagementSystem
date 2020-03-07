@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="WpfClient.Views.Repairers.RepairerDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0 10 10 15"/>
+            <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="Orange"/>
+            <Setter Property="materialDesign:HintAssist.Foreground" Value="Orange"/>
+            <Setter Property="materialDesign:TextFieldAssist.HasClearButton" 
+                    Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext.IsEditing}"/>
+            <Setter Property="IsReadOnly"
+                    Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext.IsEditing, Converter={StaticResource InverseBoolConverter}}"/>
+        </Style>
+    </UserControl.Resources>
+
+    <materialDesign:Card Margin="10">
+        <StackPanel>
+            <materialDesign:ColorZone Padding="10" Mode="PrimaryLight" Visibility="{Binding IsMyInfoPage, Converter={StaticResource InverseBoolToVisConverter}}">
+                <Button x:Name="GoBack" Style="{StaticResource MaterialDesignToolButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ArrowBack" Margin="0 0 10 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="{DynamicResource Back}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </materialDesign:ColorZone>
+            <DockPanel Margin="60">
+
+                <TextBlock Text="{DynamicResource RepairerInfo}" FontSize="40" DockPanel.Dock="Top" Foreground="#3f51b5" Visibility="{Binding IsMyInfoPage, Converter={StaticResource InverseBoolToVisConverter}}"/>
+                <TextBlock Text="{DynamicResource MyInfo}" FontSize="40" DockPanel.Dock="Top" Foreground="#3f51b5" Visibility="{Binding IsMyInfoPage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                <Grid Margin="0 10 0 0" DockPanel.Dock="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="1" Grid.RowSpan="2">
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource Email}" Text="{Binding Model.Email, UpdateSourceTrigger=PropertyChanged}" 
+                             IsEnabled="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"/>
+
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource FirstName}" 
+                             Text="{Binding Model.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource LastName}" 
+                             Text="{Binding Model.LastName, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource PhoneNumber}" Text="{Binding Model.PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource Country}" Text="{Binding Model.Country, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource City}" Text="{Binding Model.City, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3">
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource Street}" Text="{Binding Model.Street, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource HouseNumber}" Text="{Binding Model.HouseNumber, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource PostCode}" Text="{Binding Model.PostCode, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <!--EDIT BUTTONS-->
+                    <Button x:Name="Edit" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
+                        IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolConverter}}" Padding="0 0 5 0"
+                        Visibility="{Binding IsEditButtonVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Style="{StaticResource MaterialDesignToolButton}">
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="WrenchOutline"/>
+                            <TextBlock Text="{DynamicResource Edit}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="SubmitEdit" Content="{DynamicResource Submit}" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
+                        IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolConverter}}" Padding="0 0 5 0" Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                    <StackPanel  Grid.Row="1" Grid.Column="3">
+
+                        <!--LOADING-->
+                        <StackPanel Margin="10" Orientation="Horizontal" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Foreground="#3f51b5" Value="0" IsIndeterminate="True" Height="25" Width="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="{DynamicResource Loading}" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                        </StackPanel>
+
+                        <!--EDITED SUCCESSFULLY-->
+                        <TextBlock Text="{DynamicResource Success}" Foreground="Green" FontSize="15" Margin="10" 
+                           Visibility="{Binding EditedSuccessfully, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    </StackPanel>
+
+                </Grid>
+            </DockPanel>
+        </StackPanel>
+    </materialDesign:Card>
+</UserControl>
