@@ -2,6 +2,7 @@
 using Application.Common.Pagination;
 using Application.Repairers.Commands.CreateRepairer;
 using Application.Repairers.Commands.DeleteRepairer;
+using Application.Repairers.Commands.EditRepairer;
 using Application.Repairers.Queries.GetRepairerDetail;
 using Application.Repairers.Queries.GetRepairerList;
 using Infrastracture.Identity;
@@ -50,6 +51,15 @@ namespace WebApi.Controllers
         public async Task<ActionResult> DeleteRepairer(string id)
         {
             await Mediator.Send(new DeleteRepairerCommand { Id = id });
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        [Authorize(PolicyNames.Officer)]
+        public async Task<ActionResult> EditRepairer(string id, EditRepairerCommand request)
+        {
+            if (request != null) request.Id = id;
+            await Mediator.Send(request);
             return NoContent();
         }
     }

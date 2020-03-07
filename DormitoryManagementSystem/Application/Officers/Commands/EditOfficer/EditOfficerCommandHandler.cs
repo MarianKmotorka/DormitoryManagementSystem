@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Application.Common;
 using Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@ namespace Application.Officers.Commands.EditOfficer
                 .Include(x => x.AppUser)
                 .Include(x => x.AppUser.Address)
                 .Include(x => x.Office)
-                .SingleOrDefaultAsync(x => x.Id == request.Id);
+                .SingleOrNotFoundAsync(x => x.Id == request.Id, cancellationToken);
 
             var office = await _db.Offices.SingleAsync(x => x.Number == request.OfficeNumber);
 
