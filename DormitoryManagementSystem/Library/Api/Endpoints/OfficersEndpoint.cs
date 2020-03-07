@@ -2,7 +2,6 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Library.Api.Interfaces;
-using Library.Api.Utils;
 using Library.Models;
 using Library.Models.Officers;
 
@@ -37,9 +36,14 @@ namespace Library.Api.Endpoints
             return await response.Content.ReadAsAsync<OfficerModel>();
         }
 
-        public Task<PropertiesResultModel> Register(OfficerModel model)
+        public async Task<PropertiesResultModel> Register(OfficerModel model)
         {
-            throw new NotImplementedException();
+            var response = await _apiHelper.Client.PostAsJsonAsync("officers", model);
+
+            if (response.IsSuccessStatusCode)
+                return PropertiesResultModel.Succesful;
+
+            return await response.Content.ReadAsAsync<PropertiesResultModel>();
         }
     }
 }

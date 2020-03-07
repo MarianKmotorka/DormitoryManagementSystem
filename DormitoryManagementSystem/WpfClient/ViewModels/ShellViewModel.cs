@@ -120,9 +120,15 @@ namespace WpfClient.ViewModels
                             break;
                     }
                     break;
+
                 case "Guests":
                     ActivateItem(IoC.Get<GuestListViewModel>());
                     break;
+
+                case "RegisterOfficer":
+                    ActivateItem(IoC.Get<OfficerRegistrationViewModel>());
+                    break;
+
                 case "AccomodationRequests":
                     var vm = IoC.Get<AccomodationRequestListViewModel>();
                     if (_currentUser.Role == RoleNames.Guest)

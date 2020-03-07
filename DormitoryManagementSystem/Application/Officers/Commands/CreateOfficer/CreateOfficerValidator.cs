@@ -20,7 +20,9 @@ namespace Application.Officers.Commands.CreateOfficer
 
             RuleFor(x => x.LastName).NotEmpty().WithMessage(ErrorMessages.Required);
 
-            RuleFor(x => x.PhoneNumber).NotEmpty().WithMessage(ErrorMessages.Required);
+            RuleFor(x => x.PhoneNumber)
+                .NotEmpty().WithMessage(ErrorMessages.Required)
+                .Matches(@"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$").WithMessage(ErrorMessages.Invalid);
 
             RuleFor(x => x.OfficeNumber).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ErrorMessages.Required)
