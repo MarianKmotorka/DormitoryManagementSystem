@@ -73,6 +73,7 @@
     <Compile Include="Models\Identity\CurrentUser.cs" />
     <Compile Include="Models\Guests\GuestLookup.cs" />
     <Compile Include="Models\Guests\GuestModel.cs" />
+    <Compile Include="Models\Officers\OfficerLookup.cs" />
     <Compile Include="Models\Officers\OfficerModel.cs" />
     <Compile Include="Models\PagedRequestModel.cs" />
     <Compile Include="Models\PagedResultModel.cs" />

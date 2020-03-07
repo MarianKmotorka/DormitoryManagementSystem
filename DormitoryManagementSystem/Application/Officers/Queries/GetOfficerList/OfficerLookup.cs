@@ -10,16 +10,22 @@ namespace Application.Officers.Queries.GetOfficerList
     {
         public string Id { get; set; }
 
-        public string DisplayName { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string OfficeNumber { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Officer, OfficerLookup>()
-                .ForMember(dest => dest.DisplayName, cfg =>
+                .ForMember(dest => dest.LastName, cfg =>
                 {
-                    cfg.MapFrom(src => src.AppUser.LastName + " " + src.AppUser.FirstName);
+                    cfg.MapFrom(src => src.AppUser.LastName);
+                })
+                .ForMember(dest => dest.FirstName, cfg =>
+                {
+                    cfg.MapFrom(src => src.AppUser.FirstName);
                 });
         }
 
@@ -28,7 +34,10 @@ namespace Application.Officers.Queries.GetOfficerList
             mapper.Property<OfficerLookup>(x => x.OfficeNumber)
                 .CanFilter().CanSort();
 
-            mapper.Property<OfficerLookup>(x => x.DisplayName)
+            mapper.Property<OfficerLookup>(x => x.FirstName)
+                .CanFilter().CanSort();
+
+            mapper.Property<OfficerLookup>(x => x.LastName)
                 .CanFilter().CanSort();
         }
     }

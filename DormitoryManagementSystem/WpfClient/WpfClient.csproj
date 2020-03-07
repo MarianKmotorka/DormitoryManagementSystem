@@ -90,6 +90,7 @@
     <Compile Include="Converters\ToShortDateConverter.cs" />
     <Compile Include="Events\OpenAccomodationRequestDetailEvent.cs" />
     <Compile Include="Events\OpenNewAccomodationRequestViewEvent.cs" />
+    <Compile Include="Events\OpenOfficerDetailEvent.cs" />
     <Compile Include="Events\OpenRespondToAccomodationRequestViewEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Events\GoBackEvent.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="ViewModels\IHandleShellEvents.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\Officers\OfficerDetailViewModel.cs" />
+    <Compile Include="ViewModels\Officers\OfficerListViewModel.cs" />
     <Compile Include="ViewModels\Officers\OfficerRegistrationViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AccomodationRequests\AccomodationRequestDetailView.xaml.cs">
@@ -152,6 +154,9 @@
     </Compile>
     <Compile Include="Views\Officers\OfficerDetailView.xaml.cs">
       <DependentUpon>OfficerDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Officers\OfficerListView.xaml.cs">
+      <DependentUpon>OfficerListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Officers\OfficerRegistrationView.xaml.cs">
       <DependentUpon>OfficerRegistrationView.xaml</DependentUpon>
@@ -237,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Officers\OfficerDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Officers\OfficerListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="WpfClient.Views.Officers.OfficerListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+            <Setter Property="materialDesign:TextFieldAssist.HasClearButton" Value="True"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignTabRadioButton}">
+            <Setter Property="Margin" Value="2 6"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
+    </UserControl.Resources>
+
+    <materialDesign:Card Margin="10">
+        <Grid Margin="30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="{DynamicResource Officers}" FontSize="40" Foreground="#3f51b5"/>
+
+            <materialDesign:ColorZone Mode="PrimaryLight" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 10" Padding="10" CornerRadius="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!--LOADING-->
+                    <StackPanel Margin="20 0" Orientation="Horizontal" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Height="25" Width="25" VerticalAlignment="Center"/>
+                        <TextBlock Text="{DynamicResource Loading}" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    </StackPanel>
+
+                    <!--PAGING-->
+                    <StackPanel  Orientation="Horizontal" Grid.Column="2">
+                        <Button x:Name="PreviousPage" Margin="0 0 20 0" Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon Kind="ArrowLeftBoldOutline" />
+                        </Button>
+
+                        <TextBlock Text="{Binding PageNumber}" VerticalAlignment="Center"/>
+                        <TextBlock Text="/" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Pages}" VerticalAlignment="Center"/>
+
+                        <Button x:Name="NextPage" Margin="20 0 0 0" Style="{StaticResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon Kind="ArrowRightBoldOutline"/>
+                        </Button>
+
+                        <TextBlock Text="{DynamicResource PageSize}" VerticalAlignment="Center" Margin="50 0 20 0"/>
+                        <ComboBox  SelectedItem="{Binding PageSize, Mode=TwoWay}" ItemsSource="{Binding PageSizeOptions}" Margin="0 0 10 0" cal:Message.Attach="[Event SelectionChanged] = [Load()]"/>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:ColorZone>
+
+            <!--TABLE-->
+            <DataGrid 
+                Grid.Row="2" Grid.ColumnSpan="2"
+                ScrollViewer.CanContentScroll="True"
+                IsReadOnly="True"
+                CanUserSortColumns="False"
+                ItemsSource="{Binding Officers}" 
+                SelectedItem="{Binding SelectedOfficer}"
+                Background="Transparent"
+                AutoGenerateColumns="False"
+                materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{DynamicResource FirstName}" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="{DynamicResource LastName}" Binding="{Binding LastName}"/>
+                    <DataGridTextColumn Header="{DynamicResource OfficeNumber}" Binding="{Binding OfficeNumber}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource MaterialDesignToolButton}" cal:Message.Attach="[Event Click] = [OpenDetail()]">
+                                    <materialDesign:PackIcon Kind="KeyboardArrowRight" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!--FILTERS-->
+            <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Margin="30 0 0 10">
+                <GroupBox Background="{StaticResource MaterialDesignBackground}" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" 
+                          materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0">
+                    <GroupBox.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{DynamicResource Filters}" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="FilterMenuOutline" Grid.Column="2" MinHeight="20" MinWidth="20" Margin="5"/>
+                        </Grid>
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <TextBox x:Name="FirstNameFilter" materialDesign:HintAssist.Hint="{DynamicResource FirstName}" cal:Message.Attach="[Event TextChanged] = [Load()]"/>
+                        <TextBox x:Name="LastNameFilter" materialDesign:HintAssist.Hint="{DynamicResource LastName}" cal:Message.Attach="[Event TextChanged] = [Load()]"/>
+                        <TextBox x:Name="OfficeNumberFilter" materialDesign:HintAssist.Hint="{DynamicResource OfficeNumber}" cal:Message.Attach="[Event TextChanged] = [Load()]"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!--SORTS-->
+                <GroupBox Background="{StaticResource MaterialDesignBackground}" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" 
+                          materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0">
+                    <GroupBox.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{DynamicResource Sorts}" VerticalAlignment="Center"/>
+                            <ToggleButton Grid.Column="2" Style="{StaticResource MaterialDesignActionToggleButton}" IsChecked="{Binding Ascending}" VerticalAlignment="Center"
+                                           cal:Message.Attach="[Event Click] = [Load()]">
+                                <ToggleButton.Content>
+                                    <materialDesign:PackIcon Kind="ArrowUpDropCircleOutline" Margin="0"/>
+                                </ToggleButton.Content>
+                                <materialDesign:ToggleButtonAssist.OnContent>
+                                    <materialDesign:PackIcon Kind="ArrowDownDropCircleOutline" Margin="0"/>
+                                </materialDesign:ToggleButtonAssist.OnContent>
+                            </ToggleButton>
+                        </Grid>
+                    </GroupBox.Header>
+                    <StackPanel Margin="2">
+                        <RadioButton Content="{DynamicResource FirstName}" IsChecked="{Binding FirstNameSort}" cal:Message.Attach="[Event Click] = [Load()]"/>
+                        <RadioButton Content="{DynamicResource LastName}" IsChecked="{Binding LastNameSort}" cal:Message.Attach="[Event Click] = [Load()]"/>
+                        <RadioButton Content="{DynamicResource OfficeNumber}" IsChecked="{Binding OfficeNumberSort}" cal:Message.Attach="[Event Click] = [Load()]"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

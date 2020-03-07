@@ -11,5 +11,7 @@ namespace Library.Api.Interfaces
         Task<OfficerModel> GetDetail(string id = null);
 
         Task<PropertiesResultModel> Edit(string id, OfficerModel model);
+
+        Task<PagedResultModel<OfficerLookup>> GetAll(PagedRequestModel model);
     }
 }
