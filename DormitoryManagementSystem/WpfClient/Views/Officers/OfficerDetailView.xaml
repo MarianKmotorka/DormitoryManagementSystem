@@ -50,7 +50,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Column="1" Grid.RowSpan="2">
-                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource Email}" Text="{Binding Model.Email, UpdateSourceTrigger=PropertyChanged}" 
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource Email}" Text="{Binding Model.Email, UpdateSourceTrigger=PropertyChanged}"
                              IsHitTestVisible="False" IsEnabled="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"/>
 
                         <TextBox materialDesign:HintAssist.Hint="{DynamicResource FirstName}" 

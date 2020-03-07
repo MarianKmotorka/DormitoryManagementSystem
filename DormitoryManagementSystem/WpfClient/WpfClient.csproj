@@ -102,6 +102,7 @@
     <Compile Include="ModelWrappers\GuestModelWrapper.cs" />
     <Compile Include="ModelWrappers\NewAccomodationRequestModelWrapper.cs" />
     <Compile Include="ModelWrappers\OfficerModelWrapper.cs" />
+    <Compile Include="ModelWrappers\RepairerModelWrapper.cs" />
     <Compile Include="RoleNames.cs" />
     <Compile Include="Validation\LengthValidationRule.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="ViewModels\Officers\OfficerDetailViewModel.cs" />
     <Compile Include="ViewModels\Officers\OfficerListViewModel.cs" />
     <Compile Include="ViewModels\Officers\OfficerRegistrationViewModel.cs" />
+    <Compile Include="ViewModels\Repairers\RepairerRegistrationViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AccomodationRequests\AccomodationRequestDetailView.xaml.cs">
       <DependentUpon>AccomodationRequestDetailView.xaml</DependentUpon>
@@ -160,6 +162,9 @@
     </Compile>
     <Compile Include="Views\Officers\OfficerRegistrationView.xaml.cs">
       <DependentUpon>OfficerRegistrationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Repairers\RepairerRegistrationView.xaml.cs">
+      <DependentUpon>RepairerRegistrationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -250,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Officers\OfficerRegistrationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Repairers\RepairerRegistrationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
