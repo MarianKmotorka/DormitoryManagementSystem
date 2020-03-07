@@ -69,7 +69,8 @@
     <Compile Include="Models\AccomodationRequests\AccomodationRequestLookup.cs" />
     <Compile Include="Models\AccomodationRequests\AccomodationRequestState.cs" />
     <Compile Include="Models\AccomodationRequests\NewAccomodationRequestModel.cs" />
-    <Compile Include="Models\CurrentUser.cs" />
+    <Compile Include="Models\Identity\ChangePasswordModel.cs" />
+    <Compile Include="Models\Identity\CurrentUser.cs" />
     <Compile Include="Models\Guests\GuestLookup.cs" />
     <Compile Include="Models\Guests\GuestModel.cs" />
     <Compile Include="Models\Officers\OfficerModel.cs" />

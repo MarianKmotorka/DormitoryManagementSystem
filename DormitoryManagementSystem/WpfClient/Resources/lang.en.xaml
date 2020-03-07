@@ -8,11 +8,14 @@
     <system:String x:Key="Account">Account</system:String>
     <system:String x:Key="Language">Language</system:String>
     <system:String x:Key="DormitoryManagementSystem">Dormitory management system</system:String>
+    <system:String x:Key="ChangePassword">Change password</system:String>
 
 
     <!--LogIn-->
     <system:String x:Key="Email">Email address</system:String>
     <system:String x:Key="Password">Password</system:String>
+    <system:String x:Key="CurrentPassword">Current password</system:String>
+    <system:String x:Key="NewPassword">New password</system:String>
     <system:String x:Key="ConfirmEmail">Confirm email</system:String>
     <system:String x:Key="Loading">Loading...</system:String>
     <system:String x:Key="Register">Register</system:String>

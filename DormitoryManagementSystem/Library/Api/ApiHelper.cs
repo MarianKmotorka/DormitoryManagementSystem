@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Library.Api.Interfaces;
-using Library.Models;
+using Library.Models.Identity;
 
 namespace Library.Api
 {

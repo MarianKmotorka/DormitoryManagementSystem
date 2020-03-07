@@ -225,12 +225,12 @@ namespace Infrastracture.Identity
             return await _userManager.GeneratePasswordResetTokenAsync(appUser);
         }
 
-        public async Task<Result> ChangePassword(string email, string currentPassword, string newPassword)
+        public async Task<Result> ChangePassword(string id, string currentPassword, string newPassword)
         {
-            var appUser = await _userManager.FindByEmailAsync(email);
+            var appUser = await _userManager.FindByIdAsync(id);
 
             if (appUser == null)
-                return Result.Failure(ErrorMessages.EmailNotFound);
+                return Result.Failure(ErrorMessages.Invalid);
 
             return (await _userManager.ChangePasswordAsync(appUser, currentPassword, newPassword)).ToApplicationResult();
         }

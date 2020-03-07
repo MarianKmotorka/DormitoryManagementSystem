@@ -2,7 +2,7 @@
 using System.Windows;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
-using Library.Models;
+using Library.Models.Identity;
 using WpfClient.Events;
 using WpfClient.ViewModels.AccomodationRequests;
 using WpfClient.ViewModels.Guests;
@@ -141,6 +141,11 @@ namespace WpfClient.ViewModels
             _apiHelper.LogOut();
             IsLoggedIn = false;
             ActivateItem(IoC.Get<LogInViewModel>());
+        }
+
+        public void ChangePassword()
+        {
+            ActivateItem(IoC.Get<ChangePasswordViewModel>());
         }
 
         public void Handle(OpenRegisterGuestFormEvent message)

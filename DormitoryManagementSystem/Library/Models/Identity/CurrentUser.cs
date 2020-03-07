@@ -1,4 +1,4 @@
-﻿namespace Library.Models
+﻿namespace Library.Models.Identity
 {
     public class CurrentUser
     {

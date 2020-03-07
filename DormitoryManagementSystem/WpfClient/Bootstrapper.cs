@@ -7,7 +7,7 @@ using Caliburn.Micro;
 using Library.Api;
 using Library.Api.Endpoints;
 using Library.Api.Interfaces;
-using Library.Models;
+using Library.Models.Identity;
 using WpfClient.Helpers;
 using WpfClient.ViewModels;
 

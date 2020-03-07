@@ -41,6 +41,14 @@
                 <MenuItem.Icon>
                     <materialDesign:PackIcon Kind="AccountCircleOutline" Height="18" Width="18"/>
                 </MenuItem.Icon>
+                <MenuItem x:Name="ChangePassword" Visibility="{Binding IsLoggedIn,Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{DynamicResource ChangePassword}" Margin="0 0 10 0" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="VpnKey" Height="24" Width="24"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
                 <MenuItem x:Name="LogOut" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">

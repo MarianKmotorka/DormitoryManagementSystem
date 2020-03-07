@@ -14,7 +14,7 @@ namespace Application.Common.Interfaces
         Task<string> GenerateEmailConfirmationTokenAsync(string email);
         Task<string> GenerateChangeForgottenPasswordTokenAsync(string email);
 
-        Task<Result> ChangePassword(string email, string currentPassword, string newPassword);
+        Task<Result> ChangePassword(string id, string currentPassword, string newPassword);
         Task<Result> ChangeForgottenPasswordAsync(string email, string resetToken, string newPassword);
 
         Task<bool> ConfirmEmailAsync(string email, string token);

@@ -6,6 +6,7 @@ using Application.AppUsers.Commands.Login;
 using Application.AppUsers.Commands.RefreshToken;
 using Application.AppUsers.Commands.SendChangeForgottenPasswordEmail;
 using Application.AppUsers.Commands.SendConfirmationEmail;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -42,8 +43,10 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("password")]
+        [Authorize]
         public async Task<ActionResult> ChangePassword([FromBody]ChangePasswordCommand request)
         {
+            if (request != null) request.UserId = CurrentUserService.UserId;
             await Mediator.Send(request);
             return NoContent();
         }

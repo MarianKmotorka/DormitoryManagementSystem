@@ -1,8 +1,8 @@
-﻿using Application.Common.Exceptions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.AppUsers.Commands.ChangePassword
 {
@@ -17,7 +17,7 @@ namespace Application.AppUsers.Commands.ChangePassword
 
         public async Task<Unit> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
         {
-            var result = await _identityService.ChangePassword(request.Email, request.CurrentPassword, request.NewPassword);
+            var result = await _identityService.ChangePassword(request.UserId, request.CurrentPassword, request.NewPassword);
 
             if (!result.Succeeded)
                 throw new BadRequestException(result.Errors);

@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Library.Api.Endpoints;
-using Library.Models;
+using Library.Models.Identity;
 using Newtonsoft.Json.Linq;
 
 namespace Library.Api

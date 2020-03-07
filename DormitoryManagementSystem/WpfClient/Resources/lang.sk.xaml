@@ -8,11 +8,14 @@
     <system:String x:Key="Account">Môj účet</system:String>
     <system:String x:Key="Language">Jazyk</system:String>
     <system:String x:Key="DormitoryManagementSystem">Systém správy študentského domova</system:String>
+    <system:String x:Key="ChangePassword">Zmeniť heslo</system:String>
 
 
     <!--LogIn-->
     <system:String x:Key="Email">Emailová adresa</system:String>
     <system:String x:Key="Password">Heslo</system:String>
+    <system:String x:Key="CurrentPassword">Aktuálne heslo</system:String>
+    <system:String x:Key="NewPassword">Nové heslo</system:String>
     <system:String x:Key="ConfirmEmail">Over email</system:String>
     <system:String x:Key="Loading">Načitávanie...</system:String>
     <system:String x:Key="Register">Registrácia</system:String>

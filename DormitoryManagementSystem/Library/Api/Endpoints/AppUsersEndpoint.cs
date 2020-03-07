@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.Api.Interfaces;
 using Library.Models;
+using Library.Models.Identity;
 using Newtonsoft.Json;
 
 namespace Library.Api.Endpoints
@@ -57,6 +58,18 @@ namespace Library.Api.Endpoints
                 return await response.Content.ReadAsAsync<PropertiesResultModel>();
 
             return PropertiesResultModel.Succesful;
+        }
+
+        public async Task<PropertiesResultModel> ChangePassword(ChangePasswordModel model)
+        {
+            var body = new { model.CurrentPassword, model.NewPassword };
+
+            var response = await _apiHelper.Client.PostAsJsonAsync("appUsers/password", body);
+
+            if (response.IsSuccessStatusCode)
+                return PropertiesResultModel.Succesful;
+
+            return await response.Content.ReadAsAsync<PropertiesResultModel>();
         }
 
         public static HttpRequestMessage GetRefreshTokenHttpRequestMessage(CurrentUser currentUser)
