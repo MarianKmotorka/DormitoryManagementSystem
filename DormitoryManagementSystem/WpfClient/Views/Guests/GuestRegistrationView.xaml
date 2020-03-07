@@ -35,33 +35,33 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Column="1">
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource Email}" Text="{Binding Model.Email, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource Email}" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource Password}" Text="{Binding Model.Password, UpdateSourceTrigger=PropertyChanged}"/>
+                    <PasswordBox materialDesign:HintAssist.Hint="{DynamicResource Password}" x:Name="Password" FontSize="20" Margin="0 10 10 15" materialDesign:TextFieldAssist.HasClearButton="True"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource FirstName}" Text="{Binding Model.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource FirstName}" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource LastName}" Text="{Binding Model.LastName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource LastName}" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource IdCardNumber}" Text="{Binding Model.IdCardNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource IdCardNumber}" Text="{Binding IdCardNumber, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource DistanceFromHome}" Text="{Binding Model.DistanceFromHome, UpdateSourceTrigger=PropertyChanged,
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource DistanceFromHome}" Text="{Binding DistanceFromHome, UpdateSourceTrigger=PropertyChanged,
                         Converter={StaticResource EmptyStringToZeroConverter}}"
                              materialDesign:TextFieldAssist.SuffixText="km" PreviewTextInput="NumberValidationTextBox"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="3">
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource PhoneNumber}" Text="{Binding Model.PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource PhoneNumber}" Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource Country}" Text="{Binding Model.Country, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource Country}" Text="{Binding Country, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource City}" Text="{Binding Model.City, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource City}" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource Street}" Text="{Binding Model.Street, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource Street}" Text="{Binding Street, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource HouseNumber}" Text="{Binding Model.HouseNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource HouseNumber}" Text="{Binding HouseNumber, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource PostCode}" Text="{Binding Model.PostCode, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox materialDesign:HintAssist.Hint="{DynamicResource PostCode}" Text="{Binding PostCode, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <Button x:Name="Register" Content="{DynamicResource Register}" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" HorizontalContentAlignment="Center" IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolConverter}}" Padding="0 0 5 0"/>

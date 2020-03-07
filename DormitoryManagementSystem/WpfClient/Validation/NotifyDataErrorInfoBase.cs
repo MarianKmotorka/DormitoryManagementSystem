@@ -51,7 +51,7 @@ namespace WpfClient.Validation
             propNames.ForEach(x => RaiseErrorChangedEvent(x));
         }
 
-        protected void RaiseErrorChangedEvent(string propName)
+        public void RaiseErrorChangedEvent(string propName)
         {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propName));
             NotifyOfPropertyChange(nameof(HasErrors));
