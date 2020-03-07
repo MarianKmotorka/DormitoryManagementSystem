@@ -91,6 +91,7 @@
     <Compile Include="Events\OpenAccomodationRequestDetailEvent.cs" />
     <Compile Include="Events\OpenNewAccomodationRequestViewEvent.cs" />
     <Compile Include="Events\OpenOfficerDetailEvent.cs" />
+    <Compile Include="Events\OpenRepairerDetailEvent.cs" />
     <Compile Include="Events\OpenRespondToAccomodationRequestViewEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Events\GoBackEvent.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="ViewModels\Officers\OfficerDetailViewModel.cs" />
     <Compile Include="ViewModels\Officers\OfficerListViewModel.cs" />
     <Compile Include="ViewModels\Officers\OfficerRegistrationViewModel.cs" />
+    <Compile Include="ViewModels\Repairers\RepairerListViewModel.cs" />
     <Compile Include="ViewModels\Repairers\RepairerRegistrationViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AccomodationRequests\AccomodationRequestDetailView.xaml.cs">
@@ -162,6 +164,9 @@
     </Compile>
     <Compile Include="Views\Officers\OfficerRegistrationView.xaml.cs">
       <DependentUpon>OfficerRegistrationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Repairers\RepairerListView.xaml.cs">
+      <DependentUpon>RepairerListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Repairers\RepairerRegistrationView.xaml.cs">
       <DependentUpon>RepairerRegistrationView.xaml</DependentUpon>
@@ -255,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Officers\OfficerRegistrationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Repairers\RepairerListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

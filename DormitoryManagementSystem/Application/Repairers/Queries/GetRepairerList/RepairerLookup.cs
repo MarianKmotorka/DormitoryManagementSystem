@@ -10,21 +10,30 @@ namespace Application.Repairers.Queries.GetRepairerList
     {
         public string Id { get; set; }
 
-        public string DisplayName { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Repairer, RepairerLookup>()
-                .ForMember(dest => dest.DisplayName, cfg =>
+                 .ForMember(dest => dest.LastName, cfg =>
+                 {
+                     cfg.MapFrom(src => src.AppUser.LastName);
+                 })
+                .ForMember(dest => dest.FirstName, cfg =>
                 {
-                    cfg.MapFrom(src => src.AppUser.LastName + " " + src.AppUser.FirstName);
+                    cfg.MapFrom(src => src.AppUser.FirstName);
                 });
         }
 
         public void MapProperties(SievePropertyMapper mapper)
         {
-            mapper.Property<RepairerLookup>(x => x.DisplayName)
+            mapper.Property<RepairerLookup>(x => x.FirstName)
                 .CanFilter().CanSort();
+
+            mapper.Property<RepairerLookup>(x => x.LastName)
+               .CanFilter().CanSort();
         }
     }
 }

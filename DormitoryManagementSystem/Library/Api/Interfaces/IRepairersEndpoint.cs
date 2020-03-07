@@ -7,5 +7,7 @@ namespace Library.Api.Interfaces
     public interface IRepairersEndpoint
     {
         Task<PropertiesResultModel> Register(RepairerModel model);
+
+        Task<PagedResultModel<RepairerLookup>> GetAll(PagedRequestModel model);
     }
 }

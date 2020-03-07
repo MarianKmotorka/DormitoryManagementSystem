@@ -130,6 +130,10 @@ namespace WpfClient.ViewModels
                     ActivateItem(IoC.Get<OfficerListViewModel>());
                     break;
 
+                case "Repairers":
+                    ActivateItem(IoC.Get<RepairerListViewModel>());
+                    break;
+
                 case "RegisterOfficer":
                     ActivateItem(IoC.Get<OfficerRegistrationViewModel>());
                     break;
