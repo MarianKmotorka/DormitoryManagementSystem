@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
+using WpfClient.Events;
 using WpfClient.ModelWrappers;
 
 namespace WpfClient.ViewModels.Officers
@@ -11,8 +13,11 @@ namespace WpfClient.ViewModels.Officers
         private bool _loading;
         private bool _editedSuccessfully;
         private readonly IOfficersEndpoint _officersEndpoint;
+        private readonly IEventAggregator _eventAggregator;
 
         public OfficerModelWrapper Model { get; set; } = new OfficerModelWrapper();
+
+        public object GoBackViewModel { get; set; }
 
         public string OfficerId { get; set; } = null;
 
@@ -38,14 +43,22 @@ namespace WpfClient.ViewModels.Officers
             set { _editedSuccessfully = value; NotifyOfPropertyChange(nameof(EditedSuccessfully)); }
         }
 
-        public OfficerDetailViewModel(IOfficersEndpoint officersEndpoint)
+        public OfficerDetailViewModel(IOfficersEndpoint officersEndpoint, IEventAggregator eventAggregator)
         {
             _officersEndpoint = officersEndpoint;
+            _eventAggregator = eventAggregator;
         }
 
         public void Edit()
         {
             IsEditing = true;
+        }
+
+        public void GoBack()
+        {
+            _ = GoBackViewModel ?? throw new ArgumentNullException(nameof(GoBackViewModel));
+
+            _eventAggregator.PublishOnUIThread(new GoBackEvent(GoBackViewModel));
         }
 
         public async Task SubmitEdit()

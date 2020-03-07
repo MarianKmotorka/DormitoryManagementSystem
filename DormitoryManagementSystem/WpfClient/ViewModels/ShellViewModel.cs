@@ -225,5 +225,13 @@ namespace WpfClient.ViewModels
             vm.GoBackViewModel = message.Sender;
             ActivateItem(vm);
         }
+
+        public void Handle(OpenOfficerDetailEvent message)
+        {
+            var vm = IoC.Get<OfficerDetailViewModel>();
+            vm.OfficerId = message.Id;
+            vm.GoBackViewModel = message.Sender;
+            ActivateItem(vm);
+        }
     }
 }
