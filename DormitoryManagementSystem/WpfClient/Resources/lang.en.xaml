@@ -94,6 +94,10 @@
     <system:String x:Key="Offices">Offices</system:String>
 
 
+    <!--ADMIN-->
+    <system:String x:Key="WelcomeToAdminMode">Welcome to admin mode !</system:String>
+
+
     <!--Error messages-->
     <system:String x:Key="Required">Required</system:String>
     <system:String x:Key="Invalid">Invalid</system:String>

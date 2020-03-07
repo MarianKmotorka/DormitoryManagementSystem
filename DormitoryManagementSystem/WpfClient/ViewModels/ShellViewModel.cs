@@ -5,6 +5,7 @@ using Library.Api.Interfaces;
 using Library.Models.Identity;
 using WpfClient.Events;
 using WpfClient.ViewModels.AccomodationRequests;
+using WpfClient.ViewModels.Admin;
 using WpfClient.ViewModels.Guests;
 using WpfClient.ViewModels.Officers;
 
@@ -112,7 +113,7 @@ namespace WpfClient.ViewModels
                             ActivateItem(IoC.Get<OfficerDetailViewModel>());
                             break;
                         case RoleNames.SysAdmin:
-                            ActivateItem(null);
+                            ActivateItem(IoC.Get<AdminInfoViewModel>());
                             break;
                         case RoleNames.Repairer:
                             ActivateItem(null);
