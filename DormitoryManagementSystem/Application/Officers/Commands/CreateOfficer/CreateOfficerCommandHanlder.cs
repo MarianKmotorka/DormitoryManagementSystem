@@ -8,6 +8,7 @@ using Application.Common.Interfaces;
 using Domain.Entities;
 using Domain.ValueObjects;
 using MediatR;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Officers.Commands.CreateOfficer
@@ -18,19 +19,21 @@ namespace Application.Officers.Commands.CreateOfficer
         private readonly IIdentityService _identityService;
         private readonly IMediator _mediator;
         private readonly IEmailService _emailService;
+        private readonly IHostingEnvironment _environment;
 
         public CreateOfficerCommandHanlder(IDormitoryDbContext db, IIdentityService identityService, IMediator mediator,
-            IEmailService emailService)
+            IEmailService emailService, IHostingEnvironment environment)
         {
             _db = db;
             _identityService = identityService;
             _mediator = mediator;
             _emailService = emailService;
+            _environment = environment;
         }
 
         public async Task<Unit> Handle(CreateOfficerCommand request, CancellationToken cancellationToken)
         {
-            var password = Guid.NewGuid().ToString().Substring(0, 6) + "x+2";
+            var password = _environment.IsDevelopment() ? "string" : Guid.NewGuid().ToString().Substring(0, 6) + "x+2";
 
             var (result, userId) = await _identityService.RegisterUserAsync(request.FirstName, request.LastName, request.Email, password, AppRoleNames.Officer);
 

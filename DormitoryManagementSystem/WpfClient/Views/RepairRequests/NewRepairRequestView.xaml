@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="WpfClient.Views.RepairRequests.NewRepairRequestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <!--NOT ACCOMODATED-->
+        <Grid Visibility="{Binding HasRoom, Converter={StaticResource InverseBoolToVisConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <materialDesign:Card Grid.Row="1" Grid.Column="1" Padding="120">
+                <TextBlock Text="{DynamicResource YouAreNotAccomodatedYet}" FontSize="40" Foreground="#3f51b5"/>
+            </materialDesign:Card>
+        </Grid>
+
+        <!--ACCOMODATED-->
+        <materialDesign:Card Margin="10" Visibility="{Binding HasRoom, Converter={StaticResource BooleanToVisibilityConverter}}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel>
+
+                <materialDesign:ColorZone Padding="10" Mode="PrimaryLight">
+                    <Button x:Name="GoBack" Style="{StaticResource MaterialDesignToolButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ArrowBack" Margin="0 0 10 0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{DynamicResource Back}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </materialDesign:ColorZone>
+
+                <StackPanel Margin="200 80">
+
+                    <TextBlock Text="{DynamicResource NewRepairRequest}" FontSize="40" Foreground="#3f51b5" Margin="-100 0 0 20"/>
+
+                    <ComboBox materialDesign:HintAssist.Hint="{DynamicResource DamagedItem}" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      ItemsSource="{Binding Items, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Model.RoomItemType}" DisplayMemberPath="Name"  Margin="20"/>
+
+                    <TextBox Text="{Binding Model.ProblemDescription}" materialDesign:HintAssist.Hint="{DynamicResource ProblemDescription}" 
+                             TextWrapping="Wrap" materialDesign:TextFieldAssist.HasClearButton="True"  Margin="20"/>
+
+                    <Button x:Name="Submit" materialDesign:ButtonAssist.CornerRadius="15" Style="{StaticResource MaterialDesignFlatAccentBgButton}" 
+                         Margin="50 20 50 10" IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolToVisConverter}}">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Submit}" Visibility="{Binding Loading, Converter={StaticResource InverseBoolToVisConverter}}"/>
+                            <!--LOADING-->
+                            <StackPanel Orientation="Horizontal" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Foreground="#3f51b5" Value="0" IsIndeterminate="True" Height="25" Width="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="{DynamicResource Loading}" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

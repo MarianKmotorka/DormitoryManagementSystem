@@ -63,6 +63,13 @@
     <system:String x:Key="NewAccomodationRequest">New accomodation request</system:String>
 
 
+    <!--REPAIR REQUESTS-->
+    <system:String x:Key="YouAreNotAccomodatedYet">You are not accomodated yet.</system:String>
+    <system:String x:Key="NewRepairRequest">New repair request</system:String>
+    <system:String x:Key="DamagedItem">Damaged item</system:String>
+    <system:String x:Key="ProblemDescription">Problem description</system:String>
+
+
     <!--GENERAL-->
     <system:String x:Key="Submit">Submit</system:String>
     <system:String x:Key="Edit">Edit</system:String>

@@ -2,6 +2,7 @@
 using Library.Models;
 using Library.Models.AccomodationRequests;
 using Library.Models.Guests;
+using Library.Models.Rooms;
 
 namespace Library.Api.Interfaces
 {
@@ -16,5 +17,7 @@ namespace Library.Api.Interfaces
         Task<PropertiesResultModel> Edit(string id, GuestModel model);
 
         Task<PagedResultModel<AccomodationRequestLookup>> GetMyAccomodationRequests(PagedRequestModel model);
+
+        Task<RoomModel> GetMyRoomDetail();
     }
 }

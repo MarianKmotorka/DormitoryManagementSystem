@@ -8,6 +8,7 @@ using Application.Common.Interfaces;
 using Domain.Entities;
 using Domain.ValueObjects;
 using MediatR;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Repairers.Commands.CreateRepairer
@@ -18,18 +19,21 @@ namespace Application.Repairers.Commands.CreateRepairer
         private readonly IIdentityService _identityService;
         private readonly IMediator _mediator;
         private readonly IEmailService _emailService;
+        private readonly IHostingEnvironment _enviroment;
 
-        public CreateRepairerCommandHanlder(IDormitoryDbContext db, IIdentityService identityService, IMediator mediator, IEmailService emailService)
+        public CreateRepairerCommandHanlder(IDormitoryDbContext db, IIdentityService identityService, IMediator mediator,
+            IEmailService emailService, IHostingEnvironment enviroment)
         {
             _db = db;
             _identityService = identityService;
             _mediator = mediator;
             _emailService = emailService;
+            _enviroment = enviroment;
         }
 
         public async Task<Unit> Handle(CreateRepairerCommand request, CancellationToken cancellationToken)
         {
-            var password = Guid.NewGuid().ToString().Substring(0, 6) + "x2*";
+            var password = _enviroment.IsDevelopment() ? "string" : Guid.NewGuid().ToString().Substring(0, 6) + "x2*";
 
             var (result, userId) = await _identityService.RegisterUserAsync(request.FirstName, request.LastName, request.Email, password, AppRoleNames.Repairer);
 

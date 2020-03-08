@@ -55,6 +55,7 @@
     <Compile Include="Api\Endpoints\AppUsersEndpoint.cs" />
     <Compile Include="Api\Endpoints\GuestsEndpoint.cs" />
     <Compile Include="Api\Endpoints\RepairersEndpoint.cs" />
+    <Compile Include="Api\Endpoints\RepairRequestsEndpoint.cs" />
     <Compile Include="Api\Endpoints\RoomsEndpoint.cs" />
     <Compile Include="Api\HttpClientExtensions.cs" />
     <Compile Include="Api\Interfaces\IAccomodationRequestsEndpoint.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Api\Endpoints\OfficersEndpoint.cs" />
     <Compile Include="Api\AuthenticationHandler.cs" />
     <Compile Include="Api\Interfaces\IRepairersEndpoint.cs" />
+    <Compile Include="Api\Interfaces\IRepairRequestsEndpoint.cs" />
     <Compile Include="Api\Interfaces\IRoomsEndpoint.cs" />
     <Compile Include="Api\Utils\UrlBuilder.cs" />
     <Compile Include="Models\AccomodationRequests\AccomodationRequestDetail.cs" />
@@ -82,8 +84,11 @@
     <Compile Include="Models\PropertiesResultModel.cs" />
     <Compile Include="Models\Repairers\RepairerLookup.cs" />
     <Compile Include="Models\Repairers\RepairerModel.cs" />
+    <Compile Include="Models\RepairRequests\NewRepairRequestModel.cs" />
     <Compile Include="Models\ResultModel.cs" />
+    <Compile Include="Models\Rooms\RoomItemTypeLookup.cs" />
     <Compile Include="Models\Rooms\RoomLookup.cs" />
+    <Compile Include="Models\Rooms\RoomModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

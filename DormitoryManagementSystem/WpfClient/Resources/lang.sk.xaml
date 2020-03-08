@@ -63,6 +63,13 @@
     <system:String x:Key="NewAccomodationRequest">Podaj žiadosť o ubytovanie</system:String>
 
 
+    <!--REPAIR REQUESTS-->
+    <system:String x:Key="YouAreNotAccomodatedYet">Nie ste ubytovaný.</system:String>
+    <system:String x:Key="NewRepairRequest">Podaj žiadosť o opravu</system:String>
+    <system:String x:Key="DamagedItem">Poškodená vec</system:String>
+    <system:String x:Key="ProblemDescription">Popis závady</system:String>
+
+
     <!--GENERAL-->
     <system:String x:Key="Submit">Odoslať</system:String>
     <system:String x:Key="Edit">Edituj</system:String>

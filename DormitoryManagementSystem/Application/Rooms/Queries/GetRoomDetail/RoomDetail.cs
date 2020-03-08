@@ -24,7 +24,9 @@ namespace Application.Rooms.Queries.GetRoomDetail
         {
             public string Id { get; set; }
 
-            public string DisplayName { get; set; }
+            public string FirstName { get; set; }
+
+            public string LastName { get; set; }
         }
 
         public class RoomItemTypeDto
@@ -51,9 +53,13 @@ namespace Application.Rooms.Queries.GetRoomDetail
                 });
 
             profile.CreateMap<Guest, GuestDto>()
-                .ForMember(dest => dest.DisplayName, cfg =>
+                .ForMember(dest => dest.FirstName, cfg =>
                 {
-                    cfg.MapFrom(src => src.AppUser.LastName + " " + src.AppUser.FirstName);
+                    cfg.MapFrom(src => src.AppUser.FirstName);
+                })
+                .ForMember(dest => dest.LastName, cfg =>
+                {
+                    cfg.MapFrom(src => src.AppUser.LastName);
                 });
 
             profile.CreateMap<RoomItemType, RoomItemTypeDto>()

@@ -6,6 +6,7 @@ using Library.Api.Utils;
 using Library.Models;
 using Library.Models.AccomodationRequests;
 using Library.Models.Guests;
+using Library.Models.Rooms;
 
 namespace Library.Api.Endpoints
 {
@@ -64,6 +65,16 @@ namespace Library.Api.Endpoints
             var response = await _apiHelper.Client.GetAsync(url);
 
             return await response.Content.ReadAsAsync<PagedResultModel<AccomodationRequestLookup>>();
+        }
+
+        public async Task<RoomModel> GetMyRoomDetail()
+        {
+            var response = await _apiHelper.Client.GetAsync("guests/me/room");
+
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            return await response.Content.ReadAsAsync<RoomModel>();
         }
     }
 }

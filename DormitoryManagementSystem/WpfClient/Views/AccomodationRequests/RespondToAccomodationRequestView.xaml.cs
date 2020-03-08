@@ -13,9 +13,9 @@ namespace WpfClient.Views.AccomodationRequests
             InitializeComponent();
         }
 
-        private void RoomsComboBox_TextChanged(object sender, TextChangedEventArgs e)
+        private async void RoomsComboBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            (DataContext as RespondToAccomodationRequestViewModel)?.LoadRooms();
+            await (DataContext as RespondToAccomodationRequestViewModel)?.LoadRooms();
             e.Handled = true;
         }
     }

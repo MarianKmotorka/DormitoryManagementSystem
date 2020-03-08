@@ -22,8 +22,8 @@
             <StackPanel Margin="200 80">
                 <ComboBox materialDesign:HintAssist.Hint="{DynamicResource RoomNumber}" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       ItemsSource="{Binding Rooms}" SelectedItem="{Binding SelectedRoom}" DisplayMemberPath="RoomNumber" TextBoxBase.TextChanged="RoomsComboBox_TextChanged"
-                      Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" IsTextSearchEnabled="False" >
-                </ComboBox>
+                      Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" IsTextSearchEnabled="False" />
+
 
                 <TextBox Text="{Binding Message}" materialDesign:HintAssist.Hint="{DynamicResource Message}" TextWrapping="Wrap" Margin="0 30" materialDesign:TextFieldAssist.HasClearButton="True"/>
 

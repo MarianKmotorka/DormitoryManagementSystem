@@ -26,7 +26,7 @@ namespace Application.RepairRequests.Commands.CreateRepairRequest
 
             RuleFor(x => x.ProblemDescription).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ErrorMessages.Required)
-                .MinimumLength(5).WithMessage(ErrorMessages.MinLength(5));
+                .MinimumLength(6).WithMessage(ErrorMessages.MinLength(6));
         }
 
         private async Task<bool> RepairIsNotAlreadyRequested(int roomItemTypeId, CancellationToken cancellationToken)

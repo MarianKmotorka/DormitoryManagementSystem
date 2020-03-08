@@ -16,6 +16,8 @@ namespace WpfClient.Validation
 
         public bool ValidateModel(params string[] omitProperties)
         {
+            ClearAllErrors();
+
             var properties = typeof(T).GetProperties()
                 .Select(x => new { x.Name, Value = x.GetValue(Model) });
 
