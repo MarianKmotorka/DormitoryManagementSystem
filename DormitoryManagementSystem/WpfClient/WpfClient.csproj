@@ -109,6 +109,7 @@
     <Compile Include="ModelWrappers\NewRepairRequestModelWrapper.cs" />
     <Compile Include="ModelWrappers\OfficerModelWrapper.cs" />
     <Compile Include="ModelWrappers\RepairerModelWrapper.cs" />
+    <Compile Include="ModelWrappers\RespondToRepairRequestModelWrapper.cs" />
     <Compile Include="RoleNames.cs" />
     <Compile Include="Validation\LengthValidationRule.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="ViewModels\RepairRequests\NewRepairRequestViewModel.cs" />
     <Compile Include="ViewModels\RepairRequests\RepairRequestDetailViewModel.cs" />
     <Compile Include="ViewModels\RepairRequests\RepairRequestListViewModel.cs" />
+    <Compile Include="ViewModels\RepairRequests\RespondToRepairRequestViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AccomodationRequests\AccomodationRequestDetailView.xaml.cs">
       <DependentUpon>AccomodationRequestDetailView.xaml</DependentUpon>
@@ -191,6 +193,9 @@
     </Compile>
     <Compile Include="Views\RepairRequests\RepairRequestListView.xaml.cs">
       <DependentUpon>RepairRequestListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepairRequests\RespondToRepairRequestView.xaml.cs">
+      <DependentUpon>RespondToRepairRequestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -305,6 +310,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RepairRequests\RepairRequestListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RepairRequests\RespondToRepairRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

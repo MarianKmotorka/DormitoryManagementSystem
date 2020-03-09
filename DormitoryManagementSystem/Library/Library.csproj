@@ -88,6 +88,7 @@
     <Compile Include="Models\RepairRequests\RepairRequestLookup.cs" />
     <Compile Include="Models\RepairRequests\RepairRequestModel.cs" />
     <Compile Include="Models\RepairRequests\RepairRequestState.cs" />
+    <Compile Include="Models\RepairRequests\RespondToRepairRequestModel.cs" />
     <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Models\Rooms\RoomItemTypeLookup.cs" />
     <Compile Include="Models\Rooms\RoomLookup.cs" />

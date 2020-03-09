@@ -17,9 +17,9 @@ namespace WpfClient.ViewModels.RepairRequests
         private int _pageNumber = 1;
         private int _pageSize = 10;
         private bool _ascending = true;
-        private bool _createdOnSort;
+        private bool _createdOnSort = true;
         private bool _willBeFixedOnSort;
-        private bool _fixedOnSort = true;
+        private bool _fixedOnSort;
 
         private DateTime? _createdOnFilter;
         private DateTime? _willBeFixedOnFilter;

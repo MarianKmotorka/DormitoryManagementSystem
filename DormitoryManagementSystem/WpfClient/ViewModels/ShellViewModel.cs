@@ -274,5 +274,13 @@ namespace WpfClient.ViewModels
             vm.Model.Id = message.Id;
             ActivateItem(vm);
         }
+
+        public void Handle(OpenRespondToRepairRequestViewEvent message)
+        {
+            var vm = IoC.Get<RespondToRepairRequestViewModel>();
+            vm.RequestId = message.RequestId;
+            vm.GoBackViewModel = message.Sender;
+            ActivateItem(vm);
+        }
     }
 }

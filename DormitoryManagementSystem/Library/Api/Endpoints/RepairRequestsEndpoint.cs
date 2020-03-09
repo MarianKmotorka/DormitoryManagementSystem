@@ -47,5 +47,15 @@ namespace Library.Api.Endpoints
 
             return await response.Content.ReadAsAsync<RepairRequestModel>();
         }
+
+        public async Task<PropertiesResultModel> RespondToRepairRequest(int id, RespondToRepairRequestModel model)
+        {
+            var response = await _apiHelper.Client.PatchAsJsonAsync($"repairRequests/{id}", model);
+
+            if (response.IsSuccessStatusCode)
+                return PropertiesResultModel.Succesful;
+
+            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+        }
     }
 }

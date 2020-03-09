@@ -19,6 +19,8 @@ namespace WpfClient.ViewModels.RepairRequests
 
         public bool IsMyRepairRequest { get; set; }
 
+        public bool CanRespond => !IsMyRepairRequest && Model.State != RepairRequestState.Fixed;
+
         public bool Loading
         {
             get => _loading;
@@ -57,6 +59,7 @@ namespace WpfClient.ViewModels.RepairRequests
 
             Model = result;
             NotifyOfPropertyChange(nameof(Model));
+            NotifyOfPropertyChange(nameof(CanRespond));
         }
     }
 }

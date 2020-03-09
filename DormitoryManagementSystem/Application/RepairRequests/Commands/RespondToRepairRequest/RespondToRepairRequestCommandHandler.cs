@@ -29,8 +29,8 @@ namespace Application.RepairRequests.Commands.RespondToRepairRequest
             if (request.RepairRequestState == RepairRequestState.Fixed)
             {
                 var repairer = await _db.Repairers.SingleOrNotFoundAsync(x => x.Id == request.FixedById, cancellationToken);
-                repairRequest.FixedOn = DateTime.UtcNow;
                 repairRequest.FixedBy = repairer;
+                repairRequest.FixedOn = DateTime.UtcNow;
             }
 
             if (request.RepairRequestState == RepairRequestState.Accepted)

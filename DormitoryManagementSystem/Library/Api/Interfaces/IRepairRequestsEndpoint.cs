@@ -11,5 +11,7 @@ namespace Library.Api.Interfaces
         Task<PagedResultModel<RepairRequestLookup>> GetAll(PagedRequestModel model);
 
         Task<RepairRequestModel> GetDetail(int id);
+
+        Task<PropertiesResultModel> RespondToRepairRequest(int id, RespondToRepairRequestModel model);
     }
 }

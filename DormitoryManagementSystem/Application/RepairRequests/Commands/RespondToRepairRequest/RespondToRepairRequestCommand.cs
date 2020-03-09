@@ -7,6 +7,7 @@ namespace Application.RepairRequests.Commands.RespondToRepairRequest
 {
     public class RespondToRepairRequestCommand : IRequest
     {
+        [JsonIgnore]
         public int Id { get; set; }
 
         [JsonIgnore]
