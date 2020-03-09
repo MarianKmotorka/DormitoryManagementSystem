@@ -22,5 +22,7 @@ namespace Library.Api.Interfaces
         Task<RoomModel> GetMyRoomDetail();
 
         Task<PagedResultModel<RepairRequestLookup>> GetMyRepairRequests(PagedRequestModel pagedRequestModel);
+
+        Task<RepairRequestModel> GetMyRepairRequestDetail(int requestId);
     }
 }

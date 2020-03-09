@@ -158,7 +158,7 @@ namespace WpfClient.ViewModels.RepairRequests
 
         public void OpenDetail()
         {
-            _eventAggregator.PublishOnUIThread(new OpenRepairRequestDetailEvent(this, SelectedRepairRequest.Id));
+            _eventAggregator.PublishOnUIThread(new OpenRepairRequestDetailEvent(this, SelectedRepairRequest.Id, IsMyRepairRequests));
         }
 
         public void NewRepairRequest()

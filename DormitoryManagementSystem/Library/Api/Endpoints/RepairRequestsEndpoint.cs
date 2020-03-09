@@ -40,5 +40,12 @@ namespace Library.Api.Endpoints
 
             return await response.Content.ReadAsAsync<PagedResultModel<RepairRequestLookup>>();
         }
+
+        public async Task<RepairRequestModel> GetDetail(int id)
+        {
+            var response = await _apiHelper.Client.GetAsync($"repairRequests/{id}");
+
+            return await response.Content.ReadAsAsync<RepairRequestModel>();
+        }
     }
 }

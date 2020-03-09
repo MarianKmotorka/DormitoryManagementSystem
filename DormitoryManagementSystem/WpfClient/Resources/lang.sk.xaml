@@ -61,6 +61,8 @@
     <system:String x:Key="Approve">Schváliť</system:String>
     <system:String x:Key="Reject">Odmietnuť</system:String>
     <system:String x:Key="NewAccomodationRequest">Podaj žiadosť o ubytovanie</system:String>
+    <system:String x:Key="Approved">Schválený</system:String>
+    <system:String x:Key="Active">Aktívny</system:String>
 
 
     <!--REPAIR REQUESTS-->
@@ -76,6 +78,11 @@
     <system:String x:Key="Fixed">Opravené</system:String>
     <system:String x:Key="Accepted">Akceptované</system:String>
     <system:String x:Key="Refused">Odmietnuté</system:String>
+    <system:String x:Key="RepairRequestDetail">Detail žiadosti o opravu</system:String>
+    <system:String x:Key="FixedBy">Opravil</system:String>
+    <system:String x:Key="ReportedBy">Ohlásil</system:String>
+    <system:String x:Key="RepairerReply">Odpoveď údržbára</system:String>
+    <system:String x:Key="DamagedItemInventoryNumber">Inventárne číslo poškodenej veci</system:String>
 
 
     <!--GENERAL-->

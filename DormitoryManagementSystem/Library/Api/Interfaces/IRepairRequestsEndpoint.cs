@@ -9,5 +9,7 @@ namespace Library.Api.Interfaces
         Task<PropertiesResultModel> Create(NewRepairRequestModel model);
 
         Task<PagedResultModel<RepairRequestLookup>> GetAll(PagedRequestModel model);
+
+        Task<RepairRequestModel> GetDetail(int id);
     }
 }

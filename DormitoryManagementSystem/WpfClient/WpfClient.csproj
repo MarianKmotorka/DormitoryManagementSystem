@@ -96,6 +96,7 @@
     <Compile Include="Events\OpenRepairerDetailEvent.cs" />
     <Compile Include="Events\OpenRepairRequestDetailEvent.cs" />
     <Compile Include="Events\OpenRespondToAccomodationRequestViewEvent.cs" />
+    <Compile Include="Events\OpenRespondToRepairRequestViewEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Events\GoBackEvent.cs" />
     <Compile Include="Events\GuestRegisteredEvent.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="ViewModels\Repairers\RepairerListViewModel.cs" />
     <Compile Include="ViewModels\Repairers\RepairerRegistrationViewModel.cs" />
     <Compile Include="ViewModels\RepairRequests\NewRepairRequestViewModel.cs" />
+    <Compile Include="ViewModels\RepairRequests\RepairRequestDetailViewModel.cs" />
     <Compile Include="ViewModels\RepairRequests\RepairRequestListViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AccomodationRequests\AccomodationRequestDetailView.xaml.cs">
@@ -183,6 +185,9 @@
     </Compile>
     <Compile Include="Views\RepairRequests\NewRepairRequestView.xaml.cs">
       <DependentUpon>NewRepairRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepairRequests\RepairRequestDetailView.xaml.cs">
+      <DependentUpon>RepairRequestDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RepairRequests\RepairRequestListView.xaml.cs">
       <DependentUpon>RepairRequestListView.xaml</DependentUpon>
@@ -292,6 +297,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RepairRequests\NewRepairRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RepairRequests\RepairRequestDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

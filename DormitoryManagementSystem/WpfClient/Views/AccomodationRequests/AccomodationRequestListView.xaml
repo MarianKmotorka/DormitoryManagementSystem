@@ -87,7 +87,7 @@
                     <DataGridTextColumn Header="{DynamicResource DistanceFromHome}" Binding="{Binding RequesterDistanceFromHome}"/>
                     <DataGridTextColumn Header="{DynamicResource StartDateUtc}" Binding="{Binding AccomodationStartDateUtc, Converter={StaticResource ToShortDateConverter}}"/>
                     <DataGridTextColumn Header="{DynamicResource EndDateUtc}" Binding="{Binding AccomodationEndDateUtc, Converter={StaticResource ToShortDateConverter}}"/>
-                    <DataGridTextColumn Header="{DynamicResource RequestState}" Binding="{Binding RequestState}"/>
+                    <DataGridTextColumn Header="{DynamicResource RequestState}" Binding="{Binding RequestState, Converter={StaticResource TranslationConverter}}"/>
                     <DataGridTemplateColumn Visibility="{Binding DataContext.IsMyAccomodationRequests, Source={x:Reference NameJustForReference}, Converter={StaticResource InverseBoolToVisConverter}}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
