@@ -9,6 +9,7 @@ using WpfClient.ViewModels.Admin;
 using WpfClient.ViewModels.Guests;
 using WpfClient.ViewModels.Officers;
 using WpfClient.ViewModels.Repairers;
+using WpfClient.ViewModels.RepairRequests;
 
 namespace WpfClient.ViewModels
 {
@@ -148,6 +149,13 @@ namespace WpfClient.ViewModels
                         vm.IsMyAccomodationRequests = true;
                     ActivateItem(vm);
                     break;
+
+                case "RepairRequests":
+                    var repairRequestListViewModel = IoC.Get<RepairRequestListViewModel>();
+                    if (_currentUser.Role == RoleNames.Guest)
+                        repairRequestListViewModel.IsMyRepairRequests = true;
+                    ActivateItem(repairRequestListViewModel);
+                    break;
             }
         }
 
@@ -247,6 +255,13 @@ namespace WpfClient.ViewModels
         {
             var vm = IoC.Get<RepairerDetailViewModel>();
             vm.RepairerId = message.Id;
+            vm.GoBackViewModel = message.Sender;
+            ActivateItem(vm);
+        }
+
+        public void Handle(OpenNewRepairRequestViewEvent message)
+        {
+            var vm = IoC.Get<NewRepairRequestViewModel>();
             vm.GoBackViewModel = message.Sender;
             ActivateItem(vm);
         }

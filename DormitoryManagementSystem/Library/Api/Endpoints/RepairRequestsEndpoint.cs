@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Library.Api.Interfaces;
+using Library.Api.Utils;
 using Library.Models;
 using Library.Models.RepairRequests;
 
@@ -29,6 +30,15 @@ namespace Library.Api.Endpoints
                 return PropertiesResultModel.Succesful;
 
             return await response.Content.ReadAsAsync<PropertiesResultModel>();
+        }
+
+        public async Task<PagedResultModel<RepairRequestLookup>> GetAll(PagedRequestModel model)
+        {
+            var url = UrlBuilder.Build("repairRequests", model);
+
+            var response = await _apiHelper.Client.GetAsync(url);
+
+            return await response.Content.ReadAsAsync<PagedResultModel<RepairRequestLookup>>();
         }
     }
 }

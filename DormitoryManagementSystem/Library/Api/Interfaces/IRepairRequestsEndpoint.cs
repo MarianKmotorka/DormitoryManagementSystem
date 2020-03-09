@@ -7,5 +7,7 @@ namespace Library.Api.Interfaces
     public interface IRepairRequestsEndpoint
     {
         Task<PropertiesResultModel> Create(NewRepairRequestModel model);
+
+        Task<PagedResultModel<RepairRequestLookup>> GetAll(PagedRequestModel model);
     }
 }

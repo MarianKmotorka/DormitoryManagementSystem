@@ -6,6 +6,7 @@ using Library.Api.Utils;
 using Library.Models;
 using Library.Models.AccomodationRequests;
 using Library.Models.Guests;
+using Library.Models.RepairRequests;
 using Library.Models.Rooms;
 
 namespace Library.Api.Endpoints
@@ -75,6 +76,15 @@ namespace Library.Api.Endpoints
                 return null;
 
             return await response.Content.ReadAsAsync<RoomModel>();
+        }
+
+        public async Task<PagedResultModel<RepairRequestLookup>> GetMyRepairRequests(PagedRequestModel model)
+        {
+            var url = UrlBuilder.Build("guests/me/repair-requests", model);
+
+            var response = await _apiHelper.Client.GetAsync(url);
+
+            return await response.Content.ReadAsAsync<PagedResultModel<RepairRequestLookup>>();
         }
     }
 }

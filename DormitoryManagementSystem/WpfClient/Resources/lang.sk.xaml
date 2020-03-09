@@ -68,6 +68,14 @@
     <system:String x:Key="NewRepairRequest">Podaj žiadosť o opravu</system:String>
     <system:String x:Key="DamagedItem">Poškodená vec</system:String>
     <system:String x:Key="ProblemDescription">Popis závady</system:String>
+    <system:String x:Key="MyRepairRequests">Moje žiadosti o opravu</system:String>
+    <system:String x:Key="CreatedOn">Vytvorené</system:String>
+    <system:String x:Key="WillBeFixedOn">Bude opravené</system:String>
+    <system:String x:Key="FixedOn">Opravené</system:String>
+    <system:String x:Key="Pending">Čakajúci</system:String>
+    <system:String x:Key="Fixed">Opravené</system:String>
+    <system:String x:Key="Accepted">Akceptované</system:String>
+    <system:String x:Key="Refused">Odmietnuté</system:String>
 
 
     <!--GENERAL-->

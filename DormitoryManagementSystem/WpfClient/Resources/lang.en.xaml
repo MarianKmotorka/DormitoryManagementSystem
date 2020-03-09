@@ -68,6 +68,14 @@
     <system:String x:Key="NewRepairRequest">New repair request</system:String>
     <system:String x:Key="DamagedItem">Damaged item</system:String>
     <system:String x:Key="ProblemDescription">Problem description</system:String>
+    <system:String x:Key="MyRepairRequests">My repair requests</system:String>
+    <system:String x:Key="CreatedOn">Created on</system:String>
+    <system:String x:Key="WillBeFixedOn">Will be fixed on</system:String>
+    <system:String x:Key="FixedOn">Fixed on</system:String>
+    <system:String x:Key="Pending">Pending</system:String>
+    <system:String x:Key="Fixed">Fixed</system:String>
+    <system:String x:Key="Accepted">Accepted</system:String>
+    <system:String x:Key="Refused">Refused</system:String>
 
 
     <!--GENERAL-->
