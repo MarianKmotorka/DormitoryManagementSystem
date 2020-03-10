@@ -40,36 +40,36 @@ namespace Library.Api.Endpoints
             return ResultModel.Successful;
         }
 
-        public async Task<PropertiesResultModel> ConfirmEmail(string email)
+        public async Task<ResultModel> ConfirmEmail(string email)
         {
             var response = await _apiHelper.Client.GetAsync($"appUsers/confirmation-email?email={email}");
 
             if (!response.IsSuccessStatusCode)
-                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+                return await response.Content.ReadAsAsync<ResultModel>();
 
-            return PropertiesResultModel.Succesful;
+            return ResultModel.Successful;
         }
 
-        public async Task<PropertiesResultModel> ResetPassword(string email)
+        public async Task<ResultModel> ResetPassword(string email)
         {
             var response = await _apiHelper.Client.GetAsync($"appUsers/forgotten-password?email={email}");
 
             if (!response.IsSuccessStatusCode)
-                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+                return await response.Content.ReadAsAsync<ResultModel>();
 
-            return PropertiesResultModel.Succesful;
+            return ResultModel.Successful;
         }
 
-        public async Task<PropertiesResultModel> ChangePassword(ChangePasswordModel model)
+        public async Task<ResultModel> ChangePassword(ChangePasswordModel model)
         {
             var body = new { model.CurrentPassword, model.NewPassword };
 
             var response = await _apiHelper.Client.PostAsJsonAsync("appUsers/password", body);
 
             if (response.IsSuccessStatusCode)
-                return PropertiesResultModel.Succesful;
+                return ResultModel.Successful;
 
-            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+            return await response.Content.ReadAsAsync<ResultModel>();
         }
 
         public static HttpRequestMessage GetRefreshTokenHttpRequestMessage(CurrentUser currentUser)

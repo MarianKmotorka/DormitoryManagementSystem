@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using Application.Common.Exceptions;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -42,23 +43,23 @@ namespace WebApi.Common
             {
                 case ValidationException validationException:
                     code = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(new { errors = validationException.Failures });
+                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateBadRequestErrorResponse(validationException.Errors));
                     break;
                 case BadRequestException _:
                     code = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(new { error = exception.Message });
+                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateBadRequestErrorResponse(exception.Message));
                     break;
                 case DeleteFailureException _:
                     code = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(new { error = exception.Message });
+                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateBadRequestErrorResponse(exception.Message));
                     break;
                 case NotFoundException _:
                     code = HttpStatusCode.NotFound;
-                    result = JsonConvert.SerializeObject(new { error = exception.Message });
+                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateNotFoundErrorResponse(exception.Message));
                     break;
                 case ArgumentNullException argumentNullException when argumentNullException.Source == "MediatR":
                     code = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(new { error = "Request is in bad format" });
+                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateBadRequestErrorResponse("Request is in bad format"));
                     break;
             }
 

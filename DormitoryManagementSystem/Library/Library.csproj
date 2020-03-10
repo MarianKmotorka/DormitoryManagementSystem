@@ -81,7 +81,6 @@
     <Compile Include="Models\Officers\OfficerModel.cs" />
     <Compile Include="Models\PagedRequestModel.cs" />
     <Compile Include="Models\PagedResultModel.cs" />
-    <Compile Include="Models\PropertiesResultModel.cs" />
     <Compile Include="Models\Repairers\RepairerLookup.cs" />
     <Compile Include="Models\Repairers\RepairerModel.cs" />
     <Compile Include="Models\RepairRequests\NewRepairRequestModel.cs" />

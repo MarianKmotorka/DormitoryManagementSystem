@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using Caliburn.Micro;
+using static Library.Models.ResultModel;
 
 namespace WpfClient.Validation
 {
@@ -28,11 +29,33 @@ namespace WpfClient.Validation
             if (!ErrorsByProperty.ContainsKey(propName))
                 ErrorsByProperty[propName] = new List<string>();
 
-            if (!ErrorsByProperty[propName].Contains(error))
+            var translatedErrorMessage = IoC.Get<ResourceDictionary>("language")[error].ToString();
+
+            if (!ErrorsByProperty[propName].Contains(translatedErrorMessage))
             {
-                ErrorsByProperty[propName].Add(IoC.Get<ResourceDictionary>("language")[error].ToString());
+                ErrorsByProperty[propName].Add(translatedErrorMessage);
                 RaiseErrorChangedEvent(propName);
             }
+        }
+
+        public void AddError(ErrorDetail error)
+        {
+            if (!ErrorsByProperty.ContainsKey(error.PropertyName))
+                ErrorsByProperty[error.PropertyName] = new List<string>();
+
+            var translatedErrorMessage = IoC.Get<ResourceDictionary>("language")[error.Message].ToString();
+
+            if (!ErrorsByProperty[error.PropertyName].Contains(translatedErrorMessage))
+            {
+                ErrorsByProperty[error.PropertyName].Add(translatedErrorMessage);
+                RaiseErrorChangedEvent(error.PropertyName);
+            }
+        }
+
+        public void AddErrors(IEnumerable<ErrorDetail> errors)
+        {
+            foreach (var error in errors)
+                AddError(error);
         }
 
         public void ClearErrors(string propName)

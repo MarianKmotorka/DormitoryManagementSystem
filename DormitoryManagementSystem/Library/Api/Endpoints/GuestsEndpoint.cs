@@ -20,14 +20,14 @@ namespace Library.Api.Endpoints
             _apiHelper = apiHelper;
         }
 
-        public async Task<PropertiesResultModel> Register(GuestModel model)
+        public async Task<ResultModel> Register(GuestModel model)
         {
             var response = await _apiHelper.Client.PostAsJsonAsync("guests", model);
 
             if (!response.IsSuccessStatusCode)
-                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+                return await response.Content.ReadAsAsync<ResultModel>();
 
-            return PropertiesResultModel.Succesful;
+            return ResultModel.Successful;
         }
 
         public async Task<GuestModel> GetDetail(string id = null)
@@ -46,7 +46,7 @@ namespace Library.Api.Endpoints
             return await response.Content.ReadAsAsync<PagedResultModel<GuestLookup>>();
         }
 
-        public async Task<PropertiesResultModel> Edit(string id, GuestModel model)
+        public async Task<ResultModel> Edit(string id, GuestModel model)
         {
             if (string.IsNullOrEmpty(id))
                 throw new ArgumentException("Id cannot be null");
@@ -54,9 +54,9 @@ namespace Library.Api.Endpoints
             var response = await _apiHelper.Client.PatchAsJsonAsync($"guests/{id}", model);
 
             if (!response.IsSuccessStatusCode)
-                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+                return await response.Content.ReadAsAsync<ResultModel>();
 
-            return PropertiesResultModel.Succesful;
+            return ResultModel.Successful;
         }
 
         public async Task<PagedResultModel<AccomodationRequestLookup>> GetMyAccomodationRequests(PagedRequestModel model)

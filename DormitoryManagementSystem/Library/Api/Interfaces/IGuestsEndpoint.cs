@@ -9,13 +9,13 @@ namespace Library.Api.Interfaces
 {
     public interface IGuestsEndpoint
     {
-        Task<PropertiesResultModel> Register(GuestModel model);
+        Task<ResultModel> Register(GuestModel model);
 
         Task<GuestModel> GetDetail(string id = null);
 
         Task<PagedResultModel<GuestLookup>> GetAll(PagedRequestModel model);
 
-        Task<PropertiesResultModel> Edit(string id, GuestModel model);
+        Task<ResultModel> Edit(string id, GuestModel model);
 
         Task<PagedResultModel<AccomodationRequestLookup>> GetMyAccomodationRequests(PagedRequestModel model);
 

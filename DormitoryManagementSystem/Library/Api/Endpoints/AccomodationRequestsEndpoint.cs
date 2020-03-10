@@ -16,7 +16,7 @@ namespace Library.Api.Endpoints
             _apiHelper = apiHelper;
         }
 
-        public async Task<PropertiesResultModel> ApproveAccomodationRequest(int requestId, int roomId, string additionalMessage)
+        public async Task<ResultModel> ApproveAccomodationRequest(int requestId, int roomId, string additionalMessage)
         {
             var data = new
             {
@@ -28,9 +28,9 @@ namespace Library.Api.Endpoints
             var response = await _apiHelper.Client.PatchAsJsonAsync($"accomodationRequests/{requestId}", data);
 
             if (!response.IsSuccessStatusCode)
-                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+                return await response.Content.ReadAsAsync<ResultModel>();
 
-            return PropertiesResultModel.Succesful;
+            return ResultModel.Successful;
         }
 
         public async Task<PagedResultModel<AccomodationRequestLookup>> GetAll(PagedRequestModel model)
@@ -49,7 +49,7 @@ namespace Library.Api.Endpoints
             return await response.Content.ReadAsAsync<AccomodationRequestDetail>();
         }
 
-        public async Task<PropertiesResultModel> RejectAccomodationRequest(int requestId, string additionalMessage)
+        public async Task<ResultModel> RejectAccomodationRequest(int requestId, string additionalMessage)
         {
             var data = new
             {
@@ -60,19 +60,19 @@ namespace Library.Api.Endpoints
             var response = await _apiHelper.Client.PatchAsJsonAsync($"accomodationRequests/{requestId}", data);
 
             if (!response.IsSuccessStatusCode)
-                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+                return await response.Content.ReadAsAsync<ResultModel>();
 
-            return PropertiesResultModel.Succesful;
+            return ResultModel.Successful;
         }
 
-        public async Task<PropertiesResultModel> Create(NewAccomodationRequestModel model)
+        public async Task<ResultModel> Create(NewAccomodationRequestModel model)
         {
             var response = await _apiHelper.Client.PostAsJsonAsync("accomodationRequests", model);
 
             if (response.IsSuccessStatusCode)
-                return PropertiesResultModel.Succesful;
+                return ResultModel.Successful;
 
-            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+            return await response.Content.ReadAsAsync<ResultModel>();
         }
     }
 }

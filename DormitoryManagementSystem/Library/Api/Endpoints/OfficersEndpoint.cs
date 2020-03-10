@@ -17,7 +17,7 @@ namespace Library.Api.Endpoints
             _apiHelper = apiHelper;
         }
 
-        public async Task<PropertiesResultModel> Edit(string id, OfficerModel model)
+        public async Task<ResultModel> Edit(string id, OfficerModel model)
         {
             if (string.IsNullOrEmpty(id))
                 throw new ArgumentException("Id cannot be null");
@@ -25,9 +25,9 @@ namespace Library.Api.Endpoints
             var response = await _apiHelper.Client.PatchAsJsonAsync($"officers/{id}", model);
 
             if (!response.IsSuccessStatusCode)
-                return await response.Content.ReadAsAsync<PropertiesResultModel>();
+                return await response.Content.ReadAsAsync<ResultModel>();
 
-            return PropertiesResultModel.Succesful;
+            return ResultModel.Successful;
         }
 
         public async Task<OfficerModel> GetDetail(string id = null)
@@ -37,14 +37,14 @@ namespace Library.Api.Endpoints
             return await response.Content.ReadAsAsync<OfficerModel>();
         }
 
-        public async Task<PropertiesResultModel> Register(OfficerModel model)
+        public async Task<ResultModel> Register(OfficerModel model)
         {
             var response = await _apiHelper.Client.PostAsJsonAsync("officers", model);
 
             if (response.IsSuccessStatusCode)
-                return PropertiesResultModel.Succesful;
+                return ResultModel.Successful;
 
-            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+            return await response.Content.ReadAsAsync<ResultModel>();
         }
 
         public async Task<PagedResultModel<OfficerLookup>> GetAll(PagedRequestModel model)

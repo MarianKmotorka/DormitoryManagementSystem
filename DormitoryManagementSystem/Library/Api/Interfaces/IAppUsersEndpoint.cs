@@ -8,10 +8,10 @@ namespace Library.Api.Interfaces
     {
         Task<ResultModel> Authenticate(string email, string password);
 
-        Task<PropertiesResultModel> ConfirmEmail(string email);
+        Task<ResultModel> ConfirmEmail(string email);
 
-        Task<PropertiesResultModel> ResetPassword(string email);
+        Task<ResultModel> ResetPassword(string email);
 
-        Task<PropertiesResultModel> ChangePassword(ChangePasswordModel model);
+        Task<ResultModel> ChangePassword(ChangePasswordModel model);
     }
 }

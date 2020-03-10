@@ -62,10 +62,7 @@ namespace WpfClient.ViewModels.RepairRequests
 
             if (result.Fail)
             {
-                foreach (var propError in result.Errors)
-                    foreach (var error in propError.Value)
-                        Model.AddError(propError.Key, error);
-
+                Model.AddErrors(result.ErrorDetails);
                 return;
             }
 

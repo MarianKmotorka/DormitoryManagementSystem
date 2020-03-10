@@ -41,10 +41,7 @@ namespace WpfClient.ViewModels.AccomodationRequests
 
             if (result.Fail)
             {
-                foreach (var propErrors in result.Errors)
-                    foreach (var error in propErrors.Value)
-                        Model.AddError(propErrors.Key, error);
-
+                Model.AddErrors(result.ErrorDetails);
                 return;
             }
 

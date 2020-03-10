@@ -6,11 +6,11 @@ namespace Library.Api.Interfaces
 {
     public interface IOfficersEndpoint
     {
-        Task<PropertiesResultModel> Register(OfficerModel model);
+        Task<ResultModel> Register(OfficerModel model);
 
         Task<OfficerModel> GetDetail(string id = null);
 
-        Task<PropertiesResultModel> Edit(string id, OfficerModel model);
+        Task<ResultModel> Edit(string id, OfficerModel model);
 
         Task<PagedResultModel<OfficerLookup>> GetAll(PagedRequestModel model);
     }

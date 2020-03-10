@@ -10,10 +10,10 @@ namespace Library.Api.Interfaces
 
         Task<AccomodationRequestDetail> GetDetail(int id);
 
-        Task<PropertiesResultModel> RejectAccomodationRequest(int requestId, string additionalMessage);
+        Task<ResultModel> RejectAccomodationRequest(int requestId, string additionalMessage);
 
-        Task<PropertiesResultModel> ApproveAccomodationRequest(int requestId, int roomId, string additionalMessage);
+        Task<ResultModel> ApproveAccomodationRequest(int requestId, int roomId, string additionalMessage);
 
-        Task<PropertiesResultModel> Create(NewAccomodationRequestModel model);
+        Task<ResultModel> Create(NewAccomodationRequestModel model);
     }
 }

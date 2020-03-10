@@ -6,12 +6,12 @@ namespace Library.Api.Interfaces
 {
     public interface IRepairRequestsEndpoint
     {
-        Task<PropertiesResultModel> Create(NewRepairRequestModel model);
+        Task<ResultModel> Create(NewRepairRequestModel model);
 
         Task<PagedResultModel<RepairRequestLookup>> GetAll(PagedRequestModel model);
 
         Task<RepairRequestModel> GetDetail(int id);
 
-        Task<PropertiesResultModel> RespondToRepairRequest(int id, RespondToRepairRequestModel model);
+        Task<ResultModel> RespondToRepairRequest(int id, RespondToRepairRequestModel model);
     }
 }

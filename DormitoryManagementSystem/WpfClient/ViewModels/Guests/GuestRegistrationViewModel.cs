@@ -128,9 +128,8 @@ namespace WpfClient.ViewModels.Guests
 
             if (result.Fail)
             {
-                foreach (var propErrors in result.Errors)
-                    foreach (var error in propErrors.Value)
-                        AddError(propErrors.Key, error);
+                foreach (var error in result.ErrorDetails)
+                    AddError(error.PropertyName, error.Message);
 
                 return;
             }

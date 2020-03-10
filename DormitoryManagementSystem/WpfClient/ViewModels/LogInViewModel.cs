@@ -70,9 +70,9 @@ namespace WpfClient.ViewModels
             Loading = false;
             if (result.Fail)
             {
-                Error = IoC.Get<ResourceDictionary>("language")[result.Error].ToString();
+                Error = IoC.Get<ResourceDictionary>("language")[result.ErrorMessage].ToString();
 
-                if (result.Error == "EmailNotConfirmed")
+                if (result.ErrorMessage == "EmailNotConfirmed")
                     NeedConfirmEmail = true;
                 return;
             }
@@ -90,7 +90,7 @@ namespace WpfClient.ViewModels
 
             if (result.Fail)
             {
-                var error = result.Errors["Email"].First();
+                var error = result.ErrorDetails.First(x => x.PropertyName == "Email").Message;
                 Error = IoC.Get<ResourceDictionary>("language")[error].ToString();
                 return;
             }
@@ -109,7 +109,7 @@ namespace WpfClient.ViewModels
 
             if (result.Fail)
             {
-                var error = result.Errors["Email"].First();
+                var error = result.ErrorDetails.First(x => x.PropertyName == "Email").Message;
                 Error = IoC.Get<ResourceDictionary>("language")[error].ToString();
                 return;
             }

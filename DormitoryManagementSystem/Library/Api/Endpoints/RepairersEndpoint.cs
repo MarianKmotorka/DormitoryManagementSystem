@@ -16,14 +16,14 @@ namespace Library.Api.Endpoints
             _apiHelper = apiHelper;
         }
 
-        public async Task<PropertiesResultModel> Edit(string id, RepairerModel model)
+        public async Task<ResultModel> Edit(string id, RepairerModel model)
         {
             var response = await _apiHelper.Client.PatchAsJsonAsync($"repairers/{id}", model);
 
             if (response.IsSuccessStatusCode)
-                return PropertiesResultModel.Succesful;
+                return ResultModel.Successful;
 
-            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+            return await response.Content.ReadAsAsync<ResultModel>();
         }
 
         public async Task<PagedResultModel<RepairerLookup>> GetAll(PagedRequestModel model)
@@ -42,14 +42,14 @@ namespace Library.Api.Endpoints
             return await response.Content.ReadAsAsync<RepairerModel>();
         }
 
-        public async Task<PropertiesResultModel> Register(RepairerModel model)
+        public async Task<ResultModel> Register(RepairerModel model)
         {
             var response = await _apiHelper.Client.PostAsJsonAsync("repairers", model);
 
             if (response.IsSuccessStatusCode)
-                return PropertiesResultModel.Succesful;
+                return ResultModel.Successful;
 
-            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+            return await response.Content.ReadAsAsync<ResultModel>();
         }
     }
 }

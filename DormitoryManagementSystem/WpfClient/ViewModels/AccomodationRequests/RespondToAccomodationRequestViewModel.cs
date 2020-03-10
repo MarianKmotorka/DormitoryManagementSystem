@@ -103,7 +103,7 @@ namespace WpfClient.ViewModels.AccomodationRequests
 
             if (result.Fail)
             {
-                var error = result.Errors.SelectMany(x => x.Value, (_, error) => error).First();
+                var error = result.ErrorDetails.Select(x => x.Message).First();
                 SelectedRoomError = IoC.Get<ResourceDictionary>("language")[error].ToString();
                 return;
             }
@@ -123,7 +123,7 @@ namespace WpfClient.ViewModels.AccomodationRequests
 
             if (result.Fail)
             {
-                var error = result.Errors.SelectMany(x => x.Value, (_, error) => error).First();
+                var error = result.ErrorDetails.Select(x => x.Message).First();
                 SelectedRoomError = IoC.Get<ResourceDictionary>("language")[error].ToString();
                 return;
             }

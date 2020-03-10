@@ -16,7 +16,7 @@ namespace Library.Api.Endpoints
             _apiHelper = apiHelper;
         }
 
-        public async Task<PropertiesResultModel> Create(NewRepairRequestModel model)
+        public async Task<ResultModel> Create(NewRepairRequestModel model)
         {
             var data = new
             {
@@ -27,9 +27,9 @@ namespace Library.Api.Endpoints
             var response = await _apiHelper.Client.PostAsJsonAsync("repairRequests", data);
 
             if (response.IsSuccessStatusCode)
-                return PropertiesResultModel.Succesful;
+                return ResultModel.Successful;
 
-            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+            return await response.Content.ReadAsAsync<ResultModel>();
         }
 
         public async Task<PagedResultModel<RepairRequestLookup>> GetAll(PagedRequestModel model)
@@ -48,14 +48,14 @@ namespace Library.Api.Endpoints
             return await response.Content.ReadAsAsync<RepairRequestModel>();
         }
 
-        public async Task<PropertiesResultModel> RespondToRepairRequest(int id, RespondToRepairRequestModel model)
+        public async Task<ResultModel> RespondToRepairRequest(int id, RespondToRepairRequestModel model)
         {
             var response = await _apiHelper.Client.PatchAsJsonAsync($"repairRequests/{id}", model);
 
             if (response.IsSuccessStatusCode)
-                return PropertiesResultModel.Succesful;
+                return ResultModel.Successful;
 
-            return await response.Content.ReadAsAsync<PropertiesResultModel>();
+            return await response.Content.ReadAsAsync<ResultModel>();
         }
     }
 }

@@ -55,9 +55,8 @@ namespace WpfClient.ViewModels
 
             if (result.Fail)
             {
-                foreach (var propError in result.Errors)
-                    foreach (var error in propError.Value)
-                        AddError(propError.Key, error);
+                foreach (var error in result.ErrorDetails)
+                    AddError(error.PropertyName, error.Message);
 
                 return;
             }

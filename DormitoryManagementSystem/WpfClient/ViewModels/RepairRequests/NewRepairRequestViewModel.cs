@@ -57,16 +57,15 @@ namespace WpfClient.ViewModels.RepairRequests
 
             if (result.Fail)
             {
-                foreach (var propErrors in result.Errors)
-                    foreach (var error in propErrors.Value)
-                    {
-                        var propName = propErrors.Key;
+                foreach (var error in result.ErrorDetails)
+                {
+                    var propName = error.PropertyName;
 
-                        if (propName == "RoomItemTypeId")
-                            propName = nameof(Model.RoomItemType);
+                    if (propName == "RoomItemTypeId")
+                        propName = nameof(Model.RoomItemType);
 
-                        Model.AddError(propName, error);
-                    }
+                    Model.AddError(propName, error.Message);
+                }
 
                 return;
             }
