@@ -12,12 +12,10 @@ namespace Application.AccomodationRequests.Commands.CreateAccomodationRequest
     public class CreateAccomodationRequestCommandValidator : AbstractValidator<CreateAccomodationRequestCommand>
     {
         private readonly IDormitoryDbContext _db;
-        private readonly ICurrentUserService _currentUserService;
 
-        public CreateAccomodationRequestCommandValidator(IDormitoryDbContext db, ICurrentUserService currentUserService) : this()
+        public CreateAccomodationRequestCommandValidator(IDormitoryDbContext db) : this()
         {
             _db = db;
-            _currentUserService = currentUserService;
         }
 
         private CreateAccomodationRequestCommandValidator()
@@ -34,7 +32,7 @@ namespace Application.AccomodationRequests.Commands.CreateAccomodationRequest
         private async Task<bool> NotOverlap(CreateAccomodationRequestCommand command, DateTime start, CancellationToken cancellationToken)
         {
             var requests = await _db.AccomodationRequests
-                .Where(x => x.Requester.Id == _currentUserService.UserId)
+                .Where(x => x.Requester.Id == command.RequesterId)
                 .ToListAsync(cancellationToken);
 
             var isOverlap = requests.Any(x => IsOverlap(x.AccomodationStartDateUtc, x.AccomodationEndDateUtc, command.AccomodationStartDateUtc, command.AccomodationEndDateUtc));

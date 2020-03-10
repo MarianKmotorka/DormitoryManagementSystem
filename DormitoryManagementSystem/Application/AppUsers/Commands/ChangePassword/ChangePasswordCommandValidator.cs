@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.Interfaces;
 using Application.Common.Models;
 using Domain.Entities;
 using FluentValidation;
@@ -11,12 +10,10 @@ namespace Application.AppUsers.Commands.ChangePassword
     public class ChangePasswordCommandValidator : AbstractValidator<ChangePasswordCommand>
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly ICurrentUserService _currentUserService;
 
-        public ChangePasswordCommandValidator(UserManager<AppUser> userManager, ICurrentUserService currentUserService) : this()
+        public ChangePasswordCommandValidator(UserManager<AppUser> userManager) : this()
         {
             _userManager = userManager;
-            _currentUserService = currentUserService;
         }
 
         public ChangePasswordCommandValidator()
@@ -34,7 +31,7 @@ namespace Application.AppUsers.Commands.ChangePassword
 
         private async Task<bool> BeValid(ChangePasswordCommand command, string currentPassword, CancellationToken cancellationToken)
         {
-            var appUser = await _userManager.FindByIdAsync(_currentUserService.UserId);
+            var appUser = await _userManager.FindByIdAsync(command.UserId);
 
             return await _userManager.CheckPasswordAsync(appUser, currentPassword);
         }

@@ -1,5 +1,5 @@
 ﻿using Application.Common.Interfaces;
-using FluentValidation.AspNetCore;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,8 +10,9 @@ namespace WebApi.Installers
     {
         public IServiceCollection Install(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddControllers()
-                .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<IDormitoryDbContext>());
+            services.AddControllers();
+
+            services.AddValidatorsFromAssembly(typeof(IDormitoryDbContext).Assembly);
 
             services.AddHttpContextAccessor();
 
