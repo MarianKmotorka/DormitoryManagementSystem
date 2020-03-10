@@ -26,7 +26,7 @@ namespace Application.AppUsers.Commands.ChangePassword
 
             RuleFor(x => x.NewPassword)
                 .NotEmpty().WithMessage(ErrorMessages.Required)
-                .MinimumLength(6).WithMessage(ErrorMessages.MinLength(6));
+                .MinimumLength(6).WithMessage(ErrorMessages.MinLength).WithState(_ => 6);
         }
 
         private async Task<bool> BeValid(ChangePasswordCommand command, string currentPassword, CancellationToken cancellationToken)

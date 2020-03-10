@@ -11,7 +11,7 @@ namespace Application.RepairRequests.Commands.RespondToRepairRequest
         {
             RuleFor(x => x.RepairerReply).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage(ErrorMessages.Required).When(x => x.RepairRequestState == RepairRequestState.Refused)
-                .MinimumLength(5).WithMessage(ErrorMessages.MinLength(5)).When(x => x.RepairRequestState == RepairRequestState.Refused);
+                .MinimumLength(5).WithMessage(ErrorMessages.MinLength).WithState(_ => 5).When(x => x.RepairRequestState == RepairRequestState.Refused);
 
             RuleFor(x => x.WillBeFixedOn).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull().WithMessage(ErrorMessages.Required).When(x => x.RepairRequestState == RepairRequestState.Accepted)

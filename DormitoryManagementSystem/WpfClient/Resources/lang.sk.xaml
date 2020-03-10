@@ -126,7 +126,7 @@
     <!--Error messages-->
     <system:String x:Key="Required">Požadované</system:String>
     <system:String x:Key="Invalid">Neplatné</system:String>
-    <system:String x:Key="MinLength6">Minimalna dĺžka: 6</system:String>
+    <system:String x:Key="MinLength">Minimalna dĺžka:</system:String>
     <system:String x:Key="MaxLength">Maximálna dlžka:</system:String>
 
     <system:String x:Key="EmailNotFound">Používateľ s uvedeným emailom neexistuje</system:String>

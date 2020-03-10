@@ -45,7 +45,7 @@ namespace WebApi.Common
             return new ErrorResponse
             {
                 ErrorCode = "NotFound",
-                ErrorMessage = errorMessage ?? "Please check if you type the url correctly."
+                ErrorMessage = errorMessage ?? "Please check if you typed the url correctly."
             };
         }
     }

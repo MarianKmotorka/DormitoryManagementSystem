@@ -128,7 +128,7 @@
     <!--Error messages-->
     <system:String x:Key="Required">Required</system:String>
     <system:String x:Key="Invalid">Invalid</system:String>
-    <system:String x:Key="MinLength6">Min length: 6</system:String>
+    <system:String x:Key="MinLength">Min length:</system:String>
     <system:String x:Key="MaxLength">Max length:</system:String>
 
     <system:String x:Key="EmailNotFound">User with entered email does not exist</system:String>

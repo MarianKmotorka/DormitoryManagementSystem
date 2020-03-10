@@ -5,6 +5,8 @@
         public const string Invalid = nameof(Invalid);
         public const string InvalidEmail = nameof(InvalidEmail);
         public const string Required = nameof(Required);
+        public const string MinLength = nameof(MinLength);
+        public const string MaxLength = nameof(MaxLength);
 
         public const string JwtIsNotExpired = nameof(JwtIsNotExpired);
         public const string RefreshTokenDoesNotExist = nameof(RefreshTokenDoesNotExist);
@@ -27,7 +29,5 @@
 
         public const string RepairAlreadyRequested = nameof(RepairAlreadyRequested);
         public const string CannotModifyFixed = nameof(CannotModifyFixed);
-
-        public static string MinLength(int min) => nameof(MinLength) + min;
     }
 }

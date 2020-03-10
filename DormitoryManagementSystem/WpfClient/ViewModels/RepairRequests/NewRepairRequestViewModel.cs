@@ -64,7 +64,7 @@ namespace WpfClient.ViewModels.RepairRequests
                     if (propName == "RoomItemTypeId")
                         propName = nameof(Model.RoomItemType);
 
-                    Model.AddError(propName, error.Message);
+                    Model.AddError(propName, error.Message, error.CustomState);
                 }
 
                 return;

@@ -23,7 +23,8 @@ namespace Application.Guests.Commands.CreateGuest
 
             RuleFor(x => x.Password)
                 .NotEmpty().WithMessage(ErrorMessages.Required)
-                .MinimumLength(6).WithMessage(ErrorMessages.MinLength(6));
+                .MinimumLength(6).WithMessage(ErrorMessages.MinLength).WithState(_ => 6)
+                .MaximumLength(30).WithMessage(ErrorMessages.MaxLength).WithState(_ => 30);
 
             RuleFor(x => x.Street).NotEmpty().WithMessage(ErrorMessages.Required);
 

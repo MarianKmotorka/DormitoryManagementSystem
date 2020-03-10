@@ -24,17 +24,17 @@ namespace WpfClient.Validation
                 : null;
         }
 
-        public void AddError(string propName, string error)
+        public void AddError(string propertyName, string message, object customState = null)
         {
-            if (!ErrorsByProperty.ContainsKey(propName))
-                ErrorsByProperty[propName] = new List<string>();
+            if (!ErrorsByProperty.ContainsKey(propertyName))
+                ErrorsByProperty[propertyName] = new List<string>();
 
-            var translatedErrorMessage = IoC.Get<ResourceDictionary>("language")[error].ToString();
+            var translatedErrorMessage = $"{IoC.Get<ResourceDictionary>("language")[message]} {customState}";
 
-            if (!ErrorsByProperty[propName].Contains(translatedErrorMessage))
+            if (!ErrorsByProperty[propertyName].Contains(translatedErrorMessage))
             {
-                ErrorsByProperty[propName].Add(translatedErrorMessage);
-                RaiseErrorChangedEvent(propName);
+                ErrorsByProperty[propertyName].Add(translatedErrorMessage);
+                RaiseErrorChangedEvent(propertyName);
             }
         }
 
@@ -43,7 +43,7 @@ namespace WpfClient.Validation
             if (!ErrorsByProperty.ContainsKey(error.PropertyName))
                 ErrorsByProperty[error.PropertyName] = new List<string>();
 
-            var translatedErrorMessage = IoC.Get<ResourceDictionary>("language")[error.Message].ToString();
+            var translatedErrorMessage = $"{IoC.Get<ResourceDictionary>("language")[error.Message]} {error.CustomState}";
 
             if (!ErrorsByProperty[error.PropertyName].Contains(translatedErrorMessage))
             {
