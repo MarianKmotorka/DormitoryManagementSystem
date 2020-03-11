@@ -33,8 +33,9 @@ namespace WpfClient.Helpers
             var sortPropertyName = properties
                 .Where(x => x.Name.EndsWith("Sort"))
                 .Where(x => x.PropertyType == typeof(bool))
-                .Single(x => (bool)x.GetValue(viewModelInstance))
-                .Name;
+                .SingleOrDefault(x => (bool)x.GetValue(viewModelInstance))?.Name;
+
+            _ = sortPropertyName ?? throw new Exception("ViewModel must have one Sort property set to true");
 
             var sortPropertyNameWithoutSortSuffix =
                 sortPropertyName.Substring(0, sortPropertyName.LastIndexOf('S'));
@@ -71,9 +72,12 @@ namespace WpfClient.Helpers
 
             foreach (var filter in filterProperties)
             {
-                var matchingFilterOperator = filterOperatorProperties.Single(x => x.Name == filter.Name);
+                var matchingFilterOperator = filterOperatorProperties.Single(x => x.Name == filter.Name).Operator.ToString();
 
-                yield return $"{filter.Name}{matchingFilterOperator.Operator}{filter.Value}";
+                if (matchingFilterOperator == "=")
+                    matchingFilterOperator = "==";
+
+                yield return $"{filter.Name}{matchingFilterOperator}{filter.Value}";
             }
         }
 
@@ -92,9 +96,12 @@ namespace WpfClient.Helpers
 
             foreach (var filter in filterProperties)
             {
-                var matchingFilterOperator = filterOperatorProperties.Single(x => x.Name == filter.Name);
+                var matchingFilterOperator = filterOperatorProperties.Single(x => x.Name == filter.Name).Operator.ToString();
 
-                yield return $"{filter.Name}{matchingFilterOperator.Operator}{filter.Value}";
+                if (matchingFilterOperator == "=")
+                    matchingFilterOperator = "==";
+
+                yield return $"{filter.Name}{matchingFilterOperator}{filter.Value.Value.ToShortDateString()}";
             }
         }
     }

@@ -10,7 +10,8 @@
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="Bootstrapper"/>
                     <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
-                    <converters:EmptyStringToZeroConverter x:Key="EmptyStringToZeroConverter"/>
+                    <converters:OnlyNumberConverter x:Key="OnlyNumberConverter"/>
+                    <converters:OnlyNumberOrNullConverter x:Key="OnlyNumberOrNullConverter"/>
                     <converters:ToShortDateConverter x:Key="ToShortDateConverter"/>
                     <converters:TranslationConverter x:Key="TranslationConverter"/>
                 </ResourceDictionary>

@@ -54,6 +54,7 @@
     <Compile Include="Api\Endpoints\AccomodationRequestsEndpoint.cs" />
     <Compile Include="Api\Endpoints\AppUsersEndpoint.cs" />
     <Compile Include="Api\Endpoints\GuestsEndpoint.cs" />
+    <Compile Include="Api\Endpoints\OfficesEndpoint.cs" />
     <Compile Include="Api\Endpoints\RepairersEndpoint.cs" />
     <Compile Include="Api\Endpoints\RepairRequestsEndpoint.cs" />
     <Compile Include="Api\Endpoints\RoomsEndpoint.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Api\Interfaces\IOfficersEndpoint.cs" />
     <Compile Include="Api\Endpoints\OfficersEndpoint.cs" />
     <Compile Include="Api\AuthenticationHandler.cs" />
+    <Compile Include="Api\Interfaces\IOfficesEndpoint.cs" />
     <Compile Include="Api\Interfaces\IRepairersEndpoint.cs" />
     <Compile Include="Api\Interfaces\IRepairRequestsEndpoint.cs" />
     <Compile Include="Api\Interfaces\IRoomsEndpoint.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Models\Guests\GuestModel.cs" />
     <Compile Include="Models\Officers\OfficerLookup.cs" />
     <Compile Include="Models\Officers\OfficerModel.cs" />
+    <Compile Include="Models\Offices\OfficeLookup.cs" />
     <Compile Include="Models\PagedRequestModel.cs" />
     <Compile Include="Models\PagedResultModel.cs" />
     <Compile Include="Models\Repairers\RepairerLookup.cs" />

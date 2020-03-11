@@ -28,7 +28,7 @@ namespace Application.AccomodationRequests.Commands.CreateAccomodationRequest
                 AccomodationEndDateUtc = request.AccomodationEndDateUtc,
                 Requester = requester,
                 RequesterMessage = request.RequesterMessage,
-                RequestPlacedUtc = DateTime.UtcNow,
+                RequestPlacedUtc = DateTime.UtcNow.Date,
                 State = AccomodationRequestState.Active
             };
 

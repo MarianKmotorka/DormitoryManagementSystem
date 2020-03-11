@@ -27,8 +27,8 @@ namespace WpfClient.ViewModels.AccomodationRequests
         private string _requestStateFilter;
 
         private char _requesterDistanceFromHomeFilterOperator = '>';
-        private char _accomodationEndDateUtcFilterOperator = '<';
-        private char _accomodationStartDateUtcFilterOperator = '<';
+        private char _accomodationEndDateUtcFilterOperator = '>';
+        private char _accomodationStartDateUtcFilterOperator = '>';
 
         private readonly IEventAggregator _eventAggregator;
         private readonly IAccomodationRequestsEndpoint _accomodationRequestsEndpoint;
@@ -51,7 +51,7 @@ namespace WpfClient.ViewModels.AccomodationRequests
 
         #region FILTERS & SORTS
 
-        public IEnumerable<char> FilterOperators => new[] { '<', '>' };
+        public IEnumerable<char> FilterOperators => new[] { '=', '<', '>' };
 
         public IEnumerable<string> RequestStateFilters
            => new[]

@@ -66,7 +66,7 @@
                         <TextBox materialDesign:HintAssist.Hint="{DynamicResource RoomNumber}" Text="{Binding Model.RoomNumber, UpdateSourceTrigger=PropertyChanged, TargetNullValue=' '}"/>
 
                         <TextBox materialDesign:HintAssist.Hint="{DynamicResource DistanceFromHome}" Text="{Binding Model.DistanceFromHome, UpdateSourceTrigger=PropertyChanged,
-                        Converter={StaticResource EmptyStringToZeroConverter}}" materialDesign:TextFieldAssist.SuffixText="km" PreviewTextInput="NumberValidationTextBox" />
+                        Converter={StaticResource OnlyNumberConverter}}" materialDesign:TextFieldAssist.SuffixText="km" PreviewTextInput="NumberValidationTextBox" />
 
                     </StackPanel>
 

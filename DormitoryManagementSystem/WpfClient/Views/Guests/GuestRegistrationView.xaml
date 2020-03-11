@@ -46,7 +46,7 @@
                     <TextBox materialDesign:HintAssist.Hint="{DynamicResource IdCardNumber}" Text="{Binding IdCardNumber, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <TextBox materialDesign:HintAssist.Hint="{DynamicResource DistanceFromHome}" Text="{Binding DistanceFromHome, UpdateSourceTrigger=PropertyChanged,
-                        Converter={StaticResource EmptyStringToZeroConverter}}"
+                        Converter={StaticResource OnlyNumberConverter}}"
                              materialDesign:TextFieldAssist.SuffixText="km" PreviewTextInput="NumberValidationTextBox"/>
                 </StackPanel>
 

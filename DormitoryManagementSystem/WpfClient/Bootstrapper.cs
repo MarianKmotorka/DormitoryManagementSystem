@@ -39,6 +39,7 @@ namespace WpfClient
             .Singleton<IWindowManager, WindowManager>();
 
             _container.RegisterPerRequest(typeof(IAppUsersEndpoint), null, typeof(AppUsersEndpoint));
+            _container.RegisterPerRequest(typeof(IOfficesEndpoint), null, typeof(OfficesEndpoint));
             _container.RegisterPerRequest(typeof(IRepairRequestsEndpoint), null, typeof(RepairRequestsEndpoint));
             _container.RegisterPerRequest(typeof(IRepairersEndpoint), null, typeof(RepairersEndpoint));
             _container.RegisterPerRequest(typeof(IGuestsEndpoint), null, typeof(GuestsEndpoint));

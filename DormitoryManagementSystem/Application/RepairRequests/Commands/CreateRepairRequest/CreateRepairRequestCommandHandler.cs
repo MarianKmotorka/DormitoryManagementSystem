@@ -26,7 +26,7 @@ namespace Application.RepairRequests.Commands.CreateRepairRequest
             var repairRequest = new RepairRequest
             {
                 Guest = guest,
-                CreatedOn = DateTime.UtcNow,
+                CreatedOn = DateTime.UtcNow.Date,
                 ProblemDesciption = request.ProblemDescription,
                 RoomItemType = roomItemType,
                 State = RepairRequestState.Pending

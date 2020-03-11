@@ -5,7 +5,7 @@ using System.Windows.Data;
 namespace WpfClient.Converters
 {
     [ValueConversion(typeof(string), typeof(int))]
-    public class EmptyStringToZeroConverter : IValueConverter
+    public class OnlyNumberConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

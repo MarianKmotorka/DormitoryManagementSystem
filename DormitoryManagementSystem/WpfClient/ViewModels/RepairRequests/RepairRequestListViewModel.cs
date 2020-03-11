@@ -26,9 +26,9 @@ namespace WpfClient.ViewModels.RepairRequests
         private DateTime? _fixedOnFilter;
         private string _stateFilter;
 
-        private char _createdOnFilterOperator = '>';
-        private char _willBeFixedOnFilterOperator = '<';
-        private char _fixedOnFilterOperator = '<';
+        private char _createdOnFilterOperator = '=';
+        private char _willBeFixedOnFilterOperator = '=';
+        private char _fixedOnFilterOperator = '=';
 
         private readonly IEventAggregator _eventAggregator;
         private readonly IRepairRequestsEndpoint _repairRequestsEndpoint;
@@ -51,11 +51,12 @@ namespace WpfClient.ViewModels.RepairRequests
 
         #region FILTERS & SORTS
 
-        public IEnumerable<char> FilterOperators => new[] { '<', '>' };
+        public IEnumerable<char> FilterOperators => new[] { '=', '<', '>' };
 
         public IEnumerable<string> RequestStateFilters
            => new[]
            {
+               "",
                RepairRequestState.Accepted.ToString(),
                RepairRequestState.Fixed.ToString(),
                RepairRequestState.Pending.ToString(),

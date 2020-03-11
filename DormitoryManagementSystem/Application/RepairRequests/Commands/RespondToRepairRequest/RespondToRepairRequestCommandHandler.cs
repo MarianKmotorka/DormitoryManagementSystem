@@ -30,7 +30,7 @@ namespace Application.RepairRequests.Commands.RespondToRepairRequest
             {
                 var repairer = await _db.Repairers.SingleOrNotFoundAsync(x => x.Id == request.FixedById, cancellationToken);
                 repairRequest.FixedBy = repairer;
-                repairRequest.FixedOn = DateTime.UtcNow;
+                repairRequest.FixedOn = DateTime.UtcNow.Date;
             }
 
             if (request.RepairRequestState == RepairRequestState.Accepted)

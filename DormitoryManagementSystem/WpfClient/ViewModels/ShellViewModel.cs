@@ -8,6 +8,7 @@ using WpfClient.ViewModels.AccomodationRequests;
 using WpfClient.ViewModels.Admin;
 using WpfClient.ViewModels.Guests;
 using WpfClient.ViewModels.Officers;
+using WpfClient.ViewModels.Offices;
 using WpfClient.ViewModels.Repairers;
 using WpfClient.ViewModels.RepairRequests;
 
@@ -129,6 +130,10 @@ namespace WpfClient.ViewModels
 
                 case "Officers":
                     ActivateItem(IoC.Get<OfficerListViewModel>());
+                    break;
+
+                case "Offices":
+                    ActivateItem(IoC.Get<OfficeListViewModel>());
                     break;
 
                 case "Repairers":
