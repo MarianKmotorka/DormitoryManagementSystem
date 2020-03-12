@@ -11,6 +11,7 @@ using WpfClient.ViewModels.Officers;
 using WpfClient.ViewModels.Offices;
 using WpfClient.ViewModels.Repairers;
 using WpfClient.ViewModels.RepairRequests;
+using WpfClient.ViewModels.Rooms;
 
 namespace WpfClient.ViewModels
 {
@@ -134,6 +135,10 @@ namespace WpfClient.ViewModels
 
                 case "Offices":
                     ActivateItem(IoC.Get<OfficeListViewModel>());
+                    break;
+
+                case "Rooms":
+                    ActivateItem(IoC.Get<RoomListViewModel>());
                     break;
 
                 case "Repairers":

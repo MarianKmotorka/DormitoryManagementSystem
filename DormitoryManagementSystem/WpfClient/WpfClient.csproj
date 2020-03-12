@@ -99,6 +99,7 @@
     <Compile Include="Events\OpenRepairRequestDetailEvent.cs" />
     <Compile Include="Events\OpenRespondToAccomodationRequestViewEvent.cs" />
     <Compile Include="Events\OpenRespondToRepairRequestViewEvent.cs" />
+    <Compile Include="Events\OpenRoomDetailEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Events\GoBackEvent.cs" />
     <Compile Include="Events\GuestRegisteredEvent.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="ViewModels\RepairRequests\RepairRequestDetailViewModel.cs" />
     <Compile Include="ViewModels\RepairRequests\RepairRequestListViewModel.cs" />
     <Compile Include="ViewModels\RepairRequests\RespondToRepairRequestViewModel.cs" />
+    <Compile Include="ViewModels\Rooms\RoomListViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AccomodationRequests\AccomodationRequestDetailView.xaml.cs">
       <DependentUpon>AccomodationRequestDetailView.xaml</DependentUpon>
@@ -202,6 +204,9 @@
     </Compile>
     <Compile Include="Views\RepairRequests\RespondToRepairRequestView.xaml.cs">
       <DependentUpon>RespondToRepairRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Rooms\RoomListView.xaml.cs">
+      <DependentUpon>RoomListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -324,6 +329,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RepairRequests\RespondToRepairRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Rooms\RoomListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
