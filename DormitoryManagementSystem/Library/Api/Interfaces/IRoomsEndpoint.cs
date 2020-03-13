@@ -7,5 +7,7 @@ namespace Library.Api.Interfaces
     public interface IRoomsEndpoint
     {
         Task<PagedResultModel<RoomLookup>> GetAll(PagedRequestModel model);
+
+        Task<RoomModel> GetDetail(int id);
     }
 }

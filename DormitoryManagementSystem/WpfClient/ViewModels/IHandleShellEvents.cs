@@ -7,7 +7,7 @@ namespace WpfClient.ViewModels
         IHandle<GuestRegisteredEvent>, IHandle<OpenGuestDetailEvent>, IHandle<GoBackEvent>, IHandle<OpenAccomodationRequestDetailEvent>,
         IHandle<OpenRespondToAccomodationRequestViewEvent>, IHandle<OpenNewAccomodationRequestViewEvent>, IHandle<OpenOfficerDetailEvent>,
         IHandle<OpenRepairerDetailEvent>, IHandle<OpenNewRepairRequestViewEvent>, IHandle<OpenRepairRequestDetailEvent>,
-        IHandle<OpenRespondToRepairRequestViewEvent>, IHandle<OpenOfficeDetailEvent>
+        IHandle<OpenRespondToRepairRequestViewEvent>, IHandle<OpenOfficeDetailEvent>, IHandle<OpenRoomDetailEvent>
     {
     }
 }

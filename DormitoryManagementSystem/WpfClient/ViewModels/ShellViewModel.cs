@@ -153,6 +153,12 @@ namespace WpfClient.ViewModels
                     ActivateItem(IoC.Get<RepairerRegistrationViewModel>());
                     break;
 
+                case "MyRoom":
+                    var myRoomVM = IoC.Get<RoomDetailViewModel>();
+                    myRoomVM.IsMyRoomPage = true;
+                    ActivateItem(myRoomVM);
+                    break;
+
                 case "AccomodationRequests":
                     var vm = IoC.Get<AccomodationRequestListViewModel>();
                     if (_currentUser.Role == RoleNames.Guest)
@@ -221,7 +227,7 @@ namespace WpfClient.ViewModels
         {
             var vm = IoC.Get<GuestDetailViewModel>();
             vm.GuestId = message.GuestId;
-            vm.GoBackViewModel = message.Sender as GuestListViewModel;
+            vm.GoBackViewModel = message.Sender;
             ActivateItem(vm);
         }
 
@@ -296,6 +302,14 @@ namespace WpfClient.ViewModels
         public void Handle(OpenOfficeDetailEvent message)
         {
             var vm = IoC.Get<OfficeDetailViewModel>();
+            vm.GoBackViewModel = message.Sender;
+            vm.Model.Id = message.Id;
+            ActivateItem(vm);
+        }
+
+        public void Handle(OpenRoomDetailEvent message)
+        {
+            var vm = IoC.Get<RoomDetailViewModel>();
             vm.GoBackViewModel = message.Sender;
             vm.Model.Id = message.Id;
             ActivateItem(vm);

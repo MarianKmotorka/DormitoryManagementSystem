@@ -141,6 +141,7 @@
     <Compile Include="ViewModels\RepairRequests\RepairRequestDetailViewModel.cs" />
     <Compile Include="ViewModels\RepairRequests\RepairRequestListViewModel.cs" />
     <Compile Include="ViewModels\RepairRequests\RespondToRepairRequestViewModel.cs" />
+    <Compile Include="ViewModels\Rooms\RoomDetailViewModel.cs" />
     <Compile Include="ViewModels\Rooms\RoomListViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AccomodationRequests\AccomodationRequestDetailView.xaml.cs">
@@ -208,6 +209,9 @@
     </Compile>
     <Compile Include="Views\RepairRequests\RespondToRepairRequestView.xaml.cs">
       <DependentUpon>RespondToRepairRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Rooms\RoomDetailView.xaml.cs">
+      <DependentUpon>RoomDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Rooms\RoomListView.xaml.cs">
       <DependentUpon>RoomListView.xaml</DependentUpon>
@@ -337,6 +341,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RepairRequests\RespondToRepairRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Rooms\RoomDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

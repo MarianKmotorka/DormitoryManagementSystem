@@ -57,6 +57,17 @@
 
     <!--ROOMS-->
     <system:String x:Key="FreeBeds">Voľné postele</system:String>
+    <system:String x:Key="RoomInfo">Informácie o izbe</system:String>
+    <system:String x:Key="Quantity">Množstvo</system:String>
+    <system:String x:Key="InventoryNumber">Inventárne číslo</system:String>
+    <system:String x:Key="Items">Predmety</system:String>
+    <system:String x:Key="Wardrobe">Šatník</system:String>
+    <system:String x:Key="Cupboard">Polička</system:String>
+    <system:String x:Key="Bed">Postel</system:String>
+    <system:String x:Key="Ceiling light">Stropné svetlo</system:String>
+    <system:String x:Key="Lamp">Lampička</system:String>
+    <system:String x:Key="Table">Stôl</system:String>
+    <system:String x:Key="Chair">Stolička</system:String>
 
 
     <!--ACCOMODATION REQUESTS-->

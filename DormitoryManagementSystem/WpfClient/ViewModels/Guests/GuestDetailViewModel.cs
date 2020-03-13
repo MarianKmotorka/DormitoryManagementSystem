@@ -17,7 +17,7 @@ namespace WpfClient.ViewModels.Guests
 
         public GuestModelWrapper Model { get; set; } = new GuestModelWrapper();
 
-        public GuestListViewModel GoBackViewModel { get; set; }
+        public object GoBackViewModel { get; set; }
 
         public string GuestId { get; set; } = null;
 

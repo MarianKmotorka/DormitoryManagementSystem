@@ -57,6 +57,17 @@
 
     <!--ROOMS-->
     <system:String x:Key="FreeBeds">Free beds</system:String>
+    <system:String x:Key="RoomInfo">Room information</system:String>
+    <system:String x:Key="Quantity">Quantity</system:String>
+    <system:String x:Key="InventoryNumber">Inventory number</system:String>
+    <system:String x:Key="Wardrobe">Wardrobe</system:String>
+    <system:String x:Key="Cupboard">Cupboard</system:String>
+    <system:String x:Key="Bed">Bed</system:String>
+    <system:String x:Key="Ceiling light">Ceiling light</system:String>
+    <system:String x:Key="Lamp">Lamp</system:String>
+    <system:String x:Key="Table">Table</system:String>
+    <system:String x:Key="Chair">Chair</system:String>
+    <system:String x:Key="Items">Items</system:String>
 
 
     <!--ACCOMODATION REQUESTS-->
