@@ -25,7 +25,7 @@ namespace Application.AppUsers.Commands.Login
             if (!result.Succeeded)
                 throw new BadRequestException(result.Errors);
 
-            var (_, role) = await _identityService.GetRole(request.Email);
+            var (_, role) = await _identityService.GetRoleAsync(request.Email);
 
             var user = await _db.Users.SingleAsync(x => x.Email == request.Email, cancellationToken);
 

@@ -46,6 +46,8 @@ namespace WpfClient.ViewModels
 
         public bool RepairRequestsVisible => _currentUser.Role == RoleNames.Guest || _currentUser.Role == RoleNames.Repairer;
 
+        public bool ManageUsersPasswordsVisible => _currentUser.Role == RoleNames.SysAdmin;
+
         #endregion
 
         public bool IsEnglish
@@ -80,7 +82,6 @@ namespace WpfClient.ViewModels
 
         protected override void OnViewLoaded(object view)
         {
-            base.OnViewLoaded(view);
             ActivateItem(IoC.Get<LogInViewModel>());
         }
 
@@ -153,6 +154,10 @@ namespace WpfClient.ViewModels
                     ActivateItem(IoC.Get<RepairerRegistrationViewModel>());
                     break;
 
+                case "ManageUsersPasswords":
+                    ActivateItem(IoC.Get<ManageUsersPasswordsViewModel>());
+                    break;
+
                 case "MyRoom":
                     var myRoomVM = IoC.Get<RoomDetailViewModel>();
                     myRoomVM.IsMyRoomPage = true;
@@ -215,6 +220,7 @@ namespace WpfClient.ViewModels
             NotifyOfPropertyChange(nameof(MyRoomVisible));
             NotifyOfPropertyChange(nameof(RepairRequestsVisible));
             NotifyOfPropertyChange(nameof(OfficesVisible));
+            NotifyOfPropertyChange(nameof(ManageUsersPasswordsVisible));
             NotifyOfPropertyChange(nameof(UserName));
         }
 

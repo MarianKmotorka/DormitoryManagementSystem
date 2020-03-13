@@ -75,6 +75,7 @@
     <Compile Include="Models\AccomodationRequests\AccomodationRequestLookup.cs" />
     <Compile Include="Models\AccomodationRequests\AccomodationRequestState.cs" />
     <Compile Include="Models\AccomodationRequests\NewAccomodationRequestModel.cs" />
+    <Compile Include="Models\Identity\ChangePasswordByAdminModel.cs" />
     <Compile Include="Models\Identity\ChangePasswordModel.cs" />
     <Compile Include="Models\Identity\CurrentUser.cs" />
     <Compile Include="Models\Guests\GuestLookup.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Models\Rooms\RoomItemTypeLookup.cs" />
     <Compile Include="Models\Rooms\RoomLookup.cs" />
     <Compile Include="Models\Rooms\RoomModel.cs" />
+    <Compile Include="Models\Users\UserLookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

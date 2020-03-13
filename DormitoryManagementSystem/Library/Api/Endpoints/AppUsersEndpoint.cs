@@ -4,8 +4,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Library.Api.Interfaces;
+using Library.Api.Utils;
 using Library.Models;
 using Library.Models.Identity;
+using Library.Models.Users;
 using Newtonsoft.Json;
 
 namespace Library.Api.Endpoints
@@ -65,6 +67,25 @@ namespace Library.Api.Endpoints
             var body = new { model.CurrentPassword, model.NewPassword };
 
             var response = await _apiHelper.Client.PostAsJsonAsync("appUsers/password", body);
+
+            if (response.IsSuccessStatusCode)
+                return ResultModel.Successful;
+
+            return await response.Content.ReadAsAsync<ResultModel>();
+        }
+
+        public async Task<PagedResultModel<UserLookup>> GetAll(PagedRequestModel model)
+        {
+            var url = UrlBuilder.Build("appUsers", model);
+
+            var response = await _apiHelper.Client.GetAsync(url);
+
+            return await response.Content.ReadAsAsync<PagedResultModel<UserLookup>>();
+        }
+
+        public async Task<ResultModel> ChangePasswordByAdmin(string id, string newPassword)
+        {
+            var response = await _apiHelper.Client.PostAsJsonAsync($"appUsers/{id}/password", new { newPassword });
 
             if (response.IsSuccessStatusCode)
                 return ResultModel.Successful;

@@ -17,7 +17,7 @@ namespace Application.AppUsers.Commands.ChangePassword
 
         public async Task<Unit> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
         {
-            var result = await _identityService.ChangePassword(request.UserId, request.CurrentPassword, request.NewPassword);
+            var result = await _identityService.ChangePasswordAsync(request.UserId, request.CurrentPassword, request.NewPassword);
 
             if (!result.Succeeded)
                 throw new BadRequestException(result.Errors);

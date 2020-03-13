@@ -1,13 +1,18 @@
 ﻿using System.Threading.Tasks;
 using Application.AppUsers.Commands.ChangeForgottenPassword;
 using Application.AppUsers.Commands.ChangePassword;
+using Application.AppUsers.Commands.ChangePasswordByAdmin;
 using Application.AppUsers.Commands.ConfirmEmail;
 using Application.AppUsers.Commands.Login;
 using Application.AppUsers.Commands.RefreshToken;
 using Application.AppUsers.Commands.SendChangeForgottenPasswordEmail;
 using Application.AppUsers.Commands.SendConfirmationEmail;
+using Application.AppUsers.Queries.GetAppUserList;
+using Application.Common.Pagination;
+using Infrastracture.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Sieve.Models;
 
 namespace WebApi.Controllers
 {
@@ -32,14 +37,14 @@ namespace WebApi.Controllers
         public async Task<ActionResult<LoginResponse>> Login([FromBody]LoginCommand request)
         {
             var response = await Mediator.Send(request);
-            return response;
+            return Ok(response);
         }
 
         [HttpPost("refresh")]
         public async Task<ActionResult<RefreshTokenResponse>> Refresh([FromBody]RefreshTokenCommand request)
         {
             var response = await Mediator.Send(request);
-            return response;
+            return Ok(response);
         }
 
         [HttpPost("password")]
@@ -63,6 +68,23 @@ namespace WebApi.Controllers
         {
             await Mediator.Send(new SendChangeForgottenPasswordEmailCommand { Email = email });
             return Ok();
+        }
+
+        [HttpGet]
+        [Authorize(PolicyNames.Admin)]
+        public async Task<ActionResult<PagedResponse<AppUserLookup>>> Get([FromQuery]SieveModel paginationModel)
+        {
+            var response = await Mediator.Send(new GetAppUserListQuery { PaginationModel = paginationModel });
+            return Ok(response);
+        }
+
+        [HttpPost("{id}/password")]
+        [Authorize(PolicyNames.Admin)]
+        public async Task<ActionResult> ChangePasswordByAdmin(string id, ChangePasswordByAdminCommand request)
+        {
+            if (request != null) request.Id = id;
+            await Mediator.Send(request);
+            return NoContent();
         }
     }
 }

@@ -131,6 +131,55 @@ namespace Infrastracture.Identity
             return await GenerateJwtAndRefreshToken(appUser);
         }
 
+        public async Task<string> GenerateChangeForgottenPasswordTokenAsync(string email)
+        {
+            var appUser = await _userManager.FindByEmailAsync(email);
+            return await _userManager.GeneratePasswordResetTokenAsync(appUser);
+        }
+
+        public async Task<Result> ChangePasswordAsync(string id, string newPassword)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+
+            return result.ToApplicationResult();
+        }
+
+        public async Task<Result> ChangePasswordAsync(string id, string currentPassword, string newPassword)
+        {
+            var appUser = await _userManager.FindByIdAsync(id);
+
+            if (appUser == null)
+                return Result.Failure(ErrorMessages.Invalid);
+
+            return (await _userManager.ChangePasswordAsync(appUser, currentPassword, newPassword)).ToApplicationResult();
+        }
+
+        public async Task<Result> ChangeForgottenPasswordAsync(string email, string resetToken, string newPassword)
+        {
+            var appUser = await _userManager.FindByEmailAsync(email);
+
+            if (appUser == null)
+                return Result.Failure(ErrorMessages.EmailNotFound);
+
+            return (await _userManager.ResetPasswordAsync(appUser, resetToken, newPassword)).ToApplicationResult();
+        }
+
+        public async Task<(Result, string)> GetRoleAsync(string email)
+        {
+            var appUser = await _userManager.FindByEmailAsync(email);
+
+            if (appUser == null)
+                return (Result.Failure(ErrorMessages.EmailNotFound), null);
+
+            var role = (await _userManager.GetRolesAsync(appUser)).Single();
+
+            return (Result.Success(), role);
+        }
+
         private ClaimsPrincipal GetPrincipalFromJwt(string jwt)
         {
             var jwtHandler = new JwtSecurityTokenHandler();
@@ -217,44 +266,6 @@ namespace Infrastracture.Identity
             }
 
             return claims;
-        }
-
-        public async Task<string> GenerateChangeForgottenPasswordTokenAsync(string email)
-        {
-            var appUser = await _userManager.FindByEmailAsync(email);
-            return await _userManager.GeneratePasswordResetTokenAsync(appUser);
-        }
-
-        public async Task<Result> ChangePassword(string id, string currentPassword, string newPassword)
-        {
-            var appUser = await _userManager.FindByIdAsync(id);
-
-            if (appUser == null)
-                return Result.Failure(ErrorMessages.Invalid);
-
-            return (await _userManager.ChangePasswordAsync(appUser, currentPassword, newPassword)).ToApplicationResult();
-        }
-
-        public async Task<Result> ChangeForgottenPasswordAsync(string email, string resetToken, string newPassword)
-        {
-            var appUser = await _userManager.FindByEmailAsync(email);
-
-            if (appUser == null)
-                return Result.Failure(ErrorMessages.EmailNotFound);
-
-            return (await _userManager.ResetPasswordAsync(appUser, resetToken, newPassword)).ToApplicationResult();
-        }
-
-        public async Task<(Result, string)> GetRole(string email)
-        {
-            var appUser = await _userManager.FindByEmailAsync(email);
-
-            if (appUser == null)
-                return (Result.Failure(ErrorMessages.EmailNotFound), null);
-
-            var role = (await _userManager.GetRolesAsync(appUser)).Single();
-
-            return (Result.Success(), role);
         }
     }
 }

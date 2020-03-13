@@ -109,6 +109,13 @@
                 </StackPanel>
             </Button>
 
+            <Button cal:Message.Attach="[Event Click] = [OpenTab('ManageUsersPasswords')]" Visibility="{Binding ManageUsersPasswordsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="PersonKey" Margin="0 0 10 0" VerticalAlignment="Center" Width="30" Height="30" />
+                    <TextBlock Text="{DynamicResource ManageUsersPasswords}" VerticalAlignment="Center" FontSize="17"/>
+                </StackPanel>
+            </Button>
+
             <!--OFFICER TABS-->
             <Button cal:Message.Attach="[Event Click] = [OpenTab('Repairers')]" Visibility="{Binding RepairersVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <StackPanel Orientation="Horizontal">

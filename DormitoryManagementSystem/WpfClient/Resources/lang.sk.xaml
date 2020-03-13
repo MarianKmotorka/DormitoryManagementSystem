@@ -124,6 +124,7 @@
 
     <!--ADMIN-->
     <system:String x:Key="WelcomeToAdminMode">Vitaj v admin móde !</system:String>
+    <system:String x:Key="User">Používatel</system:String>
 
 
     <!--REPAIRERS-->
@@ -142,6 +143,7 @@
     <system:String x:Key="MyInfo">Moje informácie</system:String>
     <system:String x:Key="MyRoom">Moja izba</system:String>
     <system:String x:Key="Offices">Kancelárie</system:String>
+    <system:String x:Key="ManageUsersPasswords">Spravuj použivateľské heslá</system:String>
 
 
     <!--Error messages-->

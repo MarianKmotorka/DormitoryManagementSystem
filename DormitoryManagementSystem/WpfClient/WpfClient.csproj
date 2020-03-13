@@ -123,6 +123,7 @@
     <Compile Include="ViewModels\AccomodationRequests\NewAccomodationRequestViewModel.cs" />
     <Compile Include="ViewModels\AccomodationRequests\RespondToAccomodationRequestViewModel.cs" />
     <Compile Include="ViewModels\Admin\AdminInfoViewModel.cs" />
+    <Compile Include="ViewModels\Admin\ManageUsersPasswordsViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestDetailViewModel.cs" />
     <Compile Include="ViewModels\Guests\GuestListViewModel.cs" />
@@ -158,6 +159,9 @@
     </Compile>
     <Compile Include="Views\Admin\AdminInfoView.xaml.cs">
       <DependentUpon>AdminInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ManageUsersPasswordsView.xaml.cs">
+      <DependentUpon>ManageUsersPasswordsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ChangePasswordView.xaml.cs">
       <DependentUpon>ChangePasswordView.xaml</DependentUpon>
@@ -273,6 +277,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Admin\AdminInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\ManageUsersPasswordsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

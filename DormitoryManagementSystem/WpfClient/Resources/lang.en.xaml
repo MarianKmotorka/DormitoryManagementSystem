@@ -136,10 +136,12 @@
     <system:String x:Key="MyInfo">My info</system:String>
     <system:String x:Key="MyRoom">My room</system:String>
     <system:String x:Key="Offices">Offices</system:String>
+    <system:String x:Key="ManageUsersPasswords">Manage users passwords</system:String>
 
 
     <!--ADMIN-->
     <system:String x:Key="WelcomeToAdminMode">Welcome to admin mode !</system:String>
+    <system:String x:Key="User">User</system:String>
 
 
     <!--REPAIRERS-->
