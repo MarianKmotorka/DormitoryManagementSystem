@@ -292,5 +292,13 @@ namespace WpfClient.ViewModels
             vm.GoBackViewModel = message.Sender;
             ActivateItem(vm);
         }
+
+        public void Handle(OpenOfficeDetailEvent message)
+        {
+            var vm = IoC.Get<OfficeDetailViewModel>();
+            vm.GoBackViewModel = message.Sender;
+            vm.Model.Id = message.Id;
+            ActivateItem(vm);
+        }
     }
 }

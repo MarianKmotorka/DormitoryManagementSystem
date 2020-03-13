@@ -21,7 +21,9 @@ namespace Application.Offices.Queries.GetOfficeDetail
         {
             public string Id { get; set; }
 
-            public string DisplayName { get; set; }
+            public string FirstName { get; set; }
+
+            public string LastName { get; set; }
         }
 
         public void Mapping(Profile profile)
@@ -37,9 +39,13 @@ namespace Application.Offices.Queries.GetOfficeDetail
                 });
 
             profile.CreateMap<Officer, OfficerDto>()
-                .ForMember(dest => dest.DisplayName, cfg =>
+                .ForMember(dest => dest.LastName, cfg =>
                 {
-                    cfg.MapFrom(src => src.AppUser.LastName + " " + src.AppUser.FirstName);
+                    cfg.MapFrom(src => src.AppUser.LastName);
+                })
+                .ForMember(dest => dest.FirstName, cfg =>
+                {
+                    cfg.MapFrom(src => src.AppUser.FirstName);
                 });
         }
     }

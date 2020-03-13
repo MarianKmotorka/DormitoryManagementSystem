@@ -1,12 +1,11 @@
-﻿using Application.Common.Interfaces;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Application.Common.Interfaces;
 using Application.Common.Pagination;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.Officers.Queries.GetOfficerList
 {
@@ -25,9 +24,7 @@ namespace Application.Officers.Queries.GetOfficerList
 
         public async Task<PagedResponse<OfficerLookup>> Handle(GetOfficerListQuery request, CancellationToken cancellationToken)
         {
-            var officers = _db.Officers.AsNoTracking()
-                .Where(x => x.AppUser.EmailConfirmed)
-                .ProjectTo<OfficerLookup>(_mapper.ConfigurationProvider);
+            var officers = _db.Officers.AsNoTracking().ProjectTo<OfficerLookup>(_mapper.ConfigurationProvider);
 
             return await _paginationService.GetPagedAsync(officers, request.PaginationModel);
         }

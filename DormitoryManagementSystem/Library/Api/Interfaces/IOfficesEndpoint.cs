@@ -7,5 +7,7 @@ namespace Library.Api.Interfaces
     public interface IOfficesEndpoint
     {
         Task<PagedResultModel<OfficeLookup>> GetAll(PagedRequestModel model);
+
+        Task<OfficeModel> GetDetail(int id);
     }
 }

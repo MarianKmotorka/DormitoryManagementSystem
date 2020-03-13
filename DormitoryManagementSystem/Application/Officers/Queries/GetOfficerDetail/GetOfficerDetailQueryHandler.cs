@@ -1,12 +1,11 @@
-﻿using Application.Common;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Application.Common;
 using Application.Common.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.Officers.Queries.GetOfficerDetail
 {
@@ -24,7 +23,6 @@ namespace Application.Officers.Queries.GetOfficerDetail
         public async Task<OfficerDetail> Handle(GetOfficerDetailQuery request, CancellationToken cancellationToken)
         {
             var officer = await _db.Officers.AsNoTracking()
-                .Where(x => x.AppUser.EmailConfirmed)
                 .ProjectTo<OfficerDetail>(_mapper.ConfigurationProvider)
                 .SingleOrNotFoundAsync(x => x.Id == request.Id, cancellationToken);
 

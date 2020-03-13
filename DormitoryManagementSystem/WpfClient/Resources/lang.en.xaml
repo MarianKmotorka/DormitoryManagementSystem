@@ -51,6 +51,8 @@
 
     <!--OFFICES-->
     <system:String x:Key="FreeTables">Free tables</system:String>
+    <system:String x:Key="OfficeInfo">Office information</system:String>
+    <system:String x:Key="Capacity">Capcity</system:String>
 
 
     <!--ROOMS-->

@@ -22,7 +22,7 @@ namespace WpfClient.ViewModels.Offices
 
         public IEnumerable<char> FilterOperators => new[] { '=', '>', '<' };
 
-        public bool Ascending { get; set; }
+        public bool Ascending { get; set; } = true;
 
         public bool OfficeNumberSort { get; set; } = true;
 

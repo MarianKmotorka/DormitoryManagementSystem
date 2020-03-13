@@ -24,5 +24,12 @@ namespace Library.Api.Endpoints
 
             return await response.Content.ReadAsAsync<PagedResultModel<OfficeLookup>>();
         }
+
+        public async Task<OfficeModel> GetDetail(int id)
+        {
+            var response = await _apiHelper.Client.GetAsync($"offices/{id}");
+
+            return await response.Content.ReadAsAsync<OfficeModel>();
+        }
     }
 }

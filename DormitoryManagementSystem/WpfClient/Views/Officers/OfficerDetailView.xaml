@@ -92,15 +92,18 @@
                     <Button x:Name="SubmitEdit" Content="{DynamicResource Submit}" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                         IsEnabled="{Binding Loading, Converter={StaticResource InverseBoolConverter}}" Padding="0 0 5 0" Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                    <!--LOADING-->
-                    <StackPanel Grid.Row="1" Grid.Column="3" Margin="10" Orientation="Horizontal" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Foreground="#3f51b5" Value="0" IsIndeterminate="True" Height="25" Width="25" VerticalAlignment="Center"/>
-                        <TextBlock Text="{DynamicResource Loading}" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
-                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="3">
+                        
+                        <!--LOADING-->
+                        <StackPanel  Margin="10" Orientation="Horizontal" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Foreground="#3f51b5" Value="0" IsIndeterminate="True" Height="25" Width="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="{DynamicResource Loading}" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                        </StackPanel>
 
-                    <!--EDITED SUCCESSFULLY-->
-                    <TextBlock Text="{DynamicResource Success}" Foreground="Green" FontSize="15" Grid.Row="1" Grid.Column="3" Margin="10" 
+                        <!--EDITED SUCCESSFULLY-->
+                        <TextBlock Text="{DynamicResource Success}" Foreground="Green" FontSize="15" Margin="10" 
                            Visibility="{Binding EditedSuccessfully, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    </StackPanel>
 
                 </Grid>
             </DockPanel>

@@ -82,6 +82,7 @@
     <Compile Include="Models\Officers\OfficerLookup.cs" />
     <Compile Include="Models\Officers\OfficerModel.cs" />
     <Compile Include="Models\Offices\OfficeLookup.cs" />
+    <Compile Include="Models\Offices\OfficeModel.cs" />
     <Compile Include="Models\PagedRequestModel.cs" />
     <Compile Include="Models\PagedResultModel.cs" />
     <Compile Include="Models\Repairers\RepairerLookup.cs" />

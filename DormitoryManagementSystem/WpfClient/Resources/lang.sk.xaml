@@ -51,6 +51,8 @@
 
     <!--OFFICES-->
     <system:String x:Key="FreeTables">Voľné miesta</system:String>
+    <system:String x:Key="OfficeInfo">Informácie o kancelárii</system:String>
+    <system:String x:Key="Capacity">Kapacita</system:String>
 
 
     <!--ROOMS-->
