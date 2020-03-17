@@ -19,5 +19,7 @@ namespace Application.Common.Interfaces
         Task<Result> ChangeForgottenPasswordAsync(string email, string resetToken, string newPassword);
 
         Task<bool> ConfirmEmailAsync(string email, string token);
+
+        Task<Result> DeleteUser(string id);
     }
 }

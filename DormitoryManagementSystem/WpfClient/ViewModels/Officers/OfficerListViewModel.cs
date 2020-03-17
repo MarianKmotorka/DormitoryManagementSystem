@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
 using Library.Models.Officers;
+using MaterialDesignThemes.Wpf;
 using WpfClient.Events;
 using WpfClient.Helpers;
 
@@ -152,6 +153,15 @@ namespace WpfClient.ViewModels.Officers
         public void OpenDetail()
         {
             _eventAggregator.PublishOnUIThread(new OpenOfficerDetailEvent(this, SelectedOfficer.Id));
+        }
+
+        public async Task OnDeleteDialogClosing(DialogClosingEventArgs eventArgs)
+        {
+            if ((bool)eventArgs.Parameter == false)
+                return;
+
+            await _officersEndpoint.Delete(SelectedOfficer.Id);
+            await Load();
         }
 
         protected async override void OnViewLoaded(object view)

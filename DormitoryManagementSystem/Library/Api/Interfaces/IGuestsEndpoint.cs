@@ -24,5 +24,7 @@ namespace Library.Api.Interfaces
         Task<PagedResultModel<RepairRequestLookup>> GetMyRepairRequests(PagedRequestModel pagedRequestModel);
 
         Task<RepairRequestModel> GetMyRepairRequestDetail(int requestId);
+
+        Task<ResultModel> Delete(string id);
     }
 }

@@ -180,6 +180,18 @@ namespace Infrastracture.Identity
             return (Result.Success(), role);
         }
 
+        public async Task<Result> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return Result.Failure($"User with id ({id}) does not exist.");
+
+            var result = await _userManager.DeleteAsync(user);
+
+            return result.ToApplicationResult();
+        }
+
         private ClaimsPrincipal GetPrincipalFromJwt(string jwt)
         {
             var jwtHandler = new JwtSecurityTokenHandler();

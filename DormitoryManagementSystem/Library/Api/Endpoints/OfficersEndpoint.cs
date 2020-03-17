@@ -55,5 +55,15 @@ namespace Library.Api.Endpoints
 
             return await response.Content.ReadAsAsync<PagedResultModel<OfficerLookup>>();
         }
+
+        public async Task<ResultModel> Delete(string id)
+        {
+            var response = await _apiHelper.Client.DeleteAsync($"officers/{id}");
+
+            if (response.IsSuccessStatusCode)
+                return ResultModel.Successful;
+
+            return await response.Content.ReadAsAsync<ResultModel>();
+        }
     }
 }

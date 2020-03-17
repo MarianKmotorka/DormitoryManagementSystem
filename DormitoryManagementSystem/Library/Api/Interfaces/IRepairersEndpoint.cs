@@ -13,5 +13,7 @@ namespace Library.Api.Interfaces
         Task<RepairerModel> GetDetail(string id = null);
 
         Task<ResultModel> Edit(string id, RepairerModel model);
+
+        Task<ResultModel> Delete(string id);
     }
 }

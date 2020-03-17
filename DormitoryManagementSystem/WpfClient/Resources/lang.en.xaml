@@ -114,6 +114,9 @@
     <system:String x:Key="Search">Search</system:String>
     <system:String x:Key="Back">Back</system:String>
     <system:String x:Key="Message">Message</system:String>
+    <system:String x:Key="Yes">Yes</system:String>
+    <system:String x:Key="No">No</system:String>
+    <system:String x:Key="AreYouSure">Are you sure?</system:String>
 
 
     <!--GRIDS-->

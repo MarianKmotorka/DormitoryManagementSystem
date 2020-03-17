@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
 using Library.Models.Guests;
+using MaterialDesignThemes.Wpf;
 using WpfClient.Events;
 using WpfClient.Helpers;
 
@@ -152,6 +153,15 @@ namespace WpfClient.ViewModels.Guests
         public void OpenDetail()
         {
             _eventAggregator.PublishOnUIThread(new OpenGuestDetailEvent(this, SelectedGuest.Id));
+        }
+
+        public async Task OnDeleteDialogClosing(DialogClosingEventArgs eventArgs)
+        {
+            if ((bool)eventArgs.Parameter == false)
+                return;
+
+            await _guestsEndpoint.Delete(SelectedGuest.Id);
+            await Load();
         }
 
         protected async override void OnViewLoaded(object view)

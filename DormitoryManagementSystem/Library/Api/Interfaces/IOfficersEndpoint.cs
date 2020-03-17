@@ -13,5 +13,7 @@ namespace Library.Api.Interfaces
         Task<ResultModel> Edit(string id, OfficerModel model);
 
         Task<PagedResultModel<OfficerLookup>> GetAll(PagedRequestModel model);
+
+        Task<ResultModel> Delete(string id);
     }
 }

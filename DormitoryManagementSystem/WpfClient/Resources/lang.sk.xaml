@@ -113,6 +113,9 @@
     <system:String x:Key="Search">Hľadaj</system:String>
     <system:String x:Key="Back">Späť</system:String>
     <system:String x:Key="Message">Správa</system:String>
+    <system:String x:Key="Yes">Áno</system:String>
+    <system:String x:Key="No">Nie</system:String>
+    <system:String x:Key="AreYouSure">Si si istý?</system:String>
 
 
     <!--GRIDS-->

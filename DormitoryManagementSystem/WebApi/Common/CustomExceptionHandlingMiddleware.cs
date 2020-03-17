@@ -49,10 +49,6 @@ namespace WebApi.Common
                     code = HttpStatusCode.BadRequest;
                     result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateBadRequestErrorResponse(exception.Message));
                     break;
-                case DeleteFailureException _:
-                    code = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateBadRequestErrorResponse(exception.Message));
-                    break;
                 case NotFoundException _:
                     code = HttpStatusCode.NotFound;
                     result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateNotFoundErrorResponse(exception.Message));

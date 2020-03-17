@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Application.Common;
+using Application.Common.Exceptions;
 using Application.Common.Interfaces;
 using MediatR;
 
@@ -9,20 +10,21 @@ namespace Application.Repairers.Commands.DeleteRepairer
     public class DeleteRepairerCommandHandler : IRequestHandler<DeleteRepairerCommand>
     {
         private readonly IDormitoryDbContext _db;
+        private readonly IIdentityService _identityService;
 
-        public DeleteRepairerCommandHandler(IDormitoryDbContext db)
+        public DeleteRepairerCommandHandler(IDormitoryDbContext db, IIdentityService identityService)
         {
             _db = db;
+            _identityService = identityService;
         }
 
         public async Task<Unit> Handle(DeleteRepairerCommand request, CancellationToken cancellationToken)
         {
-            var repairer = await _db.Repairers.SingleOrNotFoundAsync(x => x.Id == request.Id, cancellationToken);
+            _ = await _db.Repairers.SingleOrNotFoundAsync(x => x.Id == request.Id, cancellationToken);
 
-            _db.Repairers.Remove(repairer);
-            await _db.SaveChangesAsync(cancellationToken);
+            var result = await _identityService.DeleteUser(request.Id);
 
-            return Unit.Value;
+            return result.Succeeded ? Unit.Value : throw new BadRequestException(result.Errors);
         }
     }
 }
