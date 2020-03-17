@@ -1,6 +1,7 @@
 ﻿using System;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
+using Library.Models.Identity;
 using Library.Models.Offices;
 using WpfClient.Events;
 
@@ -11,6 +12,7 @@ namespace WpfClient.ViewModels.Offices
         private bool _loading;
         private readonly IEventAggregator _eventAggregator;
         private readonly IOfficesEndpoint _officesEndpoint;
+        private readonly CurrentUser _currentUser;
 
         public bool Loading
         {
@@ -18,14 +20,17 @@ namespace WpfClient.ViewModels.Offices
             set { _loading = value; NotifyOfPropertyChange(nameof(Loading)); }
         }
 
+        public bool CanViewOfficerDetail => _currentUser.Role == RoleNames.SysAdmin;
+
         public object GoBackViewModel { get; set; }
 
         public OfficeModel Model { get; set; } = new OfficeModel();
 
-        public OfficeDetailViewModel(IEventAggregator eventAggregator, IOfficesEndpoint officesEndpoint)
+        public OfficeDetailViewModel(IEventAggregator eventAggregator, IOfficesEndpoint officesEndpoint, CurrentUser currentUser)
         {
             _eventAggregator = eventAggregator;
             _officesEndpoint = officesEndpoint;
+            _currentUser = currentUser;
         }
 
         public void GoBack()

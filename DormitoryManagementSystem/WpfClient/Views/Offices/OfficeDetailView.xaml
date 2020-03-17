@@ -64,7 +64,13 @@
                                     <Border Padding="8" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}">
                                         <Grid>
                                             <StackPanel Orientation="Horizontal">
-                                                <Button Style="{StaticResource MaterialDesignFloatingActionButton}">
+                                                <materialDesign:PackIcon Kind="CropSquare" Width="20" Height="20" VerticalAlignment="Center"
+                                                                         Visibility="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl},
+                                                                         Path=DataContext.CanViewOfficerDetail, Converter={StaticResource InverseBoolToVisConverter}}"/>
+
+                                                <Button Style="{StaticResource MaterialDesignFloatingActionButton}" 
+                                                        Visibility="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl},
+                                                        Path=DataContext.CanViewOfficerDetail, Converter={StaticResource BooleanToVisibilityConverter}}">
 
                                                     <materialDesign:PackIcon Kind="AccountSearch" Width="20" Height="20"/>
 

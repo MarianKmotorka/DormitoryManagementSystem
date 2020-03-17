@@ -44,7 +44,7 @@ namespace WpfClient.ViewModels
 
         public bool MyRoomVisible => _currentUser.Role == RoleNames.Guest;
 
-        public bool RepairRequestsVisible => _currentUser.Role == RoleNames.Guest || _currentUser.Role == RoleNames.Repairer;
+        public bool RepairRequestsVisible => _currentUser.Role != RoleNames.Officer;
 
         public bool ManageUsersPasswordsVisible => _currentUser.Role == RoleNames.SysAdmin;
 
@@ -291,7 +291,6 @@ namespace WpfClient.ViewModels
         public void Handle(OpenRepairRequestDetailEvent message)
         {
             var vm = IoC.Get<RepairRequestDetailViewModel>();
-            vm.IsMyRepairRequest = message.IsMyRepairRequest;
             vm.GoBackViewModel = message.Sender;
             vm.Model.Id = message.Id;
             ActivateItem(vm);

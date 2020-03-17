@@ -6,13 +6,10 @@
 
         public int Id { get; }
 
-        public bool IsMyRepairRequest { get; }
-
-        public OpenRepairRequestDetailEvent(object sender, int id, bool isMyRepairRequest)
+        public OpenRepairRequestDetailEvent(object sender, int id)
         {
             Sender = sender;
             Id = id;
-            IsMyRepairRequest = isMyRepairRequest;
         }
     }
 }

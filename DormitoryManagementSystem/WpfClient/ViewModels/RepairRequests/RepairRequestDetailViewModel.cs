@@ -1,6 +1,7 @@
 ﻿using System;
 using Caliburn.Micro;
 using Library.Api.Interfaces;
+using Library.Models.Identity;
 using Library.Models.RepairRequests;
 using WpfClient.Events;
 
@@ -12,14 +13,13 @@ namespace WpfClient.ViewModels.RepairRequests
         private readonly IRepairRequestsEndpoint _repairRequestsEndpoint;
         private readonly IEventAggregator _eventAggregator;
         private readonly IGuestsEndpoint _guestsEndpoint;
+        private readonly CurrentUser _currentUser;
 
         public object GoBackViewModel { get; set; }
 
         public RepairRequestModel Model { get; set; } = new RepairRequestModel();
 
-        public bool IsMyRepairRequest { get; set; }
-
-        public bool CanRespond => !IsMyRepairRequest && Model.State != RepairRequestState.Fixed;
+        public bool CanRespond => _currentUser.Role == RoleNames.Repairer && Model.State != RepairRequestState.Fixed;
 
         public bool Loading
         {
@@ -28,11 +28,12 @@ namespace WpfClient.ViewModels.RepairRequests
         }
 
         public RepairRequestDetailViewModel(IRepairRequestsEndpoint repairRequestsEndpoint,
-            IEventAggregator eventAggregator, IGuestsEndpoint guestsEndpoint)
+            IEventAggregator eventAggregator, IGuestsEndpoint guestsEndpoint, CurrentUser currentUser)
         {
             _repairRequestsEndpoint = repairRequestsEndpoint;
             _eventAggregator = eventAggregator;
             _guestsEndpoint = guestsEndpoint;
+            _currentUser = currentUser;
         }
 
         public void GoBack()
@@ -51,7 +52,7 @@ namespace WpfClient.ViewModels.RepairRequests
         {
             Loading = true;
 
-            var result = IsMyRepairRequest
+            var result = _currentUser.Role == RoleNames.Guest
                 ? await _guestsEndpoint.GetMyRepairRequestDetail(Model.Id)
                 : await _repairRequestsEndpoint.GetDetail(Model.Id);
 
