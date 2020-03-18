@@ -6,13 +6,13 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         xmlns:cal="http://www.caliburnproject.org"
-        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
-        AllowsTransparency="True"
-        WindowStyle="None"
-        fw:AcrylicWindow.Enabled="True"
-        Icon="..\Resources\bluehouse.png"
+        Icon="..\Resources\icon.png"
         Title="{DynamicResource DormitoryManagementSystem}" 
-        MinHeight="750" MinWidth="1100" WindowState="Maximized" >
+        MinHeight="750" MinWidth="1100" WindowState="Maximized">
+
+    <Window.Background>
+        <ImageBrush ImageSource="..\Resources\background.png"/>
+    </Window.Background>
 
     <Window.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">

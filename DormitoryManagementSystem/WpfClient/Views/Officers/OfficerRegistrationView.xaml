@@ -6,6 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <UserControl.Resources>
         <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -17,7 +18,7 @@
         </Style>
     </UserControl.Resources>
 
-    <materialDesign:Card Margin="30">
+    <materialDesign:Card Margin="10">
         <DockPanel Margin="60">
             <TextBlock Text="{DynamicResource RegisterOfficer}" FontSize="40" DockPanel.Dock="Top" Foreground="#3f51b5"/>
             <Grid Margin="0 10 0 0" DockPanel.Dock="Bottom">
