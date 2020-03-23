@@ -193,10 +193,9 @@ namespace WpfClient.ViewModels.RepairRequests
             Pages = result.Pages;
 
             RepairRequests.Clear();
+
             foreach (var item in result.Data)
-            {
                 RepairRequests.Add(item);
-            }
         }
 
         public async Task PreviousPage()

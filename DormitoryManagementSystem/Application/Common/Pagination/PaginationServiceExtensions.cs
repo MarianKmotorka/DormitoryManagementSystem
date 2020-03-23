@@ -33,24 +33,19 @@ namespace Application.Common.Pagination
             var page = paginationModel?.Page ?? 1;
             var pageSize = paginationModel?.PageSize ?? _defaultPageSize;
 
-            if (pageSize > _maxPageSize)
-                pageSize = _maxPageSize;
-
-            if (pageSize < 1)
-                pageSize = 1;
-
-            if (page < 1)
-                page = 1;
+            if (pageSize > _maxPageSize) pageSize = _maxPageSize;
+            if (pageSize < 1) pageSize = 1;
+            if (page < 1) page = 1;
 
             if (paginationModel != null)
                 query = paginationService.Apply(paginationModel, query, applyPagination: false);
 
             var rowCount = await query.CountAsync();
-
             var pageCount = (int)Math.Ceiling((double)rowCount / pageSize);
 
-            var skip = (page - 1) * pageSize;
+            if (page > pageCount) page = pageCount;
 
+            var skip = (page - 1) * pageSize;
             var pagedQuery = query.Skip(skip).Take(pageSize);
 
             return (pagedQuery, page, pageSize, rowCount, pageCount);

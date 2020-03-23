@@ -192,10 +192,9 @@ namespace WpfClient.ViewModels.AccomodationRequests
             Pages = result.Pages;
 
             AccomodationRequests.Clear();
+
             foreach (var item in result.Data)
-            {
                 AccomodationRequests.Add(item);
-            }
         }
 
         public async Task PreviousPage()

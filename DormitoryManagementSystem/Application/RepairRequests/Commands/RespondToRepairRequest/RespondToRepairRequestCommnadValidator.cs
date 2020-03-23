@@ -15,7 +15,7 @@ namespace Application.RepairRequests.Commands.RespondToRepairRequest
 
             RuleFor(x => x.WillBeFixedOn).Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull().WithMessage(ErrorMessages.Required).When(x => x.RepairRequestState == RepairRequestState.Accepted)
-                .Must(x => x > DateTime.UtcNow).WithMessage(ErrorMessages.MustBeInTheFuture).When(x => x.RepairRequestState == RepairRequestState.Accepted);
+                .Must(x => x >= DateTime.UtcNow.Date).WithMessage(ErrorMessages.MustBeInTheFuture).When(x => x.RepairRequestState == RepairRequestState.Accepted);
 
             RuleFor(x => x.RepairRequestState)
                 .Must(x => x != RepairRequestState.Pending).WithMessage(ErrorMessages.Invalid);

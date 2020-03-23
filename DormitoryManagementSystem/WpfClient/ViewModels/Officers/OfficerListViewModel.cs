@@ -134,7 +134,6 @@ namespace WpfClient.ViewModels.Officers
         public async Task Load()
         {
             Loading = true;
-            Officers.Clear();
 
             var result = await _officersEndpoint.GetAll(Utils.GetPagedRequestModel(GetType(), this));
 
@@ -144,10 +143,10 @@ namespace WpfClient.ViewModels.Officers
             PageNumber = result.PageNumber;
             Pages = result.Pages;
 
+            Officers.Clear();
+
             foreach (var item in result.Data)
-            {
                 Officers.Add(item);
-            }
         }
 
         public void OpenDetail()

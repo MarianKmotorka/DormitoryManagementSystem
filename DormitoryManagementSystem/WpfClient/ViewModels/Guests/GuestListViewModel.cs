@@ -134,7 +134,6 @@ namespace WpfClient.ViewModels.Guests
         public async Task Load()
         {
             Loading = true;
-            Guests.Clear();
 
             var result = await _guestsEndpoint.GetAll(Utils.GetPagedRequestModel(GetType(), this));
 
@@ -144,10 +143,10 @@ namespace WpfClient.ViewModels.Guests
             PageNumber = result.PageNumber;
             Pages = result.Pages;
 
+            Guests.Clear();
+
             foreach (var item in result.Data)
-            {
                 Guests.Add(item);
-            }
         }
 
         public void OpenDetail()

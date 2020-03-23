@@ -13,6 +13,7 @@ namespace WpfClient.ViewModels.Offices
     {
         private bool _loading;
         private int _pages;
+        private int _pageNumber;
         private readonly IOfficesEndpoint _officesEndpoint;
         private readonly IEventAggregator _eventAggregator;
 
@@ -38,7 +39,7 @@ namespace WpfClient.ViewModels.Offices
 
         public int Pages { get => _pages; set { _pages = value; NotifyOfPropertyChange(nameof(Pages)); } }
 
-        public int PageNumber { get; set; } = 1;
+        public int PageNumber { get => _pageNumber; set { _pageNumber = value; NotifyOfPropertyChange(nameof(PageNumber)); } }
 
         #endregion
 
@@ -89,10 +90,9 @@ namespace WpfClient.ViewModels.Offices
             Pages = result.Pages;
 
             Offices.Clear();
+
             foreach (var item in result.Data)
-            {
                 Offices.Add(item);
-            }
         }
 
         public void OpenDetail()

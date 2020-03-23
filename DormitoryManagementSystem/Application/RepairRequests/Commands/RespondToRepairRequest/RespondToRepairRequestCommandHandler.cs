@@ -30,11 +30,15 @@ namespace Application.RepairRequests.Commands.RespondToRepairRequest
             {
                 var repairer = await _db.Repairers.SingleOrNotFoundAsync(x => x.Id == request.FixedById, cancellationToken);
                 repairRequest.FixedBy = repairer;
+                repairRequest.WillBeFixedOn = null;
                 repairRequest.FixedOn = DateTime.UtcNow.Date;
             }
 
             if (request.RepairRequestState == RepairRequestState.Accepted)
                 repairRequest.WillBeFixedOn = request.WillBeFixedOn;
+
+            if (request.RepairRequestState == RepairRequestState.Refused)
+                repairRequest.WillBeFixedOn = null;
 
             repairRequest.RepairerReply = request.RepairerReply;
             repairRequest.State = request.RepairRequestState;

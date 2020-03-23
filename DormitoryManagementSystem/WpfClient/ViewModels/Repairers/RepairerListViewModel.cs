@@ -130,10 +130,9 @@ namespace WpfClient.ViewModels.Repairers
             Pages = result.Pages;
 
             Repairers.Clear();
+
             foreach (var item in result.Data)
-            {
                 Repairers.Add(item);
-            }
         }
 
         public void OpenDetail()

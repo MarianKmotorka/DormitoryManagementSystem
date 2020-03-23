@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Common.Pagination;
@@ -25,10 +24,7 @@ namespace Application.Repairers.Queries.GetRepairerList
 
         public async Task<PagedResponse<RepairerLookup>> Handle(GetRepairerListQuery request, CancellationToken cancellationToken)
         {
-            var repairers = _db.Repairers.AsNoTracking()
-                .Where(x => x.AppUser.EmailConfirmed)
-                .ProjectTo<RepairerLookup>(_mapper.ConfigurationProvider);
-
+            var repairers = _db.Repairers.AsNoTracking().ProjectTo<RepairerLookup>(_mapper.ConfigurationProvider);
             return await _paginationService.GetPagedAsync(repairers, request.PaginationModel);
         }
     }

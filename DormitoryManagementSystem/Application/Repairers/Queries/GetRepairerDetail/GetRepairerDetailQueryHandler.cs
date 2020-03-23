@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Application.Common;
 using Application.Common.Interfaces;
@@ -24,7 +23,6 @@ namespace Application.Repairers.Queries.GetRepairerDetail
         public async Task<RepairerDetail> Handle(GetRepairerDetailQuery request, CancellationToken cancellationToken)
         {
             var repairer = await _db.Repairers.AsNoTracking()
-                .Where(x => x.AppUser.EmailConfirmed)
                 .ProjectTo<RepairerDetail>(_mapper.ConfigurationProvider)
                 .SingleOrNotFoundAsync(x => x.Id == request.Id, cancellationToken);
 
