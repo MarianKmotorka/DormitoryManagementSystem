@@ -35,7 +35,7 @@ namespace Application.RepairRequests.Commands.RespondToRepairRequest
             }
 
             if (request.RepairRequestState == RepairRequestState.Accepted)
-                repairRequest.WillBeFixedOn = request.WillBeFixedOn;
+                repairRequest.WillBeFixedOn = request.WillBeFixedOn.Value.Date;
 
             if (request.RepairRequestState == RepairRequestState.Refused)
                 repairRequest.WillBeFixedOn = null;

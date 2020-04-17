@@ -4,7 +4,7 @@
 
 	<!--Menu-->
 	<system:String x:Key="LogOut">Odhlásiť sa</system:String>
-	<system:String x:Key="LogIn">Prihlásenie</system:String>
+	<system:String x:Key="LogIn">Prihlásiť sa</system:String>
 	<system:String x:Key="Account">Môj účet</system:String>
 	<system:String x:Key="Language">Jazyk</system:String>
 	<system:String x:Key="DormitoryManagementSystem">Systém správy študentského domova</system:String>
