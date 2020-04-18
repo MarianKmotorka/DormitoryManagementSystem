@@ -1,176 +1,176 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-					xmlns:system="clr-namespace:System;assembly=mscorlib">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-	<!--Menu-->
-	<system:String x:Key="LogOut">Logout</system:String>
-	<system:String x:Key="LogIn">Sign in</system:String>
-	<system:String x:Key="Account">Account</system:String>
-	<system:String x:Key="Language">Language</system:String>
-	<system:String x:Key="DormitoryManagementSystem">Dormitory management system</system:String>
-	<system:String x:Key="ChangePassword">Change password</system:String>
-
-
-	<!--LogIn-->
-	<system:String x:Key="Email">Email address</system:String>
-	<system:String x:Key="Password">Password</system:String>
-	<system:String x:Key="CurrentPassword">Current password</system:String>
-	<system:String x:Key="NewPassword">New password</system:String>
-	<system:String x:Key="ConfirmEmail">Confirm email</system:String>
-	<system:String x:Key="Loading">Loading...</system:String>
-	<system:String x:Key="Register">Register</system:String>
-	<system:String x:Key="SendResetPasswordEmail">Send reset password email</system:String>
-	<system:String x:Key="ForgottenPassword">Forgot your password ?</system:String>
-	<system:String x:Key="Success">Success</system:String>
+    <!--Menu-->
+    <system:String x:Key="LogOut">Logout</system:String>
+    <system:String x:Key="LogIn">Sign in</system:String>
+    <system:String x:Key="Account">Account</system:String>
+    <system:String x:Key="Language">Language</system:String>
+    <system:String x:Key="DormitoryManagementSystem">Dormitory management system</system:String>
+    <system:String x:Key="ChangePassword">Change password</system:String>
 
 
-	<!--Registration-->
-	<system:String x:Key="FirstName">First name</system:String>
-	<system:String x:Key="LastName">Last name</system:String>
-	<system:String x:Key="IdCardNumber">ID card number</system:String>
-	<system:String x:Key="DistanceFromHome">Distance from home</system:String>
-	<system:String x:Key="PhoneNumber">Phone number</system:String>
-	<system:String x:Key="Country">Country</system:String>
-	<system:String x:Key="City">City</system:String>
-	<system:String x:Key="Street">Street</system:String>
-	<system:String x:Key="HouseNumber">House Number</system:String>
-	<system:String x:Key="PostCode">Post Code</system:String>
+    <!--LogIn-->
+    <system:String x:Key="Email">Email address</system:String>
+    <system:String x:Key="Password">Password</system:String>
+    <system:String x:Key="CurrentPassword">Current password</system:String>
+    <system:String x:Key="NewPassword">New password</system:String>
+    <system:String x:Key="ConfirmEmail">Confirm email</system:String>
+    <system:String x:Key="Loading">Loading...</system:String>
+    <system:String x:Key="Register">Register</system:String>
+    <system:String x:Key="SendResetPasswordEmail">Send reset password email</system:String>
+    <system:String x:Key="ForgottenPassword">Forgot your password ?</system:String>
+    <system:String x:Key="Success">Success</system:String>
 
 
-	<!--Guest-->
-	<system:String x:Key="GuestInfo">Guest information</system:String>
-	<system:String x:Key="RoomNumber">Room number</system:String>
-	<system:String x:Key="DormitoryCardNumber">Dormitory card number</system:String>
-	<system:String x:Key="BackToGuests">Go back to guests</system:String>
+    <!--Registration-->
+    <system:String x:Key="FirstName">First name</system:String>
+    <system:String x:Key="LastName">Last name</system:String>
+    <system:String x:Key="IdCardNumber">ID card number</system:String>
+    <system:String x:Key="DistanceFromHome">Distance from home</system:String>
+    <system:String x:Key="PhoneNumber">Phone number</system:String>
+    <system:String x:Key="Country">Country</system:String>
+    <system:String x:Key="City">City</system:String>
+    <system:String x:Key="Street">Street</system:String>
+    <system:String x:Key="HouseNumber">House Number</system:String>
+    <system:String x:Key="PostCode">Post Code</system:String>
 
 
-	<!--Officer-->
-	<system:String x:Key="OfficerInfo">Officer information</system:String>
-	<system:String x:Key="OfficeNumber">Office number</system:String>
+    <!--Guest-->
+    <system:String x:Key="GuestInfo">Guest information</system:String>
+    <system:String x:Key="RoomNumber">Room number</system:String>
+    <system:String x:Key="DormitoryCardNumber">Dormitory card number</system:String>
+    <system:String x:Key="BackToGuests">Go back to guests</system:String>
 
 
-	<!--OFFICES-->
-	<system:String x:Key="FreeTables">Free tables</system:String>
-	<system:String x:Key="OfficeInfo">Office information</system:String>
-	<system:String x:Key="Capacity">Capcity</system:String>
+    <!--Officer-->
+    <system:String x:Key="OfficerInfo">Officer information</system:String>
+    <system:String x:Key="OfficeNumber">Office number</system:String>
 
 
-	<!--ROOMS-->
-	<system:String x:Key="FreeBeds">Free beds</system:String>
-	<system:String x:Key="RoomInfo">Room information</system:String>
-	<system:String x:Key="Quantity">Quantity</system:String>
-	<system:String x:Key="InventoryNumber">Inventory number</system:String>
-	<system:String x:Key="Wardrobe">Wardrobe</system:String>
-	<system:String x:Key="Cupboard">Cupboard</system:String>
-	<system:String x:Key="Bed">Bed</system:String>
-	<system:String x:Key="Ceiling light">Ceiling light</system:String>
-	<system:String x:Key="Lamp">Lamp</system:String>
-	<system:String x:Key="Table">Table</system:String>
-	<system:String x:Key="Chair">Chair</system:String>
-	<system:String x:Key="Items">Items</system:String>
+    <!--OFFICES-->
+    <system:String x:Key="FreeTables">Free tables</system:String>
+    <system:String x:Key="OfficeInfo">Office information</system:String>
+    <system:String x:Key="Capacity">Capcity</system:String>
 
 
-	<!--ACCOMODATION REQUESTS-->
-	<system:String x:Key="MyAccomodationRequests">My accomodation requests</system:String>
-	<system:String x:Key="StartDateUtc">Start date UTC</system:String>
-	<system:String x:Key="EndDateUtc">End date UTC</system:String>
-	<system:String x:Key="RequestState">Request state</system:String>
-	<system:String x:Key="BackToAccomodationRequests">Back to accomodation requests</system:String>
-	<system:String x:Key="AccomodationRequestDetail">Accomodation request detail</system:String>
-	<system:String x:Key="Respond">Respond</system:String>
-	<system:String x:Key="RequesterMessage">Requester message</system:String>
-	<system:String x:Key="Approve">Approve</system:String>
-	<system:String x:Key="Reject">Reject</system:String>
-	<system:String x:Key="NewAccomodationRequest">New accomodation request</system:String>
-	<system:String x:Key="Approved">Approved</system:String>
-	<system:String x:Key="Active">Active</system:String>
+    <!--ROOMS-->
+    <system:String x:Key="FreeBeds">Free beds</system:String>
+    <system:String x:Key="RoomInfo">Room information</system:String>
+    <system:String x:Key="Quantity">Quantity</system:String>
+    <system:String x:Key="InventoryNumber">Inventory number</system:String>
+    <system:String x:Key="Wardrobe">Wardrobe</system:String>
+    <system:String x:Key="Cupboard">Cupboard</system:String>
+    <system:String x:Key="Bed">Bed</system:String>
+    <system:String x:Key="Ceiling light">Ceiling light</system:String>
+    <system:String x:Key="Lamp">Lamp</system:String>
+    <system:String x:Key="Table">Table</system:String>
+    <system:String x:Key="Chair">Chair</system:String>
+    <system:String x:Key="Items">Items</system:String>
+
+
+    <!--ACCOMODATION REQUESTS-->
+    <system:String x:Key="MyAccomodationRequests">My accomodation requests</system:String>
+    <system:String x:Key="StartDateUtc">Start date UTC</system:String>
+    <system:String x:Key="EndDateUtc">End date UTC</system:String>
+    <system:String x:Key="RequestState">Request state</system:String>
+    <system:String x:Key="BackToAccomodationRequests">Back to accomodation requests</system:String>
+    <system:String x:Key="AccomodationRequestDetail">Accomodation request detail</system:String>
+    <system:String x:Key="Respond">Respond</system:String>
+    <system:String x:Key="RequesterMessage">Requester message</system:String>
+    <system:String x:Key="Approve">Approve</system:String>
+    <system:String x:Key="Reject">Reject</system:String>
+    <system:String x:Key="NewAccomodationRequest">New accomodation request</system:String>
+    <system:String x:Key="Approved">Approved</system:String>
+    <system:String x:Key="Active">Active</system:String>
 
 
 
-	<!--REPAIR REQUESTS-->
-	<system:String x:Key="YouAreNotAccomodatedYet">You are not accomodated yet.</system:String>
-	<system:String x:Key="NewRepairRequest">New repair request</system:String>
-	<system:String x:Key="DamagedItem">Damaged item</system:String>
-	<system:String x:Key="ProblemDescription">Problem description</system:String>
-	<system:String x:Key="MyRepairRequests">My repair requests</system:String>
-	<system:String x:Key="CreatedOn">Created on</system:String>
-	<system:String x:Key="WillBeFixedOn">Will be fixed on</system:String>
-	<system:String x:Key="FixedOn">Fixed on</system:String>
-	<system:String x:Key="Pending">Pending</system:String>
-	<system:String x:Key="Fixed">Fixed</system:String>
-	<system:String x:Key="Accepted">Accepted</system:String>
-	<system:String x:Key="Refused">Refused</system:String>
-	<system:String x:Key="RepairRequestDetail">Repair request detail</system:String>
-	<system:String x:Key="FixedBy">Fixed by</system:String>
-	<system:String x:Key="ReportedBy">Reported by</system:String>
-	<system:String x:Key="RepairerReply">Repairer reply</system:String>
-	<system:String x:Key="DamagedItemInventoryNumber">Damaged item inventory number</system:String>
+    <!--REPAIR REQUESTS-->
+    <system:String x:Key="YouAreNotAccomodatedYet">You are not accomodated yet.</system:String>
+    <system:String x:Key="NewRepairRequest">New repair request</system:String>
+    <system:String x:Key="DamagedItem">Damaged item</system:String>
+    <system:String x:Key="ProblemDescription">Problem description</system:String>
+    <system:String x:Key="MyRepairRequests">My repair requests</system:String>
+    <system:String x:Key="CreatedOn">Created on</system:String>
+    <system:String x:Key="WillBeFixedOn">Will be fixed on</system:String>
+    <system:String x:Key="FixedOn">Fixed on</system:String>
+    <system:String x:Key="Pending">Pending</system:String>
+    <system:String x:Key="Fixed">Fixed</system:String>
+    <system:String x:Key="Accepted">Accepted</system:String>
+    <system:String x:Key="Refused">Refused</system:String>
+    <system:String x:Key="RepairRequestDetail">Repair request detail</system:String>
+    <system:String x:Key="FixedBy">Fixed by</system:String>
+    <system:String x:Key="ReportedBy">Reported by</system:String>
+    <system:String x:Key="RepairerReply">Repairer reply</system:String>
+    <system:String x:Key="DamagedItemInventoryNumber">Damaged item inventory number</system:String>
 
 
-	<!--GENERAL-->
-	<system:String x:Key="Submit">Submit</system:String>
-	<system:String x:Key="Edit">Edit</system:String>
-	<system:String x:Key="PickDate">Pick date</system:String>
-	<system:String x:Key="Search">Search</system:String>
-	<system:String x:Key="Back">Back</system:String>
-	<system:String x:Key="Message">Message</system:String>
-	<system:String x:Key="Yes">Yes</system:String>
-	<system:String x:Key="No">No</system:String>
-	<system:String x:Key="AreYouSure">Are you sure?</system:String>
+    <!--GENERAL-->
+    <system:String x:Key="Submit">Submit</system:String>
+    <system:String x:Key="Edit">Edit</system:String>
+    <system:String x:Key="PickDate">Pick date</system:String>
+    <system:String x:Key="Search">Search</system:String>
+    <system:String x:Key="Back">Back</system:String>
+    <system:String x:Key="Message">Message</system:String>
+    <system:String x:Key="Yes">Yes</system:String>
+    <system:String x:Key="No">No</system:String>
+    <system:String x:Key="AreYouSure">Are you sure?</system:String>
 
 
-	<!--GRIDS-->
-	<system:String x:Key="Name">Name</system:String>
-	<system:String x:Key="Page">Page</system:String>
-	<system:String x:Key="PageSize">Page size:</system:String>
-	<system:String x:Key="Filters">Filters</system:String>
-	<system:String x:Key="Sorts">Sorts</system:String>
+    <!--GRIDS-->
+    <system:String x:Key="Name">Name</system:String>
+    <system:String x:Key="Page">Page</system:String>
+    <system:String x:Key="PageSize">Page size:</system:String>
+    <system:String x:Key="Filters">Filters</system:String>
+    <system:String x:Key="Sorts">Sorts</system:String>
 
 
-	<!--Tabs-->
-	<system:String x:Key="Officers">Officers</system:String>
-	<system:String x:Key="Guests">Guests</system:String>
-	<system:String x:Key="Repairers">Repairers</system:String>
-	<system:String x:Key="RepairRequests">Repair requests</system:String>
-	<system:String x:Key="AccomodationRequests">Accomodation requests</system:String>
-	<system:String x:Key="RegisterRepairer">Register repairer</system:String>
-	<system:String x:Key="RegisterOfficer">Register officer</system:String>
-	<system:String x:Key="Rooms">Rooms</system:String>
-	<system:String x:Key="MyInfo">My info</system:String>
-	<system:String x:Key="MyRoom">My room</system:String>
-	<system:String x:Key="Offices">Offices</system:String>
-	<system:String x:Key="ManageUsersPasswords">Manage users passwords</system:String>
+    <!--Tabs-->
+    <system:String x:Key="Officers">Officers</system:String>
+    <system:String x:Key="Guests">Guests</system:String>
+    <system:String x:Key="Repairers">Repairers</system:String>
+    <system:String x:Key="RepairRequests">Repair requests</system:String>
+    <system:String x:Key="AccomodationRequests">Accomodation requests</system:String>
+    <system:String x:Key="RegisterRepairer">Register repairer</system:String>
+    <system:String x:Key="RegisterOfficer">Register officer</system:String>
+    <system:String x:Key="Rooms">Rooms</system:String>
+    <system:String x:Key="MyInfo">My info</system:String>
+    <system:String x:Key="MyRoom">My room</system:String>
+    <system:String x:Key="Offices">Offices</system:String>
+    <system:String x:Key="ManageUsersPasswords">Manage users passwords</system:String>
 
 
-	<!--ADMIN-->
-	<system:String x:Key="WelcomeToAdminMode">Welcome to admin mode !</system:String>
-	<system:String x:Key="User">User</system:String>
+    <!--ADMIN-->
+    <system:String x:Key="WelcomeToAdminMode">Welcome to admin mode !</system:String>
+    <system:String x:Key="User">User</system:String>
 
 
-	<!--REPAIRERS-->
-	<system:String x:Key="RepairerInfo">Repairer info</system:String>
+    <!--REPAIRERS-->
+    <system:String x:Key="RepairerInfo">Repairer info</system:String>
 
 
-	<!--Error messages-->
-	<system:String x:Key="Required">Required</system:String>
-	<system:String x:Key="Invalid">Invalid</system:String>
-	<system:String x:Key="MinLength">Min length:</system:String>
-	<system:String x:Key="MaxLength">Max length:</system:String>
-	<system:String x:Key="MustContainLetter">Must contain letter</system:String>
+    <!--Error messages-->
+    <system:String x:Key="Required">Required</system:String>
+    <system:String x:Key="Invalid">Invalid</system:String>
+    <system:String x:Key="MinLength">Min length:</system:String>
+    <system:String x:Key="MaxLength">Max length:</system:String>
+    <system:String x:Key="MustContainLetter">Must contain letter</system:String>
 
-	<system:String x:Key="EmailNotFound">User with entered email does not exist</system:String>
-	<system:String x:Key="AlreadyConfirmed">Email has been already confirmed</system:String>
-	<system:String x:Key="InvalidEmail">Invalid email</system:String>
-	<system:String x:Key="EmailNotUnique">Entered email is already used</system:String>
-	<system:String x:Key="InvalidEmailOrPassword">Invalid email or password</system:String>
-	<system:String x:Key="EmailNotConfirmed">Email is not confirmed. Press the 'Confirm email' button and visit your email.</system:String>
+    <system:String x:Key="EmailNotFound">User with entered email does not exist</system:String>
+    <system:String x:Key="AlreadyConfirmed">Email has been already confirmed</system:String>
+    <system:String x:Key="InvalidEmail">Invalid email</system:String>
+    <system:String x:Key="EmailNotUnique">Entered email is already used</system:String>
+    <system:String x:Key="InvalidEmailOrPassword">Invalid email or password</system:String>
+    <system:String x:Key="EmailNotConfirmed">Email is not confirmed. Press the 'Confirm email' button and visit your email.</system:String>
 
-	<system:String x:Key="StartDateMustOccurBeforeEndDate">Start date must occur before end date</system:String>
-	<system:String x:Key="MustBeInTheFuture">Must be in the future</system:String>
-	<system:String x:Key="DateRangeOverlapsWithExisingRequest">There is already an existing request overlapping entered date range</system:String>
-	<system:String x:Key="RoomMustBeAvailable">Room must be available</system:String>
-	<system:String x:Key="OfficeMustBeAvailable">Office must be available</system:String>
-	<system:String x:Key="RepairAlreadyRequested">Repair was already requested</system:String>
-	<system:String x:Key="CannotModifyFixed">You cannot modified already fixed item</system:String>
+    <system:String x:Key="StartDateMustOccurBeforeEndDate">Start date must occur before end date</system:String>
+    <system:String x:Key="MustBeInTheFuture">Must be in the future</system:String>
+    <system:String x:Key="DateRangeOverlapsWithExisingRequest">There is already an existing request overlapping entered date range</system:String>
+    <system:String x:Key="RoomMustBeAvailable">Room must be available</system:String>
+    <system:String x:Key="OfficeMustBeAvailable">Office must be available</system:String>
+    <system:String x:Key="RepairAlreadyRequested">Repair was already requested</system:String>
+    <system:String x:Key="CannotModifyFixed">You cannot modified already fixed item</system:String>
 
 </ResourceDictionary>

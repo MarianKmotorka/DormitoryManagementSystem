@@ -1,174 +1,174 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-					xmlns:system="clr-namespace:System;assembly=mscorlib">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-	<!--Menu-->
-	<system:String x:Key="LogOut">Odhlásiť sa</system:String>
-	<system:String x:Key="LogIn">Prihlásiť sa</system:String>
-	<system:String x:Key="Account">Môj účet</system:String>
-	<system:String x:Key="Language">Jazyk</system:String>
-	<system:String x:Key="DormitoryManagementSystem">Systém správy študentského domova</system:String>
-	<system:String x:Key="ChangePassword">Zmeniť heslo</system:String>
-
-
-	<!--LogIn-->
-	<system:String x:Key="Email">Emailová adresa</system:String>
-	<system:String x:Key="Password">Heslo</system:String>
-	<system:String x:Key="CurrentPassword">Aktuálne heslo</system:String>
-	<system:String x:Key="NewPassword">Nové heslo</system:String>
-	<system:String x:Key="ConfirmEmail">Over email</system:String>
-	<system:String x:Key="Loading">Načitávanie...</system:String>
-	<system:String x:Key="Register">Registrácia</system:String>
-	<system:String x:Key="SendResetPasswordEmail">Resetuj heslo pomocou emailu</system:String>
-	<system:String x:Key="ForgottenPassword">Zabudol si heslo ?</system:String>
-	<system:String x:Key="Success">Všetko prebehlo vporiadku</system:String>
+    <!--Menu-->
+    <system:String x:Key="LogOut">Odhlásiť sa</system:String>
+    <system:String x:Key="LogIn">Prihlásiť sa</system:String>
+    <system:String x:Key="Account">Môj účet</system:String>
+    <system:String x:Key="Language">Jazyk</system:String>
+    <system:String x:Key="DormitoryManagementSystem">Systém správy študentského domova</system:String>
+    <system:String x:Key="ChangePassword">Zmeniť heslo</system:String>
 
 
-	<!--Registration-->
-	<system:String x:Key="FirstName">Meno</system:String>
-	<system:String x:Key="LastName">Priezvisko</system:String>
-	<system:String x:Key="IdCardNumber">Číslo občianského preukazu</system:String>
-	<system:String x:Key="DistanceFromHome">Vzdialenost od domova</system:String>
-	<system:String x:Key="PhoneNumber">Telefónne čislo</system:String>
-	<system:String x:Key="Country">Štát</system:String>
-	<system:String x:Key="City">Mesto</system:String>
-	<system:String x:Key="Street">Ulica</system:String>
-	<system:String x:Key="HouseNumber">Číslo domu</system:String>
-	<system:String x:Key="PostCode">PSČ</system:String>
+    <!--LogIn-->
+    <system:String x:Key="Email">Emailová adresa</system:String>
+    <system:String x:Key="Password">Heslo</system:String>
+    <system:String x:Key="CurrentPassword">Aktuálne heslo</system:String>
+    <system:String x:Key="NewPassword">Nové heslo</system:String>
+    <system:String x:Key="ConfirmEmail">Over email</system:String>
+    <system:String x:Key="Loading">Načitávanie...</system:String>
+    <system:String x:Key="Register">Registrácia</system:String>
+    <system:String x:Key="SendResetPasswordEmail">Resetuj heslo pomocou emailu</system:String>
+    <system:String x:Key="ForgottenPassword">Zabudol si heslo ?</system:String>
+    <system:String x:Key="Success">Všetko prebehlo vporiadku</system:String>
 
 
-	<!--Guest-->
-	<system:String x:Key="DormitoryCardNumber">Číslo internátneho preukazu</system:String>
-	<system:String x:Key="GuestInfo">Informácie o hosťovi</system:String>
-	<system:String x:Key="RoomNumber">Číslo izby</system:String>
-	<system:String x:Key="BackToGuests">Choď späť na zoznam hostí</system:String>
+    <!--Registration-->
+    <system:String x:Key="FirstName">Meno</system:String>
+    <system:String x:Key="LastName">Priezvisko</system:String>
+    <system:String x:Key="IdCardNumber">Číslo občianského preukazu</system:String>
+    <system:String x:Key="DistanceFromHome">Vzdialenost od domova</system:String>
+    <system:String x:Key="PhoneNumber">Telefónne čislo</system:String>
+    <system:String x:Key="Country">Štát</system:String>
+    <system:String x:Key="City">Mesto</system:String>
+    <system:String x:Key="Street">Ulica</system:String>
+    <system:String x:Key="HouseNumber">Číslo domu</system:String>
+    <system:String x:Key="PostCode">PSČ</system:String>
 
 
-	<!--Officer-->
-	<system:String x:Key="OfficerInfo">Informácie o úradníkovi</system:String>
-	<system:String x:Key="OfficeNumber">Číslo kancelárie</system:String>
+    <!--Guest-->
+    <system:String x:Key="DormitoryCardNumber">Číslo internátneho preukazu</system:String>
+    <system:String x:Key="GuestInfo">Informácie o hosťovi</system:String>
+    <system:String x:Key="RoomNumber">Číslo izby</system:String>
+    <system:String x:Key="BackToGuests">Choď späť na zoznam hostí</system:String>
 
 
-	<!--OFFICES-->
-	<system:String x:Key="FreeTables">Voľné miesta</system:String>
-	<system:String x:Key="OfficeInfo">Informácie o kancelárii</system:String>
-	<system:String x:Key="Capacity">Kapacita</system:String>
+    <!--Officer-->
+    <system:String x:Key="OfficerInfo">Informácie o úradníkovi</system:String>
+    <system:String x:Key="OfficeNumber">Číslo kancelárie</system:String>
 
 
-	<!--ROOMS-->
-	<system:String x:Key="FreeBeds">Voľné postele</system:String>
-	<system:String x:Key="RoomInfo">Informácie o izbe</system:String>
-	<system:String x:Key="Quantity">Množstvo</system:String>
-	<system:String x:Key="InventoryNumber">Inventárne číslo</system:String>
-	<system:String x:Key="Items">Predmety</system:String>
-	<system:String x:Key="Wardrobe">Šatník</system:String>
-	<system:String x:Key="Cupboard">Polička</system:String>
-	<system:String x:Key="Bed">Postel</system:String>
-	<system:String x:Key="Ceiling light">Stropné svetlo</system:String>
-	<system:String x:Key="Lamp">Lampička</system:String>
-	<system:String x:Key="Table">Stôl</system:String>
-	<system:String x:Key="Chair">Stolička</system:String>
+    <!--OFFICES-->
+    <system:String x:Key="FreeTables">Voľné miesta</system:String>
+    <system:String x:Key="OfficeInfo">Informácie o kancelárii</system:String>
+    <system:String x:Key="Capacity">Kapacita</system:String>
 
 
-	<!--ACCOMODATION REQUESTS-->
-	<system:String x:Key="MyAccomodationRequests">Moje žiadosti o ubytovanie</system:String>
-	<system:String x:Key="StartDateUtc">Od (UTC)</system:String>
-	<system:String x:Key="EndDateUtc">Do (UTC)</system:String>
-	<system:String x:Key="RequestState">Stav žiadosti</system:String>
-	<system:String x:Key="BackToAccomodationRequests">Späť na žiadosti o ubytovanie</system:String>
-	<system:String x:Key="AccomodationRequestDetail">Detail žiadosti o ubytovanie</system:String>
-	<system:String x:Key="Respond">Odpovedaj</system:String>
-	<system:String x:Key="RequesterMessage">Správa od žiadateľa</system:String>
-	<system:String x:Key="Approve">Schváliť</system:String>
-	<system:String x:Key="Reject">Odmietnuť</system:String>
-	<system:String x:Key="NewAccomodationRequest">Podaj žiadosť o ubytovanie</system:String>
-	<system:String x:Key="Approved">Schválený</system:String>
-	<system:String x:Key="Active">Aktívny</system:String>
+    <!--ROOMS-->
+    <system:String x:Key="FreeBeds">Voľné postele</system:String>
+    <system:String x:Key="RoomInfo">Informácie o izbe</system:String>
+    <system:String x:Key="Quantity">Množstvo</system:String>
+    <system:String x:Key="InventoryNumber">Inventárne číslo</system:String>
+    <system:String x:Key="Items">Predmety</system:String>
+    <system:String x:Key="Wardrobe">Šatník</system:String>
+    <system:String x:Key="Cupboard">Polička</system:String>
+    <system:String x:Key="Bed">Postel</system:String>
+    <system:String x:Key="Ceiling light">Stropné svetlo</system:String>
+    <system:String x:Key="Lamp">Lampička</system:String>
+    <system:String x:Key="Table">Stôl</system:String>
+    <system:String x:Key="Chair">Stolička</system:String>
 
 
-	<!--REPAIR REQUESTS-->
-	<system:String x:Key="YouAreNotAccomodatedYet">Nie ste ubytovaný.</system:String>
-	<system:String x:Key="NewRepairRequest">Podaj žiadosť o opravu</system:String>
-	<system:String x:Key="DamagedItem">Poškodená vec</system:String>
-	<system:String x:Key="ProblemDescription">Popis závady</system:String>
-	<system:String x:Key="MyRepairRequests">Moje žiadosti o opravu</system:String>
-	<system:String x:Key="CreatedOn">Vytvorené</system:String>
-	<system:String x:Key="WillBeFixedOn">Bude opravené</system:String>
-	<system:String x:Key="FixedOn">Opravené</system:String>
-	<system:String x:Key="Pending">Čakajúci</system:String>
-	<system:String x:Key="Fixed">Opravené</system:String>
-	<system:String x:Key="Accepted">Akceptované</system:String>
-	<system:String x:Key="Refused">Odmietnuté</system:String>
-	<system:String x:Key="RepairRequestDetail">Detail žiadosti o opravu</system:String>
-	<system:String x:Key="FixedBy">Opravil</system:String>
-	<system:String x:Key="ReportedBy">Ohlásil</system:String>
-	<system:String x:Key="RepairerReply">Odpoveď údržbára</system:String>
-	<system:String x:Key="DamagedItemInventoryNumber">Inventárne číslo poškodenej veci</system:String>
+    <!--ACCOMODATION REQUESTS-->
+    <system:String x:Key="MyAccomodationRequests">Moje žiadosti o ubytovanie</system:String>
+    <system:String x:Key="StartDateUtc">Od (UTC)</system:String>
+    <system:String x:Key="EndDateUtc">Do (UTC)</system:String>
+    <system:String x:Key="RequestState">Stav žiadosti</system:String>
+    <system:String x:Key="BackToAccomodationRequests">Späť na žiadosti o ubytovanie</system:String>
+    <system:String x:Key="AccomodationRequestDetail">Detail žiadosti o ubytovanie</system:String>
+    <system:String x:Key="Respond">Odpovedaj</system:String>
+    <system:String x:Key="RequesterMessage">Správa od žiadateľa</system:String>
+    <system:String x:Key="Approve">Schváliť</system:String>
+    <system:String x:Key="Reject">Odmietnuť</system:String>
+    <system:String x:Key="NewAccomodationRequest">Podaj žiadosť o ubytovanie</system:String>
+    <system:String x:Key="Approved">Schválený</system:String>
+    <system:String x:Key="Active">Aktívny</system:String>
 
 
-	<!--GENERAL-->
-	<system:String x:Key="Submit">Odoslať</system:String>
-	<system:String x:Key="Edit">Edituj</system:String>
-	<system:String x:Key="PickDate">Vyber dátum</system:String>
-	<system:String x:Key="Search">Hľadaj</system:String>
-	<system:String x:Key="Back">Späť</system:String>
-	<system:String x:Key="Message">Správa</system:String>
-	<system:String x:Key="Yes">Áno</system:String>
-	<system:String x:Key="No">Nie</system:String>
-	<system:String x:Key="AreYouSure">Si si istý?</system:String>
+    <!--REPAIR REQUESTS-->
+    <system:String x:Key="YouAreNotAccomodatedYet">Nie ste ubytovaný.</system:String>
+    <system:String x:Key="NewRepairRequest">Podaj žiadosť o opravu</system:String>
+    <system:String x:Key="DamagedItem">Poškodená vec</system:String>
+    <system:String x:Key="ProblemDescription">Popis závady</system:String>
+    <system:String x:Key="MyRepairRequests">Moje žiadosti o opravu</system:String>
+    <system:String x:Key="CreatedOn">Vytvorené</system:String>
+    <system:String x:Key="WillBeFixedOn">Bude opravené</system:String>
+    <system:String x:Key="FixedOn">Opravené</system:String>
+    <system:String x:Key="Pending">Čakajúci</system:String>
+    <system:String x:Key="Fixed">Opravené</system:String>
+    <system:String x:Key="Accepted">Akceptované</system:String>
+    <system:String x:Key="Refused">Odmietnuté</system:String>
+    <system:String x:Key="RepairRequestDetail">Detail žiadosti o opravu</system:String>
+    <system:String x:Key="FixedBy">Opravil</system:String>
+    <system:String x:Key="ReportedBy">Ohlásil</system:String>
+    <system:String x:Key="RepairerReply">Odpoveď údržbára</system:String>
+    <system:String x:Key="DamagedItemInventoryNumber">Inventárne číslo poškodenej veci</system:String>
 
 
-	<!--GRIDS-->
-	<system:String x:Key="Page">Stránka</system:String>
-	<system:String x:Key="PageSize">Veľkosť stránky:</system:String>
-	<system:String x:Key="Filters">Filtrovanie</system:String>
-	<system:String x:Key="Sorts">Zoradovanie</system:String>
+    <!--GENERAL-->
+    <system:String x:Key="Submit">Odoslať</system:String>
+    <system:String x:Key="Edit">Edituj</system:String>
+    <system:String x:Key="PickDate">Vyber dátum</system:String>
+    <system:String x:Key="Search">Hľadaj</system:String>
+    <system:String x:Key="Back">Späť</system:String>
+    <system:String x:Key="Message">Správa</system:String>
+    <system:String x:Key="Yes">Áno</system:String>
+    <system:String x:Key="No">Nie</system:String>
+    <system:String x:Key="AreYouSure">Si si istý?</system:String>
 
 
-	<!--ADMIN-->
-	<system:String x:Key="WelcomeToAdminMode">Vitaj v admin móde !</system:String>
-	<system:String x:Key="User">Používatel</system:String>
+    <!--GRIDS-->
+    <system:String x:Key="Page">Stránka</system:String>
+    <system:String x:Key="PageSize">Veľkosť stránky:</system:String>
+    <system:String x:Key="Filters">Filtrovanie</system:String>
+    <system:String x:Key="Sorts">Zoradovanie</system:String>
 
 
-	<!--REPAIRERS-->
-	<system:String x:Key="RepairerInfo">Informácie o údržbárovi</system:String>
+    <!--ADMIN-->
+    <system:String x:Key="WelcomeToAdminMode">Vitaj v admin móde !</system:String>
+    <system:String x:Key="User">Používatel</system:String>
 
 
-	<!--Tabs-->
-	<system:String x:Key="Officers">Úradnici</system:String>
-	<system:String x:Key="Guests">Hostia</system:String>
-	<system:String x:Key="Repairers">Údržbári</system:String>
-	<system:String x:Key="RepairRequests">Žiadosti o opravu</system:String>
-	<system:String x:Key="AccomodationRequests">Žiadosti o ubytovanie</system:String>
-	<system:String x:Key="RegisterRepairer">Registruj údržbára</system:String>
-	<system:String x:Key="RegisterOfficer">Registruj úradníka</system:String>
-	<system:String x:Key="Rooms">Izby</system:String>
-	<system:String x:Key="MyInfo">Moje informácie</system:String>
-	<system:String x:Key="MyRoom">Moja izba</system:String>
-	<system:String x:Key="Offices">Kancelárie</system:String>
-	<system:String x:Key="ManageUsersPasswords">Spravuj použivateľské heslá</system:String>
+    <!--REPAIRERS-->
+    <system:String x:Key="RepairerInfo">Informácie o údržbárovi</system:String>
 
 
-	<!--Error messages-->
-	<system:String x:Key="Required">Požadované</system:String>
-	<system:String x:Key="Invalid">Neplatné</system:String>
-	<system:String x:Key="MinLength">Minimalna dĺžka:</system:String>
-	<system:String x:Key="MaxLength">Maximálna dlžka:</system:String>
-	<system:String x:Key="MustContainLetter">Musí obsahovať písmeno</system:String>
+    <!--Tabs-->
+    <system:String x:Key="Officers">Úradnici</system:String>
+    <system:String x:Key="Guests">Hostia</system:String>
+    <system:String x:Key="Repairers">Údržbári</system:String>
+    <system:String x:Key="RepairRequests">Žiadosti o opravu</system:String>
+    <system:String x:Key="AccomodationRequests">Žiadosti o ubytovanie</system:String>
+    <system:String x:Key="RegisterRepairer">Registruj údržbára</system:String>
+    <system:String x:Key="RegisterOfficer">Registruj úradníka</system:String>
+    <system:String x:Key="Rooms">Izby</system:String>
+    <system:String x:Key="MyInfo">Moje informácie</system:String>
+    <system:String x:Key="MyRoom">Moja izba</system:String>
+    <system:String x:Key="Offices">Kancelárie</system:String>
+    <system:String x:Key="ManageUsersPasswords">Spravuj použivateľské heslá</system:String>
 
-	<system:String x:Key="EmailNotFound">Používateľ s uvedeným emailom neexistuje</system:String>
-	<system:String x:Key="InvalidEmail">Neplatný email</system:String>
-	<system:String x:Key="AlreadyConfirmed">Email už bol overený</system:String>
-	<system:String x:Key="EmailNotUnique">Uvedený email je už používaný iným používateľom</system:String>
-	<system:String x:Key="InvalidEmailOrPassword">Neplatný email alebo heslo</system:String>
-	<system:String x:Key="EmailNotConfirmed">Email nie je overený. Stlač tlačidlo 'Over email' a choď do svojho emailu.</system:String>
 
-	<system:String x:Key="StartDateMustOccurBeforeEndDate">Začiatok musí byť pred koncom</system:String>
-	<system:String x:Key="MustBeInTheFuture">Musí byť v budúcnosti</system:String>
-	<system:String x:Key="DateRangeOverlapsWithExisingRequest">Už existuje žiadost s prekrývajúcim sa dátumom</system:String>
-	<system:String x:Key="RoomMustBeAvailable">Izba musí byť voľná</system:String>
-	<system:String x:Key="OfficeMustBeAvailable">Kancelária musí byť voľná</system:String>
-	<system:String x:Key="RepairAlreadyRequested">Žiadosť o opravu už bola podaná</system:String>
-	<system:String x:Key="CannotModifyFixed">Opravená vec už nesmie byť upravovaná</system:String>
+    <!--Error messages-->
+    <system:String x:Key="Required">Požadované</system:String>
+    <system:String x:Key="Invalid">Neplatné</system:String>
+    <system:String x:Key="MinLength">Minimalna dĺžka:</system:String>
+    <system:String x:Key="MaxLength">Maximálna dlžka:</system:String>
+    <system:String x:Key="MustContainLetter">Musí obsahovať písmeno</system:String>
+
+    <system:String x:Key="EmailNotFound">Používateľ s uvedeným emailom neexistuje</system:String>
+    <system:String x:Key="InvalidEmail">Neplatný email</system:String>
+    <system:String x:Key="AlreadyConfirmed">Email už bol overený</system:String>
+    <system:String x:Key="EmailNotUnique">Uvedený email je už používaný iným používateľom</system:String>
+    <system:String x:Key="InvalidEmailOrPassword">Neplatný email alebo heslo</system:String>
+    <system:String x:Key="EmailNotConfirmed">Email nie je overený. Stlač tlačidlo 'Over email' a choď do svojho emailu.</system:String>
+
+    <system:String x:Key="StartDateMustOccurBeforeEndDate">Začiatok musí byť pred koncom</system:String>
+    <system:String x:Key="MustBeInTheFuture">Musí byť v budúcnosti</system:String>
+    <system:String x:Key="DateRangeOverlapsWithExisingRequest">Už existuje žiadost s prekrývajúcim sa dátumom</system:String>
+    <system:String x:Key="RoomMustBeAvailable">Izba musí byť voľná</system:String>
+    <system:String x:Key="OfficeMustBeAvailable">Kancelária musí byť voľná</system:String>
+    <system:String x:Key="RepairAlreadyRequested">Žiadosť o opravu už bola podaná</system:String>
+    <system:String x:Key="CannotModifyFixed">Opravená vec už nesmie byť upravovaná</system:String>
 
 </ResourceDictionary>

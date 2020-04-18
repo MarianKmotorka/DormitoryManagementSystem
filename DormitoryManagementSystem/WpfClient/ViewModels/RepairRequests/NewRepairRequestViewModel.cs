@@ -10,96 +10,96 @@ using WpfClient.ModelWrappers;
 
 namespace WpfClient.ViewModels.RepairRequests
 {
-	public class NewRepairRequestViewModel : Screen
-	{
-		private readonly IEventAggregator _eventAggregator;
-		private readonly IGuestsEndpoint _guestsEndpoint;
-		private readonly IRepairRequestsEndpoint _repairRequestsEndpoint;
-		private bool _loading;
-		private bool _hasRoom;
+    public class NewRepairRequestViewModel : Screen
+    {
+        private readonly IEventAggregator _eventAggregator;
+        private readonly IGuestsEndpoint _guestsEndpoint;
+        private readonly IRepairRequestsEndpoint _repairRequestsEndpoint;
+        private bool _loading;
+        private bool _hasRoom;
 
-		public bool HasRoom
-		{
-			get => _hasRoom;
-			set { _hasRoom = value; NotifyOfPropertyChange(nameof(HasRoom)); }
-		}
+        public bool HasRoom
+        {
+            get => _hasRoom;
+            set { _hasRoom = value; NotifyOfPropertyChange(nameof(HasRoom)); }
+        }
 
-		public bool Loading
-		{
-			get => _loading;
-			set { _loading = value; NotifyOfPropertyChange(nameof(Loading)); }
-		}
+        public bool Loading
+        {
+            get => _loading;
+            set { _loading = value; NotifyOfPropertyChange(nameof(Loading)); }
+        }
 
-		public object GoBackViewModel { get; set; }
+        public object GoBackViewModel { get; set; }
 
-		public NewRepairRequestModelWrapper Model { get; set; } = new NewRepairRequestModelWrapper();
+        public NewRepairRequestModelWrapper Model { get; set; } = new NewRepairRequestModelWrapper();
 
-		public ObservableCollection<RoomItemTypeLookup> Items { get; set; } = new ObservableCollection<RoomItemTypeLookup>();
+        public ObservableCollection<RoomItemTypeLookup> Items { get; set; } = new ObservableCollection<RoomItemTypeLookup>();
 
-		public NewRepairRequestViewModel(IEventAggregator eventAggregator, IGuestsEndpoint guestsEndpoint,
-			IRepairRequestsEndpoint repairRequestsEndpoint)
-		{
-			_eventAggregator = eventAggregator;
-			_guestsEndpoint = guestsEndpoint;
-			_repairRequestsEndpoint = repairRequestsEndpoint;
-		}
+        public NewRepairRequestViewModel(IEventAggregator eventAggregator, IGuestsEndpoint guestsEndpoint,
+            IRepairRequestsEndpoint repairRequestsEndpoint)
+        {
+            _eventAggregator = eventAggregator;
+            _guestsEndpoint = guestsEndpoint;
+            _repairRequestsEndpoint = repairRequestsEndpoint;
+        }
 
-		public async Task Submit()
-		{
-			if (!Model.ValidateModel())
-				return;
+        public async Task Submit()
+        {
+            if (!Model.ValidateModel())
+                return;
 
-			Loading = true;
+            Loading = true;
 
-			var result = await _repairRequestsEndpoint.Create(Model.Model);
+            var result = await _repairRequestsEndpoint.Create(Model.Model);
 
-			Loading = false;
+            Loading = false;
 
-			if (result.Fail)
-			{
-				foreach (var error in result.ErrorDetails)
-				{
-					var propName = error.PropertyName;
+            if (result.Fail)
+            {
+                foreach (var error in result.ErrorDetails)
+                {
+                    var propName = error.PropertyName;
 
-					if (propName == "RoomItemTypeId")
-						propName = nameof(Model.RoomItemType);
+                    if (propName == "RoomItemTypeId")
+                        propName = nameof(Model.RoomItemType);
 
-					Model.AddError(propName, error.Message, error.CustomState);
-				}
+                    Model.AddError(propName, error.Message, error.CustomState);
+                }
 
-				return;
-			}
+                return;
+            }
 
-			GoBack();
-		}
+            GoBack();
+        }
 
-		public void GoBack()
-		{
-			_ = GoBackViewModel ?? throw new ArgumentNullException(nameof(GoBackViewModel));
+        public void GoBack()
+        {
+            _ = GoBackViewModel ?? throw new ArgumentNullException(nameof(GoBackViewModel));
 
-			_eventAggregator.PublishOnUIThread(new GoBackEvent(GoBackViewModel));
-		}
+            _eventAggregator.PublishOnUIThread(new GoBackEvent(GoBackViewModel));
+        }
 
-		protected async override void OnViewLoaded(object view)
-		{
-			Loading = true;
+        protected async override void OnViewLoaded(object view)
+        {
+            Loading = true;
 
-			var room = await _guestsEndpoint.GetMyRoomDetail();
+            var room = await _guestsEndpoint.GetMyRoomDetail();
 
-			Loading = false;
+            Loading = false;
 
-			if (room == null)
-				return;
+            if (room == null)
+                return;
 
-			HasRoom = true;
+            HasRoom = true;
 
-			var dictionary = IoC.Get<ResourceDictionary>("language");
+            var dictionary = IoC.Get<ResourceDictionary>("language");
 
-			foreach (var item in room.Items)
-			{
-				item.Name = dictionary[item.Name].ToString();
-				Items.Add(item);
-			}
-		}
-	}
+            foreach (var item in room.Items)
+            {
+                item.Name = dictionary[item.Name].ToString();
+                Items.Add(item);
+            }
+        }
+    }
 }

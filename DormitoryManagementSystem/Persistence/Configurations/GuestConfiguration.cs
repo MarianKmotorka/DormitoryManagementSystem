@@ -25,7 +25,7 @@ namespace Persistence.Configurations
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(x => x.IdCardNumber).IsRequired();
-			
+            
             builder.Property(x => x.DistanceFromHome).IsRequired();
         }
     }
