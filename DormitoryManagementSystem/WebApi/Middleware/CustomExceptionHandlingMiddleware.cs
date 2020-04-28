@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using WebApi.Common;
 
 namespace WebApi.Middleware
@@ -36,35 +37,35 @@ namespace WebApi.Middleware
 
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            var code = HttpStatusCode.InternalServerError;
-
-            var result = string.Empty;
+            var code = HttpStatusCode.BadRequest;
+            ErrorResponse errorResponse;
 
             switch (exception)
             {
                 case ValidationException validationException:
-                    code = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateBadRequestErrorResponse(validationException.Errors));
+                    errorResponse = ErrorResponseUtil.CreateBadRequestErrorResponse(validationException.Errors);
                     break;
                 case BadRequestException _:
-                    code = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateBadRequestErrorResponse(exception.Message));
+                    errorResponse = ErrorResponseUtil.CreateBadRequestErrorResponse(exception.Message);
                     break;
                 case NotFoundException _:
                     code = HttpStatusCode.NotFound;
-                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateNotFoundErrorResponse(exception.Message));
+                    errorResponse = ErrorResponseUtil.CreateNotFoundErrorResponse(exception.Message);
                     break;
                 case ArgumentNullException argumentNullException when argumentNullException.Source == "MediatR":
-                    code = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(ErrorResponseUtil.CreateBadRequestErrorResponse("Request is in bad format"));
+                    errorResponse = ErrorResponseUtil.CreateBadRequestErrorResponse("Request is in bad format");
+                    break;
+                default:
+                    _logger.LogError(exception, string.Empty);
+                    errorResponse = ErrorResponseUtil.CreateBadRequestErrorResponse("Processing error");
                     break;
             }
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
 
-            if (code == HttpStatusCode.InternalServerError)
-                _logger.LogError(exception, string.Empty);
+            var result = JsonConvert.SerializeObject(errorResponse,
+                new JsonSerializerSettings() { ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() } });
 
             return context.Response.WriteAsync(result);
         }
