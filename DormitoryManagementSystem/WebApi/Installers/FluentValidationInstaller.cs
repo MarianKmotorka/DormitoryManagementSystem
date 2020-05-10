@@ -15,7 +15,7 @@ namespace WebApi.Installers
     {
         public FluentValidationInstaller()
         {
-            ValidatorOptions.PropertyNameResolver = CamelCasePropertyNameResolver;
+            // ValidatorOptions.PropertyNameResolver = CamelCasePropertyNameResolver;
         }
 
         public IServiceCollection Install(IServiceCollection services, IConfiguration configuration)

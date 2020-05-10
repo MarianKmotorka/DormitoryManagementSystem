@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Common.Enums;
 using Application.Common.Interfaces;
 using Domain.Entities;
+using Domain.Enums;
 using Domain.ValueObjects;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -19,7 +20,7 @@ namespace Application.System
         private readonly IDormitoryDbContext _db;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
-        private readonly int NumberOfRooms = 200;
+        private readonly int _numberOfRooms = 200;
         private readonly Random _random;
 
         public MigrateAndSeedDbHandler(IDormitoryDbContext db, RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
@@ -42,11 +43,12 @@ namespace Application.System
             await SeedAdmin();
             await SeedGuests();
             await SeedRepairers();
-            await SeedOffices(); // Note: Must be called before SeedOfficers()
+            await SeedOffices();
             await SeedOfficers();
-            await SeedRooms(); // Note: Must be called before SeedRoomItemTypes()
-            await SeedInventoryItemTypes(); // Note: Must be called before SeedRoomItemTypes()
+            await SeedRooms();
+            await SeedInventoryItemTypes();
             await SeedRoomItemTypes();
+            await SeedAccomodationRequests();
 
             return Unit.Value;
         }
@@ -127,7 +129,7 @@ namespace Application.System
                 Name = "Chair",
                 InventoryNumber = "IIT001",
                 PricePerPiece = 30,
-                TotalQuantity = NumberOfRooms * 3
+                TotalQuantity = _numberOfRooms * 3
             };
 
             var tableType = new InventoryItemType
@@ -135,7 +137,7 @@ namespace Application.System
                 Name = "Table",
                 InventoryNumber = "IIT002",
                 PricePerPiece = 100,
-                TotalQuantity = NumberOfRooms * 3
+                TotalQuantity = _numberOfRooms * 3
             };
 
             var lampType = new InventoryItemType
@@ -143,7 +145,7 @@ namespace Application.System
                 Name = "Lamp",
                 InventoryNumber = "IIT003",
                 PricePerPiece = 20,
-                TotalQuantity = NumberOfRooms * 3
+                TotalQuantity = _numberOfRooms * 3
             };
 
             var ceilingLightType = new InventoryItemType
@@ -151,7 +153,7 @@ namespace Application.System
                 Name = "Ceiling light",
                 InventoryNumber = "IIT004",
                 PricePerPiece = 40,
-                TotalQuantity = NumberOfRooms + 20
+                TotalQuantity = _numberOfRooms + 20
             };
 
             var bedType = new InventoryItemType
@@ -159,7 +161,7 @@ namespace Application.System
                 Name = "Bed",
                 InventoryNumber = "IIT005",
                 PricePerPiece = 200,
-                TotalQuantity = NumberOfRooms * 3
+                TotalQuantity = _numberOfRooms * 3
             };
 
             var cupboardType = new InventoryItemType
@@ -167,7 +169,7 @@ namespace Application.System
                 Name = "Cupboard",
                 InventoryNumber = "IIT006",
                 PricePerPiece = 20,
-                TotalQuantity = NumberOfRooms * 3
+                TotalQuantity = _numberOfRooms * 3
             };
 
             var wardrobeType = new InventoryItemType
@@ -175,7 +177,7 @@ namespace Application.System
                 Name = "Wardrobe",
                 InventoryNumber = "IIT007",
                 PricePerPiece = 200,
-                TotalQuantity = NumberOfRooms * 3
+                TotalQuantity = _numberOfRooms * 3
             };
 
             _db.AddRange(chairType, tableType, lampType, ceilingLightType, bedType, cupboardType, wardrobeType);
@@ -184,7 +186,7 @@ namespace Application.System
 
         private async Task SeedRooms()
         {
-            for (int i = 1; i <= NumberOfRooms; i++)
+            for (int i = 1; i <= _numberOfRooms; i++)
             {
                 var room = new Room
                 {
@@ -502,6 +504,27 @@ namespace Application.System
                 _db.Repairers.Add(repairer);
 
             await _db.SaveChangesAsync(CancellationToken.None);
+        }
+
+        private async Task SeedAccomodationRequests()
+        {
+            var guests = await _db.Guests.ToListAsync();
+
+            foreach (var guest in guests)
+            {
+                var accRequest = new AccomodationRequest
+                {
+                    Requester = guest,
+                    AccomodationStartDateUtc = DateTime.Now.AddDays(_random.Next(10, 100)),
+                    AccomodationEndDateUtc = DateTime.Now.AddYears(1),
+                    RequesterMessage = $"Prosím ubytujte ma na izbu SI{_random.Next(10, _numberOfRooms)}",
+                    RequestPlacedUtc = DateTime.Now.AddDays(_random.Next(-30, -1)),
+                    State = AccomodationRequestState.Active
+                };
+
+                _db.AccomodationRequests.Add(accRequest);
+                await _db.SaveChangesAsync(default);
+            }
         }
 
         private string GetRandomPhoneNumber()
