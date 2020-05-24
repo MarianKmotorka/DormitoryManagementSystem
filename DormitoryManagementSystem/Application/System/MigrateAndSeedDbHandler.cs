@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Logging;
 
 namespace Application.System
 {
@@ -20,14 +21,17 @@ namespace Application.System
         private readonly IDormitoryDbContext _db;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
+        private readonly ILogger<MigrateAndSeedDbHandler> _logger;
         private readonly int _numberOfRooms = 200;
         private readonly Random _random;
 
-        public MigrateAndSeedDbHandler(IDormitoryDbContext db, RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
+        public MigrateAndSeedDbHandler(IDormitoryDbContext db, RoleManager<IdentityRole> roleManager,
+            UserManager<AppUser> userManager, ILogger<MigrateAndSeedDbHandler> logger)
         {
             _db = db;
             _roleManager = roleManager;
             _userManager = userManager;
+            _logger = logger;
             _random = new Random();
         }
 
@@ -35,9 +39,12 @@ namespace Application.System
         {
             var dbAlreadyExisted = (_db.Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists();
 
+            _logger.LogInformation("Looking for database. If database does not exist, it will be created.\nThis should not take more than 1 minute.");
             await _db.Database.MigrateAsync(cancellationToken);
 
             if (dbAlreadyExisted) return Unit.Value;
+
+            _logger.LogInformation("Seeding database with some test data ...");
 
             await SeedRoles();
             await SeedAdmin();
@@ -49,6 +56,8 @@ namespace Application.System
             await SeedInventoryItemTypes();
             await SeedRoomItemTypes();
             await SeedAccomodationRequests();
+
+            _logger.LogInformation("Database is ready");
 
             return Unit.Value;
         }

@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using System.Linq;
+using Application.Common.Interfaces;
 using Application.Common.Models;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,7 @@ namespace Application.Guests.Commands.CreateGuest
 
             RuleFor(x => x.Password)
                 .NotEmpty().WithMessage(ErrorMessages.Required)
+                .Must(x => x.Any(char.IsLetter)).WithMessage(ErrorMessages.MustContainLetter)
                 .MinimumLength(6).WithMessage(ErrorMessages.MinLength).WithState(_ => 6)
                 .MaximumLength(30).WithMessage(ErrorMessages.MaxLength).WithState(_ => 30);
 

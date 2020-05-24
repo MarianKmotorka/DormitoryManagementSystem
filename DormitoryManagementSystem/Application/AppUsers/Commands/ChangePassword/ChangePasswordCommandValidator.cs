@@ -28,6 +28,7 @@ namespace Application.AppUsers.Commands.ChangePassword
             RuleFor(x => x.NewPassword)
                 .NotEmpty().WithMessage(ErrorMessages.Required)
                 .MinimumLength(6).WithMessage(ErrorMessages.MinLength).WithState(_ => 6)
+                .MaximumLength(30).WithMessage(ErrorMessages.MaxLength).WithState(_ => 30)
                 .Must(x => x.ToList().Any(char.IsLetter)).WithMessage(ErrorMessages.MustContainLetter);
         }
 
