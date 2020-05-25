@@ -78,7 +78,7 @@ namespace WpfClient
         {
             var dictionary = new ResourceDictionary
             {
-                Source = new Uri("..\\Resources\\lang.en.xaml", UriKind.Relative)
+                Source = new Uri("..\\Resources\\lang.sk.xaml", UriKind.Relative)
             };
 
             _container.RegisterInstance(typeof(ResourceDictionary), "language", dictionary);

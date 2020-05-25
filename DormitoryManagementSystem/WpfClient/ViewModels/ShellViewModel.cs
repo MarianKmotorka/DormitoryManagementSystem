@@ -20,8 +20,8 @@ namespace WpfClient.ViewModels
         private readonly SimpleContainer _simpleContainer;
         private readonly IApiHelper _apiHelper;
         private readonly CurrentUser _currentUser;
-        private bool _isEnglish = true;
-        private bool _isSlovak = false;
+        private bool _isEnglish = false;
+        private bool _isSlovak = true;
         private bool _isLoggedIn = false;
 
         #region Tabs Visibility Properties
