@@ -9,6 +9,16 @@ Provides basic functionality such as:
 * filtering and sorting of guests, officers and repairers
 * more...
 
+Technologies used:
+* .Net Core 3.1
+* EntityFramework Core 3.1
+* MediatR
+* FluentValidation
+* AutoMapper
+* MSSQL Server
+* WPF
+
+
 ### Screenshots:
 ![alt text](https://raw.githubusercontent.com/MarianKmotorka/DormitoryManagementSystem/master/ScreenShots/LoginViewScreenShot.png)
 
